@@ -1,0 +1,511 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Theming &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Appearance" href="ui_appearance.html" />
+    <link rel="prev" title="Layouting" href="ui_layouting.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Theming</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="theming">
+<span id="pages-ui-theming-theming"></span><h1>Theming<a class="headerlink" href="#theming" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo includes three themes:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Modern</span></tt> - a graphically rich theme, showcasing many UI capabilities of qooxdoo 2.0.2</li>
+<li><tt class="docutils literal"><span class="pre">Classic</span></tt> - MS Windows oriented theme</li>
+<li><tt class="docutils literal"><span class="pre">Simple</span></tt> - a lightweight theme, which looks more like a website.</li>
+<li><tt class="docutils literal"><span class="pre">Indigo</span></tt> - a theme, based on simple but offers the style of the qooxdoo.org website.</li>
+</ul>
+<p>Here some screenshots:</p>
+<p><img alt="Modern theme" src="../../_images/window_modern_theme.png" /></p>
+<p><img alt="Classic theme" src="../../_images/window_classic_theme.png" /></p>
+<p><img alt="Simple theme" src="../../_images/window_simple_theme.png" /></p>
+<p><img alt="Indigo theme" src="../../_images/window_indigo_theme.png" /></p>
+<p>While those four themes run out-of-the-box, it is easy to create your own themes. Those custom themes can either be created by  <a class="reference internal" href="ui_custom_themes.html#pages-desktop-ui-custom-themes-extending-themes"><em>extending existing ones</em></a> or they can be <a class="reference internal" href="ui_custom_themes.html#pages-desktop-ui-custom-themes-custom-themes"><em>created from scratch</em></a>.</p>
+<p>A complete theme (a so-called <em>meta theme</em>) consists of several special themes, each designed to play a dedicated role and to setup the different parts of the whole theming. These special themes are described at the subsequent sections followed by a description of how to create own themes.</p>
+<div class="section" id="meta-theme">
+<span id="pages-ui-theming-meta-theme"></span><h2>Meta Theme<a class="headerlink" href="#meta-theme" title="Permalink to this headline">¶</a></h2>
+<p>A meta theme describes the whole theme itself by defining the specific parts. Each meta theme consists of five keys</p>
+<ul class="simple">
+<li>appearance</li>
+<li>color</li>
+<li>decoration</li>
+<li>font</li>
+<li>icon</li>
+</ul>
+<p>each of them referencing to a specialized theme. So you can think of a meta theme as of collection whose parts can easily be changed.</p>
+<p>Sample of a meta theme:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.Modern&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">meta</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">color</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Color</span><span class="p">,</span>
+    <span class="nx">decoration</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Decoration</span><span class="p">,</span>
+    <span class="nx">font</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Font</span><span class="p">,</span>
+    <span class="nx">appearance</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Appearance</span><span class="p">,</span>
+    <span class="nx">icon</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">icon</span><span class="p">.</span><span class="nx">Tango</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This section describes the different types of themes which are used for theming a whole application.</p>
+</div>
+<div class="section" id="color-theme">
+<span id="pages-ui-theming-color-theme"></span><h2>Color Theme<a class="headerlink" href="#color-theme" title="Permalink to this headline">¶</a></h2>
+<p>A color theme defines all colors used by the framework. Each color is defined by an unique name and a value which can be written as hex, rgb or named color. This defined name is usable throughout the whole framework and your application.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The best way to organize your color names is to use <strong>semantic ones</strong> like <tt class="docutils literal"><span class="pre">background</span></tt>, <tt class="docutils literal"><span class="pre">text-input</span></tt> or <tt class="docutils literal"><span class="pre">text-disabled</span></tt>. This way it is easier to use one color for multiple widgets.</p>
+</div>
+<p>Part of a sample color theme:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * sample color theme</span>
+<span class="cm"> */</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;myApplication.theme.sample.Color&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">colors</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="cm">/*</span>
+<span class="cm">    ----------------------------------------------------------------------</span>
+<span class="cm">      SAMPLE COLORS</span>
+<span class="cm">    ----------------------------------------------------------------------</span>
+<span class="cm">    */</span>
+
+    <span class="c1">// color as hex value</span>
+    <span class="s2">&quot;background-application&quot;</span> <span class="o">:</span> <span class="s2">&quot;#DFDFDF&quot;</span><span class="p">,</span>
+
+    <span class="c1">// color as rgb array</span>
+    <span class="s2">&quot;background-pane&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span> <span class="p">],</span>
+
+    <span class="c1">// color as named color</span>
+    <span class="s2">&quot;background-light&quot;</span> <span class="o">:</span> <span class="s2">&quot;gray&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Following names are recognized as named colors: <tt class="docutils literal"><span class="pre">black</span></tt>, <tt class="docutils literal"><span class="pre">white</span></tt>, <tt class="docutils literal"><span class="pre">silver</span></tt>, <tt class="docutils literal"><span class="pre">gray</span></tt>, <tt class="docutils literal"><span class="pre">maroon</span></tt>, <tt class="docutils literal"><span class="pre">red</span></tt>, <tt class="docutils literal"><span class="pre">purple</span></tt>, <tt class="docutils literal"><span class="pre">fuchsia</span></tt>, <tt class="docutils literal"><span class="pre">green</span></tt>, <tt class="docutils literal"><span class="pre">lime</span></tt>, <tt class="docutils literal"><span class="pre">olive</span></tt>, <tt class="docutils literal"><span class="pre">yellow</span></tt>, <tt class="docutils literal"><span class="pre">navy</span></tt>, <tt class="docutils literal"><span class="pre">blue</span></tt>, <tt class="docutils literal"><span class="pre">teal</span></tt>, <tt class="docutils literal"><span class="pre">aqua</span></tt>, <tt class="docutils literal"><span class="pre">orange</span></tt>, <tt class="docutils literal"><span class="pre">brown</span></tt>.</p>
+<p>The color values are set in the class <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.util.ColorUtil">qx.util.ColorUtil</a></p>
+</div>
+<div class="section" id="decoration-theme">
+<span id="pages-ui-theming-decoration-theme"></span><h2>Decoration Theme<a class="headerlink" href="#decoration-theme" title="Permalink to this headline">¶</a></h2>
+<p>Each widget can be equipped with an independent decoration which can be used to set a background-color or -image, define a border, add a shadow and much more.
+In a decoration theme you can use several different decorators depending on the results you wish to achieve. Please take a look at the <a class="reference internal" href="ui_decorators.html"><em>decorator article</em></a> to get more information.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is recommend to define the decorations inside the theme instead of creating manually decorator instances inside your application code. This way the created decorators can be used by multiple widgets.</p>
+</div>
+<p>What a decoration theme can look like:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* *********************************************</span>
+
+<span class="cm">#asset(sample/decoration/myDecorationTheme/*)</span>
+
+<span class="cm">************************************************/</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * sample decoration theme.</span>
+<span class="cm"> */</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;myApplication.theme.sample.Decoration&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">aliases</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="nx">decoration</span> <span class="o">:</span> <span class="s2">&quot;myApplication/decoration/sample&quot;</span>
+  <span class="p">},</span>
+
+  <span class="nx">decorations</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;single&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">decorator</span><span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">Single</span><span class="p">,</span>
+
+      <span class="nx">style</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="nx">width</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+
+        <span class="nx">color</span> <span class="o">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="nx">colorLeft</span> <span class="o">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="nx">colorRight</span> <span class="o">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+
+        <span class="nx">style</span> <span class="o">:</span> <span class="s2">&quot;solid&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="s2">&quot;grid&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">decorator</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">Grid</span><span class="p">,</span>
+
+      <span class="nx">style</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="nx">baseImage</span> <span class="o">:</span> <span class="s2">&quot;decoration/pane/grid.png&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+
+    <span class="s2">&quot;combined&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">decorator</span> <span class="o">:</span> <span class="p">[</span>
+        <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">MBackgroundColor</span><span class="p">,</span>
+        <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">MBorderRadius</span>
+      <span class="p">],</span>
+
+      <span class="nx">style</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="nx">backgroundColor</span> <span class="o">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+        <span class="nx">radius</span> <span class="o">:</span> <span class="mi">3</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Noted the <tt class="docutils literal"><span class="pre">#asset</span></tt> at the top and the <tt class="docutils literal"><span class="pre">aliases</span></tt> key inside the theme declaration? This is needed to for the images used within the theme. A description of how to work with resources is available <a class="reference internal" href="ui_resources.html#pages-ui-resources-declaring-resources-in-the-code"><em>here</em></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">aliases</span></tt> key is especially important when defining an own decorator theme. This entry does add a new alias at the <tt class="docutils literal"><span class="pre">AliasManager</span></tt> class and verifies that your images for the decoration theme are found by the <tt class="docutils literal"><span class="pre">ResourceManager</span></tt> which is working with the resolve URLs of the <tt class="docutils literal"><span class="pre">AliasManager</span></tt> class.</p>
+</div>
+</div>
+<div class="section" id="font-theme">
+<span id="pages-ui-theming-font-theme"></span><h2>Font Theme<a class="headerlink" href="#font-theme" title="Permalink to this headline">¶</a></h2>
+<p>This theme is all about the information of the fonts used throughout your application. As the number of types/variants of fonts used with application isn't that big the font theme is normally a compact one.
+Web fonts are also defined here. See the <a class="reference internal" href="ui_webfonts.html#pages-ui-webfonts-webfonts"><em>article on web fonts</em></a> for details.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is always a good idea to limit the number of types or variants of fonts to create a homogenous look.</p>
+</div>
+<p>To demonstrate how compact and powerful a font theme can look like, take a look at the example font theme:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * The modern font theme.</span>
+<span class="cm"> */</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.modern.Font&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">fonts</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;default&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">size</span> <span class="o">:</span> <span class="mi">11</span><span class="p">,</span>
+      <span class="nx">lineHeight</span> <span class="o">:</span> <span class="mf">1.4</span><span class="p">,</span>
+      <span class="nx">family</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;Tahoma&quot;</span><span class="p">,</span> <span class="s2">&quot;Liberation Sans&quot;</span><span class="p">,</span> <span class="s2">&quot;Arial&quot;</span> <span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="s2">&quot;bold&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">size</span> <span class="o">:</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="nx">lineHeight</span> <span class="o">:</span> <span class="mf">1.4</span><span class="p">,</span>
+      <span class="nx">family</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;Lucida Grande&quot;</span> <span class="p">],</span>
+      <span class="nx">bold</span> <span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>It is important to note that you can only specify values available as property on <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.bom.Font">qx.bom.Font</a> or <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.bom.webfonts.WebFont">qx.bom.webfonts.WebFont</a>.</p>
+</div>
+<div class="section" id="icon-theme">
+<span id="pages-ui-theming-icon-theme"></span><h2>Icon Theme<a class="headerlink" href="#icon-theme" title="Permalink to this headline">¶</a></h2>
+<p>This theme is to define which icon set is used and normally consists only of 2 main keys (title and aliases).</p>
+<p>The important one is the <tt class="docutils literal"><span class="pre">aliases</span></tt> key which points the generator to the location of the icon set. The <tt class="docutils literal"><span class="pre">icon</span></tt> alias, which is used to reference icons in qooxdoo applications, is set to the value of this key.
+As qooxdoo uses the free available <a class="reference external" href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango</a> and <a class="reference external" href="http://www.oxygen-icons.org">Oxygen</a> icon sets it is not necessary to extend these.</p>
+<p>Complete code for the <tt class="docutils literal"><span class="pre">tango</span></tt> icon theme:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Tango icons</span>
+<span class="cm"> */</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.icon.Tango&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">aliases</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;icon&quot;</span> <span class="o">:</span> <span class="s2">&quot;qx/icon/Tango&quot;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="appearance-theme">
+<span id="pages-ui-theming-appearance-theme"></span><h2>Appearance Theme<a class="headerlink" href="#appearance-theme" title="Permalink to this headline">¶</a></h2>
+<p>The appearance theme is by far the biggest theme. Its task is to describe every themable widget and their child controls. Since the widgets are styled using decorators, colors, fonts and icons the appearance theme uses the definitions of all the other themes namely the decoration, color, font and icon theme. You can think of the appearance theme as the central meeting point where the other themes (decorator, color, font and icon) get together.</p>
+<p>To discover the power of the appearance theme please take a look at the <a class="reference internal" href="ui_appearance.html"><em>corresponding article</em></a> which should let you get an idea of the whole picture.</p>
+</div>
+<div class="section" id="applying-themes">
+<span id="pages-ui-theming-applying-themes"></span><h2>Applying Themes<a class="headerlink" href="#applying-themes" title="Permalink to this headline">¶</a></h2>
+<p>Typically, your application will have a certain, pre-defined theme known <em>at build-time</em>. The best way to associate such a default outlook with your application is to use the config.json variable <tt class="docutils literal"><span class="pre">QXTHEME</span></tt> inside the &quot;let&quot; section. Setting this variable to a fully-qualified meta theme class lets the build process handle the proper inclusion and linkage of the theme classes automatically. E.g.:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">...</span>
+<span class="nx">QXTHEME</span> <span class="o">:</span> <span class="nx">my</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">Cool</span><span class="p">,</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p>It is also possible to set a certain appearance <em>at runtime</em>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">manager</span><span class="p">.</span><span class="nx">Meta</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">setTheme</span><span class="p">(</span><span class="nx">my</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">Cool</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>For appearance, color, border, icon and widget themes, you can use similar classes in the <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.theme.manager">qx.theme.manager</a> package.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_layouting.html"
+             title="previous chapter">« Layouting</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_appearance.html"
+             title="next chapter">Appearance »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Theming</a><ul>
+<li><a class="reference internal" href="#meta-theme">Meta Theme</a></li>
+<li><a class="reference internal" href="#color-theme">Color Theme</a></li>
+<li><a class="reference internal" href="#decoration-theme">Decoration Theme</a></li>
+<li><a class="reference internal" href="#font-theme">Font Theme</a></li>
+<li><a class="reference internal" href="#icon-theme">Icon Theme</a></li>
+<li><a class="reference internal" href="#appearance-theme">Appearance Theme</a></li>
+<li><a class="reference internal" href="#applying-themes">Applying Themes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_appearance.html"
+                        title="next chapter">Appearance</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_layouting.html"
+                        title="previous chapter">Layouting</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_theming.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

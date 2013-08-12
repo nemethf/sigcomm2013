@@ -1,0 +1,419 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using the remote table model &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Communication" href="../communication.html" />
+    <link rel="next" title="Development" href="../development.html" />
+    <link rel="prev" title="RPC Server Writer Guide" href="../communication/rpc_server_writer_guide.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../communication.html" accesskey="U">Communication</a>
+     &raquo;
+  <a href="">Using the remote table model</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="using-the-remote-table-model">
+<span id="pages-remote-table-model-using-the-remote-table-model"></span><h1>Using the remote table model<a class="headerlink" href="#using-the-remote-table-model" title="Permalink to this headline">¶</a></h1>
+<p>The remote table should be used whenever you want to display a large amount of data in a performant way.</p>
+<p>As this table model loads its data on-demand from a backend, only those rows are loaded that are near the area the user is currently viewing. If the user scrolls, the rows that will be displayed soon are loaded asynchronously in the background. All loaded data is managed in a cache that automatically removes the last recently used rows when it gets full.</p>
+<p>To get this model up and running you have to implement the actual loading of the row data by yourself in a subclass.</p>
+<div class="section" id="implement-your-subclass">
+<span id="pages-remote-table-model-implement-your-subclass"></span><h2>Implement your subclass<a class="headerlink" href="#implement-your-subclass" title="Permalink to this headline">¶</a></h2>
+<p>To correctly implement the remote table model you have to define/overwrite two methods <tt class="docutils literal"><span class="pre">_loadRowCount</span></tt> and <tt class="docutils literal"><span class="pre">_loadRowData</span></tt>. Both are automatically called by the table widget.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;myApplication.table.RemoteDataModel&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Remote</span><span class="p">,</span>
+
+  <span class="nx">members</span> <span class="o">:</span>
+  <span class="p">{</span>
+     <span class="c1">// overloaded - called whenever the table requests the row count</span>
+    <span class="nx">_loadRowCount</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="c1">// Call the backend service (example) - using XmlHttp</span>
+      <span class="kd">var</span> <span class="nx">url</span>  <span class="o">=</span> <span class="s2">&quot;http://localhost/services/getTableCount.php&quot;</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">remote</span><span class="p">.</span><span class="nx">Request</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
+
+      <span class="c1">// Add listener</span>
+      <span class="nx">req</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;completed&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_onRowCountCompleted</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+
+      <span class="c1">// send request</span>
+      <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+    <span class="p">},</span>
+
+    <span class="c1">// Listener for request of &quot;_loadRowCount&quot; method</span>
+    <span class="nx">_onRowCountCompleted</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+    <span class="p">{</span>
+       <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getContent</span><span class="p">();</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span>
+       <span class="p">{</span>
+          <span class="c1">// Apply it to the model - the method &quot;_onRowCountLoaded&quot; has to be called</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">_onRowCountLoaded</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+       <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// overloaded - called whenever the table requests new data</span>
+    <span class="nx">_loadRowData</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstRow</span><span class="p">,</span> <span class="nx">lastRow</span><span class="p">)</span>
+    <span class="p">{</span>
+       <span class="c1">// Call the backend service (example) - using XmlHttp</span>
+       <span class="kd">var</span> <span class="nx">baseUrl</span>  <span class="o">=</span> <span class="s2">&quot;http://localhost/services/getTableRowData.php&quot;</span><span class="p">;</span>
+       <span class="kd">var</span> <span class="nx">parameters</span> <span class="o">=</span> <span class="s2">&quot;?from=&quot;</span> <span class="o">+</span> <span class="nx">firstRow</span> <span class="o">+</span> <span class="s2">&quot;&amp;to=&quot;</span> <span class="o">+</span> <span class="nx">lastRow</span><span class="p">;</span>
+       <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">baseUrl</span> <span class="o">+</span> <span class="nx">parameters</span><span class="p">;</span>
+       <span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">remote</span><span class="p">.</span><span class="nx">Request</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
+
+       <span class="c1">// Add listener</span>
+       <span class="nx">req</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;completed&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_onLoadRowDataCompleted</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+
+       <span class="c1">// send request</span>
+       <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+    <span class="p">},</span>
+
+     <span class="c1">// Listener for request of &quot;_loadRowData&quot; method</span>
+    <span class="nx">_onLoadRowDataCompleted</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getContent</span><span class="p">();</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span>
+       <span class="p">{</span>
+          <span class="c1">// Apply it to the model - the method &quot;_onRowDataLoaded&quot; has to be called</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">_onRowDataLoaded</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+       <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="using-your-remote-model">
+<span id="pages-remote-table-model-using-your-remote-model"></span><h3>Using your remote model<a class="headerlink" href="#using-your-remote-model" title="Permalink to this headline">¶</a></h3>
+<p>Now that you've set up the remote table model the table component can use it.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">remoteTableModelInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">myApplication</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">RemoteDataModel</span><span class="p">();</span>
+<span class="nx">yourTableInstance</span><span class="p">.</span><span class="nx">setTableModel</span><span class="p">(</span><span class="nx">remoteTableModelInstance</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>That's all you need to ensure your table is using your remote model.</p>
+</div>
+<div class="section" id="sorting-your-data">
+<span id="pages-remote-table-model-sorting-your-data"></span><h3>Sorting your data<a class="headerlink" href="#sorting-your-data" title="Permalink to this headline">¶</a></h3>
+<p>The table component offers sortable columns to let users sort the data the way they like. You can enable this sorting ability for each column.
+Since you have to pull the data into the table yourself you have to update the table data once the user changes the sorting criteria. You have to enhance the <tt class="docutils literal"><span class="pre">_loadRowData</span></tt> method with this information to inform your backend how to sort the data.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// &quot;_loadRowData&quot; with sorting support</span>
+<span class="nx">_loadRowData</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstRow</span><span class="p">,</span> <span class="nx">lastRow</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Call the backend service (example) - using XmlHttp</span>
+    <span class="kd">var</span> <span class="nx">baseUrl</span>  <span class="o">=</span> <span class="s2">&quot;http://localhost/services/getTableRowData.php&quot;</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">parameters</span> <span class="o">=</span> <span class="s2">&quot;?from=&quot;</span> <span class="o">+</span> <span class="nx">firstRow</span> <span class="o">+</span> <span class="s2">&quot;&amp;to=&quot;</span> <span class="o">+</span> <span class="nx">lastRow</span><span class="p">;</span>
+
+    <span class="c1">// get the column index to sort and the order</span>
+    <span class="kd">var</span> <span class="nx">sortIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getSortColumnIndex</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">sortOrder</span> <span class="o">=</span>  <span class="k">this</span><span class="p">.</span><span class="nx">isSortAscending</span><span class="p">()</span> <span class="o">?</span> <span class="s2">&quot;asc&quot;</span> <span class="o">:</span> <span class="s2">&quot;desc&quot;</span><span class="p">;</span>
+
+    <span class="c1">// setting the sort parameters - assuming the backend knows these</span>
+    <span class="nx">parameters</span> <span class="o">+=</span> <span class="s2">&quot;&amp;sortOrder=&quot;</span> <span class="o">+</span> <span class="nx">sortOrder</span> <span class="o">+</span> <span class="s2">&quot;&amp;sortIndex=&quot;</span> <span class="o">+</span> <span class="nx">sortIndex</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">baseUrl</span> <span class="o">+</span> <span class="nx">parameters</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">remote</span><span class="p">.</span><span class="nx">Request</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Add listener</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;completed&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_onLoadRowDataCompleted</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+
+    <span class="c1">// send request</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="backend">
+<span id="pages-remote-table-model-backend"></span><h2>Backend<a class="headerlink" href="#backend" title="Permalink to this headline">¶</a></h2>
+<p>The backend has to deliver the requested data in a JSON data structure in order to display the data correctly. The data structure has to use the same IDs as the remote table model instance at the client-side.</p>
+<p>For example</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">remoteModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">myApplication</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">RemoteDataModel</span><span class="p">();</span>
+
+<span class="c1">// first param: displayed names, second param: IDs</span>
+<span class="nx">remoteModel</span><span class="p">.</span><span class="nx">setColumns</span><span class="p">(</span> <span class="p">[</span> <span class="s2">&quot;First name&quot;</span><span class="p">,</span> <span class="s2">&quot;Last name&quot;</span> <span class="p">],</span> <span class="p">[</span> <span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span> <span class="p">]</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>Then the data delivered by the backend should have the following structure:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">result</span> <span class="o">=</span> <span class="p">{[</span>
+  <span class="p">{</span> <span class="s2">&quot;first&quot;</span> <span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span> <span class="o">:</span> <span class="s2">&quot;Doe&quot;</span>  <span class="p">},</span>
+  <span class="p">{</span> <span class="s2">&quot;first&quot;</span> <span class="o">:</span> <span class="s2">&quot;Homer&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span> <span class="o">:</span> <span class="s2">&quot;Simpson&quot;</span>  <span class="p">},</span>
+  <span class="p">{</span> <span class="s2">&quot;first&quot;</span> <span class="o">:</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span> <span class="o">:</span> <span class="s2">&quot;Brown&quot;</span>  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">]};</span>
+</pre></div>
+</div>
+<p>Moreover, the backend has to deliver the row count, i. e. the number of rows the table contains. This is what the <tt class="docutils literal"><span class="pre">_loadRowCount</span></tt> function of your subclass expects to get. Please make sure that the URLs <tt class="docutils literal"><span class="pre">http://localhost/services/getTableCount.php</span></tt> and <tt class="docutils literal"><span class="pre">http://localhost/services/getTableRowData.php</span></tt> of your subclass point to the right location.</p>
+</div>
+<div class="section" id="summary">
+<span id="pages-remote-table-model-summary"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This short and very basic example is far from complete and in your application you will have to implement some more features like error-handling, but it should give you a short overview of how to implement the remote table model in qooxdoo.</p>
+<p>Another basic implementation which uses the PHP RPC backend is available in qooxdoo-contrib. Take a look at the <a class="reference external" href="http://qooxdoo.org/contrib/project#rpcexample">RPCExample</a> and setup the necessary <a class="reference external" href="http://qooxdoo.org/contrib/project#rpcphp">RPC PHP backend</a>.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../communication/rpc_server_writer_guide.html"
+             title="previous chapter">« RPC Server Writer Guide</a>
+          <span class="separator">|</span>
+          <a class="next" href="../development.html"
+             title="next chapter">Development »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Using the remote table model</a><ul>
+<li><a class="reference internal" href="#implement-your-subclass">Implement your subclass</a><ul>
+<li><a class="reference internal" href="#using-your-remote-model">Using your remote model</a></li>
+<li><a class="reference internal" href="#sorting-your-data">Sorting your data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#backend">Backend</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../development.html"
+                        title="next chapter">Development</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../communication/rpc_server_writer_guide.html"
+                        title="previous chapter">RPC Server Writer Guide</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/widget/table_remote_model.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

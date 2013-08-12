@@ -1,0 +1,341 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Back-Button and Bookmark Support &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Website" href="../website.html" />
+    <link rel="next" title="qx.Desktop" href="../desktop.html" />
+    <link rel="prev" title="Transforms and Animations (CSS3)" href="css3animation.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../website.html" accesskey="U">qx.Website</a>
+     &raquo;
+  <a href="">Back-Button and Bookmark Support</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="back-button-and-bookmark-support">
+<span id="pages-back-button-and-bookmark-support-back-button-and-bookmark-support"></span><h1>Back-Button and Bookmark Support<a class="headerlink" href="#back-button-and-bookmark-support" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document is outdated and does not reflect the proposed way of working with qx.Website. The history module is still under development. As soon as the module is ready, this document will be updated as well.</p>
+</div>
+<div class="section" id="overview">
+<span id="pages-back-button-and-bookmark-support-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Many Ajax applications break the browser back button and bookmarking support. Since the main page is never reloaded, the URL of the application never changes and no new entries are added to the browser history.</p>
+<p>Fortunately it is possible to restore the expected behavior with a JavaScript history manager like the one included with qooxdoo (<a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.bom.History">qx.bom.History</a>).</p>
+</div>
+<div class="section" id="adding-history-support-to-an-application">
+<span id="pages-back-button-and-bookmark-support-adding-history-support-to-an-application"></span><h2>Adding History support to an Application<a class="headerlink" href="#adding-history-support-to-an-application" title="Permalink to this headline">¶</a></h2>
+<p>To add history support to an application four basic steps are required:</p>
+<blockquote>
+<div><ul class="simple">
+<li>identify application states</li>
+<li>retrieve initial application state</li>
+<li>add event listener to history changes</li>
+<li>update history on application state changes</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="pages-back-button-and-bookmark-support-identify-application-states">
+<span id="identify-application-states"></span><h2>Identify Application States<a class="headerlink" href="#pages-back-button-and-bookmark-support-identify-application-states" title="Permalink to this headline">¶</a></h2>
+<p>The first step to add history support to an Ajax application is to identify the application states, which should be added to the history. This state must be encoded into a string, which will be set as the fragment identifier of the URL (the part after the '#' sign).</p>
+<p>What exactly the application state is depends on the application. It can range from coarse grained states for basic application navigation to fine grained undo/redo steps. The API viewer uses e.g. the currently displayed class as its state.</p>
+</div>
+<div class="section" id="retrieve-initial-application-state">
+<span id="pages-back-button-and-bookmark-support-retrieve-initial-application-state"></span><h2>Retrieve Initial Application State<a class="headerlink" href="#retrieve-initial-application-state" title="Permalink to this headline">¶</a></h2>
+<p>At application startup the initial state should be read from the history manager. This enables bookmarks to specific states of the application, since the state is encoded into the URL. The URL <tt class="docutils literal"><span class="pre">http://api.qooxdoo.org#qx.bom.History</span></tt> would for example open the API viewer with the initial state of <tt class="docutils literal"><span class="pre">qx.client.History</span></tt>.</p>
+<p>This is the code to read the initial state (<a class="reference external" href="http://api.qooxdoo.org/#qx.bom.History~getState">getState API documentation</a>):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">bom</span><span class="p">.</span><span class="nx">History</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">getState</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-event-listener-to-history-changes">
+<span id="pages-back-button-and-bookmark-support-add-event-listener-to-history-changes"></span><h2>Add Event Listener to History Changes<a class="headerlink" href="#add-event-listener-to-history-changes" title="Permalink to this headline">¶</a></h2>
+<p>Each time the history changes by hitting the browser's back or forward button, the history manager dispatches a <tt class="docutils literal"><span class="pre">request</span></tt> event. The event object holds information about the new state. The application must add an event listener to this event and update the application state (<a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.bom.History~request">request API documentation</a>):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// &#39;this&#39; is a reference to your application instance</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">bom</span><span class="p">.</span><span class="nx">History</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getData</span><span class="p">();</span>
+
+  <span class="c1">// application specific state update (= application code)</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">setApplicationState</span><span class="p">(</span><span class="nx">state</span><span class="p">);</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-history-on-application-state-changes">
+<span id="pages-back-button-and-bookmark-support-update-history-on-application-state-changes"></span><h2>Update History on Application State Changes<a class="headerlink" href="#update-history-on-application-state-changes" title="Permalink to this headline">¶</a></h2>
+<p>Every time the application state changes, the history manager must be informed about the new state. A state change in the API viewer would for example occur if the user selects another class (<a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.bom.History~addToHistory">addToHistory API documentation</a>).</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">bom</span><span class="p">.</span><span class="nx">History</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">addToHistory</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">title</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The first parameter is the state encoded as a string, which will be set as the URL fragment identifier. The second parameter is optional and may contain a string, which is set as the title of the browser window for this state.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="css3animation.html"
+             title="previous chapter">« Transforms and Animations (CSS3)</a>
+          <span class="separator">|</span>
+          <a class="next" href="../desktop.html"
+             title="next chapter">qx.Desktop »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Back-Button and Bookmark Support</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#adding-history-support-to-an-application">Adding History support to an Application</a></li>
+<li><a class="reference internal" href="#pages-back-button-and-bookmark-support-identify-application-states">Identify Application States</a></li>
+<li><a class="reference internal" href="#retrieve-initial-application-state">Retrieve Initial Application State</a></li>
+<li><a class="reference internal" href="#add-event-listener-to-history-changes">Add Event Listener to History Changes</a></li>
+<li><a class="reference internal" href="#update-history-on-application-state-changes">Update History on Application State Changes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../desktop.html"
+                        title="next chapter">qx.Desktop</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="css3animation.html"
+                        title="previous chapter">Transforms and Animations (CSS3)</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/website/back-button_and_bookmark_support.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

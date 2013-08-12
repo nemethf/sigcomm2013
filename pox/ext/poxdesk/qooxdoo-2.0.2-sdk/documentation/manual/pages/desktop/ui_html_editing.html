@@ -1,0 +1,470 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>HTML Editing &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Feature List" href="ui_html_editing/featurelist.html" />
+    <link rel="prev" title="Window Management" href="window_management.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">HTML Editing</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="html-editing">
+<span id="pages-ui-html-editing-html-editing"></span><h1>HTML Editing<a class="headerlink" href="#html-editing" title="Permalink to this headline">¶</a></h1>
+<p>HtmlArea is a html editing widget which is part of the framework. This widget is available as <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.bom.htmlarea.HtmlArea">low-level</a> and <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.embed.HtmlArea">UI-level</a> implementation. The first targets traditional webpages / single-page applications and the latter Rich Internet Applications (RIA) as preferred usecase.</p>
+<p>Here you can find some interesting technical info.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please keep in mind that the HtmlArea component provides basic HTML editing functionality. It is <strong>not</strong> a full-blown HTML editor and will not be developed towards it.</p>
+</div>
+<div class="section" id="demo">
+<span id="pages-ui-html-editing-demo"></span><h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#widget~HtmlArea.html"><img alt="HtmlArea screenshot" class="align-center" src="../../_images/htmlarea_screenshot_1_0.png" style="width: 515px;" /></a>
+</div>
+<div class="section" id="setup">
+<span id="pages-ui-html-editing-setup"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>One important step is necessary to get the HtmlArea up and running.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you setup the component without handing the <strong>source</strong> parameter you have to place a <strong>blank.html</strong> file next to your applications <strong>index.html</strong>.</p>
+</div>
+<p>This is necessary due the <a class="reference external" href="http://en.wikipedia.org/wiki/Same_origin_policy">Same-Origin Policy</a> implemented by most browsers.</p>
+</div>
+<div class="section" id="features">
+<span id="pages-ui-html-editing-features"></span><h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/featurelist.html">Feature List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/featurelist.html#end-user-features">End-User Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#text-formatting">Text Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#alignment">Alignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#lists">Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#inserting">Inserting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#document-wide-formatting">Document Wide Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#additional-features">Additional Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/featurelist.html#developer-features">Developer Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#events">Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#content-manipulation">Content Manipulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#advanced-paragraph-handling">Advanced Paragraph-Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/featurelist.html#pages-ui-html-editing-featurelist-additional-features-2">Additional Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/technicalfeaturelist.html">Technical Feature List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/technicalfeaturelist.html#startup">Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/technicalfeaturelist.html#content-wrapping">Content Wrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/technicalfeaturelist.html#editable-document">Editable Document</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/technicalfeaturelist.html#internet-explorer">Internet Explorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/technicalfeaturelist.html#gecko-webkit-and-opera">Gecko, Webkit and Opera</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/technicalfeaturelist.html#focus-management">Focus Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/technicalfeaturelist.html#advanced-key-events">Advanced Key Events</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="integration-guide">
+<span id="pages-ui-html-editing-integration-guide"></span><h2>Integration Guide<a class="headerlink" href="#integration-guide" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/integration_guide.html">Integrate the HtmlArea in your application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/integration_guide.html#use-public-api">Use Public API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/integration_guide.html#use-events">Use Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/integration_guide.html#lazy-initialization">Lazy Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/integration_guide.html#toolbar-details">Toolbar Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/integration_guide.html#no-own-focus-management">No Own Focus Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/integration_guide.html#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/available_shortcuts.html">Available keyboard shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/recommendations.html">Recommendations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/recommendations.html#common-font-families">Common Font Families</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/recommendations.html#inserthtml-command">InsertHtml Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/recommendations.html#avoid-div-elements-with-fixed-width-or-height">Avoid DIV elements with fixed width or height</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="technical-background">
+<span id="pages-ui-html-editing-technical-background"></span><h2>Technical Background<a class="headerlink" href="#technical-background" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html">General information about HTML Editing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#external-information">External Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#general-infos">General infos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#browsers">Browsers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#mozilla-midas">Mozilla (&quot;Midas&quot;)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#ie-html-edit">IE (&quot;HTML Edit&quot;)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#opera">Opera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#safari">Safari</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#general">General</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#overview-of-existing-wysiwyg-editors">Overview of existing WYSIWYG editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/html_editing_in_general.html#browser-specific-overview-of-execcommand">Browser-specific overview of &quot;execCommand&quot;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/copy_and_paste.html">Copy and Paste</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/copy_and_paste.html#ie">IE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/copy_and_paste.html#safari">Safari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/copy_and_paste.html#gecko">Gecko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/copy_and_paste.html#opera">Opera</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/textalign.html">Text Align</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/textalign.html#browsers">Browsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/textalign.html#problems">Problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/browser_bugs.html">Browser Bugs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/browser_bugs.html#gecko">Gecko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/browser_bugs.html#internet-explorer">Internet Explorer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/browser_bugs.html#webkit-safari">Webkit/Safari</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/default_paragraph_handling.html">Default Paragraph Handling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/default_paragraph_handling.html#browsers">Browsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/default_paragraph_handling.html#word-processors-e-mail-clients">Word processors / E-mail clients</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="implementation-details">
+<span id="pages-ui-html-editing-implementation-details"></span><h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/undo_redo.html">Undo and Redo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/undo_redo.html#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/undo_redo.html#implementation-description-on-a-high-level">Implementation: Description on a high-level</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/undo_redo.html#using-the-decorator-pattern">Using the Decorator Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/undo_redo.html#tracking-changes-using-stacks">Tracking changes using stacks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/undo_redo.html#command">Command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/undo_redo.html#content-block">Content-block</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/undo_redo.html#custom">Custom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/undo_redo.html#internal">Internal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/paragraph_handling.html">Paragraph Handling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#formatting-across-multiple-paragraphs">Formatting across multiple paragraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#alignment">Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#customization">Customization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#insertparagraphonlinebreak">insertParagraphOnLinebreak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#insertlinebreakonctrlenter">insertLinebreakOnCtrlEnter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#technical-background">Technical Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#paragraph-handling-in-firefox">Paragraph-Handling in Firefox</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#browser-control">Browser control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#htmlarea-control">HtmlArea control</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#phase-1-collecting-styles">Phase 1: Collecting styles</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#phase-2-style-string-creation">Phase 2: Style string creation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#phase-3-nodes-creation">Phase 3: Nodes creation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#phase-4-cleanup">Phase 4: Cleanup</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#reasons-for-own-paragraph-handling">Reasons for own paragraph handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui_html_editing/paragraph_handling.html#issues">Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_html_editing/list_handling.html">List Handling</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="window_management.html"
+             title="previous chapter">« Window Management</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_html_editing/featurelist.html"
+             title="next chapter">Feature List »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">HTML Editing</a><ul>
+<li><a class="reference internal" href="#demo">Demo</a></li>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#features">Features</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#integration-guide">Integration Guide</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#technical-background">Technical Background</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_html_editing/featurelist.html"
+                        title="next chapter">Feature List</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="window_management.html"
+                        title="previous chapter">Window Management</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_html_editing.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

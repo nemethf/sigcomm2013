@@ -1,0 +1,338 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Array Reference &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="References" href="../references.html" />
+    <link rel="next" title="Framework Generator Jobs" href="framework_jobs.html" />
+    <link rel="prev" title="Properties Quick Reference" href="properties_quickref.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../references.html" accesskey="U">References</a>
+     &raquo;
+  <a href="">Array Reference</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="array-reference">
+<span id="pages-array-array-reference"></span><h1>Array Reference<a class="headerlink" href="#array-reference" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo has a few classes that concern arrays. Some of them are special wrappers and others are extensions. Here is a list of all classes which have something to do with arrays in qooxdoo.</p>
+<div class="section" id="data-binding-specific-array">
+<h2>Data binding specific array<a class="headerlink" href="#data-binding-specific-array" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.data.Array">qx.data.Array</a>: The data array is a special array used in the data binding context of qooxdoo. It does not extend the native array of JavaScript but is a wrapper for it. All the native methods are included in the implementation and it also fires events if the content or the length of the array changes in any way. Also the <em>.length</em> property is available on the array.</li>
+</ul>
+</div>
+<div class="section" id="extension-of-the-native-array">
+<h2>Extension of the native array<a class="headerlink" href="#extension-of-the-native-array" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.type.BaseArray">qx.type.BaseArray</a>: This class is the common superclass for all array classes in qooxdoo. It supports all of the shiny 1.6 JavaScript array features like <em>forEach</em> and <em>map</em>. This class may be instantiated instead of the native Array if one wants to work with a feature-unified Array instead of the native one. This class uses native features wherever possible but fills all missing implementations with custom code.</li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.type.Array">qx.type.Array</a>: An extended array class which adds a lot of often used convenience methods to the regular array like <em>remove</em> or <em>contains</em>.</li>
+</ul>
+</div>
+<div class="section" id="utility-methods">
+<h2>Utility methods<a class="headerlink" href="#utility-methods" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.lang.Array">qx.lang.Array</a>: Provides static helper functions for arrays with a lot of often used convenience methods like <em>remove</em> or <em>contains</em>.</li>
+</ul>
+</div>
+<div class="section" id="extending-the-native-array-s-prototype">
+<h2>Extending the native array's prototype<a class="headerlink" href="#extending-the-native-array-s-prototype" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.lang.Core">qx.lang.Core</a>: Adds some methods to array to lift every browser to the same level. The methods are:<ul>
+<li>indexOf</li>
+<li>lastIndexOf</li>
+<li>forEach</li>
+<li>filter</li>
+<li>map</li>
+<li>some</li>
+<li>every</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.lang.Generics">qx.lang.Generics</a> : Support <a class="reference external" href="http://developer.mozilla.org/en/docs/New_in_JavaScript_1.6#Array_and_String_generics">string/array generics</a> as introduced with JavaScript 1.6 for all browsers.<ul>
+<li>join</li>
+<li>reverse</li>
+<li>sort</li>
+<li>push</li>
+<li>pop</li>
+<li>shift</li>
+<li>unshift</li>
+<li>splice</li>
+<li>concat</li>
+<li>slice</li>
+<li>indexOf</li>
+<li>lastIndexOf</li>
+<li>forEach</li>
+<li>map</li>
+<li>filter</li>
+<li>some</li>
+<li>every</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="properties_quickref.html"
+             title="previous chapter">« Properties Quick Reference</a>
+          <span class="separator">|</span>
+          <a class="next" href="framework_jobs.html"
+             title="next chapter">Framework Generator Jobs »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Array Reference</a><ul>
+<li><a class="reference internal" href="#data-binding-specific-array">Data binding specific array</a></li>
+<li><a class="reference internal" href="#extension-of-the-native-array">Extension of the native array</a></li>
+<li><a class="reference internal" href="#utility-methods">Utility methods</a></li>
+<li><a class="reference internal" href="#extending-the-native-array-s-prototype">Extending the native array's prototype</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="framework_jobs.html"
+                        title="next chapter">Framework Generator Jobs</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="properties_quickref.html"
+                        title="previous chapter">Properties Quick Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/core/array.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,670 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Classes &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Core" href="../core.html" />
+    <link rel="next" title="Interfaces" href="interfaces.html" />
+    <link rel="prev" title="Features of Object Orientation" href="oo_feature_summary.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" accesskey="U">Core</a>
+     &raquo;
+  <a href="">Classes</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="classes">
+<span id="pages-classes-classes"></span><h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo's class definition is a concise and compact way to define new classes. Due to its closed form the JavaScript code that handles the actual class definition already &quot;knows&quot; all parts of the class at definition time. This allows for many useful checks during development as well as clever optimizations during the build process.</p>
+<div class="section" id="declaration">
+<span id="pages-classes-declaration"></span><h2>Declaration<a class="headerlink" href="#declaration" title="Permalink to this headline">¶</a></h2>
+<p>Here is the most basic definition of a regular, non-static class <tt class="docutils literal"><span class="pre">qx.test.Cat</span></tt>. It has a constructor so that instances can be created. It also needs to extend some existing class, here we take the root class of all qooxdoo classes:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">extend</span><span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>As you can see, the <tt class="docutils literal"><span class="pre">define()</span></tt> method takes two arguments, the fully-qualified name of the new class, and a configuration map that contains a varying number of predefined keys and their values.</p>
+<p>An instance of this class is created and its constructor is called by the usual statement:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">kitty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Cat</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="members">
+<span id="pages-classes-members"></span><h3>Members<a class="headerlink" href="#members" title="Permalink to this headline">¶</a></h3>
+<p>Members of a class come in two flavors:</p>
+<ul class="simple">
+<li>Class members (also called &quot;static&quot; members) are attached to the class itself, not to individual instances</li>
+<li>Instance members are attached to each individual instance of a class</li>
+</ul>
+</div>
+<div class="section" id="class-members">
+<span id="pages-classes-class-members"></span><h3>Class Members<a class="headerlink" href="#class-members" title="Permalink to this headline">¶</a></h3>
+<p>A static member of a class can be one of the following:</p>
+<ul class="simple">
+<li>Class Variable</li>
+<li>Class Method</li>
+</ul>
+<p>In the <tt class="docutils literal"><span class="pre">Cat</span></tt> class we may attach a class variable <tt class="docutils literal"><span class="pre">LEGS</span></tt> (where uppercase notation is a common coding convention) and a class method <tt class="docutils literal"><span class="pre">makeSound()</span></tt>, both in a <tt class="docutils literal"><span class="pre">statics</span></tt> section of the class declaration:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+  <span class="nx">statics</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="nx">LEGS</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nx">makeSound</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Accessing those class members involves the fully-qualified class name:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Cat</span><span class="p">.</span><span class="nx">LEGS</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Cat</span><span class="p">.</span><span class="nx">makeSound</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instance-members">
+<span id="pages-classes-instance-members"></span><h3>Instance Members<a class="headerlink" href="#instance-members" title="Permalink to this headline">¶</a></h3>
+<p>An instance member of a class can be one of the following:</p>
+<ul class="simple">
+<li>Instance Variable</li>
+<li>Instance Method</li>
+</ul>
+<p>They may be defined in the <tt class="docutils literal"><span class="pre">members</span></tt> section of the class declaration:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="nx">members</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="o">:</span> <span class="s2">&quot;Kitty&quot;</span><span class="p">,</span>
+    <span class="nx">getName</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Accessing those members involves an instance of the class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">kitty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Cat</span><span class="p">;</span>
+<span class="nx">kitty</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Sweetie&quot;</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">kitty</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+</pre></div>
+</div>
+<div class="section" id="primitive-types-vs-reference-types">
+<span id="pages-classes-primitive-types-vs-reference-types"></span><h4>Primitive Types vs. Reference Types<a class="headerlink" href="#primitive-types-vs-reference-types" title="Permalink to this headline">¶</a></h4>
+<p>There is a fundamental JavaScript language feature that could lead to problems, if not properly understood. It centers around the different behavior in the assignment of JavaScript's two data types (<em>primitive types</em> vs. <em>reference types</em>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please make sure you understand the following explanation to avoid possible future coding errors.</p>
+</div>
+<p>Primitive types include <tt class="docutils literal"><span class="pre">Boolean</span></tt>, <tt class="docutils literal"><span class="pre">Number</span></tt>, <tt class="docutils literal"><span class="pre">String</span></tt>, <tt class="docutils literal"><span class="pre">null</span></tt> and the rather unusual <tt class="docutils literal"><span class="pre">undefined</span></tt>. If such a primitive type is assigned to an instance variable in the class declaration, it behaves as if each instance had a copy of that value. They are never shared among instances.</p>
+<p>Reference types include all other types, e.g. <tt class="docutils literal"><span class="pre">Array</span></tt>, <tt class="docutils literal"><span class="pre">Function</span></tt>, <tt class="docutils literal"><span class="pre">RegExp</span></tt> and the generic <tt class="docutils literal"><span class="pre">Object</span></tt>. As their name suggests, those reference types merely point to the corresponding data value, which is represented by a more complex data structure than the primitive types. If such a reference type is assigned to an instance variable in the class declaration, it behaves as if each instance just pointed to the complex data structure. All instances share the same value, unless the corresponding instance variable is assigned a different value.</p>
+<p><strong>Example</strong>: If an instance variable was assigned an array in the class declaration, any instance of the class could (knowingly or unknowingly) manipulate this array in such a way that each instance would be affected by the changes. Such a manipulation could be pushing a new item into the array or changing the value of a certain array item. All instances would share the array.</p>
+<p>You have to be careful when using complex data types in the class declaration, because they are shared by default:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">members</span><span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">foo</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>   <span class="c1">// all instances would start to share this data structure</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you do <em>not</em> want that instances share the same data, you should defer the actual initialization into the constructor:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">construct</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>   <span class="c1">// each instance would get assigned its own data structure</span>
+<span class="p">},</span>
+<span class="nx">members</span><span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">foo</span><span class="o">:</span> <span class="kc">null</span>   <span class="c1">// to be initialized in the constructor</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="access">
+<span id="pages-classes-access"></span><h3>Access<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h3>
+<p>In many object-oriented classes a concept exists that is referred to as &quot;access&quot; or &quot;visibility&quot; of members (well, or even classes, etc.). Based on the well-known access modifiers of Java, the following three types exist for qooxdoo members:</p>
+<ul class="simple">
+<li><em>public</em>: To be accessed from any class/instance</li>
+<li><em>protected</em>: To be accessed only from derived classes or their instances</li>
+<li><em>private</em>: To be accessed only from the defining class/instance</li>
+</ul>
+<p>Unfortunately, JavaScript is very limited in <em>enforcing</em> those protection mechanisms. Therefore, the following coding convention is to be used to declare the access type of members:</p>
+<ul class="simple">
+<li><em>public</em>: members may <em>not</em> start with an underscore</li>
+<li><em>protected</em>: members start with a single underscore <tt class="docutils literal"><span class="pre">_</span></tt></li>
+<li><em>private</em>: members start with a double underscore <tt class="docutils literal"><span class="pre">__</span></tt></li>
+</ul>
+<p>There are some possibilities to enforce or at least check the various degrees of accessibility:</p>
+<ul class="simple">
+<li>automatic renaming of private members in the build version could trigger errors when testing the final app</li>
+<li>checking  instance of <tt class="docutils literal"><span class="pre">this</span></tt> in protected methods</li>
+<li>...</li>
+</ul>
+</div>
+<div class="section" id="special-types-of-classes">
+<span id="pages-classes-special-types-of-classes"></span><h3>Special Types of Classes<a class="headerlink" href="#special-types-of-classes" title="Permalink to this headline">¶</a></h3>
+<p>Besides a &quot;regular&quot; class there is built-in support for the following special types:</p>
+<div class="section" id="static-classes">
+<span id="pages-classes-static-classes"></span><h4>Static Classes<a class="headerlink" href="#static-classes" title="Permalink to this headline">¶</a></h4>
+<p>A static class is not instantiated and only contains static members. Setting its type to <tt class="docutils literal"><span class="pre">static</span></tt> makes sure only such static members, no constructor and so on are given in the class definition. Otherwise error messages are presented to the developer:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">type</span> <span class="o">:</span> <span class="s2">&quot;static&quot;</span>
+  <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="abstract-classes">
+<span id="pages-classes-abstract-classes"></span><h4>Abstract Classes<a class="headerlink" href="#abstract-classes" title="Permalink to this headline">¶</a></h4>
+<p>An abstract class may not be instantiated. It merely serves as a superclass that needs to be derived from. Concrete classes (or concrete members of such derived classes) contain the actual implementation of the abstract members. If an abstract class is to be instantiated, an error message is presented to the developer.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">type</span> <span class="o">:</span> <span class="s2">&quot;abstract&quot;</span>
+  <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="singletons">
+<span id="pages-classes-singletons"></span><h4>Singletons<a class="headerlink" href="#singletons" title="Permalink to this headline">¶</a></h4>
+<p>The singleton design pattern makes sure, only a single instance of a class may be created. Every time an instance is requested, either the already created instance is returned or, if no instance is available yet, a new one is created and returned. Requesting the instance of such a singleton class is done by using the <tt class="docutils literal"><span class="pre">getInstance()</span></tt> method.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">type</span> <span class="o">:</span> <span class="s2">&quot;singleton&quot;</span>
+  <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inheritance">
+<span id="pages-classes-inheritance"></span><h2>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="single-inheritance">
+<span id="pages-classes-single-inheritance"></span><h3>Single Inheritance<a class="headerlink" href="#single-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>JavaScript supports the concept of single inheritance. It does not support (true) multiple inheritance like C++. Most people agree on the fact that such a concept tends to be very complex and error-prone. There are other ways to shoot you in the foot. qooxdoo only allows for single inheritance as well:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">extend</span><span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Animal</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiple-inheritance">
+<span id="pages-classes-multiple-inheritance"></span><h3>Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Not supported. There are more practical and less error-prone solutions that allow for typical features of multiple inheritance: Interfaces and Mixins (see below).</p>
+</div>
+<div class="section" id="polymorphism-overriding">
+<span id="pages-classes-polymorphism-overriding"></span><h3>Polymorphism (Overriding)<a class="headerlink" href="#polymorphism-overriding" title="Permalink to this headline">¶</a></h3>
+<p>qooxdoo does, of course, allow for polymorphism, that is most easily seen in the ability to override methods in derived classes.</p>
+<div class="section" id="calling-the-superclass-constructor">
+<span id="pages-classes-calling-the-superclass-constructor"></span><h4>Calling the Superclass Constructor<a class="headerlink" href="#calling-the-superclass-constructor" title="Permalink to this headline">¶</a></h4>
+<p>It is hard to come up with an appealing syntax and efficient implementation for calling the superclass constructor from the constructor of a derived class. You simply cannot top Java's <tt class="docutils literal"><span class="pre">super()</span></tt> here. At least there is some generic way that does not involve to use the superclass name explicitly:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">extend</span><span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Animal</span><span class="p">,</span>
+  <span class="nx">construct</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Unfortunately, to mimic a <tt class="docutils literal"><span class="pre">super()</span></tt> call the special variable <tt class="docutils literal"><span class="pre">arguments</span></tt> is needed, which in JavaScript allows a context-independent access to the actual function. Don't get confused by its name, you would list your own arguments just afterwards (like the <tt class="docutils literal"><span class="pre">x</span></tt> in the example above).</p>
+<p><tt class="docutils literal"><span class="pre">this.base(arguments,</span> <span class="pre">x)</span></tt> is internally mapped to <tt class="docutils literal"><span class="pre">arguments.callee.base.call(this,</span> <span class="pre">x)</span></tt> (The <em>.base</em> property is maintained for every method through qooxdoo's class system). The latter form can be handled by JavaScript natively, which means it is quite efficient. As an optimization during the build process such a rewrite is done automatically for your deployable application.</p>
+</div>
+<div class="section" id="calling-an-overridden-method">
+<span id="pages-classes-calling-an-overridden-method"></span><h4>Calling an Overridden Method<a class="headerlink" href="#calling-an-overridden-method" title="Permalink to this headline">¶</a></h4>
+<p>Calling an overridden superclass method from within the overriding method (i.e. both methods have the same name) is similar to calling the superclass constructor:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">extend</span><span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Animal</span><span class="p">,</span>
+  <span class="nx">members</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">makeSound</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calling-the-superclass-method-or-constructor-with-all-parameters">
+<span id="pages-classes-calling-the-superclass-method-or-constructor-with-all-parameters"></span><h4>Calling the Superclass Method or Constructor with all parameters<a class="headerlink" href="#calling-the-superclass-method-or-constructor-with-all-parameters" title="Permalink to this headline">¶</a></h4>
+<p>This variant allows to pass all the parameters (unmodified):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Animal&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">members</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">makeSound</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">howManyTimes</span><span class="p">)</span> <span class="p">{</span>
+       <span class="p">....</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">extend</span><span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Animal</span><span class="p">,</span>
+  <span class="nx">members</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">makeSound</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;I&#39;m a cat&quot;</span><span class="p">);</span>
+      <span class="cm">/* howManyTimes or any other parameter are passed.  We don&#39;t need to know how many parameters are used. */</span>
+      <span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">.</span><span class="nx">base</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calling-another-static-method">
+<span id="pages-classes-calling-another-static-method"></span><h4>Calling another Static Method<a class="headerlink" href="#calling-another-static-method" title="Permalink to this headline">¶</a></h4>
+<p>Here is an example for calling a static member without using a fully-qualified class name (compare to <tt class="docutils literal"><span class="pre">this.base(arguments)</span></tt> above):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">extend</span><span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">Animal</span><span class="p">,</span>
+  <span class="nx">statics</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="nx">someStaticMethod</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">members</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">makeSound</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">someStaticMethod</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The syntax for accessing static variables simply is <tt class="docutils literal"><span class="pre">this.constructor.someStaticVar</span></tt>. Please note, for <tt class="docutils literal"><span class="pre">this.constructor</span></tt> to be available, the class must be a derived class of <tt class="docutils literal"><span class="pre">qx.core.Object</span></tt>, which is usually the case for regular, non-static classes.</p>
+<p>Instead of <tt class="docutils literal"><span class="pre">this.constructor</span></tt> you can also use the alternative syntax <tt class="docutils literal"><span class="pre">this.self(arguments)</span></tt>.</p>
+<p>In purely static classes for calling a static method from another static method, you can directly use the <tt class="docutils literal"><span class="pre">this</span></tt> keyword, e.g. <tt class="docutils literal"><span class="pre">this.someStaticMethod(x)</span></tt>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="usage-of-interfaces-and-mixins">
+<span id="pages-classes-usage-of-interfaces-and-mixins"></span><h2>Usage of Interfaces and Mixins<a class="headerlink" href="#usage-of-interfaces-and-mixins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="implementing-an-interface">
+<h3>Implementing an Interface<a class="headerlink" href="#implementing-an-interface" title="Permalink to this headline">¶</a></h3>
+<p>The class system supports <a class="reference internal" href="interfaces.html"><em>Interfaces</em></a>. The implementation is based on the feature set of Java interfaces. Most relevant features of Java-like interfaces are supported. A class can define which interface or multiple interfaces it implements by using the <tt class="docutils literal"><span class="pre">implement</span></tt> key:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">implement</span> <span class="o">:</span> <span class="p">[</span><span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">IPet</span><span class="p">,</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">IFoo</span><span class="p">]</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="including-a-mixin">
+<span id="pages-classes-mixins"></span><h3>Including a Mixin<a class="headerlink" href="#including-a-mixin" title="Permalink to this headline">¶</a></h3>
+<p>Unlike interfaces, <a class="reference internal" href="mixins.html"><em>Mixins</em></a> do contain concrete implementations of methods. They borrow some ideas from Ruby and similar scripting languages.</p>
+<p>Features:</p>
+<ul class="simple">
+<li>Add mixins to the definition of a class: All members of the mixin are added to the class definition.</li>
+<li>Add a mixin to a class after the class is defined. Enhances the functionality but is not allowed to overwrite existing members.</li>
+<li>Patch existing classes. Change the implementation of existing methods. Should normally be avoided but, as some projects may need to patch qooxdoo, we better define a clean way to do so.</li>
+</ul>
+<p>The concrete implementations of mixins are used in a class through the key <tt class="docutils literal"><span class="pre">include</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.test.Cat&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">include</span> <span class="o">:</span> <span class="p">[</span><span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">MPet</span><span class="p">,</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">MSleep</span><span class="p">]</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>String</td>
+<td>Type of the class. Valid types are <tt class="docutils literal"><span class="pre">abstract</span></tt>, <tt class="docutils literal"><span class="pre">static</span></tt> and <tt class="docutils literal"><span class="pre">singleton</span></tt>. If unset it defaults to a regular non-static class.</td>
+</tr>
+<tr class="row-odd"><td>extend</td>
+<td>Class</td>
+<td>The super class the current class inherits from.</td>
+</tr>
+<tr class="row-even"><td>implement</td>
+<td>Interface | Interface[]</td>
+<td>Single interface or array of interfaces the class implements.</td>
+</tr>
+<tr class="row-odd"><td>include</td>
+<td>Mixin | Mixin[]</td>
+<td>Single mixin or array of mixins, which will be merged into the class.</td>
+</tr>
+<tr class="row-even"><td>construct</td>
+<td>Function</td>
+<td>The constructor of the class.</td>
+</tr>
+<tr class="row-odd"><td>statics</td>
+<td>Map</td>
+<td>Map of static members of the class.</td>
+</tr>
+<tr class="row-even"><td>properties</td>
+<td>Map</td>
+<td>Map of property definitions. For a description of the format of a property definition see <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.core.Property">qx.core.Property</a>.</td>
+</tr>
+<tr class="row-odd"><td>members</td>
+<td>Map</td>
+<td>Map of instance members of the class.</td>
+</tr>
+<tr class="row-even"><td>environment</td>
+<td>Map</td>
+<td>Map of settings for this class. For a description of the format of a setting see <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.core.Environment">qx.core.Environment</a>.</td>
+</tr>
+<tr class="row-odd"><td>events</td>
+<td>Map</td>
+<td>Map of events the class fires. The keys are the names of the events and the values are the corresponding event type class names.</td>
+</tr>
+<tr class="row-even"><td>defer</td>
+<td>Function</td>
+<td>Function that is called at the end of processing the class declaration. It allows access to the declared statics, members and properties.</td>
+</tr>
+<tr class="row-odd"><td>destruct</td>
+<td>Function</td>
+<td>The destructor of the class.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="class_quickref.html"><em>Class Declaration Quick Ref</em></a> - a quick syntax overview</li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.Class">API Documentation for Class</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="oo_feature_summary.html"
+             title="previous chapter">« Features of Object Orientation</a>
+          <span class="separator">|</span>
+          <a class="next" href="interfaces.html"
+             title="next chapter">Interfaces »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Classes</a><ul>
+<li><a class="reference internal" href="#declaration">Declaration</a><ul>
+<li><a class="reference internal" href="#members">Members</a></li>
+<li><a class="reference internal" href="#class-members">Class Members</a></li>
+<li><a class="reference internal" href="#instance-members">Instance Members</a><ul>
+<li><a class="reference internal" href="#primitive-types-vs-reference-types">Primitive Types vs. Reference Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#access">Access</a></li>
+<li><a class="reference internal" href="#special-types-of-classes">Special Types of Classes</a><ul>
+<li><a class="reference internal" href="#static-classes">Static Classes</a></li>
+<li><a class="reference internal" href="#abstract-classes">Abstract Classes</a></li>
+<li><a class="reference internal" href="#singletons">Singletons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inheritance">Inheritance</a><ul>
+<li><a class="reference internal" href="#single-inheritance">Single Inheritance</a></li>
+<li><a class="reference internal" href="#multiple-inheritance">Multiple Inheritance</a></li>
+<li><a class="reference internal" href="#polymorphism-overriding">Polymorphism (Overriding)</a><ul>
+<li><a class="reference internal" href="#calling-the-superclass-constructor">Calling the Superclass Constructor</a></li>
+<li><a class="reference internal" href="#calling-an-overridden-method">Calling an Overridden Method</a></li>
+<li><a class="reference internal" href="#calling-the-superclass-method-or-constructor-with-all-parameters">Calling the Superclass Method or Constructor with all parameters</a></li>
+<li><a class="reference internal" href="#calling-another-static-method">Calling another Static Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage-of-interfaces-and-mixins">Usage of Interfaces and Mixins</a><ul>
+<li><a class="reference internal" href="#implementing-an-interface">Implementing an Interface</a></li>
+<li><a class="reference internal" href="#including-a-mixin">Including a Mixin</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">Summary</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="interfaces.html"
+                        title="next chapter">Interfaces</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="oo_feature_summary.html"
+                        title="previous chapter">Features of Object Orientation</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/core/classes.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

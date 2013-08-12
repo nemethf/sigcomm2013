@@ -1,0 +1,454 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using Parts &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Development" href="../development.html" />
+    <link rel="next" title="Internationalization" href="internationalization.html" />
+    <link rel="prev" title="Parts and Packages Overview" href="parts_overview.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../development.html" accesskey="U">Development</a>
+     &raquo;
+  <a href="">Using Parts</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="using-parts">
+<span id="pages-parts-using-using-parts"></span><h1>Using Parts<a class="headerlink" href="#using-parts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-usage">
+<span id="pages-parts-using-basic-usage"></span><h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>Parts allow you partition your application into multiple Javascript files.There is an initial part, the <em>boot</em> part, that is loaded at application start-up. All other parts have  to be loaded explicitly in your application code.</p>
+<p>To use parts in your application, you have to do two things:</p>
+<ul class="simple">
+<li>declare the parts in your application's <em>config.json</em> configuration file</li>
+<li>load each part other than the boot part explicitly at suitable situations in your application code</li>
+</ul>
+<p>Here is an example:</p>
+<p>Suppose you have a settings dialog in your application that is only needed occasionally. You want to save the memory footprint of the involved classes, and only load the dialog on demand when the user hits an &quot;Open Settings Dialog&quot; button during a session. If the user doesn't invoke the dialog, the necessary classes are not loaded and the application uses less memory in the browser. In all cases, application start-up is faster since less code has to be loaded initially.</p>
+<div class="section" id="add-parts-to-your-config">
+<span id="pages-parts-using-add-parts-to-your-config"></span><h3>Add Parts to your Config<a class="headerlink" href="#add-parts-to-your-config" title="Permalink to this headline">¶</a></h3>
+<p>In your configuration file, add the following job entries (assuming you are using a standard GUI application with a name space of <em>custom</em>):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;my-parts-config&quot;</span><span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;packages&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;parts&quot;</span>  <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;boot&quot;</span>     <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;include&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;${QXTHEME}&quot;</span><span class="p">,</span> <span class="s2">&quot;custom.Application&quot;</span> <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;settings&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;include&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;custom.Settings&quot;</span> <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="s2">&quot;source&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;my-parts-config&quot;</span> <span class="p">]</span>
+<span class="p">},</span>
+
+<span class="s2">&quot;build&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;my-parts-config&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will inject your part configuration into the standard build jobs (<em>source</em> and <em>build</em>), instructing the generator to generate JS files for the &quot;boot&quot; and the additional &quot;settings&quot; part (a single part may be made up of multiple JS files, depending on cross class dependencies with other parts). In the <em>boot</em> part, you are repeating the main <a class="reference internal" href="../tool/generator_config_ref.html#pages-tool-generator-config-ref-include"><em>include</em></a> list of class patterns for you application (the example above mirrors this list of a standard GUI app). In the part you want to separate from the initial boot part, like <em>settings</em> above, you carve out some top-level classes or name spaces that constitute the part you want to specify. In our example, this is just the name of the top-level dialog class.</p>
+</div>
+<div class="section" id="add-part-loading-to-your-class-code">
+<span id="pages-parts-using-add-part-loading-to-your-class-code"></span><h3>Add Part Loading to your Class Code<a class="headerlink" href="#add-part-loading-to-your-class-code" title="Permalink to this headline">¶</a></h3>
+<p>Next, you have to add code to your application to load any part other than the boot part. Carrying on with our example, at a suitable spot in your application code, you have to load the <em>settings</em> part, e.g. when some &quot;Open Settings Dialog&quot; button is pressed which is available from your main application class. We put the loading action in the click event listener of the button:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">settingsButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Open Settings Dialog&quot;</span><span class="p">);</span>
+
+<span class="nx">settingsButton</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="nx">qx</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">PartLoader</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;settings&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// if the window is not created</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">__settingsWindow</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// create it</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">__settingsWindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">custom</span><span class="p">.</span><span class="nx">Settings</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">__settingsWindow</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// open the window</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">__settingsWindow</span><span class="p">.</span><span class="nx">center</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">__settingsWindow</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The main thing to note here is that upon pressing the &quot;Open Settings Dialog&quot; button <em>qx.io.PartLoader.require</em> is invoked to make sure the <em>settings</em> part will be loaded (It doesn't hurt to invoke this method multiple times, as the PartLoader knows which parts have been loaded already).</p>
+<p>The first argument to the <em>require</em> method is a list containing the parts you want to be loaded (just <em>&quot;settings&quot;</em> in our example). The second argument specifies the code that should be run once the part is successfully loaded. As you can see, the <em>custom.Settings</em> class which is loaded with this part is being instantiated.</p>
+<p>This section also shows that you cannot run the same application with and without parts. In order to use parts, you have to &quot;instrument&quot; your application code with calls to <em>qx.io.PartLoader.require</em>, and currently there is no way these calls can fail gracefully. You have to make a decision.</p>
+<p>These are the essential ingredients to set up and use parts in your application. For full details on the <em>packages</em> configuration key, see the <a class="reference internal" href="../tool/generator_config_ref.html#pages-tool-generator-config-ref-packages"><em>configuration reference</em></a>. For some additional usage information relating to this key, see this <a class="reference internal" href="../tool/generator_config_articles.html#pages-tool-generator-config-articles-packages-key"><em>article</em></a>. For a complete application that uses parts, check the <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/application/feedreader/">Feedreader sources</a>.</p>
+</div>
+</div>
+<div class="section" id="in-depth-configuring-the-include-key-of-your-parts">
+<h2>In Depth: Configuring the &quot;include&quot; Key of your Parts<a class="headerlink" href="#in-depth-configuring-the-include-key-of-your-parts" title="Permalink to this headline">¶</a></h2>
+<p>The most crucial and at the same time most difficult aspect of using parts is configuring the parts in your <em>config.json</em>. More specifically, the definition of the <em>include</em> key for each part requires thought and consideration to get right. This section tries to give you a set of technical guidelines to help you with that.</p>
+<dl class="docutils">
+<dt><strong>&quot;include&quot; lists must be free of overlap</strong></dt>
+<dd>Don't list classes in the <em>include</em> list of one part which also appear in another. This becomes less obvious when you use wildcards in your <em>include</em> lists: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;foo.bar.*&quot;</span> <span class="pre">]</span></tt> overlaps with <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;foo.bar.baz&quot;</span> <span class="pre">]</span></tt>, and with <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;foo.*&quot;</span> <span class="pre">]</span></tt>! So think of what these expressions will expand to. The generator will complain should two <em>include</em> lists overlap.</dd>
+<dt><strong>Don't put load dependencies of one part in the &quot;include&quot; list of another</strong></dt>
+<dd>This is even less obvious. The base line is that you must not have classes in the <em>include</em> list of one part that are needed by classes of another part at load time. (Mind that this is <strong>not</strong> only referring to the <em>include</em> list of the other part, but to all its classes!). A good criterion to follow is: Stick to classes that are only used in some <strong>member method</strong> of another class. Then you are ususally on the safe side, and are only using classes for your part definition that are required by others at run time, not load time. (Counter examples would be classes that are used as super classes by others (they show up in their <em>extend</em> entry), or are used in the <em>defer</em> section of another class, or are used to directly initialize a map entry, like an attribute, of another class definition).
+The generator will complain if load dependencies of one part are listed in the definition of another.</dd>
+<dt><strong>Don't group classes &quot;physically&quot;</strong></dt>
+<dd>That means: Don't think about how classes are organized in terms of libraries or name spaces. This is not a good defining principle for parts. Try to think in terms of <strong>logical</strong> or <strong>visual</strong> components, and let the generator figure out which classes from which libraries and name spaces need to go into that part. Visual or logical components usually map to <em>execution paths</em> in your running app. A dialog, a window, a certain tab view that are only reached when the user makes some specific interactions with your application, thus following a specific execution path in your code, those are good candidates for defining a part. Of course, e.g. when you are using a library or contribution in your application which exhibits one class as its published API and which you instantiate at one specific point in your application, this might also make for a good part, but would be merely coincidential.</dd>
+<dt><strong>Don't define parts with framework classes</strong></dt>
+<dd>This is just a concrete example of the previous point, but happens so often that it merrits its own mentioning. It is generally a bad idea to use framework classes to define a part. Framework classes should be free to be added where they are needed <em>by your classes' dependencies</em>. And although there are high-level widgets in the framework, like the DateChooser or the HtmlArea, you always have application code wrapped around them. Then it's good practice to forge this code into its own custom class, and make this class the entry point for a part.</dd>
+</dl>
+</div>
+<div class="section" id="advanced-usage-part-collapsing">
+<span id="pages-parts-using-advanced-usage-part-collapsing"></span><h2>Advanced Usage: Part Collapsing<a class="headerlink" href="#advanced-usage-part-collapsing" title="Permalink to this headline">¶</a></h2>
+<p>This section reflects part collapsing as it is realized in qooxdoo version 0.8.3 and above.</p>
+<div class="section" id="motivation-and-background">
+<span id="pages-parts-using-motivation-and-background"></span><h3>Motivation and Background<a class="headerlink" href="#motivation-and-background" title="Permalink to this headline">¶</a></h3>
+<p>You as the application developer define <em>parts</em> to partition your application. qooxdoo's build system then partitions each part into <em>packages</em>, so that each part is made up of some of the set of all packages. Each package contains class code, and maybe some more information that pertains to it. So the classes making up a part are spread over a set of packages. Several parts can share one or more packages. This way you obtain maximum flexibility for loading parts in your application code. Whenever a part is requested through the <em>PartLoader</em> it checks which packages have already been loaded with earlier parts, and loads the remaining to make the part complete. No class is loaded twice, and no unnecessary classes are loaded with each part.</p>
+<p>But there are situations where you might want to give up on this optimal distribution of classes across packages:</p>
+<ul class="simple">
+<li>when packages become <strong>too small</strong>; sometimes packages derived with the basic procedure turn out to be too small, and the benefit of loading no unnecessary classes is outweight by the fact that you have to make an additional net request to retrieve them.</li>
+<li>when you know the <strong>order</strong> in which parts are loaded during run time in advance; then it makes sense to be &quot;greedy&quot; in retrieving as many classes as possible in a single package, as other parts needing the same classes of the (now bigger) package, but are known to load later, can rely on those classes being loaded already, without being affected by the extra classes that get loaded.</li>
+</ul>
+<p>These are situations where <em>part collapsing</em> is usefull, where packages are merged into one another. This is discussed in the next sections.</p>
+</div>
+<div class="section" id="how-packages-are-merged">
+<span id="pages-parts-using-how-packages-are-merged"></span><h3>How Packages are Merged<a class="headerlink" href="#how-packages-are-merged" title="Permalink to this headline">¶</a></h3>
+<p><em>(This is a more theoretical section, but it is kept here for the time being; if you are only looking for how-to information, you can skip this section).</em></p>
+<p>During what we call part collapsing, some packages are merged into others. That means the classes that are contained a source package are added to a target package, and the source package is deleted from all parts referencing it.</p>
+<p>Obviously, it is crucial that the target package is referenced in all those parts where the source package was referenced originally, so that a part is not loosing the classes of the source package. This is taken care of by the selection process that for any given source package picks an appropriate target package. (Target packages are searched for in the set of already defined packages, and there are no new packages being constructed during the collapsing process).</p>
+<p>After the source package has been merged into the target package, and has been removed from all parts, there are two cases:</p>
+<ul class="simple">
+<li>For parts that referenced both (source and target) package initially, there is no difference. The same set of classes is delivered, with the only difference that they come in one, as opposed to two, packages.</li>
+<li>Parts that only reference the target package now reference more classes then they really need. But this should be acceptable, as either negligible (in the case of merging packages by size), since the additional weight is marginal; or as without negative effect (in the case of merging by load order), since the &quot;overladen&quot; package is supposed to be loaded earlier with some other part, and will already be available when this part is loaded.</li>
+</ul>
+</div>
+<div class="section" id="collapsing-by-package-size">
+<span id="pages-parts-using-collapsing-by-package-size"></span><h3>Collapsing By Package Size<a class="headerlink" href="#collapsing-by-package-size" title="Permalink to this headline">¶</a></h3>
+<p>Collapsing by package size is straight forward. You can specify a minimal package size (in KB) that applies to all packages of your application. If a package's size, and it is its <em>compiled</em> size that matteres here, is beneath this threshold the package will be merged into another. This avoids the problem of too much fragmentation of classes over packages, and trades optimally distributing the classes (to always load only necessary classes) for minimizing net requests (when loading packages for a part).</p>
+<p>Collapsing by size is disabled by default. You enable it by specifying size attributes in your parts configuration:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;packages&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;sizes&quot;</span>    <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;min-package&quot;</span> <span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;min-package-unshared&quot;</span> <span class="o">:</span> <span class="mi">10</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <em>min-package</em> setting defines a general lower bound for package sizes, the <em>min-package-unshared</em>, which defaults to <em>min-package</em> if not given, allows you to refine this value specifically for those packages which pertain to only one part.</p>
+</div>
+<div class="section" id="collapsing-by-load-order">
+<span id="pages-parts-using-collapsing-by-load-order"></span><h3>Collapsing By Load Order<a class="headerlink" href="#collapsing-by-load-order" title="Permalink to this headline">¶</a></h3>
+<p>Collapsing by load order is always useful when you know in advance the order of at least some of your parts, as they are loaded during the app's run time. This is e.g. the case when you have a part that uses other parts to do its work (a big dialogue that has sub-controls like a tabview). The enclosing part is always loaded before its sub-parts can be used. Or there is a part that is only accessible after it has been enabled in another part. These situations can be captured by assigning a load order to (some of) your parts in your configuration.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;packages&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;parts&quot;</span>  <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;boot&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;include&quot;</span>   <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;${QXTHEME}&quot;</span><span class="p">,</span> <span class="s2">&quot;app.Application&quot;</span> <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;some-part&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;include&quot;</span>   <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;app.Class1&quot;</span><span class="p">,</span> <span class="s2">&quot;app.Class2&quot;</span> <span class="p">],</span>
+      <span class="s2">&quot;expected-load-order&quot;</span> <span class="o">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;other-part&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;include&quot;</span>   <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;app.Class3&quot;</span><span class="p">,</span> <span class="s2">&quot;app.Class4&quot;</span> <span class="p">],</span>
+      <span class="s2">&quot;expected-load-order&quot;</span> <span class="o">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <em>boot</em> part has always the load index 0, as it is always loaded first. The other parts that have a load index (1 and 2 in the example) will be collapsed with the expectation that they are loaded in this order. Parts that don't have an <em>expected-load-order</em> setting are not optimized by part collapsing, and there are no assumptions made as to when they are loaded during run time.</p>
+<p>The important thing to note here is that the load order you define is <strong>not destructive</strong>. That means that parts are still self-contained and will continue to function <em>even if the expected load order is changed during run time</em>. In such cases, you only pay a penalty that classes are loaded with a part that are actually not used by it. But the overall functionality of your application is not negatively affected.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="parts_overview.html"
+             title="previous chapter">« Parts and Packages Overview</a>
+          <span class="separator">|</span>
+          <a class="next" href="internationalization.html"
+             title="next chapter">Internationalization »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Using Parts</a><ul>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a><ul>
+<li><a class="reference internal" href="#add-parts-to-your-config">Add Parts to your Config</a></li>
+<li><a class="reference internal" href="#add-part-loading-to-your-class-code">Add Part Loading to your Class Code</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#in-depth-configuring-the-include-key-of-your-parts">In Depth: Configuring the &quot;include&quot; Key of your Parts</a></li>
+<li><a class="reference internal" href="#advanced-usage-part-collapsing">Advanced Usage: Part Collapsing</a><ul>
+<li><a class="reference internal" href="#motivation-and-background">Motivation and Background</a></li>
+<li><a class="reference internal" href="#how-packages-are-merged">How Packages are Merged</a></li>
+<li><a class="reference internal" href="#collapsing-by-package-size">Collapsing By Package Size</a></li>
+<li><a class="reference internal" href="#collapsing-by-load-order">Collapsing By Load Order</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="internationalization.html"
+                        title="next chapter">Internationalization</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="parts_overview.html"
+                        title="previous chapter">Parts and Packages Overview</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/development/parts_using.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

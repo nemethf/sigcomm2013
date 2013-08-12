@@ -1,0 +1,109 @@
+#!/bin/bash
+# Copyright (c) 2013 Andras Gulyas, Balazs Sonkoly, Felician Nemeth
+#
+# This file is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with POX.  If not, see <http://www.gnu.org/licenses/>.
+
+ssh_port=${1:-46322}
+
+fat_dir=fat_dir
+pox=${2:-http://152.66.244.42:8000}
+url=${pox}/planetlab
+hostname=$(hostname)
+
+name=$3
+controller=${4:-http://152.66.244.43:8000/hostconfig/}
+conns=${5:-2}
+ple_list=$6
+
+tunproxy="tunproxy-auto.py"
+conf_root="planetlab/$hostname"
+
+mkdir -p $fat_dir 
+
+qemu_command="bin/bin/qemu-system-i386 -m 256 \
+    -hda ./overlay_debian_squeeze_i386_mptcp.qcow2 -nographic -redir tcp:$ssh_port::22 -redir tcp:15001::15001\
+    -hdb fat:${fat_dir}"
+
+# Adding the user interface
+user_interface=" -net nic,vlan=1 -net user,vlan=1"
+qemu_command=${qemu_command}${user_interface}
+
+# Get tunnel parameters to config files by tunproxy-auto.py
+# based on RTT measurements or input parameters (ple_list)
+
+tunproxy_cmd="python $tunproxy -d -q -C $controller -c $conns"
+echo $tunproxy_cmd
+if [ $name ]; then
+    tunproxy_cmd="${tunproxy_cmd} -n $name"
+    echo $tunproxy_cmd
+fi
+if [ $ple_list ]; then
+    tunproxy_cmd="${tunproxy_cmd} -p $ple_list"
+    echo $tunproxy_cmd
+fi
+echo Running $tunproxy_cmd
+SUDO_ASKPASS=/bin/false sudo -A $tunproxy_cmd
+echo "Done."
+
+# # Old version: static tunnel parameters get from webserver
+# log_file=/tmp/qemu-neighbor.log
+# file=${fat_dir}/neighbors
+# rm -f $file
+# wget -o ${log_file} -O $file ${url}/${hostname}/neighbors
+# while [ ! -s $file ]; do
+#     sleep 2
+#     wget -o ${log_file} -O $file ${url}/${hostname}/neighbors
+# done
+
+# Adding socket interfaces
+i=2
+#for neighbor in $(cat ${fat_dir}/neighbors)
+cp $conf_root/neighbors ${fat_dir}/neighbors
+for neighbor in $(cat $conf_root/neighbors)
+do
+    mkdir -p ${fat_dir}/${neighbor}
+    for var in node_name addr_eth addr_ip prefix_len local_port remote_ip remote_port; do
+	log_file=/tmp/qemu-${var}.log
+	file=${fat_dir}/${neighbor}/${var}
+	# wget -o ${log_file} -O $file ${url}/${hostname}/${neighbor}/${var}
+	cp $conf_root/${neighbor}/${var} $file
+        eval ${var}=$(cat $file)
+	echo "Setting $var"
+    done
+    # cp ${fat_dir}/${neighbor}/node_name ${fat_dir}/node_name
+    cp $conf_root/${neighbor}/node_name ${fat_dir}/node_name
+    localaddr=0.0.0.0:${local_port}
+    vconn=${remote_ip}:${remote_port}
+    interface_setting=" -net nic,vlan=$i -net socket,vlan=$i,localaddr=${localaddr},udp=${vconn}"
+    qemu_command=${qemu_command}${interface_setting}
+    i=$(($i+1))
+done
+
+echo $qemu_command
+printf "You can access fat_dir in the vm by mount /dev/sdb1 /mnt \n"
+$qemu_command
+
+# ~/bin/bin/qemu-system-i386 -m 256 \
+#     -hda ./debian_squeeze_i386_mptcp.qcow2 -nographic -redir tcp:$ssh_port::22 -redir tcp:15001::15001\
+#     -hdb fat:${fat_dir} \
+#     -net nic,vlan=1 -net user,vlan=1\
+#     -net nic,vlan=2 -net socket,vlan=2,localaddr=${localaddr},udp=${vconn}
+
+# ~/bin/bin/qemu-system-i386 -m 256 \
+#     -hda ./debian_squeeze_i386_mptcp.qcow2 -nographic -redir tcp:$ssh_port::22 \
+#     -hdb fat:${fat_dir} \
+#     -net nic,vlan=1 -net user,vlan=1\
+#     -net nic,vlan=2 -net socket,vlan=2,localaddr=0.0.0.0:40226,udp=152.66.245.162:40225\
+#     -net nic,vlan=3 -net socket,vlan=3,localaddr=0.0.0.0:40228,udp=152.66.245.162:40227
+

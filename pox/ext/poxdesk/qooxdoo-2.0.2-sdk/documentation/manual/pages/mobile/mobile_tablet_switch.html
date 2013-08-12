@@ -1,0 +1,431 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Mobile and tablet switch &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Mobile" href="../mobile.html" />
+    <link rel="next" title="Theming" href="theming.html" />
+    <link rel="prev" title="Tutorial: Creating a Twitter Client with qooxdoo mobile" href="tutorial.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../mobile.html" accesskey="U">qx.Mobile</a>
+     &raquo;
+  <a href="">Mobile and tablet switch</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="mobile-and-tablet-switch">
+<span id="pages-mobile-tablet-switch-mobile-tablet-switch"></span><h1>Mobile and tablet switch<a class="headerlink" href="#mobile-and-tablet-switch" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tablet-support-out-of-the-box">
+<h2>Tablet support out of the box<a class="headerlink" href="#tablet-support-out-of-the-box" title="Permalink to this headline">¶</a></h2>
+<p>On tablet devices you have a bigger screen size and more layout space than on
+mobile devices. An application in a tablet device context may even provide additional/other functions
+than on mobile device context.</p>
+<p>qx.Mobile provides mobile and tablet distinction out of the box. It provides a detection of
+device type the application runs on.</p>
+<p>Based upon this distinction, you can tell our page manager whether it should layout its
+navigation pages optimized for device class mobile (intended for mobile, 7'' tablets) or device class tablet (tablets or desktop).</p>
+</div>
+<div class="section" id="how-to-get-device-type">
+<h2>How to get device type<a class="headerlink" href="#how-to-get-device-type" title="Permalink to this headline">¶</a></h2>
+<p>The device type is accessible by the environment variable <tt class="docutils literal"><span class="pre">device.type</span></tt>.
+It is able to detect 3 classes:  <tt class="docutils literal"><span class="pre">mobile</span></tt>, <tt class="docutils literal"><span class="pre">tablet</span></tt> and <tt class="docutils literal"><span class="pre">desktop</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">deviceType</span> <span class="o">=</span> <span class="p">(</span><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;device.type&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="device-type-mapping-table">
+<h3>Device type mapping table :<a class="headerlink" href="#device-type-mapping-table" title="Permalink to this headline">¶</a></h3>
+<p>The device type is detected by resolving user agent strings.
+Device class mapping is done by searching a specific hardware class,
+an operation system or a browser type.</p>
+<p><strong>Tablets</strong> (returns <tt class="docutils literal"><span class="pre">tablet</span></tt>)</p>
+<ul class="simple">
+<li>Android Tablet</li>
+<li>iPad</li>
+<li>Blackberry Playbook</li>
+<li>Amazon Kindle</li>
+<li>Silk</li>
+<li>Sony PSP</li>
+</ul>
+<p><strong>Mobile</strong> (returns <tt class="docutils literal"><span class="pre">mobile</span></tt>)</p>
+<ul class="simple">
+<li>Android mobile phones</li>
+<li>iPhone</li>
+<li>iPod</li>
+<li>Bada</li>
+<li>Maemo</li>
+<li>Symbian</li>
+<li>Windows Phone</li>
+<li>Opera Mobile</li>
+<li>Fennec</li>
+</ul>
+<p><strong>Desktop</strong> (returns <tt class="docutils literal"><span class="pre">desktop</span></tt>)</p>
+<ul class="simple">
+<li>All other devices</li>
+</ul>
+</div>
+</div>
+<div class="section" id="how-to-enable-device-based-layouting">
+<h2>How to enable device-based layouting<a class="headerlink" href="#how-to-enable-device-based-layouting" title="Permalink to this headline">¶</a></h2>
+<p>The device-based layouting is handled by <tt class="docutils literal"><span class="pre">qx.ui.mobile.page.Manager</span></tt>.
+In our examples at mobile playground and the tutorial, we always make usage of this manager to create
+a qx.Mobile application.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">isTablet</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">Manager</span><span class="p">(</span><span class="nx">isTablet</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">NavigationPage</span><span class="p">();</span>
+<span class="nx">manager</span><span class="p">.</span><span class="nx">addDetail</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The manager has an optional constructor parameter <tt class="docutils literal"><span class="pre">isTablet</span></tt>.
+It indicates whether the page manager uses the mobile or the tablet layouting mode. In this
+examples, we deactivated tablet layout mode with <tt class="docutils literal"><span class="pre">isTablet=false</span></tt>.</p>
+<p>If parameter <tt class="docutils literal"><span class="pre">isTablet</span></tt> is not defined at constructor, the page manager always calls environment variable
+<tt class="docutils literal"><span class="pre">device.type</span></tt> to determine the layout mode. Tablet layout mode is active by default, if environment variable
+is <tt class="docutils literal"><span class="pre">desktop</span></tt> or <tt class="docutils literal"><span class="pre">tablet</span></tt>.</p>
+</div>
+<div class="section" id="how-page-manager-arrange-pages">
+<h2>How page manager arrange pages<a class="headerlink" href="#how-page-manager-arrange-pages" title="Permalink to this headline">¶</a></h2>
+<p>The class <tt class="docutils literal"><span class="pre">qx.ui.mobile.page.Manager</span></tt> works with instances of <tt class="docutils literal"><span class="pre">qx.ui.mobile.page.NavigationPage</span></tt>.
+The manager arranges the pages on screen, based on flag <tt class="docutils literal"><span class="pre">isTablet</span></tt> and device orientation.</p>
+<p>An device/window orientation change is detected by qx.Mobile and fires an <tt class="docutils literal"><span class="pre">orientationchange</span></tt> event, which is handled by page manager.</p>
+<div class="section" id="masterpages-and-detailpages">
+<h3>MasterPages and DetailPages<a class="headerlink" href="#masterpages-and-detailpages" title="Permalink to this headline">¶</a></h3>
+<p>When page manager is on tablet mode, it arranges the NavigationPages in a different order than on
+mobile mode. For this arrangement it needs to know, whether a NavigationPage is important for application flow,
+and which are not.</p>
+<p>For this arrangement logic the instances of <tt class="docutils literal"><span class="pre">qx.ui.mobile.page.NavigationPage</span></tt> needs to be added as a MasterPage or a DetailPage.</p>
+<p>MasterPages are usually used as navigation. They control the appearance of several DetailPages.
+A MasterPage should always be visible for controlling the application flow.</p>
+<p>DetailPages do contain the content, or more precise: they show a detail information. It is not necessary for application flow, that a
+DetailPage is always visible.</p>
+<p>When no tablet support is necessary, every page can be added as a detailPage.</p>
+</div>
+</div>
+<div class="section" id="page-manager-layout-modes">
+<h2>Page manager layout modes<a class="headerlink" href="#page-manager-layout-modes" title="Permalink to this headline">¶</a></h2>
+<p>There are 3 different layouting modes, used by <tt class="docutils literal"><span class="pre">qx.ui.mobile.page.Manager</span></tt>.</p>
+<div class="section" id="mobile-layout">
+<h3>Mobile Layout<a class="headerlink" href="#mobile-layout" title="Permalink to this headline">¶</a></h3>
+<p>Used when <tt class="docutils literal"><span class="pre">isTablet</span></tt> of page manager is <tt class="docutils literal"><span class="pre">false</span></tt>.</p>
+<p>All MasterPages and DetailsPages are added to DetailContainer.</p>
+<a class="reference internal image-reference" href="../../_images/mobileLayout1.png"><img alt="Mobile Layout" src="../../_images/mobileLayout1.png" /></a>
+</div>
+<div class="section" id="tablet-landscape-layout">
+<h3>Tablet Landscape Layout<a class="headerlink" href="#tablet-landscape-layout" title="Permalink to this headline">¶</a></h3>
+<p>Used when <tt class="docutils literal"><span class="pre">isTablet</span></tt> of page manager is <tt class="docutils literal"><span class="pre">true</span></tt> and orientation is portrait.</p>
+<p>MasterPages are added to <tt class="docutils literal"><span class="pre">masterContainer</span></tt>. DetailPages are added to <tt class="docutils literal"><span class="pre">detailContainer</span></tt>.</p>
+<a class="reference internal image-reference" href="../../_images/tabletLayoutLandscape.png"><img alt="Tablet Layout in Landscape Mode" src="../../_images/tabletLayoutLandscape.png" /></a>
+</div>
+<div class="section" id="tablet-portrait-layout">
+<h3>Tablet Portrait Layout<a class="headerlink" href="#tablet-portrait-layout" title="Permalink to this headline">¶</a></h3>
+<p>Used when <tt class="docutils literal"><span class="pre">isTablet</span></tt> of page manager is <tt class="docutils literal"><span class="pre">true</span></tt> and orientation is landscape.</p>
+<p>MasterPages are added to a <tt class="docutils literal"><span class="pre">PortraitMasterContainer</span></tt>. This container is hidden after orientation change.
+Visibility of this container can be controlled by MasterButton. The caption of the MasterButton and the title
+of <tt class="docutils literal"><span class="pre">PortraitMasterContainer</span></tt> are bound to shown MasterPage's title.</p>
+<a class="reference internal image-reference" href="../../_images/tabletLayoutPortrait.png"><img alt="Tablet Layout in Portrait Mode" src="../../_images/tabletLayoutPortrait.png" /></a>
+</div>
+</div>
+<div class="section" id="example-for-a-qx-mobile-application-with-tablet-support">
+<h2>Example for a qx.Mobile application with tablet support<a class="headerlink" href="#example-for-a-qx-mobile-application-with-tablet-support" title="Permalink to this headline">¶</a></h2>
+<p>Now, that you gained this knowledge about qx.Mobile tablet support, you
+surely want to create an application using this feature.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">Manager</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">masterPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">NavigationPage</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">detailPage1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">NavigationPage</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">detailPage2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">NavigationPage</span><span class="p">();</span>
+
+<span class="nx">manager</span><span class="p">.</span><span class="nx">addMaster</span><span class="p">(</span><span class="nx">masterPage</span><span class="p">);</span>
+<span class="nx">manager</span><span class="p">.</span><span class="nx">addDetail</span><span class="p">([</span><span class="nx">detailPage1</span><span class="p">,</span><span class="nx">detailPage2</span><span class="p">]);</span>
+
+<span class="nx">masterPage</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="nx">detailPage1</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>In the example above, we first create a page manager. To this manager we add <tt class="docutils literal"><span class="pre">masterPage</span></tt>.
+You could even add multiple MasterPages.</p>
+<p>This MasterPage could be used as a menu or overview page to control visibility of DetailPages.
+The DetailPages can be added as an array, for convenience.</p>
+<p>At last step you have to define which pages are visible at startup.</p>
+<p>Page manager does not manage startup visibility, because this give you full control
+about application flow.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="tutorial.html"
+             title="previous chapter">« Tutorial: Creating a Twitter Client with qooxdoo mobile</a>
+          <span class="separator">|</span>
+          <a class="next" href="theming.html"
+             title="next chapter">Theming »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Mobile and tablet switch</a><ul>
+<li><a class="reference internal" href="#tablet-support-out-of-the-box">Tablet support out of the box</a></li>
+<li><a class="reference internal" href="#how-to-get-device-type">How to get device type</a><ul>
+<li><a class="reference internal" href="#device-type-mapping-table">Device type mapping table :</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-to-enable-device-based-layouting">How to enable device-based layouting</a></li>
+<li><a class="reference internal" href="#how-page-manager-arrange-pages">How page manager arrange pages</a><ul>
+<li><a class="reference internal" href="#masterpages-and-detailpages">MasterPages and DetailPages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#page-manager-layout-modes">Page manager layout modes</a><ul>
+<li><a class="reference internal" href="#mobile-layout">Mobile Layout</a></li>
+<li><a class="reference internal" href="#tablet-landscape-layout">Tablet Landscape Layout</a></li>
+<li><a class="reference internal" href="#tablet-portrait-layout">Tablet Portrait Layout</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-for-a-qx-mobile-application-with-tablet-support">Example for a qx.Mobile application with tablet support</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="theming.html"
+                        title="next chapter">Theming</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Tutorial: Creating a Twitter Client with qooxdoo mobile</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/mobile/mobile_tablet_switch.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

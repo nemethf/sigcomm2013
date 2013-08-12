@@ -1,0 +1,918 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Generator Configuration Articles &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Tooling" href="../tool.html" />
+    <link rel="next" title="Generator Configuration Background Information" href="generator_config_background.html" />
+    <link rel="prev" title="Generator Script Optimizations" href="generator_optimizations.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../tool.html" accesskey="U">Tooling</a>
+     &raquo;
+  <a href="">Generator Configuration Articles</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="generator-configuration-articles">
+<span id="pages-tool-generator-config-articles-generator-configuration-articles"></span><h1>Generator Configuration Articles<a class="headerlink" href="#generator-configuration-articles" title="Permalink to this headline">¶</a></h1>
+<p>This page contains various articles related to the generator JSON configuration.</p>
+<div class="section" id="path-names">
+<span id="pages-tool-generator-config-articles-path-names"></span><h2>Path Names<a class="headerlink" href="#path-names" title="Permalink to this headline">¶</a></h2>
+<p>A lot of entries in a config file take path names as their values (top-level &quot;include&quot;, &quot;manifest&quot; keys of a library entry, output path of compile keys, asf.).  Quite a few of them, like the top-level include paths, are interpreted <strong>relative</strong> to the config file in which they appear, and this relation is retained no matter from where you reference the config file.</p>
+<p>This might not hold true in each and every case, though. For some keys you might have to take care of relative paths yourself. The authoritative reference is always the corresponding documentation of the <a class="reference internal" href="generator_config_ref.html"><em>individual config keys</em></a>. If a key takes a path value it will state if and how these values are interpreted. Please check there.</p>
+<p>A good help when dealing with paths is also to use macros, if you need to abstract away from a value appearing multiple times. E.g.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;let&quot;</span> <span class="o">:</span> <span class="p">{</span><span class="s2">&quot;MyRoot&quot;</span><span class="o">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;BUILD_PATH&quot;</span> <span class="o">:</span> <span class="s2">&quot;build&quot;</span><span class="p">}</span>
+<span class="s2">&quot;myjob&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="s2">&quot;build_dir&quot;</span> <span class="o">:</span> <span class="s2">&quot;${MyRoot}/${BUILD_PATH}&quot;</span> <span class="p">...</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>This should make it more intuitive to maintain a config file.</p>
+<div class="section" id="paths-with-spaces">
+<span id="pages-tool-generator-config-articles-paths-with-spaces"></span><h3>Paths with Spaces<a class="headerlink" href="#paths-with-spaces" title="Permalink to this headline">¶</a></h3>
+<p>Most file systems allow spaces in directory and file names these days, a notorious example of this being the <tt class="docutils literal"><span class="pre">C:\\Documents</span> <span class="pre">and</span> <span class="pre">Settings</span></tt> path on Windows. To enter such paths safely in your configuration Json structure, you need to escape the spaces with back-slash (\). As the back-slash is also a meta-character in Json, it needs to be escaped as well. So a path with spaces would look like this in your config: <tt class="docutils literal"><span class="pre">&quot;.../foo/dir\\</span> <span class="pre">with\\</span> <span class="pre">spaces/bar/file\\</span> <span class="pre">with\\</span> <span class="pre">spaces.html&quot;</span></tt>.</p>
+<p><strong>Nota bene</strong>: As the configuration files are processed by Python, and Python is allowing forward-slash on Windows, the initial example can more easily be given as <tt class="docutils literal"><span class="pre">&quot;c:/Documents\\</span> <span class="pre">and</span> <span class="pre">\\Settings&quot;</span></tt> (rather than the canonical <tt class="docutils literal"><span class="pre">&quot;C:\\\\Documents\\</span> <span class="pre">and\\</span> <span class="pre">Settings&quot;</span></tt>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>To Implementors</strong>:</p>
+<p>The configuration handler (<tt class="docutils literal"><span class="pre">generator/config/Config.py</span></tt>) handles relative paths in the obvious cases, like for the <tt class="docutils literal"><span class="pre">manifest</span></tt> entries in the <tt class="docutils literal"><span class="pre">library</span></tt> key, or in the top-level <tt class="docutils literal"><span class="pre">include</span></tt> key. But it cannot handle all possible cases, because it doesn't know beforehand which particular key represents a path, and which doesn't. In a config entry like <tt class="docutils literal"><span class="pre">&quot;foo&quot;</span> <span class="pre">:</span> <span class="pre">&quot;bar&quot;</span></tt> it is hard to tell whether <tt class="docutils literal"><span class="pre">bar</span></tt> represents a relative file or directory. Therefore, part of the responsibility for relative paths is offloaded to the action implementations that make use of the particular keys.</p>
+<p class="last">Since each config key, particularly action keys, interpret their corresponding config entries, they know which entries represent paths. To handle those paths correctly, the <tt class="docutils literal"><span class="pre">Config</span></tt> module provides a utility method <tt class="docutils literal"><span class="pre">Config.absPath(self,</span> <span class="pre">path)</span></tt> which will calculate the absolute path from the given path relative to the config file's location.</p>
+</div>
+</div>
+</div>
+<div class="section" id="file-globs">
+<span id="pages-tool-generator-config-articles-file-globs"></span><h2>File Globs<a class="headerlink" href="#file-globs" title="Permalink to this headline">¶</a></h2>
+<p>Some config keys take file paths as their attributes. Where specified, <em>file globs</em> are allowed, as supported by the underlying Python module. File globs are file paths containing simple metacharacters, which are similar to but not quite identical with metacharacters from regular expressions. Here are the legal metacharacters and their meanings:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Metacharacter</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>*</td>
+<td>matches any string of zero or more characters (regexp: .*)</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>matches any single character (regexp: .)</td>
+</tr>
+<tr class="row-even"><td>[]</td>
+<td>matches any of the enclosed characters; character ranges are possible using a hyphen, e.g. [a-z] (regexp: &lt;same&gt;)</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="examples">
+<span id="pages-tool-generator-config-articles-examples"></span><h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Given a set of files like <tt class="docutils literal"><span class="pre">file9.js,</span>&nbsp; <span class="pre">file10.js,</span>&nbsp; <span class="pre">file11.js</span></tt>, here are some file globs and their resolution:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">File Glob</th>
+<th class="head">Resolution</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>file*</td>
+<td>file9.js,  file10.js and file11.js</td>
+</tr>
+<tr class="row-odd"><td>file?.js</td>
+<td>file9.js</td>
+</tr>
+<tr class="row-even"><td>file1[01].js</td>
+<td>file10.js and file11.js</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="class-data">
+<span id="pages-tool-generator-config-articles-class-data"></span><h2>Class Data<a class="headerlink" href="#class-data" title="Permalink to this headline">¶</a></h2>
+<p>Besides code a qooxdoo application maintains a certain amount of data that represents some sort of resources. This might be negligible for small to medium size applications, but becomes significant for large apps. The resources fall roughly into two categories,</p>
+<ul class="simple">
+<li><strong>Internationalization (I18N) Data</strong> This comprises two kinds of data:<ul>
+<li>translated strings</li>
+<li>locale information (also CLDR data, such as currency, date and time formats, asf.)</li>
+</ul>
+</li>
+<li><strong>File Resources</strong><ul>
+<li>static files like PNG and GIF graphics, but also HTML and CSS files, sound and multimedia files, asf.</li>
+</ul>
+</li>
+</ul>
+<p>Many of these resources need an internal representation in the qooxdoo app. E.g. translated strings are stored as key:value pairs of maps, and images are stored with their size and location. All this data requires space that shows up in  sizes of application files, as they are transfered from server to browser.</p>
+<p>The build system allows you to tailor where those resources are stored, so you can optimize on your network consumption and memory footprint. Here is an overview:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>source</strong> version:
+- without dedicated I18N parts:all class data is allocated in the loader
+- with dedicated I18N parts:class data is in dedicated I18N packages</li>
+<li><strong>build</strong> version:
+- without dedicated I18N parts: class data is allocated in each individual package, corresponding to the contained class code that needs it
+- with dedicated I18N parts: class data is in dedicated I18N packages</li>
+</ul>
+</div></blockquote>
+<p>The term <em>&quot;dedicated I18N parts&quot;</em> refers to the possibility to split translated strings and CLDR data out in separate parts, one for each language (see <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-packages"><em>packages/i18n-with-boot</em></a>). Like with other parts, those parts have to be actively loaded by the application (using <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.io.PartLoader">qx.io.PartLoader.require</a>).</p>
+<p>In the build version without dedicated I18N parts (case 2.1), those class data is stored as is needed by the code of the package. This may mean that the same data is stored in multiple packages, as e.g. two packages might use the same image or translated string. This is to ensure optimal independence of packages among each other so they can be loaded independently, and is resolved at the browser (ie. resource data is stored uniquely in memory).</p>
+</div>
+<div class="section" id="cache-key">
+<span id="pages-tool-generator-config-articles-cache-key"></span><h2>&quot;cache&quot; Key<a class="headerlink" href="#cache-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="compile-cache">
+<span id="pages-tool-generator-config-articles-compile-cache"></span><h3>Compile cache<a class="headerlink" href="#compile-cache" title="Permalink to this headline">¶</a></h3>
+<p>The main payload of the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-cache"><em>cache</em></a> key is to point to the directory for the compile cache. It is very recommendable to have a system-wide compile cache directory so cache contents can be shared among different projects and libraries. Otherwise, the cache has to be rebuilt in each enviornment anew, costing extra time and space.</p>
+<p>The default for the cache directory is beneath the system TMP directory. To find out where this actually is either run <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">info</span></tt>, or run a build job with the <tt class="docutils literal"><span class="pre">-v</span></tt> command line flag and look for the <em>cache</em> key in the expanded job definition, or use this <a class="reference external" href="http://qooxdoo.org/docs/general/snippets#finding_your_system-wide_tmp_directory">snippet</a>.</p>
+<p>The compile cache directory can become very large in terms of contained files, and a count of a couple of thousand files is not unusual. You should take care that your file system is equipped to comply with these demands. Additionally, disk I/O is regularly high on this directory so a fast, local disk is recommendable. Don't use a network drive :-) .</p>
+</div>
+</div>
+<div class="section" id="let-key">
+<span id="pages-tool-generator-config-articles-let-key"></span><h2>&quot;let&quot; Key<a class="headerlink" href="#let-key" title="Permalink to this headline">¶</a></h2>
+<p>Config files let you define simple macros with the <tt class="docutils literal"><span class="pre">let</span></tt> key. The value of a macro can be a string or another JSON-permissible value (map, array, ...). You refer to a macro value in a job definition by using <tt class="docutils literal"><span class="pre">${&lt;macro_name&gt;}</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;let&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;MyApp&quot;</span> <span class="o">:</span> <span class="s2">&quot;demobrowser&quot;</span><span class="p">}</span>
+  <span class="p">...</span>
+  <span class="s2">&quot;myjob&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span><span class="s2">&quot;qx.application&quot;</span> <span class="o">:</span> <span class="s2">&quot;${MyApp}.Application&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>If the value of the macro is a string you can use a reference to it in other strings, and the macro reference will be replaced by its value. You can have multiple macro references in one string. Usually, these macro references will show up in map values or array elements, but can also be used in map keys.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;myjob&quot;</span> <span class="o">:</span> <span class="p">{</span><span class="s2">&quot;${MyApp}.resourceUri&quot;</span> <span class="o">:</span> <span class="s2">&quot;resource&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If the value of the macro is something other than a string, things are a bit more restrictive. References to those macros can not be used in map keys (for obvious reasons). The reference has still to be in a string, but the macro reference has to be <strong>the only contents</strong> of that string. The entire string will then be replaced by the value of the macro. That means, you can do something like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;let&quot;</span> <span class="o">:</span> <span class="p">{</span><span class="s2">&quot;MYLIST&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">...},</span>
+  <span class="s2">&quot;myjob&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;joblist&quot;</span> <span class="o">:</span> <span class="s2">&quot;${MYLIST}&quot;</span><span class="p">,</span> <span class="p">...}</span>
+</pre></div>
+</div>
+<p>and the &quot;joblist&quot; key will get the value [1,2,3].</p>
+<p>A special situation arises if you are using a <strong>top-level let</strong>, i.e. a <em>let</em> section on the highest level in the config file, and not in any job definition. This <em>let</em> map will be automatically applied to every job run, without any explicit reference (so be aware of undesired side effects of bindings herein).</p>
+<p>When assembling a job to run, the precedence of all the various <em>let</em> maps is</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">local</span> <span class="nx">job</span> <span class="kd">let</span> <span class="o">&lt;</span> <span class="nx">config</span><span class="o">-</span><span class="nx">level</span> <span class="kd">let</span> <span class="o">&lt;</span> <span class="s1">&#39;extend&#39;</span> <span class="nx">job</span> <span class="nx">lets</span>
+</pre></div>
+</div>
+<p>With imported jobs top-level definitions will take precedence over any definitions from the external config file (as if they were the 'first' let section in the chain).</p>
+<div class="section" id="os-environment-variables-as-configuration-macros">
+<span id="pages-tool-generator-config-articles-let-key-osenviron"></span><h3>OS Environment Variables as Configuration Macros<a class="headerlink" href="#os-environment-variables-as-configuration-macros" title="Permalink to this headline">¶</a></h3>
+<p><em>(experimental)</em></p>
+<p>On startup, the generator will read the operating system environment settings, and provide them as configuration macros, as if you had defined them with <em>let</em>. This can be handy as an alterative to hard-coding macros in a configuration file, or providing them on the generator command line (with the <em>-m</em> command-line option).</p>
+<p>Here is an example. Suppose in your <em>config.json</em> you have section like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;jobs&quot;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;myjob&quot;</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;myapp.foosetting&quot;</span> <span class="o">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">FOOVALUE</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>then you can provide a value for <em>FOOVALUE</em> by just providing an environment setting for it. E.g. if you are using <em>bash</em> to invoke the generator, you could something like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">bash</span><span class="o">&gt;</span> <span class="nx">env</span> <span class="nx">FOOVALUE</span><span class="o">=</span><span class="mi">17</span> <span class="p">.</span><span class="o">/</span><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">myjob</span>
+</pre></div>
+</div>
+<p>which will result in <em>myapp.foosetting</em> getting the value 17.</p>
+<p>A few things are important to note in this respect:</p>
+<ul class="simple">
+<li>The generator includes all the environment settings that the operating system provides. There is no filtering of any kind. This can lead to surprises when you are not aware which settings are available and which not. If in doubt use your operating system's facilities to list the environment settings in effect when you launch the generator.</li>
+<li>In the parsing of config files and the expansion of generator jobs, the environment settings have high priority. They will take precedence over all settings giving in the configuration files given with <em>let</em> keys. Only macro settings passed through the generator command-line option <em>-m</em> will take higher precedence, and will override environment keys.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="log-key">
+<span id="pages-tool-generator-config-articles-log-key"></span><h2>&quot;log&quot; Key<a class="headerlink" href="#log-key" title="Permalink to this headline">¶</a></h2>
+<p>Logging is an important part of any reasonably complex application. The Generator does a fair bit of logging to the console by default, listing the jobs it performs, adding details of important processing steps and reporting on errors and potential inconsistencies. The <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-log"><em>log</em></a> key lets you specify further options and tailor the Generator console output to your needs. You can e.g. add logging of unused classes in a  particular library/name space.</p>
+</div>
+<div class="section" id="extend-key">
+<span id="pages-tool-generator-config-articles-extend-key"></span><h2>&quot;extend&quot; Key<a class="headerlink" href="#extend-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="job-resolution">
+<span id="pages-tool-generator-config-articles-job-resolution"></span><h3>Job resolution<a class="headerlink" href="#job-resolution" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">extend</span></tt> and <tt class="docutils literal"><span class="pre">run</span></tt> keywords are currently the only keywords that reference other jobs. These references have to be resolved, by looking them up (or &quot;evaluating&quot; the names) in some context. One thing to note here is that job names are evaluated <strong>in the context of the current configuration</strong>. As you will see (see section on <a class="reference internal" href="#pages-tool-generator-config-articles-include-key-top-level-adding-features"><em>top-level &quot;include&quot;s</em></a>), a single configuration might eventually contain jobs from multiple config files, the local job definitions, and zero to many imported job maps (from other config files), which again might contain imported configs. From within any map, only those jobs are referenceable that are <strong>contained</strong> somewhere in this map. Unqualified names (like &quot;myjob&quot;) are taken to refer to jobs on the same level as the current job, path-like names (containing &quot;/&quot;) are taken to signify a job in some nested name space down from the current level. Particularly, this means you can never reference a job in a map which is &quot;parallel&quot; to the current job map. It's only jobs on the same level or deeper.</p>
+<p>This is particularly important for imported configs (imported with a top-level &quot;include&quot; keyword, see further <a class="reference internal" href="#pages-tool-generator-config-articles-include-key-top-level-adding-features"><em>down</em></a>). Those configs get attached to the local &quot;jobs&quot; map under a dedicated key (their &quot;name space&quot; if you will). If in this imported map there is a &quot;run&quot; job (see the <a class="reference internal" href="#pages-tool-generator-config-articles-extending-jobs"><em>next section</em></a>) using unqualified job names, these job names will be resolved using the imported map, not the top-level map. If the nested &quot;run&quot; job uses path-like job names, these jobs will be searched for <strong>relative</strong> to the nested map. You get it?!</p>
+</div>
+<div class="section" id="extending-jobs">
+<span id="pages-tool-generator-config-articles-extending-jobs"></span><h3>Extending jobs<a class="headerlink" href="#extending-jobs" title="Permalink to this headline">¶</a></h3>
+<p>Now, how exactly is a job (let's call this the primary job) treated that says to &quot;extend&quot; another job (let's call this the secondary job). Here is what happens:</p>
+<ul class="simple">
+<li>The primary job provides sort of the master definition for the resulting job. All its definitions take precedence.</li>
+<li>The secondary job is searched in the context of the current &quot;jobs&quot; map (see above).</li>
+<li>Keys of the secondary job that are <strong>not</strong> available in the primary job are just added to the job definition.</li>
+<li>Keys of the secondary job that are already present in the primary job and have a scalar value (string, number, boolean) are <strong>discarded</strong>.</li>
+<li>Keys of the secondary job that are already present in the primary job and have a list or map value are <strong>merged</strong>. The extending rules are applied on the element level recursively, i.e. scalar elements are blocked, new elements are added, composed element are merged. That means, those keys accumulate all their inner keys over all jobs in the transitive hull of all extend jobs of the primary job.</li>
+<li>There is a way of <strong>preventing</strong> this kind of merge behaviour: If you prefix a job key with an equal sign (<tt class="docutils literal"><span class="pre">=</span></tt>) no subsequent merging will be done on this key. That means all following jobs that are merged into the current will not be able to alter the value of this key any more.</li>
+<li>Obviously, each secondary job is extended itself <strong>before</strong> being processed in this way, so it brings in its own full definition. As stated before it is important to note that this extending is done in the secondary job's <strong>own</strong> context, which is not necessarily the context of the primary job.</li>
+<li>If there are more than one job in the &quot;extend&quot; list, the process is re-applied <strong>iteratively</strong> with all the remaining jobs in the list. This also means that the list of secondary jobs defines a precedence list: Settings in jobs earlier in the list take precedence over those coming later, so order matters.</li>
+</ul>
+<p>Important to note here: <strong>Macro evaluation</strong> takes place only <strong>after</strong> all extending has been done. That is, macros are applied to the fully extended job, making all macro definitions available that have accumulated along the way, with a 'left-to-right' precedence (macro definitions in the primary job take precedence over definitions in secondary jobs, and within the list of secondary jobs, earlier jobs win over subsequent). But in contrast to job names that also means that macros are explicitly <strong>not</strong> evaluated in the original context of the job. This makes it possible to tweak a job definition for a new environment, but can also lead to surprises if you wanted to have some substitution taking place in the original config file, and realize it doesn't.</p>
+</div>
+<div class="section" id="job-shadowing-and-partial-overriding">
+<span id="pages-tool-generator-config-articles-job-shadowing-and-partial-overriding"></span><h3>Job Shadowing and Partial Overriding<a class="headerlink" href="#job-shadowing-and-partial-overriding" title="Permalink to this headline">¶</a></h3>
+<p>Additionally to the above described features, with the configuration system you can</p>
+<ul>
+<li><p class="first">create jobs in your local configuration with <em>same names</em> as those imported from another configuration file. The local job will take precedence and &quot;shadow&quot; the imported job; the imported job gets automatically added to the local job's <tt class="docutils literal"><span class="pre">extend</span></tt> list.</p>
+</li>
+<li><p class="first">extend one job by another by only <em>partially specifying</em> job features. The extending job can specify only the specific parts it wants to re-define. The jobs will then be merged as described above, giving precedence to local definitions of simple data types and combining complex values (list and maps); in the case of maps this is a deep merging process. Here is a sample of overriding an imported job (<tt class="docutils literal"><span class="pre">build-script</span></tt>), only specifying a single setting, and relying on the rest to be provided by the imported job of same name:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;build-script&quot;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;compile-options&quot;</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;code&quot;</span> <span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;format&quot;</span> <span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>You can again use <tt class="docutils literal"><span class="pre">=</span></tt> to control the merging:</p>
+<ul>
+<li><p class="first"><em>selectively block</em> merging of features by using <tt class="docutils literal"><span class="pre">=</span></tt> in front of the key name, like:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">...</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;=open-curly&quot;</span> <span class="o">:</span> <span class="p">...,</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">override an imported job <em>entirely</em> by guarding the local job with <tt class="docutils literal"><span class="pre">=</span></tt> like:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;jobs&quot;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;=build-script&quot;</span> <span class="o">:</span> <span class="p">{...},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="run-key">
+<span id="pages-tool-generator-config-articles-run-key"></span><h2>&quot;run&quot; Key<a class="headerlink" href="#run-key" title="Permalink to this headline">¶</a></h2>
+<p>&quot;run&quot; jobs are jobs that bear the <tt class="docutils literal"><span class="pre">run</span></tt> keyword. Since these are kind of meta jobs and ment to invoke a sequence of other jobs, they have special semantics. When a <tt class="docutils literal"><span class="pre">run</span></tt> keyword is encountered in a job, for each sub-job in the &quot;run&quot; list a new job is generated (so called <em>synthetic jobs</em>, since they are not from the textual config files). For each of those new jobs, a job name is auto-generated using the initial job's name as a prefix. As for the contents, the initial job's definition is used as a template for the new job. The <tt class="docutils literal"><span class="pre">extend</span></tt> key is set to the name of the current sub-job (it is assumed that the initial job has been expanded before), so the settings of the sub-job will eventually be included, and the &quot;run&quot; key is removed. All other settings from the initial job remain unaffected. This means that all sub-jobs &quot;inherit&quot; the settings of the initial job (This is significant when sub-jobs evaluate the same key, and maybe do so in a different manner).</p>
+<p>In the overall queue of jobs to be performed, the initial job is replaced by the list of new jobs just generated. This process is repeated until there are no more &quot;run&quot; jobs in the job queue, and none with unresolved &quot;extend&quot;s.</p>
+</div>
+<div class="section" id="asset-let-key">
+<span id="pages-tool-generator-config-articles-asset-let-key"></span><h2>&quot;asset-let&quot; Key<a class="headerlink" href="#asset-let-key" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">The <tt class="docutils literal"><span class="pre">asset-let</span></tt> key is basically a <a class="reference internal" href="#pages-tool-generator-config-articles-let-key"><em>macro</em></a> definition for <tt class="docutils literal"><span class="pre">#asset</span></tt> compiler hints, but with a special semantics. Keys defined in the &quot;asset-let&quot; map will be looked for in <em>#asset</em> hints in source files. Like with macros, references have to be in curly braces and prefixed with <tt class="docutils literal"><span class="pre">$</span></tt>. So a &quot;asset-let&quot; entry in the config might look like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;asset-let&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;qx.icontheme&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Tango&quot;</span><span class="p">,</span> <span class="s2">&quot;Oxygen&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;mySizes&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;16&quot;</span><span class="p">,</span> <span class="s2">&quot;32&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>and a corresponding <em>#asset</em> hint might use it as:</p>
+<div class="highlight-javascript"><pre>#asset(qx/icon/${qx.icontheme}/${mySizes}/*)</pre>
+</div>
+<p>The values of these macros are lists, and each reference will be expanded into all possible values with all possible combinations. So the above asset declaration would essentially be expanded into:</p>
+<div class="highlight-javascript"><pre>#asset(qx/icon/Tango/16/*)
+#asset(qx/icon/Tango/32/*)
+#asset(qx/icon/Oxygen/16/*)
+#asset(qx/icon/Oxygen/32/*)</pre>
+</div>
+</div>
+<div class="section" id="library-key-and-manifest-files">
+<span id="pages-tool-generator-config-articles-library-key-and-manifest-files"></span><h2>&quot;library&quot; Key and Manifest Files<a class="headerlink" href="#library-key-and-manifest-files" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-library"><em>library</em></a> key of a configuration holds information about source locations that will be considered in a job (much like the CLASSPATH in Java). Each element specifies one such library. The term &quot;library&quot; is meant here in the broadest sense; everything that has a qooxdoo application structure with a <em>Manifest.json</em> file can be considered a library in this context. This includes applications like the Showcase or the Feedreader, add-ins like the Testrunner or the Apiviewer, contribs from the qooxdoo-contrib repository, or of course the qooxdoo framework library itself. The main purpose of any <em>library</em> entry in the configuration is to provide the path to the library's &quot;Manifest&quot; file.</p>
+<div class="section" id="manifest-files">
+<span id="pages-tool-generator-config-articles-manifest-files"></span><h3>Manifest files<a class="headerlink" href="#manifest-files" title="Permalink to this headline">¶</a></h3>
+<p>Manifest files serve to provide meta information for a library in a structured way. Their syntax is again JSON, and part of them is read by the generator, particularly the <tt class="docutils literal"><span class="pre">provides</span></tt> section. See <a class="reference internal" href="manifest.html#pages-application-structure-manifest-manifest-json"><em>here</em></a> for more information about manifest files.</p>
+</div>
+<div class="section" id="contrib-libraries">
+<span id="pages-tool-generator-config-articles-contrib-libraries"></span><h3>Contrib libraries<a class="headerlink" href="#contrib-libraries" title="Permalink to this headline">¶</a></h3>
+<p>Contributions can be included in a configuration like any other libraries: You add an appropriate entry in the <tt class="docutils literal"><span class="pre">library</span></tt> array of your configuration. Like other libraries, the contribution must provide a <a class="reference internal" href="manifest.html#pages-application-structure-manifest-manifest-json"><em>Manifest.json</em></a> file with appropriate contents.</p>
+<p>If the contribution resides on your local file system, there is actually no difference to any other library. Specify the relative path to its Manifest file and you're basically set. The really new part comes when the contribution resides online, in the <a class="reference external" href="http://qooxdoo.org/contrib">qooxdoo-contrib</a> repository. Then you use a special syntax to specify the location of the Manifest file. It is URL-like with a <tt class="docutils literal"><span class="pre">contrib</span></tt> scheme and will usually look like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">contrib</span><span class="o">:</span><span class="c1">//&lt;ContributionName&gt;/&lt;Version&gt;/&lt;ManifestFile&gt;</span>
+</pre></div>
+</div>
+<p>The contribution source tree will then be downloaded from the repository, the generator will adjust to the local path, and the contribution is then used just like a local library. A consideration that comes into play here is where the files are placed locally. The default location is a subdirectory from your cache path named <tt class="docutils literal"><span class="pre">downloads</span></tt>. You can modify this through the <em>downloads</em> attribute of the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-cache"><em>cache</em></a> key in your config.</p>
+<p>So, for example an entry for the &quot;trunk&quot; version of the &quot;Dialog&quot; contribution would look like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;manifest&quot;</span> <span class="o">:</span> <span class="s2">&quot;contrib://Dialog/trunk/Manifest.json&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You will rarely need to set the <tt class="docutils literal"><span class="pre">uri</span></tt> attribute of a library entry. This is only necessary if the relative path to the library (which is automatically calculated) does not represent a valid URL path when running the <strong>source</strong> version of the final app. (This can be the case if your try to run the source version from a web server that requires you to set up different document roots). It is not relevant for the <em>build</em> version of your app, as here all resources from the various libraries are collected under a common directory. For more on URI handling, see the next section.</p>
+<div class="section" id="contrib-uris-and-internet-access">
+<h4>&quot;contrib://&quot; URIs and Internet Access<a class="headerlink" href="#contrib-uris-and-internet-access" title="Permalink to this headline">¶</a></h4>
+<p>As contrib libraries are downloaded from an online repository, you need Internet access to use them. Here are some tips on how to address offline usage and Internet proxies.</p>
+<div class="section" id="avoiding-online-access">
+<h5>Avoiding Online Access<a class="headerlink" href="#avoiding-online-access" title="Permalink to this headline">¶</a></h5>
+<p>If you need to work with a contrib offline, it is best to download it to your hard disk, and then use it like any local qooxdoo library. Sourceforge offers the &quot;ViewVC&quot; online repository browser, so you can browse the contrib online, e.g.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">http</span><span class="o">:</span><span class="c1">//qooxdoo-contrib.svn.sourceforge.net/viewvc/qooxdoo-contrib/trunk/qooxdoo-contrib/Dialog/</span>
+</pre></div>
+</div>
+<p>Browse to the desired contrib version, like <em>trunk</em>, and hit the <em>&quot;Download GNU tarball&quot;</em> link. This will download an archive of this part of the repository tree. Unpack it to a local directory, and enter the relative path to it in the corresponding <em>manifest</em> config entry. Now you are using the contrib like a local library.</p>
+<p>The only thing you are missing this way is the automatic online check for updates, where a newer version of the contrib would be detected and downloaded. You need to do this by hand, re-checking the repository when you can, and re-downloading a newer version if you find one.</p>
+</div>
+<div class="section" id="accessing-online-from-behind-a-proxy">
+<h5>Accessing Online from behind a Proxy<a class="headerlink" href="#accessing-online-from-behind-a-proxy" title="Permalink to this headline">¶</a></h5>
+<p>If you are sitting behind a proxy, here is what you can do. The generator uses the <em>urllib</em> module of Python to access web-based resources. This module honors proxies:</p>
+<ul>
+<li><p class="first">It checks for a <em>http_proxy</em> environment variable in the shell running the generator. On Bash-like shells you can set it like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">http_proxy</span><span class="o">=</span><span class="s2">&quot;http://www.someproxy.com:3128&quot;</span><span class="p">;</span> <span class="kr">export</span> <span class="nx">http_proxy</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If there is no such shell setting on Windows, the registry is queried for the Internet Options.</p>
+</li>
+<li><p class="first">On MacOS, the Internet Config is queried in this case.</p>
+</li>
+<li><p class="first">See the <a class="reference external" href="http://docs.python.org/release/2.5.4/lib/module-urllib.html">module documentation</a> for more details.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="uri-handling">
+<span id="pages-tool-generator-config-articles-uri-handling"></span><h3>URI handling<a class="headerlink" href="#uri-handling" title="Permalink to this headline">¶</a></h3>
+<p>URIs are used in a qooxdoo application to refer from one part to other parts like resources. There are places within the generator configuration where you can specify <em>uri</em> parameters. What they mean and how this all connects is explained in this section.</p>
+<div class="section" id="where-uris-are-used">
+<span id="pages-tool-generator-config-articles-where-uris-are-used"></span><h4>Where URIs are used<a class="headerlink" href="#where-uris-are-used" title="Permalink to this headline">¶</a></h4>
+<p>The first important thing to note is:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All URI handling within qooxdoo is related to libraries.</p>
+</div>
+<p>Within qooxdoo the <a class="reference internal" href="#pages-tool-generator-config-articles-library-key-and-manifest-files"><em>library</em></a> is a fundamental concept, and libraries in this sense contain all the things you are able to include in the final Web application, such as
+class files (.js),
+graphics (.gif, .png, ...),
+static HTML pages (.htm, .html),
+style sheets (.css),
+and translation files (.po).</p>
+<p>But not all of the above resource types are actually referenced through URIs in the application. Among those that are you find in the <strong>source</strong> version:</p>
+<ul class="simple">
+<li>references to class files</li>
+<li>references to graphics</li>
+<li>references to static HTML</li>
+<li>references to style sheet files</li>
+</ul>
+<p>The <strong>build</strong> version uses a different approach, since it strives to be a self-contained Web application that has no outgoing references. Therefore, all necessary resources are copied over to the build directory tree. Having said that, URIs are still used in the build version, yet these are only references confined to the build directory tree:</p>
+<blockquote>
+<div><ul class="simple">
+<li>JS class code is put into the (probably various) output files of the generator run (what you typically find under the <em>build/script</em> path). The bootstrap file references the others with relative URIs.</li>
+<li>Graphics and other resources are referenced with relative URIs from the compiled scripts. Those resources are typically found under the <em>build/resource</em> path.</li>
+<li>Translation strings and CLDR information can be directly included in the generated files (where they need not be referenced through URIs), or be put in separate files (where they have to be referenced).</li>
+</ul>
+</div></blockquote>
+<p>So, in summary, in the <em>build</em> version some references might be resolved by directly including the specific information, while the remaining references are usually confined to the build directory tree. That is why you can just pack it up and copy it to your web server for deployment. The <em>source</em> version is normally used directly off of  the file system, and employs relative URIs to reference all necessary files. Only in cases where you e.g. need to include interaction with a backend you will want to run the source version from a web server environment. For those cases the following details will be especially interesting. Others might want to skip the remainder of this section for now.</p>
+<p>Although the scope and relevance of URIs vary between <em>source</em> and <em>build</em> versions, the underlying mechanisms are the same in both cases, with the special twist that when creating the <em>build</em> version there is only a single &quot;library&quot; considered, the build tree itself, which suffices to get all the URIs out fine. These mechanisms  are described next.</p>
+</div>
+<div class="section" id="construction-of-uris-through-the-generator">
+<span id="pages-tool-generator-config-articles-construction-of-uris-through-the-generator"></span><h4>Construction of URIs through the Generator<a class="headerlink" href="#construction-of-uris-through-the-generator" title="Permalink to this headline">¶</a></h4>
+<p>So how does the generator create all of those URIs in the final application code? All those URIs are constructed through the following three components:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">to_libraryroot</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="nx">library_internal_path</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="nx">resource_path</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>So for example a graphics file in the qooxdoo framework might get referenced using the following components</p>
+<ul class="simple">
+<li>[1] <em>&quot;../../qooxdoo-2.0.2-sdk/framework/&quot;</em></li>
+<li>[2] <em>&quot;source/resource/&quot;</em></li>
+<li>[3] <em>&quot;qx/static/blank.gif&quot;</em></li>
+</ul>
+<p>to produce the final URI
+<em>&quot;../../qooxdoo-2.0.2-sdk/framework/source/resource/qx/static/ blank.gif&quot;</em>.</p>
+<p>These general parts have the following meaning:</p>
+<ul class="simple">
+<li><strong>[1]</strong> : URI path to the library root (as will be valid when running the app in the browser). If you specify the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-library"><em>uri</em></a> parameter of the library's entry in your config, this is what gets used here.</li>
+<li><strong>[2]</strong> : Path segment within the specific library. This is taken from the library's <a class="reference internal" href="manifest.html#pages-application-structure-manifest-manifest-json"><em>Manifest.json</em></a>. The consumer of the library has no influence on it.</li>
+<li><strong>[3]</strong> : Path segment leading to the specific resource. This is the path of the resource as found under the library's resource directory.</li>
+</ul>
+</div>
+<div class="section" id="library-base-uris-in-the-source-version">
+<span id="pages-tool-generator-config-articles-library-base-uris-in-the-source-version"></span><h4>Library base URIs in the Source version<a class="headerlink" href="#library-base-uris-in-the-source-version" title="Permalink to this headline">¶</a></h4>
+<p>Part <em>[1]</em> is exactly what you specify with the <em>uri</em> subkey of an entry in the <em>library</em> key list. All <em>source</em> jobs of the generator using this library will be using this URI prefix to reference resources of that library. (This is usually fine, as long as you don't have different autonomous parts in your application using the same library from different directories; see also further down).</p>
+<p>If you don't specifying the <em>uri</em> key with your libraries (which is usually the case), the generator will calculate a value for <em>[1]</em>, using the following information:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">applicationroot_to_configdir</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">configdir_to_libraryroot</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The parts have the following meaning:</p>
+<ul class="simple">
+<li><strong>[1.1]</strong> : Path from the Web application's root to the configuration file's directory; this information is derived from the <em>paths/app-root</em> key of the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-compile-options"><em>compile-options</em></a> config key.</li>
+<li><strong>[1.2]</strong> : Path from the configuration file's directory to the root directory of the library (the one containing the <em>Manifest.json</em> file); this information is immediately available from the library's <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-library"><em>manifest</em></a> key.</li>
+</ul>
+<p>For the <strong>build</strong> version, dedicated keys <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-compile-options"><em>uris/script</em></a> and  <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-compile-options"><em>uris/resource</em></a> are available (as there is virtually only one &quot;library&quot;). The values of both keys cover the scope of components [1] + [2] in the first figure.</p>
+<p>Since [1.2] is always known (otherwise the whole library would not be found), only [1.1] has to be given in the config. The properties of this approach, compared to specifying just [1], are:</p>
+<ul class="simple">
+<li><em>The application root can be specified individually for each compile job.</em> This means you could have more than one application root in your project, e.g. when your main application offers an iframe, into which another application from the same project is loaded; qooxdoo's <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser">Demobrowser</a> application takes advantage of exactly this.</li>
+<li><em>Relative file system paths have to match with relative URIs in the running application.</em> So this approach won't work if e.g the relative path from your config directory to the library makes no sense when the app is run from a web server.</li>
+</ul>
+<p>From the above discussion, there is one important point to take away, in order to create working URIs in your application:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The generator needs either the library's <em>uri</em> parameter ([1]) or the URI-relevant keys in the compile keys ([1.1])  in the config.</p>
+</div>
+<p>While either are optional in their respective contexts, it is mandatory to have at least <em>one</em> of them for the URI generation to work. Mind though, that qooxdoo provides sensible defaults for the URIs in compile keys.</p>
+</div>
+<div class="section" id="overriding-the-uri-settings-of-libraries">
+<span id="pages-tool-generator-config-articles-overriding-the-uri-settings-of-libraries"></span><h4>Overriding the 'uri' settings of libraries<a class="headerlink" href="#overriding-the-uri-settings-of-libraries" title="Permalink to this headline">¶</a></h4>
+<p>Libraries you specify in your own config (with the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-library"><em>library</em></a> key) are in your hand, and you can provide <tt class="docutils literal"><span class="pre">uri</span></tt> parameters as you see fit. If you want to tweak the <em>uri</em> setting of a library entry that is added by including another config file (e.g. the default <em>application.json</em>), you simply re-define the library entry of that particular library locally. The generator will realize that both entries refer to the same library, and your local settings will take precedence.</p>
+</div>
+</div>
+<div class="section" id="specifying-a-library-key-in-your-config-json">
+<h3>Specifying a &quot;library&quot; key in your config.json<a class="headerlink" href="#specifying-a-library-key-in-your-config-json" title="Permalink to this headline">¶</a></h3>
+<p>You can specify <tt class="docutils literal"><span class="pre">library</span></tt> keys in your own config in these ways:</p>
+<ul class="simple">
+<li>You either define a local job which either shaddows or &quot;extends&quot; an imported job, and provide this local job with a <tt class="docutils literal"><span class="pre">library</span></tt> key. Or,</li>
+<li>You define a local <tt class="docutils literal"><span class="pre">&quot;libraries&quot;</span></tt> job and provide it with a <tt class="docutils literal"><span class="pre">library</span></tt> key. This job will be used automatically by most of the standard jobs (source, build, etc.), and thus your listed libraries will be used in multiple jobs (not just one as above).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="packages-key">
+<span id="pages-tool-generator-config-articles-packages-key"></span><h2>&quot;packages&quot; Key<a class="headerlink" href="#packages-key" title="Permalink to this headline">¶</a></h2>
+<p>For a general introduction to parts and packages see this separate <a class="reference internal" href="../development/parts_overview.html"><em>document</em></a>. Following here is more information on the specifics of some sub-keys of the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-packages"><em>packages</em></a> config key.</p>
+<div class="section" id="parts-part-name-include">
+<span id="pages-tool-generator-config-articles-parts-part-name-include"></span><h3>parts/&lt;part_name&gt;/include<a class="headerlink" href="#parts-part-name-include" title="Permalink to this headline">¶</a></h3>
+<p>The way the part system is currently implemented has some caveats in the way <em>parts/*/include</em> keys and the general <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-include"><em>include</em></a> key interact:</p>
+<ol class="loweralpha">
+<li><p class="first">The general <em>include</em> key provides the &quot;master list&quot; of classes for the given application. This master list is extended with all their recursive dependencies. All classes given in a part's <em>include</em>, including all their dependencies, are checked against this list. If any of those classes is not in the master list, it will not be included in the final app.</p>
+<p>Therefore, you cannot include classes in parts that are not covered by the  general <em>include</em> key. If you want to use e.g. <em>qx.bom.*</em> in a part, you have to  add <tt class="docutils literal"><span class="pre">&quot;qx.bom.*&quot;</span></tt> to the general <em>include</em> list. Otherwise, only classes within  <em>qx.bom.*</em> that actually derive from the general include key will be actually  included, and the rest will be discarded. Motto:</p>
+<p><em>&quot;The general include key is a filter for all classes in parts.&quot;</em></p>
+</li>
+<li><p class="first">Any class that is in the master list that is never listed in one of the  parts, either directly or as dependency, will not be included in the app. That  means you have to <strong>actively</strong> make sure that all classes from the general <em>include</em> get - directly or indirectly - referenced in one of the parts, or they  will not be in the final app. Motto:</p>
+<p><em>&quot;The parts' include keys are a filter for all classes in the general include  key.&quot;</em></p>
+<p>Or, to put both aspects in a single statement: The classes in the final app are  exactly those in the <strong>intersection</strong> of the classes referenced through the general <em>include</em> key and all the classes referenced by the <em>include</em> keys of the parts. Currently, the application developer has to make sure that they match, ie. that the classes specified through the parts together sum up to the global class list!</p>
+<p>There is another caveat that concerns the relation between <em>include</em>'s of  different parts:</p>
+</li>
+<li><p class="first">Any class that is listed in a part's <em>include</em> (file globs expanded) will  not be included in another part. - But this also means that if two parts list  the same class, it won't be included in either of them!</p>
+<p>This is e.g. the case in a sample application, where the <em>boot</em> part lists <em>qx.bom.client.Engine</em> and the <em>core</em> part lists <em>qx.bom.*</em> which also expands to <em>qx.bom.client.Engine</em> eventually. That's the reason why <em>qx.bom.client.Engine</em> would not be contained in either of those parts, and hence would not be contained in the final application at all.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="i18n-as-parts">
+<span id="pages-tool-generator-config-articles-i18n-with-boot"></span><h3>i18n-as-parts<a class="headerlink" href="#i18n-as-parts" title="Permalink to this headline">¶</a></h3>
+<p>Setting this sub-key to <em>true</em> will result in I18N information (translations, CLDR data, ...) being put in their own separate parts. The utility of this is:</p>
+<ul class="simple">
+<li>The code packages get smaller, which allows for faster application startup.</li>
+<li>Data is not loaded for <em>all</em> configured locales when a package is loaded (which is usually not necessary, as you are mostly interested in a single locale across all packages). Rather, you can handle I18N data more individually.</li>
+</ul>
+<p>Here are the details:</p>
+<ul class="simple">
+<li>By default, I18N data, i.e. translations from the .po files and CLDR data, is integrated as Javascript data with the application packages (either as part of the first .js file of a package, or in its own .js file). This package-specific data will encompass the data for all configured locales needed in this package (Think: Data cumulated by package).</li>
+<li>Setting <em>packages/i18n-as-parts: true</em> removes this data from the packages. Rather, data for <em>each individual locale</em> (en, en_US, de, de_DE, ...) will be collated in a dedicated <em>part</em>, the part name being that of the respective language code (Think: Data cumulated by locale). As usual, each part is made up of packages. In the case of an I18N part, these are the corresponding data package plus fall-back packages for key lookup (e.g. [&quot;C&quot;, &quot;en&quot;, &quot;en_US&quot;] for the part <em>en_US</em>). Each package is a normal qooxdoo package with only the data section, and without the code section.</li>
+</ul>
+<p>So far, so good. With the config key set to <em>true</em>, this is the point where the application developer has to take over. The application will not load the I18N parts by itself. You have to do it using the usual part loading API (e.g. <tt class="docutils literal"><span class="pre">qx.io.PartLoader.require([&quot;en_US&quot;])</span></tt>). You might want to do that early in the application run cycle, e.g. during application start-up and before the first translatable string or localizable data is to be displayed. After loading the part, the corresponding locale is ready to be used in the normal way in your application. The <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/feedreader">Feedreader</a> application uses this technique to load a different I18N part when the language is changed in its <em>Preferences</em> dialog.</p>
+</div>
+</div>
+<div class="section" id="include-key-top-level-adding-features">
+<span id="pages-tool-generator-config-articles-include-key-top-level-adding-features"></span><h2>&quot;include&quot; Key (top-level) - Adding Features<a class="headerlink" href="#include-key-top-level-adding-features" title="Permalink to this headline">¶</a></h2>
+<p>Within qooxdoo there are a couple of features that are not so much applications although they share a lot of the classical application structure. The APIViewer and TestRunner are good examples for those. (In the recent repository re-org, they have been filed under <em>component</em> correspondingly). They are applications but receive their actual meaning from other applications: An APIViewer in the form of class documentation it presents, the TestRunner in the form of providing an environment to other application's test classes. On their own, both applications are &quot;empty&quot;, and the goal is it to use them in the context of another, self-contained application. The old build system supported make targets like 'api' and 'test' to that end.</p>
+<p>While you can always include other applications' <em>classes</em> in your project (by adding an entry for them to the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-library"><em>library</em></a> key of your config), you wouldn't want to repeat all the necessary job entries to actually build this external app in your environment. So the issue here is not to re-use classes, but <em>jobs</em>.</p>
+<div class="section" id="re-using-jobs">
+<span id="pages-tool-generator-config-articles-re-using-jobs"></span><h3>Re-using jobs<a class="headerlink" href="#re-using-jobs" title="Permalink to this headline">¶</a></h3>
+<p>So, the general issue we want to solve is to import entire job definitions in our local configuration. The next step is then to make them work in the local environment (e.g. classes have to be compiled and resources be copied to local folders). This concepts is fairly general and scales from small jobs (where you just keep their definition centrally, in order to use them in multiple places) to really big jobs (like e.g. creating a customized build version of the Apiviewer in your local project).</p>
+<p>Practically, there are two steps involved in using external jobs:</p>
+<ol class="arabic">
+<li><p class="first">You have to <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-include-top-level"><em>include</em></a> the external configuration file that contains the relevant job definitions. Do so will result in the external jobs being added to the list of jobs of your local configuration. E.g. you can use</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generator</span><span class="p">.</span><span class="nx">py</span> <span class="o">?</span>
+</pre></div>
+</div>
+<p>to get a list of all available jobs; the external jobs will be among this list.</p>
+</li>
+<li><p class="first">There are now two way to utilize these jobs:</p>
+</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>You can either invoke them directly from the command line, passing them as arguments to the generator.</li>
+<li>Or you define local jobs that <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-extend"><em>extend</em></a> them.</li>
+</ul>
+</div></blockquote>
+<p>In the former case the only way to influence the behaviour of the external job is through macros: The external job has to parameterize its workings with macro references, you have to know them and provide values for them that are suitable for your environment (A typical example would be output paths that you need to customize). Your values will take precendence over any values that might be defined in the external config. But this also means you will have to know the job, know the macros it uses, provide values for them (e.g. in the global <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-let-top-level"><em>let</em></a> of your config), resolve conflicts if other jobs happen to use the same macros, and so forth.</p>
+<p>In the latter case, you have more control over the settings of the external job that you are actually using. Here as well, you can provide macro definitions that parameterize the behaviour of the job you are extending. But you can also supply more job keys that will either shaddow the keys of the same name in the external job, or will be extended by them. In any case you will have more control over the effects of the external job.</p>
+<p>Add-ins use exactly these mechanisms to provide their functionality to other applications (in the sense as 'make test' or 'make api' did it in the old system). Consequently, to support this in the new system, the add-in applications (or more precisely: their job configuration) have to expose certain keys and use certain macros that can both be overridden by the using application. The next sections describe these build interfaces for the various add-in apps. But first more practical detail about the outlined ...</p>
+</div>
+<div class="section" id="add-in-protocol">
+<span id="pages-tool-generator-config-articles-add-in-protocol"></span><h3>Add-In Protocol<a class="headerlink" href="#add-in-protocol" title="Permalink to this headline">¶</a></h3>
+<p>In order to include an add-in feature in an existing app, you first have to <tt class="docutils literal"><span class="pre">include</span></tt> its job config. On the top-level of the config map, e.g. specify to include the Apiviewer config:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;include&quot;</span> <span class="o">:</span> <span class="p">[{</span><span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;../apiviewer/config.json&quot;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>The include key on this level takes an array of maps. Each map specifies one configuration file to include. The only mandator key therein is the file path to the external config file (see <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-include-top-level"><em>here</em></a> for all the gory details). A config can only include what the external config is willing to <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-export"><em>export</em></a>. Among those jobs the importing config can select (through the <tt class="docutils literal"><span class="pre">import</span></tt> key) or reject (through the <tt class="docutils literal"><span class="pre">block</span></tt> key) certain jobs. The resulting list of external job definitions will be added to the local jobs map.</p>
+<p>If you want to fine-tune the behaviour of such an imported job, you define a local job that extends it. Imported jobs are referenced like any job in the current config, either by their plain name (the default), or, if you specify the <tt class="docutils literal"><span class="pre">as</span></tt> key in the include, by a composite name <tt class="docutils literal"><span class="pre">&lt;as_value&gt;::&lt;original_name&gt;</span></tt>. Suppose you used an <tt class="docutils literal"><span class="pre">&quot;as&quot;</span> <span class="pre">:</span> <span class="pre">&quot;apiconf&quot;</span></tt> in your include, and you wanted to extend the Apiviewer's <tt class="docutils literal"><span class="pre">build-script</span></tt> job, this could look like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;myapi-script&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;apiconf::build-script&quot;</span><span class="p">]</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As a third step, the local job will usually have to provide additional information for the external job to succeed. Which exactly these are depends on the add-in (and should eventually be documented there). See the section specific to the <a class="reference internal" href="#pages-tool-generator-config-articles-api-viewer"><em>APIViewer</em></a> for a concrete example.</p>
+</div>
+<div class="section" id="api-viewer">
+<span id="pages-tool-generator-config-articles-api-viewer"></span><h3>API Viewer<a class="headerlink" href="#api-viewer" title="Permalink to this headline">¶</a></h3>
+<p>For brevity, let's jump right in into a config fragment that has all necessary ingredients. These are explained in more detail afterwards.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;include&quot;</span> <span class="o">:</span> <span class="p">[{</span><span class="s2">&quot;as&quot;</span> <span class="o">:</span> <span class="s2">&quot;apiconf&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span> <span class="o">:</span> <span class="s2">&quot;../apiviewer/config.json&quot;</span><span class="p">}],</span>
+  <span class="s2">&quot;jobs&quot;</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;myapi&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;apiconf::build&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;let&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;ROOT&quot;</span>  <span class="o">:</span>  <span class="s2">&quot;../apiviewer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;BUILD_PATH&quot;</span> <span class="o">:</span> <span class="s2">&quot;./api&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;API_INCLUDE&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;qx.*&quot;</span><span class="p">,</span> <span class="s2">&quot;myapp.*&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;API_EXCLUDE&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;myapp.tests.*&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+        <span class="s2">&quot;library&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+        <span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;myapp.resourceUri&quot;</span> <span class="o">:</span> <span class="s2">&quot;./resource&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">myapi</span></tt> job extends the <tt class="docutils literal"><span class="pre">build</span></tt> job of APIViewer's job config. This &quot;build&quot; job is itself a run job, i.e. it will be expanded in so many individual jobs as its <tt class="docutils literal"><span class="pre">run</span></tt> key lists. All those jobs will get the &quot;myapi&quot; job as a context into which they are expanded, so all other settings in &quot;myapi&quot; will be effective in those jobs.</p>
+<p>In the <tt class="docutils literal"><span class="pre">let</span></tt> key, the ROOT, BUILD_PATH, API_INCLUDE and API_EXCLUDE macros of the APIViewer config are overridden. This ensures the APIViewer classes are found, can be processed, and the resulting script is put into a local directory. Furthermore, the right classes are included in the documentation data.</p>
+<p>The <tt class="docutils literal"><span class="pre">library</span></tt> key has to at least add the entry for the current application, since this is relevant for the generation of the api documentation for the local classes.</p>
+<p>So in short, the <tt class="docutils literal"><span class="pre">ROOT</span></tt>, <tt class="docutils literal"><span class="pre">BUILD_PATH</span></tt>, <tt class="docutils literal"><span class="pre">API_INCLUDE</span></tt> and <tt class="docutils literal"><span class="pre">API_EXCLUDE</span></tt> macros define the interface between the apiviewer's &quot;run&quot; job and the local config.</p>
+</div>
+</div>
+<div class="section" id="optimize-key">
+<span id="pages-tool-generator-config-articles-optimize-key"></span><h2>&quot;optimize&quot; Key<a class="headerlink" href="#optimize-key" title="Permalink to this headline">¶</a></h2>
+<p>The <em>optimize</em> key is a subkey of the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-compile-options"><em>compile-options key</em></a>. It allows you to tailor the forms of code optimization that is applied to the Javascript code when the <em>build</em> version is created. The best way to set this key is by setting the <a class="reference internal" href="generator_config_macros.html"><em>OPTIMIZE macro</em></a> in your config's global <em>let</em> section. The individual optimization categories are described in their own <a class="reference internal" href="generator_optimizations.html"><em>manual section</em></a>.</p>
+</div>
+<div class="section" id="environment-key">
+<span id="pages-tool-generator-config-articles-environment-key"></span><h2>&quot;environment&quot; Key<a class="headerlink" href="#environment-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="variant-specific-builds">
+<h3>Variant-specific Builds<a class="headerlink" href="#variant-specific-builds" title="Permalink to this headline">¶</a></h3>
+<p>The <em>environment</em> configuration key allows you to create different variants from the same code base. Variants enable the selection and removal of code from the build version. A variant is a concrete build of your application with a specific set of environment values &quot;wired in&quot;. Code not covered by this set of values is removed, so the resulting script code is leaner. We call this code <em>variant-optimized</em>. But as a consequence, such a variant usually cannot handle situations where other values of the same environment keys are needed. The generated code is <em>variant-specific</em>. The generator can create multiple variants in one go. Variants can be used to implement feature-based builds, or to remove debugging code from the build version. It is comparable to conditional compilation in C/C++.</p>
+<p>For any generation process of a build version of an app, there is a certain set of environment settings in effect. If variant optimization is turned on, code is variant-optimized by looking at certain calls to <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer#qx.core.Environment">qx.core.Environment</a> that reference an environment key that has an existing setting. See the <a class="reference internal" href="generator_optimizations.html#pages-tool-generator-optimizations-variants"><em>optimization section</em></a> for details about that.</p>
+</div>
+<div class="section" id="how-to-create-multiple-variants-in-one-go">
+<span id="pages-tool-generator-config-articles-environment-multiple-go"></span><h3>How to Create Multiple Variants in One Go<a class="headerlink" href="#how-to-create-multiple-variants-in-one-go" title="Permalink to this headline">¶</a></h3>
+<p>The above section mentions the optimization for a single build output, where for each environment key there is exactly one value. (This is also how the qooxdoo run time sees the environment). The generator configuration has an additional feature attached to environment settings. If you specify <strong>more than one</strong> value for an environment key (in a list), the generator will automatically generate multiple output files. Each of the builds will be created with one of the values from the list in effect. Here is an example for such a configuration:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;foo&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">26</span><span class="p">],</span>
+  <span class="s2">&quot;bar&quot;</span> <span class="o">:</span> <span class="s2">&quot;hugo&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;baz&quot;</span> <span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The envrionment set for producing the first build output would be <tt class="docutils literal"><span class="pre">{foo:13,</span> <span class="pre">bar:&quot;hugo&quot;,</span> <span class="pre">baz:true}</span></tt>, the set for the second <tt class="docutils literal"><span class="pre">{foo:26,</span> <span class="pre">bar:&quot;hugo&quot;,</span> <span class="pre">baz:true}</span></tt>.</p>
+<p>For configurations with multiple keys with lists as values, the process is repeated for any possible combination of values. E.g.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;foo&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">26</span><span class="p">],</span>
+  <span class="s2">&quot;bar&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;baz&quot;</span> <span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>would result in 4 runs with the following environment sets in effect:</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">{foo:13,</span> <span class="pre">bar:&quot;a&quot;,</span> <span class="pre">baz:true}</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">{foo:13,</span> <span class="pre">bar:&quot;b&quot;,</span> <span class="pre">baz:true}</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">{foo:26,</span> <span class="pre">bar:&quot;a&quot;,</span> <span class="pre">baz:true}</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">{foo:26,</span> <span class="pre">bar:&quot;b&quot;,</span> <span class="pre">baz:true}</span></tt></li>
+</ol>
+</div>
+<div class="section" id="caveat">
+<h3>Caveat<a class="headerlink" href="#caveat" title="Permalink to this headline">¶</a></h3>
+<p>The special caveat when creating multiple build files in one go is that you need to adapt to this in the configuration of the <strong>output file name</strong>. If you have just a single output file name, every generated build script will be saved over the previous! I.e. the generator might produce multiple output files, but they are all stored under the same name, so what you get eventually is just the last of those output file.</p>
+<p>The cure is to hint to the generator to create different output files during processing. This is done by using a simple macro that reflects the current value of an environment key in the output file name.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;build-script&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;myapp.foo&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;compile-options&quot;</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;paths&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;file&quot;</span> <span class="o">:</span> <span class="s2">&quot;build/script/myapp_{myapp.foo}.js&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will two output files in the <em>build/script</em> path, <tt class="docutils literal"><span class="pre">myapp_bar.js</span></tt> and <tt class="docutils literal"><span class="pre">myapp_baz.js</span></tt>.</p>
+</div>
+<div class="section" id="browser-specific-builds">
+<span id="pages-tool-generator-config-articles-browser-specific-builds"></span><h3>Browser-specific Builds<a class="headerlink" href="#browser-specific-builds" title="Permalink to this headline">¶</a></h3>
+<p>By predefining select environment keys, builds can be tailored towards specific clients. See the <a class="reference internal" href="../application/featureconfigeditor.html#pages-application-featureconfigeditor-featureconfigeditor"><em>Feature Configuration Editor article</em></a> for instructions.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="generator_optimizations.html"
+             title="previous chapter">« Generator Script Optimizations</a>
+          <span class="separator">|</span>
+          <a class="next" href="generator_config_background.html"
+             title="next chapter">Generator Configuration Background Information »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Generator Configuration Articles</a><ul>
+<li><a class="reference internal" href="#path-names">Path Names</a><ul>
+<li><a class="reference internal" href="#paths-with-spaces">Paths with Spaces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#file-globs">File Globs</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#class-data">Class Data</a></li>
+<li><a class="reference internal" href="#cache-key">&quot;cache&quot; Key</a><ul>
+<li><a class="reference internal" href="#compile-cache">Compile cache</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#let-key">&quot;let&quot; Key</a><ul>
+<li><a class="reference internal" href="#os-environment-variables-as-configuration-macros">OS Environment Variables as Configuration Macros</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#log-key">&quot;log&quot; Key</a></li>
+<li><a class="reference internal" href="#extend-key">&quot;extend&quot; Key</a><ul>
+<li><a class="reference internal" href="#job-resolution">Job resolution</a></li>
+<li><a class="reference internal" href="#extending-jobs">Extending jobs</a></li>
+<li><a class="reference internal" href="#job-shadowing-and-partial-overriding">Job Shadowing and Partial Overriding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#run-key">&quot;run&quot; Key</a></li>
+<li><a class="reference internal" href="#asset-let-key">&quot;asset-let&quot; Key</a></li>
+<li><a class="reference internal" href="#library-key-and-manifest-files">&quot;library&quot; Key and Manifest Files</a><ul>
+<li><a class="reference internal" href="#manifest-files">Manifest files</a></li>
+<li><a class="reference internal" href="#contrib-libraries">Contrib libraries</a><ul>
+<li><a class="reference internal" href="#contrib-uris-and-internet-access">&quot;contrib://&quot; URIs and Internet Access</a><ul>
+<li><a class="reference internal" href="#avoiding-online-access">Avoiding Online Access</a></li>
+<li><a class="reference internal" href="#accessing-online-from-behind-a-proxy">Accessing Online from behind a Proxy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uri-handling">URI handling</a><ul>
+<li><a class="reference internal" href="#where-uris-are-used">Where URIs are used</a></li>
+<li><a class="reference internal" href="#construction-of-uris-through-the-generator">Construction of URIs through the Generator</a></li>
+<li><a class="reference internal" href="#library-base-uris-in-the-source-version">Library base URIs in the Source version</a></li>
+<li><a class="reference internal" href="#overriding-the-uri-settings-of-libraries">Overriding the 'uri' settings of libraries</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#specifying-a-library-key-in-your-config-json">Specifying a &quot;library&quot; key in your config.json</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#packages-key">&quot;packages&quot; Key</a><ul>
+<li><a class="reference internal" href="#parts-part-name-include">parts/&lt;part_name&gt;/include</a></li>
+<li><a class="reference internal" href="#i18n-as-parts">i18n-as-parts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#include-key-top-level-adding-features">&quot;include&quot; Key (top-level) - Adding Features</a><ul>
+<li><a class="reference internal" href="#re-using-jobs">Re-using jobs</a></li>
+<li><a class="reference internal" href="#add-in-protocol">Add-In Protocol</a></li>
+<li><a class="reference internal" href="#api-viewer">API Viewer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#optimize-key">&quot;optimize&quot; Key</a></li>
+<li><a class="reference internal" href="#environment-key">&quot;environment&quot; Key</a><ul>
+<li><a class="reference internal" href="#variant-specific-builds">Variant-specific Builds</a></li>
+<li><a class="reference internal" href="#how-to-create-multiple-variants-in-one-go">How to Create Multiple Variants in One Go</a></li>
+<li><a class="reference internal" href="#caveat">Caveat</a></li>
+<li><a class="reference internal" href="#browser-specific-builds">Browser-specific Builds</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="generator_config_background.html"
+                        title="next chapter">Generator Configuration Background Information</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="generator_optimizations.html"
+                        title="previous chapter">Generator Script Optimizations</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/generator_config_articles.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

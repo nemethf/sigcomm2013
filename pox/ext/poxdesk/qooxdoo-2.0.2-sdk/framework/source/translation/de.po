@@ -1,0 +1,285 @@
+# German
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: qooxdoo framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-05-19 10:11+0200\n"
+"PO-Revision-Date: 2010-04-22 17:53+0100\n"
+"Last-Translator: Thomas Herchenroeder <thron7 AT users DOT sourceforge DOT net>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "%1 does not fit %2."
+msgstr "%1 passt nicht zu %2."
+
+msgid "%1 is not a color! %2"
+msgstr "%1 ist keine Farbe! %2"
+
+msgid "%1 is not a number."
+msgstr "%1 ist keine Nummer."
+
+msgid "%1 is not a string."
+msgstr "%1 ist keine Zeichenkette."
+
+msgid "%1 is not an url."
+msgstr "%1 ist keine URL."
+
+msgid "%1 is not in %2"
+msgstr "%1 ist nicht in %2"
+
+msgid "%1 is not in the range from [%2, %3]."
+msgstr "%1 liegt nicht im Intervall [%2, %3]."
+
+msgid "'%1' is not an email address."
+msgstr "'%1' ist keine Emailadresse."
+
+msgid "Automatic"
+msgstr "Automatisch"
+
+msgid "Cancel"
+msgstr "Abbruch"
+
+msgid "Color Selector"
+msgstr "Farbauswahl"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "HSB"
+msgstr "HSB"
+
+msgid "Hex"
+msgstr "Hex"
+
+msgid "Last month"
+msgstr "Vorheriger Monat"
+
+msgid "Last year"
+msgstr "Vorheriges Jahr"
+
+msgid "Next month"
+msgstr "Nächster Monat"
+
+msgid "Next year"
+msgstr "Nächstes Jahr"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Open ColorSelector"
+msgstr "Öffne Farbauswahl"
+
+msgid "Presets"
+msgstr "Voreinstellungen"
+
+msgid "Preview (Old/New)"
+msgstr "Vorschau (alt/neu)"
+
+msgid "RGB"
+msgstr "RGB"
+
+msgid "Reset column widths"
+msgstr "Spaltenbreite zurücksetzen"
+
+msgid "This field is required"
+msgstr "Dieses Feld ist erforderlich"
+
+msgid "Visual"
+msgstr "Visuell"
+
+msgid "key_full_Alt"
+msgstr "Alt"
+
+msgid "key_full_Apps"
+msgstr "Kontextmenü"
+
+msgid "key_full_Backspace"
+msgstr "Rücktaste"
+
+msgid "key_full_CapsLock"
+msgstr "Feststelltaste"
+
+msgid "key_full_Control"
+msgstr "Steuerung"
+
+msgid "key_full_Control_Mac"
+msgstr ""
+
+msgid "key_full_Delete"
+msgstr "Entfernen"
+
+msgid "key_full_Down"
+msgstr "Pfeil runter"
+
+msgid "key_full_End"
+msgstr "Ende"
+
+msgid "key_full_Enter"
+msgstr "Enter"
+
+msgid "key_full_Escape"
+msgstr "Escape"
+
+msgid "key_full_Home"
+msgstr "Position 1"
+
+msgid "key_full_Insert"
+msgstr "Einfügen"
+
+msgid "key_full_Left"
+msgstr "Pfeil links"
+
+msgid "key_full_Meta"
+msgstr "Meta"
+
+msgid "key_full_NumLock"
+msgstr "NumLock"
+
+msgid "key_full_PageDown"
+msgstr "Bild runter"
+
+msgid "key_full_PageUp"
+msgstr "Bild hoch"
+
+msgid "key_full_Pause"
+msgstr "Pause"
+
+msgid "key_full_PrintScreen"
+msgstr "Drucken"
+
+msgid "key_full_Right"
+msgstr "Pfeil rechts"
+
+msgid "key_full_Scroll"
+msgstr "Rollen"
+
+msgid "key_full_Shift"
+msgstr "Umschalttaste"
+
+msgid "key_full_Space"
+msgstr "Leertaste"
+
+msgid "key_full_Tab"
+msgstr "Tabulator"
+
+msgid "key_full_Up"
+msgstr "Pfeil hoch"
+
+msgid "key_full_Win"
+msgstr "Windowstaste"
+
+msgid "key_short_Alt"
+msgstr "Alt"
+
+msgid "key_short_Apps"
+msgstr "Kontext"
+
+msgid "key_short_Backspace"
+msgstr "Rück"
+
+msgid "key_short_CapsLock"
+msgstr "Feststell"
+
+msgid "key_short_Control"
+msgstr "Strg"
+
+msgid "key_short_Control_Mac"
+msgstr ""
+
+msgid "key_short_Delete"
+msgstr "Entf"
+
+msgid "key_short_Down"
+msgstr "Runter"
+
+msgid "key_short_End"
+msgstr "Ende"
+
+msgid "key_short_Enter"
+msgstr "Enter"
+
+msgid "key_short_Escape"
+msgstr "Esc"
+
+msgid "key_short_Home"
+msgstr "Pos1"
+
+msgid "key_short_Insert"
+msgstr "Einfg"
+
+msgid "key_short_Left"
+msgstr "Links"
+
+msgid "key_short_Meta"
+msgstr "Meta"
+
+msgid "key_short_NumLock"
+msgstr "Num"
+
+msgid "key_short_PageDown"
+msgstr "Bild runter"
+
+msgid "key_short_PageUp"
+msgstr "Bild hoch"
+
+msgid "key_short_Pause"
+msgstr "Pause"
+
+msgid "key_short_PrintScreen"
+msgstr "Druck"
+
+msgid "key_short_Right"
+msgstr "Rechts"
+
+msgid "key_short_Scroll"
+msgstr "Rollen"
+
+msgid "key_short_Shift"
+msgstr "Umschalt"
+
+msgid "key_short_Space"
+msgstr "Leer"
+
+msgid "key_short_Tab"
+msgstr "Tab"
+
+msgid "key_short_Up"
+msgstr "Hoch"
+
+msgid "key_short_Win"
+msgstr "Win"
+
+msgid "one of one row"
+msgid_plural "%1 of %2 rows"
+msgstr[0] "Eine von einer Zeile"
+msgstr[1] "%1 von %2 Zeilen"
+
+msgid "one row"
+msgid_plural "%1 rows"
+msgstr[0] "Eine Zeile"
+msgstr[1] "%1 Zeilen"
+
+msgid "test Hello %1!"
+msgstr ""
+
+msgid "test Jonny"
+msgstr ""
+
+msgid "test One car"
+msgid_plural "test %1 cars"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "test affe"
+msgstr ""
+
+msgid "test one"
+msgstr ""
+
+msgid "test two"
+msgstr ""

@@ -1,0 +1,495 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simulator &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Standard Applications" href="../application.html" />
+    <link rel="next" title="Feature Configuration Editor" href="../application/featureconfigeditor.html" />
+    <link rel="prev" title="Using the Inspector to write Selenium tests" href="../application/inspector_selenium.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../application.html" accesskey="U">Standard Applications</a>
+     &raquo;
+  <a href="">Simulator</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="simulator">
+<span id="pages-development-simulator-simulator"></span><h1>Simulator<a class="headerlink" href="#simulator" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of the Simulator component is to help developers rapidly develop and run a suite of simulated user interaction tests for their application with a minimum amount of configuration and using familiar technologies, e.g. qooxdoo-style JavaScript.
+To do so it uses a combination of qooxdoo's own toolchain, Mozilla's <a class="reference external" href="http://www.mozilla.org/rhino/">Rhino</a> JavaScript engine and <a class="reference external" href="http://seleniumhq.org/projects/remote-control/">Selenium Remote Control</a>.</p>
+</div>
+<div class="section" id="feature-highlights">
+<h2>Feature Highlights<a class="headerlink" href="#feature-highlights" title="Permalink to this headline">¶</a></h2>
+<p>The Simulator enables developers to:</p>
+<ul class="simple">
+<li>Define Selenium test cases by writing qooxdoo classes</li>
+<li>Use the JUnit-style setUp, test*, tearDown pattern</li>
+<li>Define test jobs using the qooxdoo toolchain's configuration system</li>
+<li>Utilize the standard Selenium API as well as qooxdoo-specific user extensions to locate and interact with qooxdoo widgets</li>
+<li>Capture and log uncaught exceptions thrown in the tested application</li>
+<li>Use Selenium Server to run tests in <a class="reference external" href="http://seleniumhq.org/about/platforms.html#browsers">many different browser/platform combinations</a></li>
+<li>Write custom log appenders using qooxdoo's flexible logging system</li>
+</ul>
+</div>
+<div class="section" id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>Similar to <a class="reference internal" href="unit_testing.html#pages-unit-testing-unit-testing"><em>unit tests</em></a>, Simulator test cases are defined as qooxdoo classes living in the application's source directory. As such they support qooxdoo's OO features such as inheritance and nested namespaces. The setUp, testSomething, tearDown pattern is supported, as well as all assertion functions defined by <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.core.MAssert">qx.core.MAssert</a>.</p>
+<p>The main API that is used to define the test logic is <strong>QxSelenium</strong>, which means the <a class="reference external" href="http://jarvana.com/jarvana/view/org/seleniumhq/selenium/selenium-rc-documentation/1.0/selenium-rc-documentation-1.0-doc.zip!/java/com/thoughtworks/selenium/DefaultSelenium.html">DefaultSelenium API</a> plus the Locator strategies and commands from the <a class="reference external" href="http://qooxdoo.org/contrib/project/simulator#selenium_user_extension_for_qooxdoo">qooxdoo user extensions for Selenium</a>.</p>
+<p>As with qooxdoo's unit testing framework, the Generator is used to create a test runner application (the Simulator). User-defined test classes are included into this application, which extends <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.application.Native">qx.application.Native</a> and uses a simplified loader so it can run in Rhino.</p>
+<p>A separate Generator job is used to start Rhino and instruct it to load the Simulator application, which uses Selenium's Java API to send test commands to a Selenium server (over HTTP, so the server can run on a separate machine). The Server then launches the selected browser, loads the qooxdoo application to be tested and executes the commands specified in the test case.</p>
+</div>
+<div class="section" id="setting-up-the-test-environment">
+<span id="pages-development-simulator-setup"></span><h2>Setting up the test environment<a class="headerlink" href="#setting-up-the-test-environment" title="Permalink to this headline">¶</a></h2>
+<p>The following sections describe the steps necessary to set up Simulator tests for an application based on qooxdoo's GUI or Inline skeleton.</p>
+<div class="section" id="required-libraries">
+<h3>Required Libraries<a class="headerlink" href="#required-libraries" title="Permalink to this headline">¶</a></h3>
+<p>The Simulator needs the following external resources to run:</p>
+<ul class="simple">
+<li>Java Runtime Environment: Version 1.6 is known to work.</li>
+<li><a class="reference external" href="http://seleniumhq.org/download">Selenium Server and Java Client Driver</a>: Version 1.0.3  or later. Later versions should generally be OK as long as the Selenium API remains stable.</li>
+<li><a class="reference external" href="http://www.mozilla.org/rhino/download.html">Mozilla Rhino</a>: Version 1.7R1 or later.</li>
+</ul>
+<p>The Java archives for the Selenium client driver and Rhino must be located on the same machine as the application to be tested. For Rhino, this means js.jar. Older versions of Selenium provide a single archive (selenium-java-client-driver.jar), while newer ones are split up into the actual driver (selenium-java-&lt;x.y.z&gt;.jar) and several external libraries found in the &quot;libs&quot; folder of the ZIP archive.</p>
+<p>The Selenium Server (selenium-server.jar, or selenium-server-standalone.jar for newer releases) can optionally run on a physically separate host (see the Selenium RC documentation for details). The qooxdoo user extensions must be located on the same machine as the server (see below).</p>
+</div>
+<div class="section" id="generator-configuration">
+<h3>Generator Configuration<a class="headerlink" href="#generator-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Unlike other framework components, the Simulator isn't ready to run out of the box: The application developer needs to specify the location of the required external libraries (Selenium's Java bindings and Mozilla Rhino). This is easily accomplished by redefining the <em>SIMULATOR_CLASSPATH</em> macro (in the applicaton's config.json file; be sure to heed the <a class="reference internal" href="../tool/generator_config_articles.html#pages-tool-generator-config-articles-path-names"><em>general information about paths</em></a> in config files):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;SIMULATOR_CLASSPATH&quot;</span> <span class="o">:</span>
+  <span class="p">[</span>
+    <span class="s2">&quot;../selenium/selenium-java-2.22.0.jar&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;../selenium/libs/*&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;../rhino/js.jar&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The &quot;environment&quot; section of the &quot;simulation-run&quot; job configures where the AUT is located and how to reach the Selenium server that will launch the test browser and run the test commands.
+The following example shows the minimum configuration needed to launch a Simulator application that will test the source version of the current application in Firefox 3 using a Selenium server instance running on the same machine (localhost):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;simulation-run&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;SIMULATOR_CLASSPATH&quot;</span> <span class="o">:</span>
+    <span class="p">[</span>
+      <span class="s2">&quot;../selenium/selenium-java-2.22.0.jar&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;../selenium/libs/*&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;../rhino/js.jar&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+
+  <span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;simulator.testBrowser&quot;</span> <span class="o">:</span> <span class="s2">&quot;*firefox&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;simulator.selServer&quot;</span> <span class="o">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;simulator.selPort&quot;</span> <span class="o">:</span> <span class="mi">4444</span><span class="p">,</span>
+    <span class="s2">&quot;simulator.autHost&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://localhost&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;simulator.autPath&quot;</span> <span class="o">:</span> <span class="s2">&quot;/${APPLICATION}/source/index.html&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See the <a class="reference internal" href="../tool/generator_default_jobs.html#pages-tool-generator-default-jobs-simulation-run"><em>job reference</em></a> for a listing of all supported settings and their default values.
+Additional runtime options are available, although their default settings should be fine for most cases. See the <a class="reference internal" href="../tool/generator_config_ref.html#pages-tool-generator-config-ref-simulate"><em>simulate job key reference</em></a> for details.</p>
+</div>
+</div>
+<div class="section" id="writing-test-cases">
+<span id="pages-development-simulator-writing-tests"></span><h2>Writing Test Cases<a class="headerlink" href="#writing-test-cases" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned above, Simulator test cases are qooxdoo classes living (at least by default) in the application's <strong>simulation</strong> name space.
+They inherit from simulator.unit.TestCase, which includes the assertion functions from qx.core.MAssert.
+Simulator tests look very similar to qooxdoo unit tests as they follow the same pattern of <strong>setUp</strong>, <strong>testSomething</strong>, <strong>tearDown</strong>. Typically, each test* method will use the QxSelenium API to interact with some part of the AUT,
+then use assertions to check if the AUT's state has changed as expected, e.g. by querying the value of a qooxdoo property.</p>
+</div>
+<div class="section" id="locating-elements">
+<span id="pages-development-simulator-locators"></span><h2>Locating Elements<a class="headerlink" href="#locating-elements" title="Permalink to this headline">¶</a></h2>
+<p>In order to simulate interaction with a qooxdoo widget, Selenium needs to locate it first. This is accomplished by using one or more of the locator strategies described on this page:</p>
+<ul class="simple">
+<li><a class="reference internal" href="simulator_locators.html#pages-development-simulator-locators-simulator-locators"><em>Locating elements</em></a></li>
+</ul>
+</div>
+<div class="section" id="simulating-interaction">
+<span id="pages-development-simulator-interaction"></span><h2>Simulating Interaction<a class="headerlink" href="#simulating-interaction" title="Permalink to this headline">¶</a></h2>
+<p>In addition to Selenium's built-in commands, a number of qooxdoo-specific methods are available in the simulator.QxSelenium and simulator.Simulation classes. Run <strong>generate.py api</strong> in the <em>component/simulator</em> directory of the qooxdoo SDK to create an API Viewer for these classes.</p>
+</div>
+<div class="section" id="test-development-tools">
+<span id="pages-development-simulator-tools"></span><h2>Test Development Tools<a class="headerlink" href="#test-development-tools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="selenium-ide">
+<span id="pages-development-simulator-selenium-ide"></span><h3>Selenium IDE<a class="headerlink" href="#selenium-ide" title="Permalink to this headline">¶</a></h3>
+<p>This Firefox plugin allows test developers to run Selenium commands against a web application, making it a very useful to debug locators and check if commands produce the expected results. In order to use Selenium IDE with the qooxdoo-specific locators and commands, open the Options menu and enter the path to the qooxdoo extensions for Selenium in the field labeled <em>Selenium Core extensions</em>, e.g.:</p>
+<div class="highlight-javascript"><pre>C:\workspace\qooxdoo-1.4-sdk\component\simulator\tool\user-extensions\user-extensions.js</pre>
+</div>
+</div>
+<div class="section" id="inspector">
+<h3>Inspector<a class="headerlink" href="#inspector" title="Permalink to this headline">¶</a></h3>
+<p>qooxdoo's <a class="reference internal" href="../application/inspector_selenium.html#pages-application-inspector-selenium-using-the-qooxdoo-inspector-to-write-selenium-tests"><em>Inspector component</em></a> can provide assistance to test developers by automatically determining locators for widgets.</p>
+</div>
+</div>
+<div class="section" id="generating-the-simulator">
+<span id="pages-development-simulator-generating"></span><h2>Generating the Simulator<a class="headerlink" href="#generating-the-simulator" title="Permalink to this headline">¶</a></h2>
+<p>The &quot;simulation-build&quot; job explained above is used to generate the Simulator application (in the AUT's root directory):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">simulation</span><span class="o">-</span><span class="nx">build</span>
+</pre></div>
+</div>
+<p>Note that the Simulator application contains the test classes. This means that it must be re-generated whenever existing tests are modified or new ones are added.</p>
+</div>
+<div class="section" id="starting-the-selenium-server">
+<span id="pages-development-simulator-server-start"></span><h2>Starting the Selenium server<a class="headerlink" href="#starting-the-selenium-server" title="Permalink to this headline">¶</a></h2>
+<p>The Selenium server must be started with the <em>-userExtensions</em> command line option pointing to the qooxdoo user extenions for Selenium mentioned above:</p>
+<div class="highlight-javascript"><pre>java -jar selenium-server-standalone-2.22.0.jar -userExtensions &lt;QOOXDOO-TRUNK&gt;/component/simulator/tool/user-extensions/user-extensions.js</pre>
+</div>
+</div>
+<div class="section" id="running-the-tests">
+<span id="pages-development-simulator-running-tests"></span><h2>Running the Tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h2>
+<p>Once the Simulator application is configured and compiled and the Selenium server is running, the test suite can be executed using the &quot;simulation-run&quot; job:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">simulation</span><span class="o">-</span><span class="nx">run</span>
+</pre></div>
+</div>
+<p>The Simulator's default logger writes the result of each test to the shell as it's executed. The full output looks something like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">============================================================================</span>
+    <span class="nx">EXECUTING</span><span class="o">:</span> <span class="nx">SIMULATION</span><span class="o">-</span><span class="nx">RUN</span>
+<span class="o">============================================================================</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Initializing</span> <span class="nx">cache</span><span class="p">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Running</span> <span class="nx">Simulation</span><span class="p">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Load</span> <span class="nx">runtime</span><span class="o">:</span> <span class="mi">360</span><span class="nx">ms</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Simulator</span> <span class="nx">run</span> <span class="nx">on</span> <span class="nx">Thu</span><span class="p">,</span> <span class="mi">02</span> <span class="nx">Dec</span> <span class="mi">2010</span> <span class="mi">15</span><span class="o">:</span><span class="mi">57</span><span class="o">:</span><span class="mi">30</span> <span class="nx">GMT</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Application</span> <span class="nx">under</span> <span class="nx">test</span><span class="o">:</span> <span class="nx">http</span><span class="o">:</span><span class="c1">//localhost/~dwagner/workspace/myApplication/source/index.html</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Platform</span><span class="o">:</span> <span class="nx">Linux</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">User</span> <span class="nx">agent</span><span class="o">:</span> <span class="nx">Mozilla</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">(</span><span class="nx">X11</span><span class="p">;</span> <span class="nx">U</span><span class="p">;</span> <span class="nx">Linux</span> <span class="nx">i686</span><span class="p">;</span> <span class="nx">en</span><span class="o">-</span><span class="nx">US</span><span class="p">;</span> <span class="nx">rv</span><span class="o">:</span><span class="mf">1.9</span><span class="p">.</span><span class="mf">2.12</span><span class="p">)</span> <span class="nx">Gecko</span><span class="o">/</span><span class="mi">20101026</span> <span class="nx">Firefox</span><span class="o">/</span><span class="mf">3.6</span><span class="p">.</span><span class="mi">12</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">PASS</span>  <span class="nx">myapplication</span><span class="p">.</span><span class="nx">simulation</span><span class="p">.</span><span class="nx">DemoSimulation</span><span class="o">:</span><span class="nx">testButtonPresent</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">PASS</span>  <span class="nx">myapplication</span><span class="p">.</span><span class="nx">simulation</span><span class="p">.</span><span class="nx">DemoSimulation</span><span class="o">:</span><span class="nx">testButtonClick</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Main</span> <span class="nx">runtime</span><span class="o">:</span> <span class="mi">11476</span><span class="nx">ms</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Finalize</span> <span class="nx">runtime</span><span class="o">:</span> <span class="mi">0</span><span class="nx">ms</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-multiple-browser-os-combinations">
+<span id="pages-development-simulator-platforms"></span><h2>Testing multiple browser/OS combinations<a class="headerlink" href="#testing-multiple-browser-os-combinations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general">
+<h3>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<p>Since the Simulator uses Selenium RC to start the browser and run tests, the relevant sections from the <a class="reference external" href="http://seleniumhq.org/docs/05_selenium_rc.html">Selenium documentation</a> apply. Due to the special nature of qooxdoo applications, however, some browsers require additional configuration steps before they can be tested.</p>
+</div>
+<div class="section" id="firefox-chrome">
+<h3>Firefox, Chrome<a class="headerlink" href="#firefox-chrome" title="Permalink to this headline">¶</a></h3>
+<p>Firefox and Chrome are generally well supported by Selenium, just make sure to use a Selenium version that isn't (much) older than the browser you intend to use for testing.</p>
+</div>
+<div class="section" id="internet-explorer-6-7-8-and-9">
+<h3>Internet Explorer 6, 7, 8 and 9<a class="headerlink" href="#internet-explorer-6-7-8-and-9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="starting-the-server">
+<h4>Starting the server<a class="headerlink" href="#starting-the-server" title="Permalink to this headline">¶</a></h4>
+<p>When testing with IE, the Selenium server <strong>must</strong> be started with the <em>-singleWindow</em> option so the AUT will be loaded in an iframe. This is deactivated by default so two separate windows are opened for Selenium and the AUT. IE restricts cross-window JavaScript object access, causing the tests to fail.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">java</span> <span class="o">-</span><span class="nx">jar</span> <span class="nx">selenium</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="nx">standalone</span><span class="p">.</span><span class="nx">jar</span> <span class="o">-</span><span class="nx">singleWindow</span> <span class="o">-</span><span class="nx">userExtension</span> <span class="p">[...]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="launching-the-browser">
+<h4>Launching the browser<a class="headerlink" href="#launching-the-browser" title="Permalink to this headline">¶</a></h4>
+<p>To launch IE, the <em>*iexploreproxy</em> launcher should be used. The <em>*iexplore</em> launcher starts the embedded version of IE which in some ways behaves differently from the full-blown browser.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;simulation-run&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;simulator.testBrowser&quot;</span> <span class="o">:</span> <span class="s2">&quot;*iexploreproxy&quot;</span><span class="p">,</span>
+    <span class="p">[...]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../application/inspector_selenium.html"
+             title="previous chapter">« Using the Inspector to write Selenium tests</a>
+          <span class="separator">|</span>
+          <a class="next" href="../application/featureconfigeditor.html"
+             title="next chapter">Feature Configuration Editor »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Simulator</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#feature-highlights">Feature Highlights</a></li>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li><a class="reference internal" href="#setting-up-the-test-environment">Setting up the test environment</a><ul>
+<li><a class="reference internal" href="#required-libraries">Required Libraries</a></li>
+<li><a class="reference internal" href="#generator-configuration">Generator Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#writing-test-cases">Writing Test Cases</a></li>
+<li><a class="reference internal" href="#locating-elements">Locating Elements</a></li>
+<li><a class="reference internal" href="#simulating-interaction">Simulating Interaction</a></li>
+<li><a class="reference internal" href="#test-development-tools">Test Development Tools</a><ul>
+<li><a class="reference internal" href="#selenium-ide">Selenium IDE</a></li>
+<li><a class="reference internal" href="#inspector">Inspector</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generating-the-simulator">Generating the Simulator</a></li>
+<li><a class="reference internal" href="#starting-the-selenium-server">Starting the Selenium server</a></li>
+<li><a class="reference internal" href="#running-the-tests">Running the Tests</a></li>
+<li><a class="reference internal" href="#testing-multiple-browser-os-combinations">Testing multiple browser/OS combinations</a><ul>
+<li><a class="reference internal" href="#general">General</a></li>
+<li><a class="reference internal" href="#firefox-chrome">Firefox, Chrome</a></li>
+<li><a class="reference internal" href="#internet-explorer-6-7-8-and-9">Internet Explorer 6, 7, 8 and 9</a><ul>
+<li><a class="reference internal" href="#starting-the-server">Starting the server</a></li>
+<li><a class="reference internal" href="#launching-the-browser">Launching the browser</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../application/featureconfigeditor.html"
+                        title="next chapter">Feature Configuration Editor</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../application/inspector_selenium.html"
+                        title="previous chapter">Using the Inspector to write Selenium tests</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/development/simulator.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

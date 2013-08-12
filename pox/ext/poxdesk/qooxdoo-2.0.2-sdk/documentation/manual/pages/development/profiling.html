@@ -1,0 +1,324 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Profiling Applications &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Development" href="../development.html" />
+    <link rel="next" title="Unit Testing" href="unit_testing.html" />
+    <link rel="prev" title="Memory Management" href="memory_management.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../development.html" accesskey="U">Development</a>
+     &raquo;
+  <a href="">Profiling Applications</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="profiling-applications">
+<span id="pages-profiling-profiling-applications"></span><h1>Profiling Applications<a class="headerlink" href="#profiling-applications" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo has built-in a cross-browser, pure JavaScript profiler. If the profiler is enabled, each call of a method defined by qooxdoo's class declaration can be measured. The profiler is able to compute both the total own time and the call count of any method.</p>
+<p>Since the profiler is implemented in pure JavaScript, it is totally cross-browser and works on any supported browser.</p>
+<div class="section" id="how-to-enable-the-profiler">
+<span id="pages-profiling-how-to-enable-the-profiler"></span><h2>How to enable the Profiler<a class="headerlink" href="#how-to-enable-the-profiler" title="Permalink to this headline">¶</a></h2>
+<p>Basically set the environment setting <tt class="docutils literal"><span class="pre">qx.aspects</span></tt> to <tt class="docutils literal"><span class="pre">true</span></tt> and be sure to include the class <a class="reference external" href="http://api.qooxdoo.org/#qx.dev.Profile">qx.dev.Profile</a>. The class should be included before other classes. The easiest way to achieve that is to extend the <tt class="docutils literal"><span class="pre">profiling</span></tt> helper job in a job that creates your application. For example, to enable profiling in the source version of your app, go to the <tt class="docutils literal"><span class="pre">&quot;jobs&quot;</span></tt> section of your config.json, and add</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;source-script&quot;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;profiling&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-use-the-profiler">
+<span id="pages-profiling-how-to-use-the-profiler"></span><h2>How to use the Profiler<a class="headerlink" href="#how-to-use-the-profiler" title="Permalink to this headline">¶</a></h2>
+<p>The profiler can be controlled either hard-wired in the application code, or interactively using a JavaScript shell like FireBug for Firefox or DebugBar for IE.</p>
+<p>Profiling a certain action:</p>
+<ul class="simple">
+<li>Open the application in your browser</li>
+<li>At the JavaScript console type <tt class="docutils literal"><span class="pre">qx.dev.Profile.stop()</span></tt> to clear the current profiling data gathered during startup</li>
+<li>Start profiling using <tt class="docutils literal"><span class="pre">qx.dev.Profile.start()</span></tt></li>
+<li>Perform the action you want to profile</li>
+<li>Stop profiling using <tt class="docutils literal"><span class="pre">qx.dev.Profile.stop()</span></tt></li>
+<li>Open the profiler output window: <tt class="docutils literal"><span class="pre">qx.dev.Profile.showResults(50)</span></tt>. The parameter specifies how many items to display. Default value is set to 100. The output will be sorted by the total own time of each method. Alternatively you can work with the raw profiling data returned by <tt class="docutils literal"><span class="pre">qx.dev.Profile.getProfileData()</span></tt>.</li>
+</ul>
+</div>
+<div class="section" id="limitations">
+<span id="pages-profiling-limitations"></span><h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<p>In order to interpret the results correctly it is important to know the limitations of this profiling approach. The most significant limitation is due to the fact that the profiler itself is written in JavaScript and runs in the same context as the application:</p>
+<ul class="simple">
+<li>The profiler adds some overhead to each function call. The profiler takes this overhead into account in the calculation of the own time but there can still be a small inaccuracy.</li>
+<li>The result of <tt class="docutils literal"><span class="pre">new</span> <span class="pre">Date()</span></tt>, which is used for timing, has a granularity of about 10ms on many patforms, so it is hard to measure especially small functions accurately.</li>
+<li>The application is slowed down because profiling is done by wrapping each function. Profiling should always be turned off in production code before deployment.</li>
+</ul>
+</div>
+<div class="section" id="summary">
+<span id="pages-profiling-summary"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>The output of the profiler can be of great value to find hot spots and time-consuming code. The timing data should be interpreted rather qualitatively than quantitatively, though, due to constraints of this approach.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The application is slowed down because profiling is done by wrapping each function. Profiling should always be turned off in production code before deployment.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="memory_management.html"
+             title="previous chapter">« Memory Management</a>
+          <span class="separator">|</span>
+          <a class="next" href="unit_testing.html"
+             title="next chapter">Unit Testing »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Profiling Applications</a><ul>
+<li><a class="reference internal" href="#how-to-enable-the-profiler">How to enable the Profiler</a></li>
+<li><a class="reference internal" href="#how-to-use-the-profiler">How to use the Profiler</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="unit_testing.html"
+                        title="next chapter">Unit Testing</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="memory_management.html"
+                        title="previous chapter">Memory Management</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/development/profiling.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

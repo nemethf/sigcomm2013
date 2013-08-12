@@ -1,0 +1,355 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Custom Themes &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Decorators" href="ui_decorators.html" />
+    <link rel="prev" title="Appearance" href="ui_appearance.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Custom Themes</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="custom-themes">
+<span id="pages-desktop-ui-custom-themes-custom-themes"></span><h1>Custom Themes<a class="headerlink" href="#custom-themes" title="Permalink to this headline">¶</a></h1>
+<p>There are certain circumstances when the built-in themes are no more sufficient for your application and your needs. You need to create a custom theme because you have either self-written widgets you wish to style or you like to change the theming of your application overall.</p>
+<p>Basically you have two choices to create a custom theme depending on your needs and the amount you want to change. The next two sections describe both briefly.</p>
+<div class="section" id="extending-themes">
+<span id="pages-desktop-ui-custom-themes-extending-themes"></span><h2>Extending Themes<a class="headerlink" href="#extending-themes" title="Permalink to this headline">¶</a></h2>
+<p>If you want to stick with an existing theme and only like to add or modify some appearances, change colors or fonts the best way to go is to extend a theme and to create an own meta theme which sets your extended theme.</p>
+<p>For example you like to add some appearances (of your own widgets) to the Modern theme you can simply extend the appearance theme of the Modern theme.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;myApplication.theme.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Appearance</span><span class="p">,</span>
+  <span class="nx">title</span> <span class="o">:</span> <span class="s2">&quot;my appearance theme&quot;</span><span class="p">,</span>
+
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;my-widget&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">alias</span> <span class="o">:</span> <span class="s2">&quot;atom&quot;</span><span class="p">,</span>
+
+      <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">width</span> <span class="o">:</span> <span class="mi">250</span><span class="p">,</span>
+          <span class="nx">decorator</span> <span class="o">:</span> <span class="s2">&quot;main&quot;</span>
+        <span class="p">};</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>To enable your own appearance theme you also have to extend the Meta theme and set your appearance theme.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;myApplication.theme.Theme&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">title</span> <span class="o">:</span> <span class="s2">&quot;my meta theme&quot;</span><span class="p">,</span>
+
+  <span class="nx">meta</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">color</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Color</span><span class="p">,</span>
+    <span class="nx">decoration</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Decoration</span><span class="p">,</span>
+    <span class="nx">font</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Font</span><span class="p">,</span>
+    <span class="nx">icon</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">icon</span><span class="p">.</span><span class="nx">Tango</span><span class="p">,</span>
+    <span class="nx">appearance</span> <span class="o">:</span> <span class="nx">myApplication</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">Appearance</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>At last you have to tell the generator to actually use your meta theme. Therefore you have to edit your <tt class="docutils literal"><span class="pre">config.json</span></tt> file and add/edit the key <tt class="docutils literal"><span class="pre">QXTHEME</span></tt> in the <tt class="docutils literal"><span class="pre">let</span></tt> block.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;APPLICATION&quot;</span>  <span class="o">:</span> <span class="s2">&quot;myApplication&quot;</span><span class="p">,</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;QXTHEME&quot;</span>      <span class="o">:</span> <span class="s2">&quot;myApplication.theme.Theme&quot;</span>
+    <span class="p">...</span>
+  <span class="p">},</span>
+</pre></div>
+</div>
+<p>After editing your <tt class="docutils literal"><span class="pre">config.json</span></tt> the very last step is to generate your application sources and you're done. Now you can adjust and extend your appearance theme to suit your needs.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These steps are also applicable for the other themes.</p>
+</div>
+</div>
+<div class="section" id="define-custom-themes">
+<span id="pages-desktop-ui-custom-themes-define-custom-themes"></span><h2>Define Custom Themes<a class="headerlink" href="#define-custom-themes" title="Permalink to this headline">¶</a></h2>
+<p>A custom theme is an own meta theme and the corresponding themes build from scratch. The main part of this work is mainly the appearance theme and the content of the other themes is mostly defined by the appearance theme, since this theme is the one who uses fonts, icons, decorators and colors.</p>
+<p>Creating the meta theme is a no-brainer and when creating the several themes you only have to consider some rules:</p>
+<ul class="simple">
+<li>every theme has its own root key which also defines its type. <tt class="docutils literal"><span class="pre">colors</span></tt> for a color theme, <tt class="docutils literal"><span class="pre">appearances</span></tt> for an appearance theme and so on</li>
+<li>every widget has to be equipped with an appearance, otherwise you'll get a warning at application startup</li>
+<li>every used color, decorator or font has to be defined, otherwise you'll get an error at application startup. So be sure to define all used colors, fonts and decorators and to test your application always in the source version to get the error messages</li>
+<li>be sure to include every image you use in your appearance theme by defining corresponding <tt class="docutils literal"><span class="pre">#asset</span></tt> directives.</li>
+<li>Be sure to check all build in widgets with all states. A Widget may have a different looks and feel when disabled or invalid.</li>
+<li>Its a good idea to copy a existing appearance theme and edit all the stuff you need. That way, you can be sure that you have all the appearance keys included the framework needs.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_appearance.html"
+             title="previous chapter">« Appearance</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_decorators.html"
+             title="next chapter">Decorators »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Custom Themes</a><ul>
+<li><a class="reference internal" href="#extending-themes">Extending Themes</a></li>
+<li><a class="reference internal" href="#define-custom-themes">Define Custom Themes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_decorators.html"
+                        title="next chapter">Decorators</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_appearance.html"
+                        title="previous chapter">Appearance</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_custom_themes.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

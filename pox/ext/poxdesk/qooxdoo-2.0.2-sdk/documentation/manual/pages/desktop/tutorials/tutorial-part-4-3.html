@@ -1,0 +1,447 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial Part 4.3: Translation &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../../desktop.html" />
+    <link rel="next" title="Tutorial Part 4.4: Unit Testing" href="tutorial-part-4-4.html" />
+    <link rel="prev" title="Tutorial Part 4.2.1: Basic Theming" href="tutorial-part-4-2-1.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Tutorial Part 4.3: Translation</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-part-4-3-translation">
+<span id="pages-desktop-tutorials-tutorial-part-4-3-tutorial-part-4-3-translation"></span><h1>Tutorial Part 4.3: Translation<a class="headerlink" href="#tutorial-part-4-3-translation" title="Permalink to this headline">¶</a></h1>
+<p>We've already covered quite a few of qooxdoo's features to get to this point. In this tutorial, we want to <a class="reference internal" href="../../development/internationalization.html"><em>internationalize</em></a> the twitter client. Additionally, we want to add a preferences dialog allowing users to change the language during runtime. Adding a window containing a form should be familiar to you if you've read the <a class="reference internal" href="tutorial-part-4-1.html"><em>form handling tutorial</em></a></p>
+<div class="section" id="the-plan">
+<span id="pages-desktop-tutorials-tutorial-part-4-3-the-plan"></span><h2>The plan<a class="headerlink" href="#the-plan" title="Permalink to this headline">¶</a></h2>
+<p>The first step is to make the application aware of localization. We need to identify all the strings which need to change on a language change. After that, we need to create translations for our initial string set. After that is done, we can add a window containing a radio group with all available language options.</p>
+</div>
+<div class="section" id="pages-desktop-tutorials-tutorial-part-4-3-identifying-string-to-translation">
+<span id="identifying-strings-to-translate"></span><h2>Identifying strings to translate<a class="headerlink" href="#pages-desktop-tutorials-tutorial-part-4-3-identifying-string-to-translation" title="Permalink to this headline">¶</a></h2>
+<p>Now we can benefit from the good design of our application. We put all the view code in our main window which means that's the spot we need to look for strings. Here we can identify the following strings:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">reloadButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Reload&quot;</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="nx">reloadButton</span><span class="p">.</span><span class="nx">setToolTipText</span><span class="p">(</span><span class="s2">&quot;Reload the tweets.&quot;</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">__textarea</span><span class="p">.</span><span class="nx">setPlaceholder</span><span class="p">(</span><span class="s2">&quot;Enter your message here...&quot;</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="kd">var</span> <span class="nx">postButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Post&quot;</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="nx">postButton</span><span class="p">.</span><span class="nx">setToolTipText</span><span class="p">(</span><span class="s2">&quot;Post this message on twitter.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>qooxdoo offers a handy way to tell both the JavaScript code and the generator which strings need to be translated. Wrapping the strings with <tt class="docutils literal"><span class="pre">this.tr()</span></tt> will mark them as translatable strings. That should be an easy task:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">reloadButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Reload&quot;</span><span class="p">));</span>
+<span class="c1">// ...</span>
+<span class="nx">reloadButton</span><span class="p">.</span><span class="nx">setToolTipText</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Reload the tweets.&quot;</span><span class="p">));</span>
+<span class="c1">// ...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">__textarea</span><span class="p">.</span><span class="nx">setPlaceholder</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Enter your message here...&quot;</span><span class="p">);)</span>
+<span class="c1">// ...</span>
+<span class="kd">var</span> <span class="nx">postButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Post&quot;</span><span class="p">));</span>
+<span class="c1">// ...</span>
+<span class="nx">postButton</span><span class="p">.</span><span class="nx">setToolTipText</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Post this message on twitter.&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-the-translation-files">
+<span id="pages-desktop-tutorials-tutorial-part-4-3-generating-the-translation-files"></span><h2>Generating the translation files<a class="headerlink" href="#generating-the-translation-files" title="Permalink to this headline">¶</a></h2>
+<p>For the next step, we need to tell the generator what languages we want to support. But why does the generator or the tool chain in general care about that? The tool chain will help us by generating the files necessary for the translation. So we need to edit the config.json file located at the root folder of our application, which is the configuration file for the tool chain. As you can see, this is a plain JSON file which holds some predefined configuration data for the tool chain. You will find a <tt class="docutils literal"><span class="pre">let</span></tt> section holding a <tt class="docutils literal"><span class="pre">LOCALES</span></tt> key. This key has an array as value holding exactly one locale named <tt class="docutils literal"><span class="pre">en</span></tt>, right? In this example, I want to add a translation set for German so I need to add <tt class="docutils literal"><span class="pre">de</span></tt> to this array.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;LOCALES&quot;</span>      <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;en&quot;</span> <span class="p">,</span> <span class="s2">&quot;de&quot;</span> <span class="p">],</span>
+</pre></div>
+</div>
+<p>Now we are set up to generate our translation files. For that, just invoke the generator with its translation job.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">translation</span>
+</pre></div>
+</div>
+<p>This will go through all the steps necessary to generate the translation files. But what are translation files anyway? Take a look at the folder <tt class="docutils literal"><span class="pre">source/translation</span></tt>. There you'll find the created files which as you'll see end with <tt class="docutils literal"><span class="pre">.po</span></tt>. You may be familiar with that file format from <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a> which is quite popular.</p>
+<p>You should see two files, one for the default language, English (<tt class="docutils literal"><span class="pre">en.po</span></tt>), and one for the language you added, in my case German (<tt class="docutils literal"><span class="pre">de.po</span></tt>). For now, we just need the file for our alternative language because English is already used in the application so this should work right out of the box. Opening the second file, you'll notice some details about it at the top of the document. The important part starts with the following text.</p>
+<div class="highlight-javascript"><pre>#: twitter/MainWindow.js:30
+msgid "Reload"
+msgstr ""</pre>
+</div>
+<p>The first line is a comment, which is a hint containing the class file and line number where the string is used. The second line holds the identifier we used in our application. The third line currently holds an empty string. This is the place where the translation should go for that specific string.</p>
+<p>You may have already realized that the rest of the file is a list of blocks similar to this one. Now you should translate all strings and add them in the right spots.</p>
+</div>
+<div class="section" id="give-it-a-try">
+<span id="pages-desktop-tutorials-tutorial-part-4-3-give-it-a-try"></span><h2>Give it a try<a class="headerlink" href="#give-it-a-try" title="Permalink to this headline">¶</a></h2>
+<p>After adding these translations, we should rebuild the application using <tt class="docutils literal"><span class="pre">./generate.py</span></tt> and load it in any browser. If your browser uses the locale you added by default, you should already see the application in the new language. If not, just tell qooxdoo's locale manager to switch the locale using e.g. the Firebug console.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">locale</span><span class="p">.</span><span class="nx">Manager</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">setLocale</span><span class="p">(</span><span class="s2">&quot;de&quot;</span><span class="p">);</span> <span class="c1">// or the locale you added</span>
+</pre></div>
+</div>
+<p>If you added a language like German in which most words are longer than in English, you may recognize that we made a mistake in our main window. <tt class="docutils literal"><span class="pre">postButton.setWidth(60);</span></tt> may cut off the text in the button because we set the width explicitly. Changing that to <tt class="docutils literal"><span class="pre">postButton.setMinWidth(60);</span></tt> will keep the layout flexible for different content sizes.</p>
+</div>
+<div class="section" id="adding-the-preferences-window">
+<span id="pages-desktop-tutorials-tutorial-part-4-3-adding-the-preferences-window"></span><h2>Adding the preferences window<a class="headerlink" href="#adding-the-preferences-window" title="Permalink to this headline">¶</a></h2>
+<p>As you should already be familiar with creating new classes and subclassing a window from the <a class="reference internal" href="tutorial-part-4-1.html"><em>form handling tutorial</em></a>, we won't go into any detail about that again. Just add a new class, subclass the window and override the constructor.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;twitter.SettingsWindow&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">Window</span><span class="p">,</span>
+
+  <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Preferences&quot;</span><span class="p">));</span>
+    <span class="c1">// ... more to come</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>As you can see here, we added another string: The window's caption, which should be translated as well. Keep in mind that you have to use <tt class="docutils literal"><span class="pre">this.tr()</span></tt> on every string you add and want to have in your translation file.</p>
+<p>For the next step, we need to fill the window with controls. As in the form example, we use a basic layout, a form and some form elements. Add the following line to your constructor.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">setLayout</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">layout</span><span class="p">.</span><span class="nx">Basic</span><span class="p">());</span>
+
+<span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Form</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">radioGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">RadioButtonGroup</span><span class="p">();</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">radioGroup</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Language&quot;</span><span class="p">));</span>
+
+<span class="c1">// TODO: create a radio button for every available locale</span>
+
+<span class="kd">var</span> <span class="nx">renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">Single</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">renderer</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This code should be familiar to you except for the <tt class="docutils literal"><span class="pre">RadioButtonGroup</span></tt>, which is a container for radio buttons. It also makes sure that only one of the buttons is selected at any time. So we don't need to take care of that ourselves. Again, we use a translated string as the label for the radio buttons.</p>
+<p>The next step is to access all available locales and the currently set locale. For that, qooxdoo offers a locale manager, as you'll see in the following code part.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">localeManager</span> <span class="o">=</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">locale</span><span class="p">.</span><span class="nx">Manager</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">locales</span> <span class="o">=</span> <span class="nx">localeManager</span><span class="p">.</span><span class="nx">getAvailableLocales</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">currentLocale</span> <span class="o">=</span> <span class="nx">localeManager</span><span class="p">.</span><span class="nx">getLocale</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>It is pretty easy to get this kind of information. You surely know how to continue from here, but before that, I'll show you a little trick. We want to keep the name of the selectable language in the translation file itself. That's a good place to keep that string because otherwise, we would need a mapping from the locale (e.g. en) to its human readable name (e.g. English). Instead we'll, add a special translation key to our application.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// mark this for translation (should hold the langauge name)</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">marktr</span><span class="p">(</span><span class="s2">&quot;$$languagename&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We will use this key as the label for our radio buttons and then go on, as you would have expected, with a loop for all available locales.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// create a radio button for every available locale</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">locales</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">locale</span> <span class="o">=</span> <span class="nx">locales</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">languageName</span> <span class="o">=</span> <span class="nx">localeManager</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s2">&quot;$$languagename&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="nx">locale</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">localeButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">RadioButton</span><span class="p">(</span><span class="nx">languageName</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+  <span class="c1">// save the locale as model</span>
+  <span class="nx">localeButton</span><span class="p">.</span><span class="nx">setModel</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+  <span class="nx">radioGroup</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">localeButton</span><span class="p">);</span>
+
+  <span class="c1">// preselect the current locale</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">currentLocale</span> <span class="o">==</span> <span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">localeButton</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This code contains the rest of the trick. But let's take a detailed look at what we're doing here. The first line of the loop just stores the current locale we want to process. Keep in mind that this is the exact value we need to change the locale later. The second line tells the locale manager to translate the special id we set for the language name using the current locale. This will return a <tt class="docutils literal"><span class="pre">LocalizedString</span></tt> which is important to know because these strings update their content on locale switch. But that's not what we want because otherwise, every language will have the same name. Thats why we use the <tt class="docutils literal"><span class="pre">toString()</span></tt> method to get the plain string of the current translated value as the label for the new radio button. With that, we exclude the labels for the radio buttons from being translated. The next two tasks are pretty easy: 1) we store the locale as the model of the radio button and 2) we add the radio button to the radio group. Preselecting the currently set locale is really easy as well.</p>
+<p>The last thing missing in the window is changing the locale if the user selects a new radio button. For that, we stored the locales in the model property. We can now use the <tt class="docutils literal"><span class="pre">modelSelection</span></tt> of the radio button group to react on changes.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// get the model selection and listen to its change</span>
+<span class="nx">radioGroup</span><span class="p">.</span><span class="nx">getModelSelection</span><span class="p">().</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// selection is the first item of the data array</span>
+  <span class="kd">var</span> <span class="nx">newLocale</span> <span class="o">=</span> <span class="nx">radioGroup</span><span class="p">.</span><span class="nx">getModelSelection</span><span class="p">().</span><span class="nx">getItem</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="nx">localeManager</span><span class="p">.</span><span class="nx">setLocale</span><span class="p">(</span><span class="nx">newLocale</span><span class="p">);</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>First, we get the model selection array, which is a data array and has a change event for every change in the array. The new locale is always the first element of the selection array itself, as you can see in the second line. You might have noticed that we need to access the item with a special method instead of the bracket notation normally used with arrays. That's a special method you have to use for data arrays. The third line simply hands the new locale to the manager, which will take care of all the necessary changes.</p>
+</div>
+<div class="section" id="accessing-the-preferences">
+<span id="pages-desktop-tutorials-tutorial-part-4-3-accessing-the-preferences"></span><h2>Accessing the preferences<a class="headerlink" href="#accessing-the-preferences" title="Permalink to this headline">¶</a></h2>
+<p>With that, we are done with the preferences window, but we can't access it yet. We should add a button to the main window's toolbar. Add this code right after where you added the reload button.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// spacer</span>
+<span class="nx">toolbar</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+
+<span class="c1">// settings button</span>
+<span class="kd">var</span> <span class="nx">settingsWindow</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">settingsButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Preferences&quot;</span><span class="p">));</span>
+<span class="nx">toolbar</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">settingsButton</span><span class="p">);</span>
+<span class="nx">settingsButton</span><span class="p">.</span><span class="nx">setToolTipText</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Change the applications settings.&quot;</span><span class="p">));</span>
+<span class="nx">settingsButton</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">settingsWindow</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">settingsWindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">twitter</span><span class="p">.</span><span class="nx">SettingsWindow</span><span class="p">();</span>
+    <span class="nx">settingsWindow</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span><span class="mi">30</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">settingsWindow</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The first thing we do is to add a spacer to attach the preferences button to the right side of the toolbar. This should be the only new thing you haven't seen before, so we won't go into details here.</p>
+</div>
+<div class="section" id="final-steps">
+<span id="pages-desktop-tutorials-tutorial-part-4-3-final-steps"></span><h2>Final steps<a class="headerlink" href="#final-steps" title="Permalink to this headline">¶</a></h2>
+<p>Now we have created some new code containing new strings to translate. Obviously, we need to add translations for these as well. Just run the generator again and let it add the new strings to your <tt class="docutils literal"><span class="pre">po</span></tt> files.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">translation</span>
+</pre></div>
+</div>
+<p>Now you can edit the <tt class="docutils literal"><span class="pre">po</span></tt> files again and add the new translations. Don't forget to add the translation for the special <tt class="docutils literal"><span class="pre">$$languagename</span></tt> key in the english <tt class="docutils literal"><span class="pre">po</span></tt> file as well.</p>
+<p>After generating the source version of the application again you should be set up for testing and all should run as expected.</p>
+<p>I hope you enjoyed this little exercise and gained an idea how easy it is to internationalize an application using qooxdoo's help. As always, you can find the entire <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step4.3">code on GitHub</a>. With that said, I want to encourage you to send me pull requests containing alternative translations we could add. It would be interesting to have the twitter app in many different languages. Really looking forward to your feedback and pull requests!</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="tutorial-part-4-2-1.html"
+             title="previous chapter">« Tutorial Part 4.2.1: Basic Theming</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial-part-4-4.html"
+             title="next chapter">Tutorial Part 4.4: Unit Testing »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial Part 4.3: Translation</a><ul>
+<li><a class="reference internal" href="#the-plan">The plan</a></li>
+<li><a class="reference internal" href="#pages-desktop-tutorials-tutorial-part-4-3-identifying-string-to-translation">Identifying strings to translate</a></li>
+<li><a class="reference internal" href="#generating-the-translation-files">Generating the translation files</a></li>
+<li><a class="reference internal" href="#give-it-a-try">Give it a try</a></li>
+<li><a class="reference internal" href="#adding-the-preferences-window">Adding the preferences window</a></li>
+<li><a class="reference internal" href="#accessing-the-preferences">Accessing the preferences</a></li>
+<li><a class="reference internal" href="#final-steps">Final steps</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial-part-4-4.html"
+                        title="next chapter">Tutorial Part 4.4: Unit Testing</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="tutorial-part-4-2-1.html"
+                        title="previous chapter">Tutorial Part 4.2.1: Basic Theming</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/tutorials/tutorial-part-4-3.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

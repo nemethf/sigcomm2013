@@ -1,0 +1,377 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Memory Management &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Development" href="../development.html" />
+    <link rel="next" title="Profiling Applications" href="profiling.html" />
+    <link rel="prev" title="Debugging Applications" href="debugging.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../development.html" accesskey="U">Development</a>
+     &raquo;
+  <a href="">Memory Management</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="memory-management">
+<span id="pages-memory-management-memory-management"></span><h1>Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="pages-memory-management-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Generally, qooxdoo's runtime will take care of most of the issues around object disposal, so you don't have to be too anxious if you get those 'missing destruct declaration' messages from a verbose disposer run.</p>
+<p>To destruct existing objects at the end of your application is an important feature in the ever growing area of web applications. Widgets and models are normally handling a few storage fields on each instance. These fields need the dispose process to work without memory leaks.</p>
+<p>Normally, JavaScript automatically cleans up. There is a built-in garbage collector in all engines. But these engines are more or less buggy. One problematic issue is that browsers differentiate between DOM and JavaScript and use different garbage collection systems for each (This does not affect all browsers, though). Problems arise when objects create links between the two systems. Another issue are circular references which could not be easily resolved, especially by engines which rely on a reference counter.</p>
+<p>To help the buggy engines to collect the memory correctly it is helpful to dereference complex objects from each other, e.g. instances from maps, arrays and other instances. You don't need to delete primitive types like strings, booleans and numbers.</p>
+<p>qooxdoo has solved this issue from the beginning using the included &quot;dispose&quot; methods which could be overridden and extended by each class. qooxdoo 0.7 introduced <a class="reference external" href="http://attic.qooxdoo.org/documentation/0.7/class_declaration">a new class declaration</a>. This class declaration supports real &quot;destructors&quot; as known from other languages. These destructors are part of the class declaration. The new style makes it easier to write custom destructor/disposer methods because there are many new helper methods and the whole process has been streamlined to a great extend.</p>
+</div>
+<div class="section" id="disposing-an-application">
+<span id="pages-memory-management-disposing-an-application"></span><h2>Disposing an application<a class="headerlink" href="#disposing-an-application" title="Permalink to this headline">¶</a></h2>
+<p>You can dispose any qooxdoo based application by simply calling <tt class="docutils literal"><span class="pre">qx.core.ObjectRegistry.shutdown()</span></tt>. The simplest possibility is to use the command line included in Firebug. Another possibility is to add a HTML link or a button to your application which executes this command.</p>
+<p>You can look at the dispose behaviour of your app if you set the disposer into a verbose mode and then invoke it deliberately while your app is running. This will usually render your app unusable, but you will get all those messages hinting you at object properties that might need to be looked after. How-To instructions can be found <a class="reference internal" href="#pages-memory-management-how-to-test-the-destructor"><em>here</em></a>. But mind that the disposer output contains only hints, that still need human interpretation.</p>
+</div>
+<div class="section" id="example-destructor">
+<span id="pages-memory-management-example-destructor"></span><h2>Example destructor<a class="headerlink" href="#example-destructor" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">destruct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_data</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_moreData</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_disposeObjects</span><span class="p">(</span><span class="s2">&quot;_buttonOk&quot;</span><span class="p">,</span> <span class="s2">&quot;_buttonCancel&quot;</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_disposeArray</span><span class="p">(</span><span class="s2">&quot;_children&quot;</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_disposeMap</span><span class="p">(</span><span class="s2">&quot;_registry&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">_disposeObjects</span></tt>: Supports multiple arguments. Dispose the objects (qooxdoo objects) under each key and finally delete the key from the instance.</li>
+<li><tt class="docutils literal"><span class="pre">_disposeArray</span></tt>: Disposes the array under the given key, but disposes all entries in this array first. It must contain instances of qx.core.Object only.</li>
+<li><tt class="docutils literal"><span class="pre">_disposeMap</span></tt>: Disposes the map under the given key, but disposes all entries in this map first. It must contain instances of qx.core.Object only.</li>
+</ul>
+</div>
+<div class="section" id="how-to-test-the-destructor">
+<span id="pages-memory-management-how-to-test-the-destructor"></span><h2>How to test the destructor<a class="headerlink" href="#how-to-test-the-destructor" title="Permalink to this headline">¶</a></h2>
+<p>The destructor code allows you an in-depth analysis of the destructors and finds fields which may leak etc. The DOM tree gets also queried for back-references to qooxdoo instances. These checks are not enabled by default because of the time they need on each unload of a typical qooxdoo based application.</p>
+<p>To enable these checks you need to select a variant and configure a setting.</p>
+<p>The environment setting <tt class="docutils literal"><span class="pre">qx.debug</span></tt> must be <tt class="docutils literal"><span class="pre">true</span></tt>. The setting <tt class="docutils literal"><span class="pre">qx.debug.dispose.level</span></tt> must be at least at <tt class="docutils literal"><span class="pre">1</span></tt> to show not disposed qooxdoo objects if they need to be deleted. A setting of <tt class="docutils literal"><span class="pre">2</span></tt> will additionally show non qooxdoo objects. Higher values mean more output. Don't be alarmed if some qooxdoo internal showing up. Usually there is no need to delete all references. <a class="reference external" href="http://bugzilla.qooxdoo.org/show_bug.cgi?id=3411#c2">Garbage collection</a> can do much for you here. For a general analysis <tt class="docutils literal"><span class="pre">1</span></tt> should be enough, a value of <tt class="docutils literal"><span class="pre">2</span></tt> should be used to be sure you did not miss anything. You can use the following code to adapt your <tt class="docutils literal"><span class="pre">config.json</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;jobs&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="c1">// existing jobs ...</span>
+    <span class="s2">&quot;source-disposerDebug&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;desc&quot;</span> <span class="o">:</span> <span class="s2">&quot;source version with &#39;qx.debug.dispose.level&#39; for destruct support&quot;</span><span class="p">,</span>
+
+      <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;source&quot;</span> <span class="p">],</span>
+
+      <span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;qx.debug.dispose.level&quot;</span> <span class="o">:</span> <span class="s2">&quot;2&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This snippet is also available at the <a class="reference external" href="http://qooxdoo.org/docs/general/snippets#support_for_finding_potential_memory_leaks">Support for finding potential memory leaks</a> .</p>
+<p>Log output from these settings could look something like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="mi">35443</span> <span class="nx">DEBUG</span><span class="o">:</span> <span class="nx">testgui</span><span class="p">.</span><span class="nx">Report</span><span class="p">[</span><span class="mi">1004</span><span class="p">]</span><span class="o">:</span> <span class="nx">Disposing</span><span class="o">:</span> <span class="p">[</span><span class="nx">object</span> <span class="nx">testgui</span><span class="p">.</span><span class="nx">Report</span><span class="p">]</span><span class="nx">FireBug</span><span class="p">.</span><span class="nx">js</span> <span class="p">(</span><span class="nx">line</span> <span class="mi">75</span><span class="p">)</span>
+<span class="nx">Missing</span> <span class="nx">destruct</span> <span class="nx">definition</span> <span class="k">for</span> <span class="s1">&#39;_scroller&#39;</span> <span class="k">in</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">pane</span><span class="p">.</span><span class="nx">FocusIndicator</span><span class="p">[</span><span class="mi">1111</span><span class="p">]</span><span class="o">:</span> <span class="p">[</span><span class="nx">object</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">pane</span><span class="p">.</span><span class="nx">Scroller</span><span class="p">]</span><span class="nx">Log</span><span class="p">.</span><span class="nx">js</span> <span class="p">(</span><span class="nx">line</span> <span class="mi">557</span><span class="p">)</span>
+<span class="nx">Missing</span> <span class="nx">destruct</span> <span class="nx">definition</span> <span class="k">for</span> <span class="s1">&#39;_lastMouseDownCell&#39;</span> <span class="k">in</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">pane</span><span class="p">.</span><span class="nx">Scroller</span><span class="p">[</span><span class="mi">1083</span><span class="p">]</span><span class="o">:</span> <span class="p">[</span><span class="nx">object</span> <span class="nb">Object</span><span class="p">]</span><span class="nx">Log</span><span class="p">.</span><span class="nx">js</span> <span class="p">(</span><span class="nx">line</span> <span class="mi">557</span><span class="p">)</span>
+<span class="mi">036394</span> <span class="nx">DEBUG</span><span class="o">:</span> <span class="nx">testgui</span><span class="p">.</span><span class="nx">Form</span><span class="p">[</span><span class="mi">3306</span><span class="p">]</span><span class="o">:</span> <span class="nx">Disposing</span><span class="o">:</span> <span class="p">[</span><span class="nx">object</span> <span class="nx">testgui</span><span class="p">.</span><span class="nx">Form</span><span class="p">]</span><span class="nx">FireBug</span><span class="p">.</span><span class="nx">js</span> <span class="p">(</span><span class="nx">line</span> <span class="mi">75</span><span class="p">)</span>
+<span class="nx">Missing</span> <span class="nx">destruct</span> <span class="nx">definition</span> <span class="k">for</span> <span class="s1">&#39;_dateFormat&#39;</span> <span class="k">in</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">component</span><span class="p">.</span><span class="nx">DateChooserButton</span><span class="p">[</span><span class="mi">3579</span><span class="p">]</span><span class="o">:</span> <span class="p">[</span><span class="nx">object</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">DateFormat</span><span class="p">]</span><span class="nx">Log</span><span class="p">.</span><span class="nx">js</span> <span class="p">(</span><span class="nx">line</span> <span class="mi">557</span><span class="p">)</span>
+<span class="nx">Missing</span> <span class="nx">destruct</span> <span class="nx">definition</span> <span class="k">for</span> <span class="s1">&#39;_dateFormat&#39;</span> <span class="k">in</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">component</span><span class="p">.</span><span class="nx">DateChooserButton</span><span class="p">[</span><span class="mi">3666</span><span class="p">]</span><span class="o">:</span> <span class="p">[</span><span class="nx">object</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">DateFormat</span><span class="p">]</span><span class="nx">Log</span><span class="p">.</span><span class="nx">js</span> <span class="p">(</span><span class="nx">line</span> <span class="mi">557</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The nice thing here is that the log messages already indicate which dispose method to use: Every <em>&quot;Missing destruct...&quot;</em> line contains a hint to the type of member that is not being disposed properly, in the <em>&quot;[object ...]&quot;</em> part of the line. As a rule of thumb</p>
+<ul class="simple">
+<li>native Javascript types (Number, String, Object, ...) usualy don't need to be disposed.</li>
+<li>for qooxdoo objects (e.g. qx.util.format.DateFormat, testgui.Report, ...) use <tt class="docutils literal"><span class="pre">_disposeObjects</span></tt></li>
+<li>for arrays or maps of qooxdoo objects use <tt class="docutils literal"><span class="pre">_disposeArray</span></tt> or <tt class="docutils literal"><span class="pre">_disposeMap</span></tt>.</li>
+<li>be sure to cut all references to the DOM because garbage collection can not dispose object still connected to the DOM. This is also true for event listeners for example.</li>
+</ul>
+</div>
+<div class="section" id="finding-memory-leaks">
+<span id="pages-memory-management-finding-memory-leaks"></span><h2>Finding memory leaks<a class="headerlink" href="#finding-memory-leaks" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo contains a built-in dispose profiling feature that finds undisposed objects. This is useful mainly for applications that create and destroy objects as needed during their lifetime (instead of creating them once and re-using them). It cannot be used to find undisposed objects left over after the application was shut down.</p>
+<p>Dispose profiling works by disabling a feature in qooxdoo's Object Registry where the hash codes used to identify objects are reused. That way, it is possible to iterate over all objects created between two specified points in the application's lifecycle and check if they're disposed. Since hash reusing is a performance feature, dispose profiling should only be activated for the development version of an application.
+It is activated by enabling the <strong>qx.debug.dispose</strong> environment setting for a compile job, e.g. <cite>source-script</cite>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;source-script&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;qx.debug.dispose&quot;</span> <span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After building the application, the dispose debugging workflow is as follows:</p>
+<ul class="simple">
+<li>Call <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.dev.Debug~startDisposeProfiling">qx.dev.Debug.startDisposeProfiling</a> before the code you wish to debug is executed. This effectively sets a marker saying &quot;ignore any objects created before this point in time&quot;.</li>
+<li>Execute the code to be debugged, e.g. create a view component, then destroy it.</li>
+<li>Call <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.dev.Debug~stopDisposeProfiling">qx.dev.Debug.stopDisposeProfiling</a>. It will return a list of maps containing references to the undisposed objects as well as stack traces taken at the time the objects were registered, which makes it easy to find where in the code they were instantiated. Go through the list and add <tt class="docutils literal"><span class="pre">destroy</span></tt> and/or <tt class="docutils literal"><span class="pre">dispose</span></tt> calls to the application as needed.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="debugging.html"
+             title="previous chapter">« Debugging Applications</a>
+          <span class="separator">|</span>
+          <a class="next" href="profiling.html"
+             title="next chapter">Profiling Applications »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Memory Management</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#disposing-an-application">Disposing an application</a></li>
+<li><a class="reference internal" href="#example-destructor">Example destructor</a></li>
+<li><a class="reference internal" href="#how-to-test-the-destructor">How to test the destructor</a></li>
+<li><a class="reference internal" href="#finding-memory-leaks">Finding memory leaks</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="profiling.html"
+                        title="next chapter">Profiling Applications</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="debugging.html"
+                        title="previous chapter">Debugging Applications</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/development/memory_management.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

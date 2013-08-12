@@ -1,0 +1,425 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Core &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../index.html" />
+    <link rel="up" title="Table of Contents" href="../toc.html" />
+    <link rel="next" title="Introduction to Object Orientation" href="core/oo_introduction.html" />
+    <link rel="prev" title="Getting Started with qooxdoo qx.Server" href="server/getting_started.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../index.html">Manual (v2.0.2)</a> &raquo;
+  <a href="">Core</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="core">
+<h1>Core<a class="headerlink" href="#core" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo Core is not a component on its own, but encompasses central features of the qooxdoo class library. The elements described here are available in all qooxdoo components, be it Desktop, Mobile, Website or Server. Among these features are a dedicated class system with custom class properties, data binding and a runtime environment.</p>
+<p>We recommend that you at least make your way through the chapters <em>Introduction to Object Orientation</em>, <em>Features of Object Orientation</em> and <em>Classes</em> from the <em>Object Orientation</em> section, which provide the foundation for working with qooxdoo's class system. The other chapters can be read when the need arises, and as reference material for the other components' documentation.</p>
+<div class="section" id="object-orientation">
+<h2>Object Orientation<a class="headerlink" href="#object-orientation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="core/oo_introduction.html">Introduction to Object Orientation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_introduction.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_introduction.html#interfaces">Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_introduction.html#mixins">Mixins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_introduction.html#inheritance">Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_introduction.html#qooxdoo-oo-standalone">qooxdoo OO standalone</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/oo_feature_summary.html">Features of Object Orientation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#class-definition">Class definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#inheritance">Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#constructor">Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#static-members">Static members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#instance-members">Instance Members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#accessing-static-members">Accessing Static Members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#calling-the-superclass-constructor">Calling the Superclass Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#calling-the-overridden-superclass-method">Calling the Overridden Superclass Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#destructor">Destructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#interfaces">Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#mixins">Mixins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#attaching-mixins-to-a-class">Attaching mixins to a class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#attaching-mixins-to-an-already-defined-class">Attaching mixins to an already defined class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#access">Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#static-classes">Static classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#abstract-classes">Abstract classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#singletons">Singletons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#immediate-access-to-previously-defined-members">Immediate access to previously defined members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#browser-specific-methods">Browser specific methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/oo_feature_summary.html#events">Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/classes.html">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/classes.html#declaration">Declaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/classes.html#inheritance">Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/classes.html#usage-of-interfaces-and-mixins">Usage of Interfaces and Mixins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/classes.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/interfaces.html">Interfaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/interfaces.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/interfaces.html#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/interfaces.html#validation">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/interfaces.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/mixins.html">Mixins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/mixins.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/mixins.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/mixins.html#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="core/understanding_properties.html">Introduction to Properties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/understanding_properties.html#ordinary-property-handling">Ordinary Property Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/understanding_properties.html#qooxdoo-property-handling">qooxdoo Property Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/understanding_properties.html#available-methods">Available Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/understanding_properties.html#property-groups">Property Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/defining_properties.html">Properties in more detail</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#declaration">Declaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#handling-changes-of-property-values">Handling changes of property values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#init-values">Init values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#checking-incoming-values">Checking incoming values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#transforming-incoming-values">Transforming incoming values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#validation-of-incoming-values">Validation of incoming values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#enabling-theme-support">Enabling theme support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#working-with-inheritance">Working with inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#internal-methods">Internal methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#defining-property-groups">Defining property groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/defining_properties.html#when-to-use-properties">When to use properties?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/property_behavior.html">Initialization Behavior</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/property_behavior.html#the-problem">The Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_behavior.html#why-not-just-change-this-behaviour">Why not just change this behaviour?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_behavior.html#when-can-it-be-changed">When can it be changed?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/property_features.html">Property features summarized</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/property_features.html#value-checks">Value checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_features.html#validation">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_features.html#advanced-value-handling">Advanced value handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_features.html#convenience">Convenience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_features.html#notification">Notification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_features.html#initialization">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_features.html#performance">Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/property_features.html#memory-managment">Memory managment</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="environment">
+<h2>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="core/environment.html">Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/environment.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/environment.html#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/environment.html#querying-environment-settings">Querying Environment Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/environment.html#defining-new-environment-settings">Defining New Environment Settings</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="data-binding">
+<h2>Data Binding<a class="headerlink" href="#data-binding" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_binding.html">Data Binding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/data_binding.html">Data Binding Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/data_binding.html#demos-api-and-cheatsheet">Demos, API and CheatSheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html">Single Value Binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/controller.html">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/stores.html">Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/models.html">Models</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="server/getting_started.html"
+             title="previous chapter">« Getting Started with qooxdoo qx.Server</a>
+          <span class="separator">|</span>
+          <a class="next" href="core/oo_introduction.html"
+             title="next chapter">Introduction to Object Orientation »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Core</a><ul>
+<li><a class="reference internal" href="#object-orientation">Object Orientation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#properties">Properties</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#environment">Environment</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-binding">Data Binding</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="core/oo_introduction.html"
+                        title="next chapter">Introduction to Object Orientation</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="server/getting_started.html"
+                        title="previous chapter">Getting Started with qooxdoo qx.Server</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../_sources/pages/core.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,809 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial: Creating a Twitter Client with qooxdoo mobile &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Mobile" href="../mobile.html" />
+    <link rel="next" title="Mobile and tablet switch" href="mobile_tablet_switch.html" />
+    <link rel="prev" title="Getting Started with qooxdoo qx.Mobile" href="getting_started.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../mobile.html" accesskey="U">qx.Mobile</a>
+     &raquo;
+  <a href="">Tutorial: Creating a Twitter Client with qooxdoo mobile</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-creating-a-twitter-client-with-qooxdoo-mobile">
+<h1>Tutorial: Creating a Twitter Client with qooxdoo mobile<a class="headerlink" href="#tutorial-creating-a-twitter-client-with-qooxdoo-mobile" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial you will learn how to create a simple <a class="reference external" href="http://twitter.com/">Twitter</a> client
+with the new <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.mobile">qooxdoo mobile</a> widgets. The client should display all
+tweets of a certain user. When a tweet is selected, the details of the
+tweet should be shown. You can find the tutorial code <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/mobiletweets">here</a>.</p>
+<div class="section" id="requirements-getting-started">
+<h2>Requirements + Getting Started<a class="headerlink" href="#requirements-getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Please visit the getting started section, and follow the introduction, which
+describes how to create a qx.Mobile Application.</p>
+<p><a class="reference internal" href="getting_started.html"><em>qx.Mobile Getting Started</em></a></p>
+</div>
+<div class="section" id="creating-your-first-page">
+<h2>Creating your first Page<a class="headerlink" href="#creating-your-first-page" title="Permalink to this headline">¶</a></h2>
+<p>In this section we will create two pages, one page for entering the
+username whose tweets should be shown and another page for displaying
+the tweets.</p>
+<p>But first of all we have to define what a page is:</p>
+<blockquote>
+<div><em>A page is a widget which provides a screen with which users can
+interact in order to do something. Most times a page provides a
+single task or a group of related tasks. A qooxdoo mobile
+application is usually composed of one or more loosely bound pages.
+Typically there is one page that presents the “main” view.</em></div></blockquote>
+<p>Open the “mobiletweets” folder in your favorite IDE, so that you can
+edit all the files. Navigate to the “source/class/mobiletweets” folder,
+were all of the application class files are located. Now you are ready
+to create the application.</p>
+<p>First we have to create a new page class. In order to do so, create a new folder “page” under
+“source/class/mobiletweets”, representing a new “namespace”
+<tt class="docutils literal"><span class="pre">mobiletweets.page</span></tt>. In this folder create a new JavaScript file named
+“Input.js”. This file will contain the “mobiletweets.page.Input” class.
+Define the class like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;mobiletweets.page.Input&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">NavigationPage</span><span class="p">,</span>
+
+  <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s2">&quot;Twitter Client&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The “Input” class inherits from <tt class="docutils literal"><span class="pre">qx.ui.mobile.page.NavigationPage</span></tt>, a
+specialized page that consists of a
+<tt class="docutils literal"><span class="pre">qx.ui.mobile.navigationbar.NavigationBar</span></tt> including a title, back and
+action buttons, and a scrollable content area. In the constructor of the
+class we set the title of the page to “Twitter Client”.</p>
+<p>To show the “Input” page, we have to create an instance of the class and a page manager.
+The manager does the layouting and displays our page on screen.
+Additionally the manager gives us the possibility to use our application in a mobile or tablet device context.
+For our example, we just want to work in a mobile device context. That is why, we construct the manager with
+<tt class="docutils literal"><span class="pre">false</span></tt>.</p>
+<p>After creation of manager, we have to add the “Input” page into the manager.
+Then we call <tt class="docutils literal"><span class="pre">show</span></tt> method of “Input” page, to display this page on start.</p>
+<p>Open the “source/class/mobiletweets/Application.js” class file. You will find a comment in the <tt class="docutils literal"><span class="pre">main</span></tt> method &quot;<em>Below is your actual
+application code…</em>&quot; with example code below. As we don’t need this
+example code, we can safely replace it with the following lines of code:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">Manager</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">inputPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mobiletweets</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">Input</span><span class="p">();</span>
+<span class="nx">manager</span><span class="p">.</span><span class="nx">addDetail</span><span class="p">(</span><span class="nx">inputPage</span><span class="p">);</span>
+
+<span class="nx">inputPage</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>As we have changed the dependencies of our application, recreate the
+source version by calling the generator “source” target as above.</p>
+<p>Refresh the index.html in your browser. You will see a page with a
+navigation bar and a title “Twitter Client”. That is all you have to do
+when you want to display a page.</p>
+</div>
+<div class="section" id="navigation-between-pages">
+<h2>Navigation between Pages<a class="headerlink" href="#navigation-between-pages" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">qooxdoo mobile comes with different <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.mobile.page.manager.Animation">animations</a> for page transitions.
+Showing a second page is as easy as showing one page. Just call the
+<tt class="docutils literal"><span class="pre">show</span></tt> method of the second page and qooxdoo will do the rest. To
+navigate back to the first page you have to call, you have guessed it,
+the <tt class="docutils literal"><span class="pre">show</span></tt> method of the first page again. To play the animation of
+the page transition “reversed”, call the <tt class="docutils literal"><span class="pre">show</span></tt> method with an object
+literal <tt class="docutils literal"><span class="pre">{reverse:true}</span></tt> as an argument. To change an animation, just
+add an animation key to the passed object literal, e.g.
+<tt class="docutils literal"><span class="pre">{animation:fade}</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">page</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span> <span class="c1">// show the page; &quot;slide&quot; is the default animation</span>
+<span class="c1">//or</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span><span class="nx">reverse</span><span class="o">:</span><span class="kc">true</span><span class="p">});</span> <span class="c1">// show the page and reverse the animation of the transition</span>
+<span class="c1">//or</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span><span class="nx">animation</span> <span class="o">:</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="nx">reverse</span><span class="o">:</span><span class="kc">true</span><span class="p">});</span> <span class="c1">// show the page and reverse the &quot;cube&quot; animation</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Page Lifecycle:</dt>
+<dd><em>A page has predefined lifecycle methods that get called by the page
+manager when a page gets shown. Each time another page is requested
+to be shown the currently shown page is stopped. The other page, if
+shown for the first time, will be initialized and started
+afterwards. For all called lifecylce methods an event is fired.</em></dd>
+</dl>
+<p>Calling the “show” method triggers the following lifecycle methods:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">initialize</span></tt>: Initializes the page to show</li>
+<li><tt class="docutils literal"><span class="pre">start</span></tt>: Starts the page that should be shown</li>
+<li><tt class="docutils literal"><span class="pre">stop</span></tt>: Stops the current shown page</li>
+</ul>
+<p><strong>IMPORTANT</strong>: Define all child widgets of a page when the
+“initialize” lifecycle method is called, either by listening to the
+“initialize” event or overriding the <tt class="docutils literal"><span class="pre">_initialize</span></tt> method. This is
+because a page can be instantiated during application startup and
+would then decrease performance if the widgets would be added during
+constructor call. The initialize event and the <tt class="docutils literal"><span class="pre">_initialize</span></tt>
+lifecycle method are only called when the page is shown for the
+first time.</p>
+<p>Lets try it! Create another page class “Tweets” in the
+“source/class/mobiletweets/page” folder:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;mobiletweets.page.Tweets&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">NavigationPage</span><span class="p">,</span>
+
+  <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+      <span class="nx">title</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// will be replaced by username</span>
+      <span class="nx">showBackButton</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">backButtonText</span> <span class="o">:</span> <span class="s2">&quot;Back&quot;</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>In the constructor we show the back button and set the text to “Back” .
+The title will be replaced later by the given username.</p>
+<p>Now we need a button on the “Input” page, so that we can navigate between the two
+pages. Create a new instance of a <tt class="docutils literal"><span class="pre">qx.ui.mobile.form.Button</span></tt> in the
+“Input” class and add it to the content of the page. By listening to the
+<tt class="docutils literal"><span class="pre">tap</span></tt> event of the button, the application can handle when the user
+taps on the button. Add a new <tt class="docutils literal"><span class="pre">member</span></tt> section to the class definition
+and override the protected lifecycle method <tt class="docutils literal"><span class="pre">_initialize</span></tt> to do that:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">members</span> <span class="o">:</span> <span class="p">{</span>
+
+  <span class="c1">// overridden</span>
+  <span class="nx">_initialize</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+    <span class="c1">// Create a new button instance and set the title of the button to &quot;Show&quot;</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Show&quot;</span><span class="p">);</span>
+    <span class="c1">// Add the &quot;tap&quot; listener to the button</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;tap&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_onTap</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+    <span class="c1">// Add the button the content of the page</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getContent</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see, the <tt class="docutils literal"><span class="pre">tap</span></tt> listener has the <tt class="docutils literal"><span class="pre">_onTap</span></tt> method as a
+handler. This method has to be implemented in the member section as
+well:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">_onTap</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">fireDataEvent</span><span class="p">(</span><span class="s2">&quot;requestTweet&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">// Fire a data event. Later we will send the entered &quot;username&quot; as a data.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the <tt class="docutils literal"><span class="pre">_onTap</span></tt> method we fire a data event “requestTweet”. The empty
+data will be replaced later with the username. The only thing which is
+missing now is to define the event itself. Add a new <tt class="docutils literal"><span class="pre">events</span></tt> section
+to the “Input” class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">events</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;requestTweet&quot;</span> <span class="o">:</span> <span class="s2">&quot;qx.event.type.Data&quot;</span> <span class="c1">// Define the event</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the “Application” class add the following code below the code we have
+just added:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// New instance of the Tweets page</span>
+<span class="kd">var</span> <span class="nx">tweetsPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mobiletweets</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">Tweets</span><span class="p">();</span>
+
+<span class="c1">// Add page to manager</span>
+<span class="nx">manager</span><span class="p">.</span><span class="nx">addDetail</span><span class="p">(</span><span class="nx">tweetsPage</span><span class="p">);</span>
+
+<span class="c1">// Show the tweets page, when the button is pressed</span>
+<span class="nx">inputPage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;requestTweet&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">tweetsPage</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+
+<span class="c1">// Return to the Input page when the back button is pressed</span>
+<span class="nx">tweetsPage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;back&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">inputPage</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span><span class="nx">reverse</span><span class="o">:</span><span class="kc">true</span><span class="p">});</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>After creating a new instance of our new “Tweets” class we listen to the
+<tt class="docutils literal"><span class="pre">requestTweet</span></tt> event of the “Input” page instance. In the event
+handler we call the <tt class="docutils literal"><span class="pre">show</span></tt> method of the <tt class="docutils literal"><span class="pre">tweetsPage</span></tt> page object to
+display the page. In the <tt class="docutils literal"><span class="pre">back</span></tt> event handler of the <tt class="docutils literal"><span class="pre">tweetsPage</span></tt>,
+the “Input” page will be shown with a reversed animation.</p>
+<p>New classes mean new dependencies which means we have to generate the source code
+again. Refresh the application in the browser and navigate between the
+pages by clicking on the “Show” and on the “Back” button. Nice!</p>
+</div>
+<div class="section" id="we-need-data-lots-of-data">
+<h2>We need Data, lots of Data!<a class="headerlink" href="#we-need-data-lots-of-data" title="Permalink to this headline">¶</a></h2>
+<p>Ok, here we are. You have learned how to create two pages and to wire
+them by reacting on defined events. That is pretty cool, but without
+data to display our app is worthless. To display the tweets
+of a user we will use the public Tweet service of Twitter. <a class="reference external" href="http://manual.qooxdoo.org/2.0.2/pages/core.html#data-binding">Data
+binding</a> is a powerful concept of qooxdoo which you can leverage off in
+your mobile applications as well. Extend the <tt class="docutils literal"><span class="pre">members</span></tt> section of the
+“Application” class by the following code:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">__loadTweets</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Public Twitter Tweets API</span>
+  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;http://twitter.com/statuses/user_timeline/&quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">getUsername</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span><span class="p">;</span>
+  <span class="c1">// Create a new JSONP store instance with the given url</span>
+  <span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">Jsonp</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+  <span class="c1">// Use data binding to bind the &quot;model&quot; property of the store to the &quot;tweets&quot; property</span>
+  <span class="nx">store</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="s2">&quot;tweets&quot;</span><span class="p">);</span>
+  <span class="nx">store</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// you can add error handling here, e.g. display a dialog or navigate back to the input page</span>
+  <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the <tt class="docutils literal"><span class="pre">__loadTweets</span></tt> method we create a new <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.data.store.Jsonp">JSONP</a> store which will
+automatically retrieve the data from the given URL. By binding the
+<tt class="docutils literal"><span class="pre">model</span></tt> property to the <tt class="docutils literal"><span class="pre">tweets</span></tt> property, the <tt class="docutils literal"><span class="pre">tweets</span></tt> property
+will be automatically updated whenever the <tt class="docutils literal"><span class="pre">model</span></tt> property of the
+store is updated.</p>
+<p>As you might have noticed the <tt class="docutils literal"><span class="pre">__loadTweets</span></tt> method
+uses two properties, <tt class="docutils literal"><span class="pre">username</span></tt> and <tt class="docutils literal"><span class="pre">tweets</span></tt>, that are not defined
+yet. We will define those properties now. Define a new section
+<tt class="docutils literal"><span class="pre">properties</span></tt> in the “Application” class and add the following two
+properties:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span>
+<span class="p">{</span>
+    <span class="nx">tweets</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;qx.data.Array&quot;</span><span class="p">,</span>
+      <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">init</span> <span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">event</span> <span class="o">:</span> <span class="s2">&quot;changeTweets&quot;</span><span class="p">,</span>
+      <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyTweets&quot;</span> <span class="c1">// just for logging the data</span>
+    <span class="p">},</span>
+
+    <span class="nx">username</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+      <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">init</span> <span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">event</span> <span class="o">:</span> <span class="s2">&quot;changeUsername&quot;</span><span class="p">,</span>
+      <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyUsername&quot;</span>  <span class="c1">// this method is called when the username property is set</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the apply method <tt class="docutils literal"><span class="pre">_applyUsername</span></tt> of the <tt class="docutils literal"><span class="pre">username</span></tt> property we
+will call the <tt class="docutils literal"><span class="pre">__loadTweets</span></tt> method. So every time the username is set
+the tweets for this username are loaded. To see which data is set for
+the <tt class="docutils literal"><span class="pre">tweets</span></tt> property, we will print the data in the debugging
+console. To do so, we call <tt class="docutils literal"><span class="pre">this.debug</span></tt> with the stringified value in
+the apply method <tt class="docutils literal"><span class="pre">_applyTweets</span></tt>. Add the following code to the member
+section of the “Application” class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// property apply</span>
+<span class="nx">_applyUsername</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">__loadTweets</span><span class="p">();</span>
+<span class="p">},</span>
+
+<span class="nx">_applyTweets</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// print the loaded data in the console</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;Tweets: &quot;</span><span class="p">,</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">lang</span><span class="p">.</span><span class="nx">Json</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now the username has to be retrieved from the user input. To do so, we
+have to create an input form. The usage of the form classes should be
+familiar to you if you have used the RIA widget set before. Open the “Input”
+class again and place the following code, before the button instance in
+the <tt class="docutils literal"><span class="pre">_initialize</span></tt> method:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Title</span><span class="p">(</span><span class="s2">&quot;Please enter a Twitter username&quot;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">getContent</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Form</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">TextField</span><span class="p">();</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">setPlaceholder</span><span class="p">(</span><span class="s2">&quot;Username&quot;</span><span class="p">);</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">setRequired</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="s2">&quot;Username&quot;</span><span class="p">);</span>
+
+<span class="c1">// Add the form to the content of the page, using the SinglePlaceholder to render</span>
+<span class="c1">// the form.</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">getContent</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">SinglePlaceholder</span><span class="p">(</span><span class="nx">form</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>First we add an instance of <tt class="docutils literal"><span class="pre">qx.ui.mobile.form.Title</span></tt> to the content
+of the page. To an instance of <tt class="docutils literal"><span class="pre">qx.ui.mobile.form.Form</span></tt>, a
+<tt class="docutils literal"><span class="pre">qx.ui.mobile.form.TextField</span></tt> instance <tt class="docutils literal"><span class="pre">input</span></tt> is added. Both
+instances are assigned to member variables as well, for further reuse. A
+text is set for the <tt class="docutils literal"><span class="pre">placeholder</span></tt> property of the textfield. By
+setting the property <tt class="docutils literal"><span class="pre">required</span></tt> to true we indicate that the textfield
+requires an input. Finally we add the form instance to the page content,
+by using a `` qx.ui.mobile.form.renderer.SinglePlaceholder`` renderer.
+The renderer is responsible for the look and feel of the form. In this
+case only the input fields with their placeholders are displayed.</p>
+<p>In the <tt class="docutils literal"><span class="pre">_onTap</span></tt> method we have to retrieve now the value of the input field.
+Replace the code in the function body by the following code:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// validate the form</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">__form</span><span class="p">.</span><span class="nx">validate</span><span class="p">())</span>  <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">username</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__input</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">fireDataEvent</span><span class="p">(</span><span class="s2">&quot;requestTweet&quot;</span><span class="p">,</span> <span class="nx">username</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After successfully validating the form, we retrieve the value of the
+textfield from the member variable and pass it as the data to the event.</p>
+<p>As you surely remember we listen to the <tt class="docutils literal"><span class="pre">requestTweet</span></tt> event in the
+“Application” class. Open the Application class and add the following
+line to the event listener:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">setUsername</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>We’ve come full circle. By setting the username the data will be loaded
+and we can proceed to display the data. Rebuild the application and
+refresh it in the browser. Type in a valid twitter username (e.g.
+“qooxdoo”) and click the “Show” button. Press the <tt class="docutils literal"><span class="pre">F7</span></tt> key to display
+the qooxdoo logging window or use the console of the browser developer
+tools. You will see the loaded tweets of the user.</p>
+<img alt="../../_images/tutorial_input.png" src="../../_images/tutorial_input.png" />
+</div>
+<div class="section" id="displaying-the-tweets">
+<h2>Displaying the tweets<a class="headerlink" href="#displaying-the-tweets" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have the tweets for a certain user, it’s gonna be pretty
+easy to display them. All we need for that is a
+<tt class="docutils literal"><span class="pre">qx.ui.mobile.list.List</span></tt> and to set up some data binding. Lets proceed
+with the tutorial.</p>
+<p>First we have to add the following <tt class="docutils literal"><span class="pre">_initialize</span></tt>
+method to the members section of the “Tweets” page.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">members</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">__list</span> <span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+
+  <span class="nx">_initialize</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+
+    <span class="c1">// Create a new list instance</span>
+    <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__list</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">List</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">dateFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">DateFormat</span><span class="p">();</span>
+    <span class="c1">// Use a delegate to configure each single list item</span>
+    <span class="nx">list</span><span class="p">.</span><span class="nx">setDelegate</span><span class="p">({</span>
+      <span class="nx">configureItem</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// set the data of the model</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">getText</span><span class="p">());</span>
+        <span class="c1">// we use the dataFormat instance to format the data value of the twitter API</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">setSubtitle</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">getUser</span><span class="p">().</span><span class="nx">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">dateFormat</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">getCreated_at</span><span class="p">())));</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">setImage</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">getUser</span><span class="p">().</span><span class="nx">getProfile_image_url</span><span class="p">());</span>
+        <span class="c1">// we have more data to display, show an arrow</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">setShowArrow</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="c1">// bind the &quot;tweets&quot; property to the &quot;model&quot; property of the list instance</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;tweets&quot;</span><span class="p">,</span> <span class="nx">list</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">);</span>
+    <span class="c1">// add the list to the content of the page</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getContent</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="nx">list</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The created list instance (we store it in a member variable for further
+usage) will use a delegate to configure each single list item. The
+delegate is set by the <tt class="docutils literal"><span class="pre">setDelegate</span></tt> method as a literal object. The
+<tt class="docutils literal"><span class="pre">configureItem</span></tt> method is responsible for configuring the list items.
+It has three parameters:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">item</span></tt>: The list item renderer instance. Use this parameter to set
+the title, subtitle or icon of the list item.</li>
+<li><tt class="docutils literal"><span class="pre">value</span></tt>: The value of the row. Entry of the model for the current
+row index.</li>
+<li><tt class="docutils literal"><span class="pre">row</span></tt>: The row index.</li>
+</ul>
+<p>In this case the list item renderer is the
+<tt class="docutils literal"><span class="pre">qx.ui.mobile.list.renderer.Default</span></tt>. This renderer has a <tt class="docutils literal"><span class="pre">title</span></tt>,
+<tt class="docutils literal"><span class="pre">subtitle</span></tt> and a <tt class="docutils literal"><span class="pre">image</span></tt> property, which can be set individually per
+row. In addition to those properties, the <tt class="docutils literal"><span class="pre">showArrow</span></tt> property shows
+an arrow on the left corner of the row, indicating that we have more
+data to display.</p>
+<p>Finally the model of the list instance is bound to the
+<tt class="docutils literal"><span class="pre">tweets</span></tt> property, which we will add to the “Tweets” class right above
+the <tt class="docutils literal"><span class="pre">member</span></tt> section:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span>  <span class="p">{</span>
+  <span class="nx">tweets</span> <span class="o">:</span> <span class="p">{</span>
+     <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;qx.data.Array&quot;</span><span class="p">,</span>
+     <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+     <span class="nx">init</span> <span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+     <span class="nx">event</span> <span class="o">:</span> <span class="s2">&quot;changeTweets&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There are only two tasks left:</p>
+<ol class="arabic simple">
+<li>Bind the <tt class="docutils literal"><span class="pre">tweets</span></tt> property from the “Application” to the <tt class="docutils literal"><span class="pre">tweets</span></tt>
+property of the “Tweets” page instance.</li>
+<li>Bind the <tt class="docutils literal"><span class="pre">username</span></tt> property form the “Application” to the
+<tt class="docutils literal"><span class="pre">title</span></tt> property of the “Tweets” page instance.</li>
+</ol>
+<p>Open the “Application” class file and add under the instantiation of the
+“Tweets” page <tt class="docutils literal"><span class="pre">tweetsPage</span></tt> the following code:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;tweets&quot;</span><span class="p">,</span> <span class="nx">tweetsPage</span><span class="p">,</span> <span class="s2">&quot;tweets&quot;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="nx">tweetsPage</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Generate the source code again and refresh you browser tab. Try the
+username “qooxdoo” and push the “Show” button. It is magic!</p>
+<img alt="../../_images/tutorial_list.png" src="../../_images/tutorial_list.png" />
+</div>
+<div class="section" id="details-of-a-tweet">
+<h2>Details of a tweet<a class="headerlink" href="#details-of-a-tweet" title="Permalink to this headline">¶</a></h2>
+<p>Great, you have made it so far! In the last section we will display a
+tweet on a new page when the user selects a certain tweet. Sometimes it
+can happen that a tweet is too long for a list entry. Ellipses are then
+shown at the end of the tweet. That is why we want to give the user a
+chance to display the whole tweet. Lets create a simple “Tweet” page
+that only shows a <tt class="docutils literal"><span class="pre">qx.ui.mobile.basic.Label</span></tt> with the selected tweet
+text. To do so, we bind the <tt class="docutils literal"><span class="pre">text</span></tt> property of the tweet to the label
+<tt class="docutils literal"><span class="pre">value</span></tt> property. Create the page, like you have done before, in the
+“source/class/mobiletweets/page” folder. The code of the page shouldn’t
+be something new for you:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;mobiletweets.page.Tweet&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">NavigationPage</span><span class="p">,</span>
+
+  <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+      <span class="nx">title</span> <span class="o">:</span> <span class="s2">&quot;Details&quot;</span><span class="p">,</span>
+      <span class="nx">showBackButton</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">backButtonText</span> <span class="o">:</span> <span class="s2">&quot;Back&quot;</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+
+  <span class="nx">properties</span><span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">tweet</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;Object&quot;</span><span class="p">,</span>
+      <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">init</span> <span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">event</span> <span class="o">:</span> <span class="s2">&quot;changeTweet&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="nx">members</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">_initialize</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+      <span class="c1">// Create a new label instance</span>
+      <span class="kd">var</span> <span class="nx">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">getContent</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="nx">label</span><span class="p">);</span>
+      <span class="c1">// bind the &quot;tweet.getText&quot; property to the &quot;value&quot; of the label</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;tweet.text&quot;</span><span class="p">,</span> <span class="nx">label</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Now create the instance of the “Tweet” page in the Application <tt class="docutils literal"><span class="pre">main</span></tt>
+method and return to the “Tweets” page, when the <tt class="docutils literal"><span class="pre">back</span></tt> listener is
+called.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">tweetPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mobiletweets</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">Tweet</span><span class="p">();</span>
+
+<span class="c1">// Add page to manager</span>
+<span class="nx">manager</span><span class="p">.</span><span class="nx">addDetail</span><span class="p">(</span><span class="nx">tweetPage</span><span class="p">);</span>
+
+<span class="c1">// Return to the Tweets Page</span>
+<span class="nx">tweetPage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;back&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">tweetsPage</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span><span class="nx">reverse</span><span class="o">:</span><span class="kc">true</span><span class="p">});</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Until now we will never see the “Tweet” page as its <tt class="docutils literal"><span class="pre">show</span></tt> method is
+never called. First we have to react in the “Tweets” page on a selection
+change event of the list, by registering the <tt class="docutils literal"><span class="pre">changeSelection</span></tt> event
+on the list in the <tt class="docutils literal"><span class="pre">_initialize</span></tt> method:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">list</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;changeSelection&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">__onChangeSelection</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">__onChangeSelection</span></tt> method looks like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">__onChangeSelection</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// retrieve the index of the selected row</span>
+  <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">getData</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">fireDataEvent</span><span class="p">(</span><span class="s2">&quot;showTweet&quot;</span><span class="p">,</span> <span class="nx">index</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see, a <tt class="docutils literal"><span class="pre">showTweet</span></tt> data event is fired here. This data
+event has to be defined in the <tt class="docutils literal"><span class="pre">events</span></tt> section of the “Tweets” class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">events</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">showTweet</span> <span class="o">:</span> <span class="s2">&quot;qx.event.type.Data&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>All we need to do now is to listen to the <tt class="docutils literal"><span class="pre">showTweet</span></tt> event in the
+“Application” class main method, retrieve the index from the data event
+and to get the corresponding tweet from the data. Finally we show our
+“Tweet” page.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Show the selected tweet</span>
+<span class="nx">tweetsPage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;showTweet&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">getData</span><span class="p">();</span>
+  <span class="nx">tweetPage</span><span class="p">.</span><span class="nx">setTweet</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getTweets</span><span class="p">().</span><span class="nx">getItem</span><span class="p">(</span><span class="nx">index</span><span class="p">));</span>
+  <span class="nx">tweetPage</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Rebuild the source code (or the <tt class="docutils literal"><span class="pre">./generate.py</span> <span class="pre">build</span></tt> version),
+refresh the application in your browser and enjoy your application! We
+are done here.</p>
+<img alt="../../_images/tutorial_details.png" src="../../_images/tutorial_details.png" />
+</div>
+<div class="section" id="now-you-are-ready-to-develop-your-own-applications">
+<h2>Now you are ready to develop your own applications…<a class="headerlink" href="#now-you-are-ready-to-develop-your-own-applications" title="Permalink to this headline">¶</a></h2>
+<p>After you have finished this tutorial, you have learned the basics of
+qooxdoo mobile. You have seen how easy it is to develop qooxdoo mobile
+applications when you are familiar with qooxdoo. There are only some new
+concepts (e.g. Pages) to learn and you are good to go. All qooxdoo
+mobile applications work on Android and iOS devices.</p>
+<p><a class="reference internal" href="deployment.html"><em>qx.Mobile Deployment with Apache Cordova</em></a></p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="getting_started.html"
+             title="previous chapter">« Getting Started with qooxdoo qx.Mobile</a>
+          <span class="separator">|</span>
+          <a class="next" href="mobile_tablet_switch.html"
+             title="next chapter">Mobile and tablet switch »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial: Creating a Twitter Client with qooxdoo mobile</a><ul>
+<li><a class="reference internal" href="#requirements-getting-started">Requirements + Getting Started</a></li>
+<li><a class="reference internal" href="#creating-your-first-page">Creating your first Page</a></li>
+<li><a class="reference internal" href="#navigation-between-pages">Navigation between Pages</a></li>
+<li><a class="reference internal" href="#we-need-data-lots-of-data">We need Data, lots of Data!</a></li>
+<li><a class="reference internal" href="#displaying-the-tweets">Displaying the tweets</a></li>
+<li><a class="reference internal" href="#details-of-a-tweet">Details of a tweet</a></li>
+<li><a class="reference internal" href="#now-you-are-ready-to-develop-your-own-applications">Now you are ready to develop your own applications…</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="mobile_tablet_switch.html"
+                        title="next chapter">Mobile and tablet switch</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="previous chapter">Getting Started with qooxdoo qx.Mobile</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/mobile/tutorial.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

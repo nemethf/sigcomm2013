@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15" />
+  <title>qooxdoo &raquo; Demo Browser</title>
+    <style type="text/css">
+  *{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body{
+    font-size: 12px;
+    font-family: "Tresbuchet MS", Tahoma, Arial, "Bitstream Vera Sans", Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  img{
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+  }
+
+  #content{
+    margin: 20px;
+    width: 600px;
+  }
+
+  h1{
+    font-size: 22px;
+    color: #134275;
+  }
+
+  h2{
+    font-size: 16px;
+    color: #134275;
+  }
+
+  ul{
+    margin-top: 20px;
+  }
+
+  li{
+    margin-left: 16px;
+    list-style: square;
+    margin-bottom: 20px;
+  }
+
+  p{
+    font-size: 12px;
+    margin: 6px 0;
+  }
+
+	a{
+		text-decoration: none;
+		color: #134275;
+	}
+	
+	img{
+		border: 1px #134275 solid;
+	}
+	
+	.tableCell{
+		padding-right: 20px;
+		text-align: center;
+		padding-top: 10px;
+	}
+  </style>
+	
+	<script type="text/javascript" charset="utf-8">
+    var qxversion = "2.0.2";
+
+    /**
+     * Replace occurrences of $(qxversion) with the value of var qxversion.
+     */
+    function expandVersion(s){
+      while (s.indexOf('$(qxversion)') > -1) {
+        s  = s.replace('$(qxversion)', qxversion);
+      }
+      return s;
+    }
+
+    function onLoadx(){
+      var elems = document.getElementsByName("verslink");
+      for (var i=0, l=elems.length; i<l; i++){
+        var e = elems[i];
+        e.href = expandVersion(e.href);
+      }
+    }
+
+		function openDemo(hash) {
+			window.top.location.hash = hash;
+		}
+	</script>
+	
+</head>
+<body onload="onLoadx()">
+  <div id="content">
+    <h1>Welcome</h1>
+
+        <p>Please double-click samples from the tree to the left. Or pick one of the following featured demos:</p>
+		<table>
+			<tbody>
+				<tr>
+					<td class="tableCell">
+						<a name="verslink" href="http://demo.qooxdoo.org/$(qxversion)/showcase" target="_blank">
+							<img src="../resource/demobrowser/welcome/showcase.png">
+						  <br>Showcase
+						</a>
+					</td>
+					<td class="tableCell">
+						<a name="verslink" href="http://demo.qooxdoo.org/$(qxversion)/playground" target="_blank">
+							<img src="../resource/demobrowser/welcome/playground.png">
+						  <br>Playground							
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableCell">
+						<a name="verslink" href="http://demo.qooxdoo.org/$(qxversion)/feedreader" target="_blank">
+							<img src="../resource/demobrowser/welcome/feedreader.png">
+						  <br>Feedreader
+						</a>
+					</td>
+
+					<td class="tableCell">
+						<a name="verslink" href="http://demo.qooxdoo.org/$(qxversion)/portal" target="_blank">
+							<img src="../resource/demobrowser/welcome/portal.png">
+						  <br>Portal
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    
+  </div>
+</body>
+</html>

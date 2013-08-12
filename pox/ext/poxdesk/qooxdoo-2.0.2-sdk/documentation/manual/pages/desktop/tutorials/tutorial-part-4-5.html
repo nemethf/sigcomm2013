@@ -1,0 +1,378 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial Part 4.5: Virtual List &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../../desktop.html" />
+    <link rel="next" title="qx.Mobile" href="../../mobile.html" />
+    <link rel="prev" title="Tutorial Part 4.4.1: Automated UI Testing" href="tutorial-part-4-4-1.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Tutorial Part 4.5: Virtual List</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-part-4-5-virtual-list">
+<span id="pages-desktop-tutorials-tutorial-part-4-5-tutorial-part-4-5-virtual-list"></span><h1>Tutorial Part 4.5: Virtual List<a class="headerlink" href="#tutorial-part-4-5-virtual-list" title="Permalink to this headline">¶</a></h1>
+<p>This time we will have a look at the virtual widget stuff. The plan is
+to remove the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.form.List">normal List</a>
+and use the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.list.List">virtual List</a>.
+Using the virtual list has a big advantage when we have to render a huge
+count of items. The virtual list only creates widgets for visible items.
+This saves memory and execution time. As a base we use the already known
+twitter client we built in the <a class="reference internal" href="tutorial-part-3.html"><em>former tutorials</em></a>.</p>
+<img alt="../../../_images/tutorial_4_5-1.png" src="../../../_images/tutorial_4_5-1.png" />
+<div class="section" id="change-the-instantiation">
+<span id="pages-desktop-tutorials-tutorial-part-4-5-change-the-instantiation"></span><h2>Change the instantiation<a class="headerlink" href="#change-the-instantiation" title="Permalink to this headline">¶</a></h2>
+<p>First, we have to use the virtual List instead. Open the
+<tt class="docutils literal"><span class="pre">twitter.MainWindow</span></tt> class and search for the list instantiation:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// list</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">__list</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">List</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">__list</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">colSpan</span><span class="o">:</span> <span class="mi">2</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>And create a virtual List instead:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// list</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">__list</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">List</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">__list</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">colSpan</span><span class="o">:</span> <span class="mi">2</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>Now we use the virtual List instead of the non virtual List. But before
+we can use the twitter application with the virtual List we have to
+configure the usage with a delegate.</p>
+</div>
+<div class="section" id="configure-the-virtual-list">
+<span id="pages-desktop-tutorials-tutorial-part-4-5-configure-the-virtual-list"></span><h2>Configure the virtual List<a class="headerlink" href="#configure-the-virtual-list" title="Permalink to this headline">¶</a></h2>
+<p>The current implementation uses the list controller to bind the tweets
+with the list. This makes it easy to reuse the delegation
+implementation, because the delegation <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.list.core.IListDelegate">interface</a> from the virtual List
+has the same methods for <tt class="docutils literal"><span class="pre">bindItem</span></tt>, <tt class="docutils literal"><span class="pre">createItem</span></tt>, <tt class="docutils literal"><span class="pre">configureItem</span></tt>
+and <tt class="docutils literal"><span class="pre">filter</span></tt>. We only need to remove the controller stuff and use the
+virtual list instead. The controller is not needed anymore, because the
+virtual list has its own controller implementation. Open the
+<tt class="docutils literal"><span class="pre">twitter.Application</span></tt> and search for the controller instantiation:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// create the controller</span>
+<span class="kd">var</span> <span class="nx">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">List</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">main</span><span class="p">.</span><span class="nx">getList</span><span class="p">());</span>
+<span class="nx">controller</span><span class="p">.</span><span class="nx">setLabelPath</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">);</span>
+<span class="nx">controller</span><span class="p">.</span><span class="nx">setIconPath</span><span class="p">(</span><span class="s2">&quot;user.profile_image_url&quot;</span><span class="p">);</span>
+<span class="nx">controller</span><span class="p">.</span><span class="nx">setDelegate</span><span class="p">({</span>
+  <span class="nx">configureItem</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setScale</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">setRich</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Instead of the controller use the virtual List:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// setup list binding</span>
+<span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">main</span><span class="p">.</span><span class="nx">getList</span><span class="p">();</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">setItemHeight</span><span class="p">(</span><span class="mi">68</span><span class="p">);</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">setLabelPath</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">);</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">setIconPath</span><span class="p">(</span><span class="s2">&quot;user.profile_image_url&quot;</span><span class="p">);</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">setDelegate</span><span class="p">({</span>
+  <span class="nx">configureItem</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setScale</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">setRich</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Now we have replaced the controller with the virtual List and reused the
+delegate implementation. We have only added one line to configure the
+default item hight. This is necessary, because the virtual List has no
+auto sizing for the item height. This is due to the huge count of model
+items.</p>
+</div>
+<div class="section" id="update-list-binding">
+<span id="pages-desktop-tutorials-tutorial-part-4-5-update-list-binding"></span><h2>Update list binding<a class="headerlink" href="#update-list-binding" title="Permalink to this headline">¶</a></h2>
+<p>Finally, we have to adapt the binding between the twitter service and
+the virtual list. The virtual list always needs a model instance so we
+need to adapt the current binding:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">service</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;tweets&quot;</span><span class="p">,</span> <span class="nx">controller</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We only use a converter which returns an empty model when the service
+returns <tt class="docutils literal"><span class="pre">null</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">service</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;tweets&quot;</span><span class="p">,</span> <span class="nx">list</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">converter</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value</span> <span class="o">||</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nb">Array</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Now we only need to run the generator to resolve the new dependencies:</p>
+<img alt="../../../_images/tutorial_4_5-2.png" src="../../../_images/tutorial_4_5-2.png" />
+<p>The virtual List supports some more features like grouping, for
+additional details have a look at the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#virtual~List.html">virtual demos</a>. As always, the
+<a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step4.5/">code of the tutorial</a> is on github.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="tutorial-part-4-4-1.html"
+             title="previous chapter">« Tutorial Part 4.4.1: Automated UI Testing</a>
+          <span class="separator">|</span>
+          <a class="next" href="../../mobile.html"
+             title="next chapter">qx.Mobile »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial Part 4.5: Virtual List</a><ul>
+<li><a class="reference internal" href="#change-the-instantiation">Change the instantiation</a></li>
+<li><a class="reference internal" href="#configure-the-virtual-list">Configure the virtual List</a></li>
+<li><a class="reference internal" href="#update-list-binding">Update list binding</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../../mobile.html"
+                        title="next chapter">qx.Mobile</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="tutorial-part-4-4-1.html"
+                        title="previous chapter">Tutorial Part 4.4.1: Automated UI Testing</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/tutorials/tutorial-part-4-5.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

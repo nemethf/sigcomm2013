@@ -1,0 +1,445 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Layouting &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Theming" href="ui_theming.html" />
+    <link rel="prev" title="Table Styling" href="ui_table_styling.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Layouting</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="layouting">
+<span id="pages-ui-layouting-layouting"></span><h1>Layouting<a class="headerlink" href="#layouting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="pages-ui-layouting-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>A Layout manager defines the strategy of how to position the child widgets of a parent widget. They compute the position and size of each child by taking the size hints and layout properties of the children and the size hint of the parent into account.</p>
+<p>Whenever the size of one widget changes, the layout engine will ask the layout manager of each affected widget to recompute its children's positions and sizes. Layout managers are only visible through the effects they have on the widgets they are responsible for.</p>
+<p>It is possible to place and size all children directly to static positions using <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~setUserBounds">setUserBounds</a> as well, but this is quite uncommon and only used in very special cases. It is almost always better to position children using a layout manager.</p>
+<p>The layout manager can be configured on any widget, but most classes only have the protected methods to control the layout. In fact it doesn't make sense to control the layout manager of a <tt class="docutils literal"><span class="pre">Spinner</span></tt>, <tt class="docutils literal"><span class="pre">ComboBox</span></tt>, etc. from outside. So this scenario is quite common. Some widgets however publish the layout API. One of them is the above mentioned <a class="reference internal" href="../widget/composite.html"><em>Composite</em></a> widget. It exposes the layout system and the whole children API.</p>
+<p>The nature of layout managers is that each one has specialized options for its children. For example, one layout allows specifying a left position of a child in the canvas while another one works with rows and cells instead. Given this fact, the best place to handle these options is the layout itself. Every <tt class="docutils literal"><span class="pre">LayoutItem</span></tt> has the methods <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~setLayoutProperties">setLayoutProperties</a> and <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~getLayoutProperties">getLayoutProperties</a>. Through this API the layout properties can be configured independendly from the layout.</p>
+<p>The validation of properties is lazy (compared to the classic qooxdoo properties). At the moment where a child with layout properties is inserted into a parent widget with a layout, these properties are checked against the rules of the layout. This validation is not possible earlier, e.g. at the definition of the <em>wrong</em> property, as at this moment the child may not have a parent yet.</p>
+<p>To make layout properties available in a convenient fashion each <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.container.Composite~add">add()</a> has an optional second parameter: A map with all layout properties to configure. A basic example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">Composite</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">layout</span><span class="p">.</span><span class="nx">Canvas</span><span class="p">);</span>
+<span class="nx">canvas</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Say Hello&quot;</span><span class="p">),</span> <span class="p">{</span>
+  <span class="nx">left</span> <span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="nx">top</span><span class="o">:</span> <span class="mi">20</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>This example places a button at the position 20x20 of the composite created. As you can see, the <tt class="docutils literal"><span class="pre">Composite</span></tt> widget has a convenient way -- using the constructor -- to define the layout it uses.</p>
+</div>
+<div class="section" id="panes">
+<span id="pages-ui-layouting-panes"></span><h2>Panes<a class="headerlink" href="#panes" title="Permalink to this headline">¶</a></h2>
+<p>Some widgets extend the <tt class="docutils literal"><span class="pre">Composite</span></tt> widget above. Typical examples here are:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.tabview.Page">TabView Page</a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.popup.Popup">Popup</a></li>
+</ul>
+<p>These have the same API like the composite. A slightly other type are so-called composite-like widgets. These widgets offer the same type of children management and layout management to the outside, but they redirect these properties to an inner pane.</p>
+<p>Typical widgets in this category are:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.window.Window">Window</a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.groupbox.GroupBox">GroupBox</a></li>
+</ul>
+</div>
+<div class="section" id="sensible-defaults">
+<span id="pages-ui-layouting-sensible-defaults"></span><h2>Sensible defaults<a class="headerlink" href="#sensible-defaults" title="Permalink to this headline">¶</a></h2>
+<p>By default, widgets are intelligently auto-sized.  This means that most of the time you can create a widget and it will look nice.  If you need greater control, you can override the defaults. Every property defined initially is also reconfigurable during the runtime of an application. When using layout managers any computed sizes are automatically refreshed and the arrangement of children is updated.</p>
+<p>Every automatically detected size can be overridden. Common settings of a widget (or spacers) are configured through the widget itself. This for example includes properties like <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~width">width</a> or <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~height">height</a>. All these sizes are pixel values. Percent and other complex values are only supported by a few layout managers so these are implemented as layout properties (explained in detail later).</p>
+<p>Automatic size detection means, that limits are detected as well. Any widget in qooxdoo knows how much it can shrink and how much it can grow without interfering the functionality. The application developer can override these min/max sizes as well. This is no problem as long as the new value is tougher than the automatically detected values (e.g. lower limit of maximum width). When overriding the automatic sizes to reduce the limits layout problems may occur. It is highly suggested to keep an eye on this to omit such scenarios.</p>
+<p>One thing to keep in mind is that the <tt class="docutils literal"><span class="pre">width</span></tt> cannot override the <tt class="docutils literal"><span class="pre">minWidth</span></tt> or the <tt class="docutils literal"><span class="pre">maxWidth</span></tt>. Limitation properties may be overridden by the property itself, but not by the normal size property. The <tt class="docutils literal"><span class="pre">minWidth</span></tt> can override the minimal automatically detected size, but the <tt class="docutils literal"><span class="pre">width</span></tt> cannot. This decision makes the layout system more stable as unintended overrides of the limitations are omitted in most cases.</p>
+<p>Often <tt class="docutils literal"><span class="pre">width</span></tt> and <tt class="docutils literal"><span class="pre">height</span></tt> are described as preferred sizes as the given size may not have an influence on the actual rendered size of the widget. Even if the <tt class="docutils literal"><span class="pre">width</span></tt> is configured by the user, this does not mean that the widget always get the desired width.</p>
+</div>
+<div class="section" id="growing-shrinking">
+<span id="pages-ui-layouting-growing-shrinking"></span><h2>Growing &amp; Shrinking<a class="headerlink" href="#growing-shrinking" title="Permalink to this headline">¶</a></h2>
+<p>Dynamic GUIs often must work equally well in cases where not enough (or too much) room is available to render the GUI in the way meant by the developer. This may include simple cases where the size of tabs is reduced in order to handle the display of all open tabs without scrolling. More advanced cases are text which wraps to multiple lines depending on the available width (and this way influences the position of following children).</p>
+<p>In the first case we often see that an application reduces the size of the label and uses an ellipsis symbol to show that the label was too long. This feature is built-in into both commonly used widgets: <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.basic.Label">Label</a> and <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.basic.Atom">Atom</a>. When the underlaying layout ask to reduce the width (or the developer using the <tt class="docutils literal"><span class="pre">width</span></tt> property) the widget tries to solve the requirement dynamically. This certainly works for the height as well.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">().</span><span class="nx">set</span><span class="p">({</span>
+  <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;A long label text which has not enough room.&quot;</span><span class="p">,</span>
+  <span class="nx">width</span><span class="o">:</span> <span class="mi">60</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The second case is handled by the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~_getHeightForWidth">height for width</a> support. Longly name but basically a really strong feature which is required quite often. It means that the height may depend on the actual width available. This especially makes sense for multi-line text where the wrapping may be influenced by the available width. The <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.basic.Label">Label</a> widget includes support for this feature when using the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.basic.Label~rich">rich</a> output mode (HTML content).</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">().</span><span class="nx">set</span><span class="p">({</span>
+  <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;A long label text with auto-wrapping. This also may</span>
+<span class="s2">    contain &lt;b style=&#39;color:red&#39;&gt;rich HTML&lt;/b&gt; markup.&quot;</span><span class="p">,</span>
+  <span class="nx">rich</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">width</span><span class="o">:</span> <span class="mi">120</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Finally this means that every widget can grow and shrink depending on the limitations given for the respective axis. Two easy accessors which disable growing or shrinking respectively are <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~allowGrowX">allowGrowX</a> and <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~allowShrinkX">allowShrinkX</a>. When the growing is disabled the configured or automatically detected maximum size is ignored and configured to the preferred size. When the shrinking is disabled the configured or automatically detected minimum size is ignored and configured to the preferred size. Two convenient methods to controlling these features without knowing of the exact dimensions.</p>
+</div>
+<div class="section" id="overflow-handling">
+<span id="pages-ui-layouting-overflow-handling"></span><h2>Overflow Handling<a class="headerlink" href="#overflow-handling" title="Permalink to this headline">¶</a></h2>
+<p>This leads to the next question: how to handle scenarios where the content needs more room than provided by the parent but should not shrink. This is a common case for data widgets like <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.form.List">Lists</a> or <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.tree.Tree">Trees</a>. Both extend the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.scroll.AbstractScrollArea">AbstractScrollArea</a> to provide scrollbars to handle overflowing content.</p>
+<p>The <tt class="docutils literal"><span class="pre">ScrollArea</span></tt> itself renders scrollbars in a custom way. It does not use the native scrollbars nor the native overflowing capabilities of the browser. Benefits of this decision are:</p>
+<ul class="simple">
+<li>Scroll bars can be themed.</li>
+<li>Optimal integration into layout system.</li>
+<li>Own implementation overrides browser quirks</li>
+</ul>
+<p>The scrollbars are <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.scroll.AbstractScrollArea~scrollbarX">controlable in a way that is comparable to CSS</a>. It is possible to have both scrollbars marked as <tt class="docutils literal"><span class="pre">auto</span></tt> to automatically detect the needs of the content. Or any other combination where a scrollbar may be statically hidden or visible. Each bar can be controlled separately. It is possible to enable one scrollbar statically and make the other one auto-displayed and vice-versa.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">big</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">TextArea</span><span class="p">;</span>
+<span class="nx">big</span><span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">600</span><span class="p">);</span>
+<span class="nx">big</span><span class="p">.</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">600</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">area</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">Scroll</span><span class="p">;</span>
+<span class="nx">area</span><span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="nx">area</span><span class="p">.</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="nx">area</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">big</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">ScrollArea</span></tt> provides all typically needed methods like <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.scroll.AbstractScrollArea~scrollToX">scrollToX</a> to scroll to an absolute position or <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.scroll.AbstractScrollArea~scrollByX">scrollByX</a> to scroll by the given amount. The widget also supports the scrolling of any child into the viewport. This feature is provided through the method <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.Widget~scrollChildIntoView">scrollItemIntoView</a>. It just needs any child of the widget (at any depth).</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">List</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">item</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="nx">item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">ListItem</span><span class="p">(</span><span class="s2">&quot;Item #&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>
+  <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">==</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">list</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>One really interesting aspect of these scrolling features is, that they work all the time, even if the widget is not yet rendered. It is possible to scroll any <tt class="docutils literal"><span class="pre">ScrollArea</span></tt> before even rendered. It is even possible to scroll any child into view without the whole parent being visible. This is quite useful for selection handling (selected items should be visible). Selections of a list for example can be modified during the normal application runtime and are automatically applied and scrolled correctly after the first appearance on the screen.</p>
+</div>
+<div class="section" id="layout-properties">
+<span id="pages-ui-layouting-layout-properties"></span><h2>Layout Properties<a class="headerlink" href="#layout-properties" title="Permalink to this headline">¶</a></h2>
+<p>While there are a few core layout features which are normally respected by most layouts like the margin and alignment properties (have a look to the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem">LayoutItem</a> for these), there are layout specific properties which only makes sense in conjunction with the specified layout as well. These properties are called layout properties in qooxdoo.</p>
+<p>These properties are normally defined with the addition to the parent widget. The <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.MChildrenHandling">children handling</a> normally allows a second optional parameter <tt class="docutils literal"><span class="pre">options</span></tt>. The layout properties are given through a simple map e.g.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">parent</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">child</span><span class="p">,</span> <span class="p">{</span><span class="nx">left</span><span class="o">:</span><span class="mi">20</span><span class="p">,</span> <span class="nx">top</span><span class="o">:</span> <span class="mi">100</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>This is still good readble and directly defines the properties where the children is added to the parent (and the parent's layout). While this is the common use pattern of layout properties in qooxdoo applications, it is still possible to define layout properties afterwards using <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem~setLayoutProperties">setLayoutProperties</a>. The first parameter is like the second parameter in <tt class="docutils literal"><span class="pre">add</span></tt> and accepts a map of layout properties.</p>
+</div>
+<div class="section" id="units-of-layout-properties">
+<span id="pages-ui-layouting-units-of-layout-properties"></span><h2>Units of Layout Properties<a class="headerlink" href="#units-of-layout-properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pixel">
+<span id="pages-ui-layouting-pixel"></span><h3>Pixel<a class="headerlink" href="#pixel" title="Permalink to this headline">¶</a></h3>
+<p>Usually all position and size values are defined as pixel values. For example the <tt class="docutils literal"><span class="pre">left</span></tt> and <tt class="docutils literal"><span class="pre">top</span></tt> layout properties of the <tt class="docutils literal"><span class="pre">Basic</span></tt> layout are defined as pixel values.</p>
+</div>
+<div class="section" id="flex">
+<span id="pages-ui-layouting-flex"></span><h3>Flex<a class="headerlink" href="#flex" title="Permalink to this headline">¶</a></h3>
+<p>The flex value indicates the flexibility of the item, which implies how an item's container distributes remaining empty space among its children. Flexible elements grow and shrink to fit their given space. Elements with larger flex values will be sized larger than elements with lower flex values, at the ratio determined by the two elements. The actual flex value is not relevant unless there are other flexible elements within the same container.
+Once the default sizes of elements in a box are calculated, the remaining space in the box is divided among the flexible elements, according to their flex ratios. Specifying a flex value of <tt class="docutils literal"><span class="pre">0</span></tt> has the same effect as leaving the flex attribute out entirely.</p>
+<p>The easiest use case is to make exactly one child consuming the remaining space. This is often seen in modern application. For example the location field in common browsers are automatically configured to behave like this. To do this add a flex value of <tt class="docutils literal"><span class="pre">1</span></tt> to the child. In order to make more children behave like this, one could make them flexible the same way. The available space is automatically allocated between all of them. As <tt class="docutils literal"><span class="pre">flex</span></tt> allows integer values it is also possible to define weighted values. A flex value of <tt class="docutils literal"><span class="pre">2</span></tt> means double importance over <tt class="docutils literal"><span class="pre">1</span></tt>. The result is that from 100 pixel remaining space and two flexible children the one with <tt class="docutils literal"><span class="pre">2</span></tt> gets about 66 pixel and the other one 33 pixel.</p>
+<p>Please note that in shrinking mode flex has an analogous effect. As a flex value of <tt class="docutils literal"><span class="pre">2</span></tt> means doubled importance compared to <tt class="docutils literal"><span class="pre">1</span></tt> the child with <tt class="docutils literal"><span class="pre">2</span></tt> is shrunken less than the child with <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>In contrast to qooxdoo 0.7 <tt class="docutils literal"><span class="pre">flex</span></tt> values are supplemental to the normal size values of a widget. First all children are positioned using their regular size hints. If after this step the combined size of the children is larger or smaller than the available size the <tt class="docutils literal"><span class="pre">flex</span></tt> value defines by how much each widget is stretched or shrunken.</p>
+<p>The <tt class="docutils literal"><span class="pre">flex</span></tt> property is supported by both <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.HBox">Box Layouts</a>, the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.Dock">Dock</a> Layout and the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.Grid">Grid</a> (for columns and rows).</p>
+<p>In some way the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.splitpane">SplitPane</a> supports flex as well, but it behaves a bit different there as it is regarded as an alternative to the preferred size.</p>
+</div>
+<div class="section" id="percent">
+<span id="pages-ui-layouting-percent"></span><h3>Percent<a class="headerlink" href="#percent" title="Permalink to this headline">¶</a></h3>
+<p>With the above mentioned <tt class="docutils literal"><span class="pre">flex</span></tt> feature the use of percents is quite uncommon in most qooxdoo applications. Still, there are some cases where it might be interesting to define percent locations or dimensions.</p>
+<p>The <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.Canvas">Canvas</a> Layout for example allows a child's position to contain a percent value (e.g. the layout property <tt class="docutils literal"><span class="pre">left</span></tt> could be configured to <tt class="docutils literal"><span class="pre">20%</span></tt>). When there are 1000 pixel available the so-configured child is placed at a left coordinate of 200 pixel. The final coordinate is automatically updated when the outer dimensions are modified.</p>
+<p>The <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem">LayoutItem</a>'s dimension properties only support integer values. To use percentage dimensions some qooxdoo layout managers allow to define width and height using layout properties. This dimensions are then <em>higher</em> prioritized than the width and height configured in the child using the <em>normal</em> properties. The limitations defined through <tt class="docutils literal"><span class="pre">minWidth</span></tt> etc. are still respected by the layout manager. Percentage dimensions are useful to allocate a specific part of the available space to a given widget without being dependent on the configuration of the other children.</p>
+<p>It is possible to combine <tt class="docutils literal"><span class="pre">flex</span></tt> with percent dimensions. This is good because it allows to define <em>approximations</em> like <tt class="docutils literal"><span class="pre">3</span></tt> times <tt class="docutils literal"><span class="pre">33%</span></tt> instead of being forced to fill the <tt class="docutils literal"><span class="pre">100%</span></tt> completely. With flex enabled the layout manager automatically arranges the children to fill the remaining pixels.</p>
+<p>The effects of percentage dimensions in box layouts are comparable to the result of flex in a <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.splitpane">SplitPane</a>. The resulting size is computed from the available space less all statically configured gaps like spacings or margins. Layout managers with support for percentage dimensions are the already mentioned <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.VBox">Box</a> Layouts, but also the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.Canvas">Canvas</a> Layout as well as the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.Dock">Dock</a> Layout.</p>
+</div>
+</div>
+<div class="section" id="pre-configured-widgets">
+<span id="pages-ui-layouting-pre-configured-widgets"></span><h2>Pre-configured Widgets<a class="headerlink" href="#pre-configured-widgets" title="Permalink to this headline">¶</a></h2>
+<p>There are a few containers in qooxdoo which use a predefined immutable layout for rendering their children. Currently these containers are included:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../widget/scroll.html"><em>Scroll</em></a>: Provides auto-matic scrollbars for larger content. Does not influence the size of the content which is rendered at the preferred size. Allows scrolling of the content. Supports advanced features like offset calculation and scroll into view.</li>
+<li><a class="reference internal" href="../widget/stack.html"><em>Stack</em></a>: Scales every widget to the available space and put one over another. Allows selection of which child should be visible. Used internally by TabView etc.</li>
+<li><a class="reference internal" href="../widget/slidebar.html"><em>SlideBar</em></a>: Comparable to the Scroll Container but only provides automatic forward and backward arrows. Supports only one axis per instance: horizontal or vertical. Buttons are automatically displayed as needed. Supports automatic shrinking of the children (other than the Scroll Container).</li>
+<li><a class="reference internal" href="../widget/splitpane.html"><em>SplitPane</em></a>: Divides the available space into two areas and provides a possibility to resize the panes for the user. Automatically respects the limitations of each child.</li>
+</ul>
+</div>
+<div class="section" id="visibility-handling">
+<span id="pages-ui-layouting-visibility-handling"></span><h2>Visibility Handling<a class="headerlink" href="#visibility-handling" title="Permalink to this headline">¶</a></h2>
+<p>Every widget can be hidden and shown at any time during the application runtime. In qooxdoo each widget's visibility might have three values: <tt class="docutils literal"><span class="pre">visible</span></tt>, <tt class="docutils literal"><span class="pre">hidden</span></tt> or <tt class="docutils literal"><span class="pre">excluded</span></tt>. While <tt class="docutils literal"><span class="pre">hidden</span></tt> and <tt class="docutils literal"><span class="pre">excluded</span></tt> both makes a widget invisible there is still a difference: <tt class="docutils literal"><span class="pre">excluded</span></tt> ignores the widget in during the layout process while <tt class="docutils literal"><span class="pre">hidden</span></tt> simply hides the widget and keeps the room for the widget during the layout process.</p>
+<p>The <tt class="docutils literal"><span class="pre">visibility</span></tt> property is not commonly used in qooxdoo applications.There are a few nice accessor methods for each widget:</p>
+<ul class="simple">
+<li>To check the status of a widget: <tt class="docutils literal"><span class="pre">isVisible()</span></tt>, <tt class="docutils literal"><span class="pre">isHidden()</span></tt> and <tt class="docutils literal"><span class="pre">isExcluded()</span></tt></li>
+<li>To modify the visibility: <tt class="docutils literal"><span class="pre">show()</span></tt>, <tt class="docutils literal"><span class="pre">hide()</span></tt> and <tt class="docutils literal"><span class="pre">exclude()</span></tt></li>
+</ul>
+<p>Please note that for performance reasons invisible widgets are not rendered or updated to the DOM which means that especially initially invisible parts could improve the startup of a qooxdoo application e.g. alternate Tab Pages, closed Window instances, Menus, etc.</p>
+<p>To work with multiple layers like in a Tab View it is suggested to use a Stack Container instead of doing the visibility management on the own.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_table_styling.html"
+             title="previous chapter">« Table Styling</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_theming.html"
+             title="next chapter">Theming »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Layouting</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#panes">Panes</a></li>
+<li><a class="reference internal" href="#sensible-defaults">Sensible defaults</a></li>
+<li><a class="reference internal" href="#growing-shrinking">Growing &amp; Shrinking</a></li>
+<li><a class="reference internal" href="#overflow-handling">Overflow Handling</a></li>
+<li><a class="reference internal" href="#layout-properties">Layout Properties</a></li>
+<li><a class="reference internal" href="#units-of-layout-properties">Units of Layout Properties</a><ul>
+<li><a class="reference internal" href="#pixel">Pixel</a></li>
+<li><a class="reference internal" href="#flex">Flex</a></li>
+<li><a class="reference internal" href="#percent">Percent</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pre-configured-widgets">Pre-configured Widgets</a></li>
+<li><a class="reference internal" href="#visibility-handling">Visibility Handling</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_theming.html"
+                        title="next chapter">Theming</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_table_styling.html"
+                        title="previous chapter">Table Styling</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_layouting.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

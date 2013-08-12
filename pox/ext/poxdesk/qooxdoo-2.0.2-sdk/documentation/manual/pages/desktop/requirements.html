@@ -1,0 +1,322 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qx.Desktop Requirements &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Getting Started" href="../getting_started.html" />
+    <link rel="next" title="Getting Started with qooxdoo qx.Desktop" href="getting_started.html" />
+    <link rel="prev" title="Getting Started with qooxdoo qx.Website" href="../website/getting_started.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../introduction.html" >Introduction</a>
+     &raquo;
+    <a href="../getting_started.html" accesskey="U">Getting Started</a>
+     &raquo;
+  <a href="">qx.Desktop Requirements</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="qx-desktop-requirements">
+<span id="pages-desktop-requirements-requirements"></span><h1>qx.Desktop Requirements<a class="headerlink" href="#qx-desktop-requirements" title="Permalink to this headline">¶</a></h1>
+<p>Here are the requirements for developing and deploying with qx.Desktop. Applications built with it run in a web browser, so you need at least one of the supported browsers to check your work. During development time you will also need the tools from qooxdoo's SDK to create runnable versions of your application. But these tools are not necessary once you have deployed it.</p>
+<p>The cross-browser abstraction of qooxdoo not only benefits the users of your application, it allows also you as a developer to pick your preferred development platform, i.e. combination of browser and operating system, and be confident that the result will run on all other platforms.</p>
+<p>qooxdoo qx.Desktop does not enforce any specific backend components, any server that is reachable through its I/O layer should be fine. During development, loading your application from the file system should suffice, as long as your application logic doesn't enforce a server connection. Developers should note, though, that with some browsers, such as Chrome and Firefox, there is a known constraint when loading reasonably complex qooxdoo applications (such as the APIviewer or the Demobrowser) via the <tt class="docutils literal"><span class="pre">file://</span></tt> protocol. Either consult your browser's documentation (usually there is a command-line option to change this), or use the HTTP protocol during development. In the latter case be sure to read and understand this <a class="reference external" href="http://qooxdoo.org/docs/general/snippets#running_a_source_version_from_a_web_server">FAQ entry</a>.</p>
+<div class="section" id="browsers">
+<span id="pages-desktop-requirements-client"></span><h2>Browsers<a class="headerlink" href="#browsers" title="Permalink to this headline">¶</a></h2>
+<p>An application comprising of the qooxdoo runtime and custom code written against its API runs across all major web browsers, unaltered, and with identical look &amp; feel:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><img alt="../../_images/ie.png" class="first last" src="../../_images/ie.png" />
+</td>
+<td>Internet Explorer 6+</td>
+</tr>
+<tr class="row-even"><td><img alt="../../_images/ff.png" class="first last" src="../../_images/ff.png" />
+</td>
+<td>Firefox 2+</td>
+</tr>
+<tr class="row-odd"><td><img alt="../../_images/opera.png" class="first last" src="../../_images/opera.png" />
+</td>
+<td>Opera 9+</td>
+</tr>
+<tr class="row-even"><td><img alt="../../_images/safari.png" class="first last" src="../../_images/safari.png" />
+</td>
+<td>Safari 3+</td>
+</tr>
+<tr class="row-odd"><td><img alt="../../_images/chrome.png" class="first last" src="../../_images/chrome.png" />
+</td>
+<td>Chrome 2+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sdk">
+<span id="pages-desktop-requirements-tools"></span><h2>SDK<a class="headerlink" href="#sdk" title="Permalink to this headline">¶</a></h2>
+<p>Working with qx.Desktop requires from you that you download and use qooxdoo's SDK. See here for the <a class="reference internal" href="../tool/sdk_requirements.html"><em>SDK's requirements</em></a>, and follow its <em>Installation and Setup</em> section. This requirement applies to the development phase only, the final app is independent of the SDK.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../website/getting_started.html"
+             title="previous chapter">« Getting Started with qooxdoo qx.Website</a>
+          <span class="separator">|</span>
+          <a class="next" href="getting_started.html"
+             title="next chapter">Getting Started with qooxdoo qx.Desktop »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">qx.Desktop Requirements</a><ul>
+<li><a class="reference internal" href="#browsers">Browsers</a></li>
+<li><a class="reference internal" href="#sdk">SDK</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="next chapter">Getting Started with qooxdoo qx.Desktop</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../website/getting_started.html"
+                        title="previous chapter">Getting Started with qooxdoo qx.Website</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/requirements.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

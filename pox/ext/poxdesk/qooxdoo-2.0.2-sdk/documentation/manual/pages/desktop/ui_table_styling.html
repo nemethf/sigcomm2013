@@ -1,0 +1,798 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Table Styling &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Layouting" href="ui_layouting.html" />
+    <link rel="prev" title="List Handling" href="ui_html_editing/list_handling.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Table Styling</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="table-styling">
+<span id="pages-ui-table-styling-table-styling"></span><h1>Table Styling<a class="headerlink" href="#table-styling" title="Permalink to this headline">¶</a></h1>
+<p>Ever wanted to style the table widget and missed an overview what can by styled exactly? If so, then read on and learn how to style the different parts of the table widget and which steps <em>can</em> be applied to customize the appearance of this widget.</p>
+<p>By default (talking about the <em>Modern</em> theme) the table looks like this:</p>
+<p><img alt="table_default_styling.png" src="../../_images/table_default_styling.png" /></p>
+<p>This tutorial takes a look at the several <em>visible</em> parts of the table such as</p>
+<ul class="simple">
+<li>Table widget itself</li>
+<li>Header</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Header cells</li>
+<li>Column visibility button</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Pane</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Row and column styling</li>
+<li>Cell styling</li>
+<li>Selection</li>
+<li>Focus Indicator</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Statusbar</li>
+<li>Scrollbar</li>
+<li>Editable Cells (controls like Textfield, SelectBox and ComboBox)</li>
+</ul>
+<p>This tutorial assumes you're implementing all styling changes of the table widget in your own application theme classes. If you're new to the theming layer of qooxdoo it's a good idea to recap the manual section for the <a class="reference internal" href="ui_theming.html"><em>theming layer</em></a>.</p>
+<p>If you're familiar with the theming layer we can dive right into the first topic.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some of the examples are using CSS3 features, so they're not applicable to all browsers. If you need to achieve a styling which is almost completely identical (a pixel-perfect result is impossible) you have to use graphic files whenver CSS3 features are not present.</p>
+</div>
+<div class="section" id="table-widget">
+<h2>Table Widget<a class="headerlink" href="#table-widget" title="Permalink to this headline">¶</a></h2>
+<p>Since this widget is the container of all sub-components the styling possibilities are naturally limited. However, limited possibilites does not result in low importance. You can e.g. change the border of the widget which can have a great visual impact.
+Since the border is a <a class="reference internal" href="ui_decorators.html"><em>decorator</em></a> you can use all possibilities like different kind of borders, shadows and the like.</p>
+<p>Sample of a table widget using a decorator with shadow:</p>
+<p><img alt="table_widget_styling.png" src="../../_images/table_widget_styling.png" /></p>
+<p>To achieve this you can re-define the <tt class="docutils literal"><span class="pre">table</span></tt> decorator in your application theme as following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="c1">// the decorator &#39;MBoxShadow&#39; is only supported by modern browsers</span>
+  <span class="c1">// Firefox 3.5+, IE9+, Safari 3.0+, Opera 10.5+ and Chrome 4.0+</span>
+  <span class="nx">decorator</span><span class="o">:</span> <span class="p">[</span>
+    <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">MSingleBorder</span><span class="p">,</span>
+    <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">MBoxShadow</span>
+  <span class="p">],</span>
+
+  <span class="nx">style</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">width</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">color</span> <span class="o">:</span> <span class="s2">&quot;table-border-main&quot;</span><span class="p">,</span>
+
+    <span class="nx">shadowBlurRadius</span> <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">shadowLength</span> <span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="c1">// color is &#39;#999999&#39;</span>
+    <span class="nx">shadowColor</span> <span class="o">:</span> <span class="s2">&quot;table-shadow&quot;</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To get this example working you additionally have to define the colors <tt class="docutils literal"><span class="pre">table-border-main</span></tt> and <tt class="docutils literal"><span class="pre">table-shadow</span></tt> in your color theme. It's considered as best practice  to define all colors as named color in your color theme. This way you can use these named colors all over your application.</p>
+</div>
+</div>
+<div class="section" id="header">
+<h2>Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="header-styling">
+<h3>Header styling<a class="headerlink" href="#header-styling" title="Permalink to this headline">¶</a></h3>
+<p>The header widget is a simple widget containing the header cells and the column visibility button. However, if you want to change the e.g. the background of the whole header you're here in the right place, since the container does the styling of the background and not the header cells themselves.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// change the whole background of the header by changing the decorator</span>
+<span class="s2">&quot;table-scroller-header-css&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">decorator</span> <span class="o">:</span> <span class="p">[</span>
+    <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">MSingleBorder</span><span class="p">,</span>
+    <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">MBackgroundColor</span>
+  <span class="p">],</span>
+
+  <span class="nx">style</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="c1">// color is &#39;#00AA00&#39;</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s2">&quot;table-header-background&quot;</span><span class="p">,</span>
+
+    <span class="nx">widthBottom</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">colorBottom</span> <span class="o">:</span> <span class="s2">&quot;border-main&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure the color <tt class="docutils literal"><span class="pre">table-header-background</span></tt> is part of your color theme.</p>
+</div>
+<p>This code snippet will result in the following:</p>
+<p><img alt="table_header_styling.png" src="../../_images/table_header_styling.png" /></p>
+<p>Additionally you can change the height of the whole header by using the <tt class="docutils literal"><span class="pre">headerCellHeight</span></tt> property. Changing this property might make sense if you also want to customize the appearance of the header cells (e.g. using a larger font).</p>
+</div>
+<div class="section" id="removing-the-header">
+<h3>Removing the header<a class="headerlink" href="#removing-the-header" title="Permalink to this headline">¶</a></h3>
+<p>You want to get rid off the whole header? That's also possible by setting two additional themeable properties. So you only have to drop those two line in your appearance theme and you're done:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">alias</span> <span class="o">:</span> <span class="s2">&quot;widget&quot;</span><span class="p">,</span>
+
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">decorator</span> <span class="o">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+      <span class="nx">headerCellsVisible</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">columnVisibilityButtonVisible</span> <span class="o">:</span> <span class="kc">false</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>to get the following result</p>
+<p><img alt="table_without_header.png" src="../../_images/table_without_header.png" /></p>
+</div>
+<div class="section" id="header-cells">
+<h3>Header Cells<a class="headerlink" href="#header-cells" title="Permalink to this headline">¶</a></h3>
+<p>Customizing the appearance of the header cells can be divided into the following parts:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Decorator for hover effects</li>
+<li>Padding</li>
+<li>Alignment</li>
+<li>Using a different sort icon</li>
+<li>Using a custom font</li>
+</ul>
+</div></blockquote>
+<p>Beside the settings for alignment and paddings all other appearance customizations are directly applied to the header cell appearance. If you want to e.g. change the hover effect for the header cell you can easily change the decorator (and the padding if necessary) to get an custom styling.
+Exchanging the sort icon is also supported. The sort icons are shown whenever the user does click at one header cell the very first time.</p>
+<p>The default appearance for each header cell looks like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-header-cell&quot;</span> <span class="o">:</span>
+ <span class="p">{</span>
+   <span class="nx">alias</span> <span class="o">:</span> <span class="s2">&quot;atom&quot;</span><span class="p">,</span>
+   <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+   <span class="p">{</span>
+     <span class="k">return</span> <span class="p">{</span>
+       <span class="nx">minWidth</span>  <span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+       <span class="nx">minHeight</span> <span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+       <span class="nx">padding</span>   <span class="o">:</span> <span class="nx">states</span><span class="p">.</span><span class="nx">hovered</span> <span class="o">?</span> <span class="p">[</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">]</span> <span class="o">:</span> <span class="p">[</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">],</span>
+       <span class="nx">decorator</span> <span class="o">:</span> <span class="nx">states</span><span class="p">.</span><span class="nx">hovered</span> <span class="o">?</span> <span class="s2">&quot;table-header-cell-hovered&quot;</span> <span class="o">:</span> <span class="s2">&quot;table-header-cell&quot;</span><span class="p">,</span>
+       <span class="nx">sortIcon</span>  <span class="o">:</span> <span class="nx">states</span><span class="p">.</span><span class="nx">sorted</span> <span class="o">?</span>
+           <span class="p">(</span><span class="nx">states</span><span class="p">.</span><span class="nx">sortedAscending</span> <span class="o">?</span> <span class="s2">&quot;decoration/table/ascending.png&quot;</span> <span class="o">:</span> <span class="s2">&quot;decoration/table/descending.png&quot;</span><span class="p">)</span>
+           <span class="o">:</span> <span class="kc">undefined</span>
+     <span class="p">};</span>
+   <span class="p">}</span>
+ <span class="p">},</span>
+</pre></div>
+</div>
+<p>The default decorator for the hover effect does show a 1 pixel border at the bottom of the hovered header cell. If you only want to change this color you can go ahead and add the <tt class="docutils literal"><span class="pre">table-header-hovered</span></tt> color in the color theme of your application</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-header-hovered&quot;</span> <span class="o">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>to get a result like this</p>
+<p><img alt="table_header_cell_hover.png" src="../../_images/table_header_cell_hover.png" /></p>
+<p>A bigger change of the header cells might be to change the background color at hovering. To do so you can simply modify the existing <tt class="docutils literal"><span class="pre">table-header-cell-hovered</span></tt> decorator like</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-header-cell-hovered&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">decorator</span> <span class="o">:</span>  <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">Background</span><span class="p">,</span>
+
+  <span class="nx">style</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">backgroundColor</span> <span class="o">:</span> <span class="s2">&quot;orange&quot;</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>and you're done!</p>
+<p><img alt="table_header_cell_decorator_hover.png" src="../../_images/table_header_cell_decorator_hover.png" /></p>
+<p>Additionally, you can change the styling of the different child controls (label, icon and sort icon) of the header cells. So if you want to change the font you can simply customize the label child control of the header cell to change the alignment, existing padding and the like.</p>
+<p>The default appearance of the child controls are defined as</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-header-cell/label&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">minWidth</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">alignY</span> <span class="o">:</span> <span class="s2">&quot;middle&quot;</span><span class="p">,</span>
+      <span class="nx">paddingRight</span> <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="nx">paddingLeft</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+
+      <span class="c1">// change of the default font setting</span>
+      <span class="nx">font</span> <span class="o">:</span> <span class="s2">&quot;bold&quot;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="s2">&quot;table-header-cell/sort-icon&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">alignY</span> <span class="o">:</span> <span class="s2">&quot;middle&quot;</span><span class="p">,</span>
+      <span class="nx">alignX</span> <span class="o">:</span> <span class="s2">&quot;right&quot;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="s2">&quot;table-header-cell/icon&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">minWidth</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">alignY</span> <span class="o">:</span> <span class="s2">&quot;middle&quot;</span><span class="p">,</span>
+      <span class="nx">paddingRight</span> <span class="o">:</span> <span class="mi">5</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>With the minor change above to the decorator and a font setting of the label you can achieve the following:</p>
+<p><img alt="table_header_cell_styling.png" src="../../_images/table_header_cell_styling.png" /></p>
+</div>
+</div>
+<div class="section" id="pane">
+<h2>Pane<a class="headerlink" href="#pane" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pane-background">
+<h3>Pane Background<a class="headerlink" href="#pane-background" title="Permalink to this headline">¶</a></h3>
+<p>The pane itself is only styled using a background color and it is recommended to only change the background color in order to harmonize the color with the used row colors. The pane widget gets only visible if there is more open space left than occupied by the rows to show or at the very end of the table pane whenever scrollbars are necessary.</p>
+<p>One picture says more than thousand words :) The pane with red background color to demonstrate:</p>
+<p><img alt="table_pane_styling.png" src="../../_images/table_pane_styling.png" /></p>
+<p>The corresponding code in the color theme of your application is a simple one-liner:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-pane&quot;</span> <span class="o">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="row-and-column-styling">
+<h3>Row And Column Styling<a class="headerlink" href="#row-and-column-styling" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="removing-the-grid-lines">
+<h4>Removing The Grid Lines<a class="headerlink" href="#removing-the-grid-lines" title="Permalink to this headline">¶</a></h4>
+<p>If you take a second look at the picture above you can already recognize a customization of the row and column styling: the removal of the row and column lines.</p>
+<p>Basically you can choose between two solutions:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Setting the colors for the row and column line</li>
+<li>Writing your own cellrenderer <strong>and</strong> rowrenderer</li>
+</ul>
+</div></blockquote>
+<p>The first solution path is the quick one which is done by customize color of the color theme and <strong>no</strong> additional coding. However, you have also limited possibilities to customize.
+The second solution is the coding one. Start right away and extend the classes <tt class="docutils literal"><span class="pre">qx.ui.table.rowrenderer.Default</span></tt> and <tt class="docutils literal"><span class="pre">qx.ui.table.cellrenderer.Abstract</span></tt>, implement the necessary interfaces and create your very own apperance by putting together the necessary CSS styles.</p>
+<p>Since the latter solution is a more complex one, I'll only explain the first solution which helps you in styling the table rows and columns in a quick way.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// these two lines have to inserted in your application color theme</span>
+<span class="c1">// to remove the grid lines</span>
+<span class="s2">&quot;table-row-line&quot;</span> <span class="o">:</span> <span class="s2">&quot;transparent&quot;</span><span class="p">,</span>
+<span class="s2">&quot;table-column-line&quot;</span> <span class="o">:</span> <span class="s2">&quot;transparent&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Okay, we're cheating here a bit by hiding and not removing them, but anyway the goal is achieved and this in a very quick manner, right?</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The use of <tt class="docutils literal"><span class="pre">transparent</span></tt> as a named color is <strong>not</strong> working for the IE6. If you want to support this browser you have to write your own cellrenderer.</p>
+</div>
+</div>
+<div class="section" id="text-and-background-colors">
+<h4>Text And Background Colors<a class="headerlink" href="#text-and-background-colors" title="Permalink to this headline">¶</a></h4>
+<p>What about changing more than the grid lines of the cells? Like changing the colors of the row background and so. I'm glad you ask this :)</p>
+<p>Customizing these colors is as easy as hiding the grid lines. You can adapt the styling of the rows and columns by just setting different colors. These colors are available and can be overwritten in your application color theme:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">table-pane</span></tt> - background color of the pane when less entries are used than avaialable space</li>
+<li><tt class="docutils literal"><span class="pre">table-row</span></tt> - text color of the cells</li>
+<li><tt class="docutils literal"><span class="pre">table-row-background-even</span></tt> - background color of even rows</li>
+<li><tt class="docutils literal"><span class="pre">table-row-background-odd</span></tt> - background color of odd rows</li>
+</ul>
+</div></blockquote>
+<p>By changing one or more of these colors you can e.g. achieve this:</p>
+<p><img alt="table_pane_cell_backgrounds.png" src="../../_images/table_pane_cell_backgrounds.png" /></p>
+<p>by defining these colors:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-row-background-even&quot;</span> <span class="o">:</span> <span class="s2">&quot;#CD661D&quot;</span><span class="p">,</span>
+<span class="s2">&quot;table-row-background-odd&quot;</span> <span class="o">:</span> <span class="s2">&quot;#EEAD0E&quot;</span><span class="p">,</span>
+<span class="s2">&quot;table-row&quot;</span> <span class="o">:</span> <span class="s2">&quot;#EEE9E9&quot;</span><span class="p">,</span>
+
+<span class="s2">&quot;table-row-line&quot;</span> <span class="o">:</span> <span class="s2">&quot;transparent&quot;</span><span class="p">,</span>
+<span class="s2">&quot;table-column-line&quot;</span> <span class="o">:</span> <span class="s2">&quot;transparent&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="selection">
+<h4>Selection<a class="headerlink" href="#selection" title="Permalink to this headline">¶</a></h4>
+<p>If you customized the colors like above this is only the first part of it. Now the colors for the selection join the game. If you don't adapt these colors the result will for sure not satisfy you. So let's dive into this topic.</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">table-row-selected</span></tt> - text color for cells are selected but <strong>not</strong> focused</li>
+<li><tt class="docutils literal"><span class="pre">table-row-background-selected</span></tt> - cells are selected but <strong>not</strong> focused</li>
+<li><tt class="docutils literal"><span class="pre">table-row-background-focused-selected</span></tt> - cells are selected <strong>and</strong> focused</li>
+<li><tt class="docutils literal"><span class="pre">table-row-background-focused</span></tt> - cells are focused but <strong>not</strong> selected</li>
+</ul>
+</div></blockquote>
+<p>To better visualize this the following example does use colors which are easy to distinguish:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-row-selected&quot;</span> <span class="o">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+<span class="s2">&quot;table-row-background-selected&quot;</span> <span class="o">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+<span class="s2">&quot;table-row-background-focused-selected&quot;</span> <span class="o">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+<span class="s2">&quot;table-row-background-focused&quot;</span> <span class="o">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>This shows an active selection:</p>
+<p><img alt="table_pane_cell_selection.png" src="../../_images/table_pane_cell_selection.png" /></p>
+<p>The same with an inactive selection:</p>
+<p><img alt="table_pane_cell_selection2.png" src="../../_images/table_pane_cell_selection2.png" /></p>
+</div>
+<div class="section" id="cell-styling">
+<h4>Cell Styling<a class="headerlink" href="#cell-styling" title="Permalink to this headline">¶</a></h4>
+<p>This section is rather for the sake of completness. If you want to have full control over the cell styling you can create your own cellrenderer classes and apply them for each column of your table.
+This topic is more a programmatic one and it does not fit in this scope of this article. However, a short introduction and a beginners guide will fit in here :)</p>
+<p>A list of existing cell renderer is available at the <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.table.cellrenderer">API Viewer</a>. If one of these is suitable for you all you have to do to use it is</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">tcm</span> <span class="o">=</span> <span class="nx">table</span><span class="p">.</span><span class="nx">getTableColumnModel</span><span class="p">();</span>
+
+<span class="c1">// Display a checkbox in column 3</span>
+<span class="nx">tcm</span><span class="p">.</span><span class="nx">setDataCellRenderer</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">cellrenderer</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>to e.g. display a checkbox for the fourth column. This assumes the cell renderer fits with the provided data.</p>
+<p>If that's still no a solution for you, because you really need some extras for the cell rendering the solution has to be an own cell renderer. To get into it it's recommended to take a look at the existing cell renderers and the base class.
+So basically you should study the implementation of the <tt class="docutils literal"><span class="pre">qx.ui.table.cellrenderer.Abstract</span></tt> class and as first start the implementation of <tt class="docutils literal"><span class="pre">qx.ui.table.cellrenderer.Default</span></tt> to give a good overview of this topic. Depending on your needs you can start right away by copying the <tt class="docutils literal"><span class="pre">default</span></tt> renderer and play around a bit to get a impression of how to customize it.</p>
+</div>
+</div>
+<div class="section" id="focus-indicator">
+<h3>Focus Indicator<a class="headerlink" href="#focus-indicator" title="Permalink to this headline">¶</a></h3>
+<p>This widget in default visible whenever a selection is present. There are two ways of customzing this widget:</p>
+<blockquote>
+<div><ul class="simple">
+<li>change the decorator and the colors of this widget</li>
+<li>hide this indicator completely</li>
+</ul>
+</div></blockquote>
+<p>The first possibility is the fast way for customization if you decided to keep the focus indicator visible. The available decorator is a simple 2 pixel border one and the color <tt class="docutils literal"><span class="pre">table-focus-indicator</span></tt> is defining this border color of the decorator.
+So either replacing the decorator by an own one or just changing the color has a direct effect. So let's look at an example where the decorator is changed:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-scroller-focus-indicator&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">decorator</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">Double</span><span class="p">,</span>
+
+  <span class="nx">style</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">style</span> <span class="o">:</span> <span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+
+    <span class="c1">// color value is &#39;orange&#39;</span>
+    <span class="nx">color</span> <span class="o">:</span> <span class="s2">&quot;table-focus-indicator&quot;</span><span class="p">,</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+
+    <span class="nx">innerColor</span> <span class="o">:</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span>
+    <span class="nx">innerWidth</span> <span class="o">:</span> <span class="mi">2</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p><img alt="table_focus_indicator.png" src="../../_images/table_focus_indicator.png" /></p>
+<p>Look's really weird, but for demonstration purpose is quite good enough :)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It's better to stick with decorators which are only affecting the border for the focus indicator. A background-related decorator won't have any impact because of the background color stying of the cells.</p>
+</div>
+<p>If you want to hide the focus indicator itself this is a one-liner</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">table</span><span class="p">.</span><span class="nx">setShowCellFocusIndicator</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resize-line">
+<h3>Resize Line<a class="headerlink" href="#resize-line" title="Permalink to this headline">¶</a></h3>
+<p>This is a minor topic, since it only can be customized by its color. You may ask: what is the resize line all about? Point your mouse cursor to a column border and start the resizing of the column by clicking at the border. The vertical line which gets visible is the resize line. So a table with a green resize line would like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-scroller/resize-line&quot;</span> <span class="o">:</span>
+ <span class="p">{</span>
+   <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+   <span class="p">{</span>
+     <span class="k">return</span> <span class="p">{</span>
+       <span class="nx">backgroundColor</span> <span class="o">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+       <span class="nx">width</span> <span class="o">:</span> <span class="mi">2</span>
+     <span class="p">};</span>
+   <span class="p">}</span>
+ <span class="p">},</span>
+</pre></div>
+</div>
+<p><img alt="table_resize_line.png" src="../../_images/table_resize_line.png" /></p>
+</div>
+</div>
+<div class="section" id="statusbar">
+<h2>Statusbar<a class="headerlink" href="#statusbar" title="Permalink to this headline">¶</a></h2>
+<p>You might guessed it already: yes, the statusbar can also be hidden <em>or</em> customized by changing a decorator in your decorator theme of your application. This kind of repetition is quite nice, because if you do understand those basic things you can take a look at the <tt class="docutils literal"><span class="pre">Modern</span></tt> appearance or decorator theme and you quickly know what to include in your own theme in order to change the styling of a component.</p>
+<p>Hiding the statusbar is again an one-liner:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">table</span><span class="p">.</span><span class="nx">setStatusBarVisible</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>And the default implementation of the corresponding decorator looks like</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-statusbar&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">decorator</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">Single</span><span class="p">,</span>
+
+  <span class="nx">style</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">widthTop</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">colorTop</span> <span class="o">:</span> <span class="s2">&quot;border-main&quot;</span><span class="p">,</span>
+    <span class="nx">style</span>    <span class="o">:</span> <span class="s2">&quot;solid&quot;</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>As you can see there is no additional background and no other fancy stuff. If you like to change this e.g. setting an own background gradient you can use the following</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-statusbar&quot;</span> <span class="o">:</span>
+ <span class="p">{</span>
+   <span class="nx">decorator</span> <span class="o">:</span>  <span class="p">[</span>
+     <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">MLinearBackgroundGradient</span><span class="p">,</span>
+     <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">decoration</span><span class="p">.</span><span class="nx">MSingleBorder</span>
+   <span class="p">],</span>
+
+   <span class="nx">style</span> <span class="o">:</span>
+   <span class="p">{</span>
+     <span class="nx">widthTop</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+     <span class="nx">colorTop</span> <span class="o">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+     <span class="nx">style</span>    <span class="o">:</span> <span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+
+     <span class="nx">gradientStart</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="mi">10</span> <span class="p">],</span>
+     <span class="nx">gradientEnd</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="mi">80</span> <span class="p">]</span>
+   <span class="p">}</span>
+ <span class="p">},</span>
+</pre></div>
+</div>
+<p>The result of this little demo looks like:</p>
+<p><img alt="table_statusbar.png" src="../../_images/table_statusbar.png" /></p>
+</div>
+<div class="section" id="editable-cells">
+<h2>Editable Cells<a class="headerlink" href="#editable-cells" title="Permalink to this headline">¶</a></h2>
+<p>The table widget (respectively the cell renderer) do support inline editing of values. These widgets which are displayed for the inline editing can also be cutomized using the theming layer of qooxdoo. The following appearances are pre-defined:</p>
+<blockquote>
+<div><ul class="simple">
+<li>table-editor-textfield</li>
+<li>table-editor-selectbox</li>
+<li>table-editor-combobox</li>
+</ul>
+</div></blockquote>
+<p>Basically those appearances do include the corresponding widget appearance and only modify single properties. In the <tt class="docutils literal"><span class="pre">Modern</span></tt> appearance theme this looks like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre> <span class="s2">&quot;table-editor-textfield&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">include</span> <span class="o">:</span> <span class="s2">&quot;textfield&quot;</span><span class="p">,</span>
+
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">decorator</span> <span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="nx">padding</span> <span class="o">:</span> <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="p">],</span>
+      <span class="nx">backgroundColor</span> <span class="o">:</span> <span class="s2">&quot;background-light&quot;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="s2">&quot;table-editor-selectbox&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">include</span> <span class="o">:</span> <span class="s2">&quot;selectbox&quot;</span><span class="p">,</span>
+  <span class="nx">alias</span> <span class="o">:</span> <span class="s2">&quot;selectbox&quot;</span><span class="p">,</span>
+
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">padding</span> <span class="o">:</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="p">],</span>
+      <span class="nx">backgroundColor</span> <span class="o">:</span> <span class="s2">&quot;background-light&quot;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="s2">&quot;table-editor-combobox&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">include</span> <span class="o">:</span> <span class="s2">&quot;combobox&quot;</span><span class="p">,</span>
+  <span class="nx">alias</span> <span class="o">:</span> <span class="s2">&quot;combobox&quot;</span><span class="p">,</span>
+
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">decorator</span> <span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="nx">backgroundColor</span> <span class="o">:</span> <span class="s2">&quot;background-light&quot;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see: only minor changes to the existing appearances. And that's also the hint for your customizations: start with the existing appearances and only modify single properties by overwriting or adding them.</p>
+<p>Here's a litte example with an editable textfield with <tt class="docutils literal"><span class="pre">orange</span></tt> background color:</p>
+<p><img alt="table_editable_cells.png" src="../../_images/table_editable_cells.png" /></p>
+</div>
+<div class="section" id="scrollbars">
+<h2>Scrollbars<a class="headerlink" href="#scrollbars" title="Permalink to this headline">¶</a></h2>
+<p>Each widget which uses the scrolling capabilities (as the table pane scroller does) can use themed scrollbars. By using them you can also style them, since they are rendered by decorators which are now quite common to you, right?
+So this section won't dive too deep into styling scrollbars and just gives hints at which appearance you have to get your hands on. The default appearance of the scrollbars for the table is</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;table-scroller/scrollbar-x&quot;</span><span class="o">:</span> <span class="s2">&quot;scrollbar&quot;</span><span class="p">,</span>
+<span class="s2">&quot;table-scroller/scrollbar-y&quot;</span><span class="o">:</span> <span class="s2">&quot;scrollbar&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>so the scrollbars of the <tt class="docutils literal"><span class="pre">table-scroller</span></tt> widget integrates the scrollbars as child controls and does use the same decorators as the default scrollbars. If you want to theme those scrollbars you should take a look at the <tt class="docutils literal"><span class="pre">scrollbar</span></tt> appearance and all other child controls of this widget.
+As first step you can copy this definitions and modify it to suit your needs. Instead of using the default scrollbars for the table you have to point the <tt class="docutils literal"><span class="pre">table-scroller/scrollbar-x</span></tt> and <tt class="docutils literal"><span class="pre">table-scroller/scrollbar-y</span></tt> to your own appearance entries and you're done.</p>
+<p>Here's a quick reminder how the table does look like with themed scrollbars:</p>
+<p><img alt="table_scrollbars.png" src="../../_images/table_scrollbars.png" /></p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_html_editing/list_handling.html"
+             title="previous chapter">« List Handling</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_layouting.html"
+             title="next chapter">Layouting »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Table Styling</a><ul>
+<li><a class="reference internal" href="#table-widget">Table Widget</a></li>
+<li><a class="reference internal" href="#header">Header</a><ul>
+<li><a class="reference internal" href="#header-styling">Header styling</a></li>
+<li><a class="reference internal" href="#removing-the-header">Removing the header</a></li>
+<li><a class="reference internal" href="#header-cells">Header Cells</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pane">Pane</a><ul>
+<li><a class="reference internal" href="#pane-background">Pane Background</a></li>
+<li><a class="reference internal" href="#row-and-column-styling">Row And Column Styling</a><ul>
+<li><a class="reference internal" href="#removing-the-grid-lines">Removing The Grid Lines</a></li>
+<li><a class="reference internal" href="#text-and-background-colors">Text And Background Colors</a></li>
+<li><a class="reference internal" href="#selection">Selection</a></li>
+<li><a class="reference internal" href="#cell-styling">Cell Styling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#focus-indicator">Focus Indicator</a></li>
+<li><a class="reference internal" href="#resize-line">Resize Line</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#statusbar">Statusbar</a></li>
+<li><a class="reference internal" href="#editable-cells">Editable Cells</a></li>
+<li><a class="reference internal" href="#scrollbars">Scrollbars</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_layouting.html"
+                        title="next chapter">Layouting</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_html_editing/list_handling.html"
+                        title="previous chapter">List Handling</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_table_styling.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

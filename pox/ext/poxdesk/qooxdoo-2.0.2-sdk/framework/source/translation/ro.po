@@ -1,0 +1,284 @@
+# Romanian
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: qooxdoo framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-05-19 10:11+0200\n"
+"PO-Revision-Date: 2010-11-08 11:45+0200\n"
+"Last-Translator: Gabriel Munteanu <gabriel DOT munteanu AT 1and1 DOT ro>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "%1 does not fit %2."
+msgstr "%1 nu încape în %2"
+
+msgid "%1 is not a color! %2"
+msgstr "%1 nu este o culoare! %2"
+
+msgid "%1 is not a number."
+msgstr "%1 nu este un număr"
+
+msgid "%1 is not a string."
+msgstr "%1 nu este un șir de caractere"
+
+msgid "%1 is not an url."
+msgstr "%1 nu este un URL."
+
+msgid "%1 is not in %2"
+msgstr "%1 nu este în %2"
+
+msgid "%1 is not in the range from [%2, %3]."
+msgstr "%1 nu este în intervalul [%2,%3]"
+
+msgid "'%1' is not an email address."
+msgstr "'%1' nu este o adresă de email"
+
+msgid "Automatic"
+msgstr "Automat"
+
+msgid "Cancel"
+msgstr "Anulează"
+
+msgid "Color Selector"
+msgstr "Selector de culori"
+
+msgid "Details"
+msgstr "Detalii"
+
+msgid "HSB"
+msgstr ""
+
+msgid "Hex"
+msgstr ""
+
+msgid "Last month"
+msgstr "Luna trecută"
+
+msgid "Last year"
+msgstr "Anul trecut"
+
+msgid "Next month"
+msgstr "Luna următoare"
+
+msgid "Next year"
+msgstr "Anul următor"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Open ColorSelector"
+msgstr "Deschide selectorul de culori"
+
+msgid "Presets"
+msgstr "Predefiniri"
+
+msgid "Preview (Old/New)"
+msgstr "Previzualizare (Vechi/Nou)"
+
+msgid "RGB"
+msgstr ""
+
+msgid "Reset column widths"
+msgstr "Resetează lățimea coloanei"
+
+msgid "This field is required"
+msgstr "Acest câmp este obligatoriu"
+
+msgid "Visual"
+msgstr "Vizual"
+
+msgid "key_full_Alt"
+msgstr ""
+
+msgid "key_full_Apps"
+msgstr ""
+
+msgid "key_full_Backspace"
+msgstr ""
+
+msgid "key_full_CapsLock"
+msgstr ""
+
+msgid "key_full_Control"
+msgstr ""
+
+msgid "key_full_Control_Mac"
+msgstr ""
+
+msgid "key_full_Delete"
+msgstr ""
+
+msgid "key_full_Down"
+msgstr ""
+
+msgid "key_full_End"
+msgstr ""
+
+msgid "key_full_Enter"
+msgstr ""
+
+msgid "key_full_Escape"
+msgstr ""
+
+msgid "key_full_Home"
+msgstr ""
+
+msgid "key_full_Insert"
+msgstr ""
+
+msgid "key_full_Left"
+msgstr ""
+
+msgid "key_full_Meta"
+msgstr ""
+
+msgid "key_full_NumLock"
+msgstr ""
+
+msgid "key_full_PageDown"
+msgstr ""
+
+msgid "key_full_PageUp"
+msgstr ""
+
+msgid "key_full_Pause"
+msgstr ""
+
+msgid "key_full_PrintScreen"
+msgstr ""
+
+msgid "key_full_Right"
+msgstr ""
+
+msgid "key_full_Scroll"
+msgstr ""
+
+msgid "key_full_Shift"
+msgstr ""
+
+msgid "key_full_Space"
+msgstr ""
+
+msgid "key_full_Tab"
+msgstr ""
+
+msgid "key_full_Up"
+msgstr ""
+
+msgid "key_full_Win"
+msgstr ""
+
+msgid "key_short_Alt"
+msgstr ""
+
+msgid "key_short_Apps"
+msgstr ""
+
+msgid "key_short_Backspace"
+msgstr ""
+
+msgid "key_short_CapsLock"
+msgstr ""
+
+msgid "key_short_Control"
+msgstr ""
+
+msgid "key_short_Control_Mac"
+msgstr ""
+
+msgid "key_short_Delete"
+msgstr ""
+
+msgid "key_short_Down"
+msgstr ""
+
+msgid "key_short_End"
+msgstr ""
+
+msgid "key_short_Enter"
+msgstr ""
+
+msgid "key_short_Escape"
+msgstr ""
+
+msgid "key_short_Home"
+msgstr ""
+
+msgid "key_short_Insert"
+msgstr ""
+
+msgid "key_short_Left"
+msgstr ""
+
+msgid "key_short_Meta"
+msgstr ""
+
+msgid "key_short_NumLock"
+msgstr ""
+
+msgid "key_short_PageDown"
+msgstr ""
+
+msgid "key_short_PageUp"
+msgstr ""
+
+msgid "key_short_Pause"
+msgstr ""
+
+msgid "key_short_PrintScreen"
+msgstr ""
+
+msgid "key_short_Right"
+msgstr ""
+
+msgid "key_short_Scroll"
+msgstr ""
+
+msgid "key_short_Shift"
+msgstr ""
+
+msgid "key_short_Space"
+msgstr ""
+
+msgid "key_short_Tab"
+msgstr ""
+
+msgid "key_short_Up"
+msgstr ""
+
+msgid "key_short_Win"
+msgstr ""
+
+msgid "one of one row"
+msgid_plural "%1 of %2 rows"
+msgstr[0] "unul din un rând"
+msgstr[1] "%1 din %2 rânduri"
+
+msgid "one row"
+msgid_plural "%1 rows"
+msgstr[0] "un rând"
+msgstr[1] "%1 rânduri"
+
+msgid "test Hello %1!"
+msgstr ""
+
+msgid "test Jonny"
+msgstr ""
+
+msgid "test One car"
+msgid_plural "test %1 cars"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "test affe"
+msgstr ""
+
+msgid "test one"
+msgstr ""
+
+msgid "test two"
+msgstr ""

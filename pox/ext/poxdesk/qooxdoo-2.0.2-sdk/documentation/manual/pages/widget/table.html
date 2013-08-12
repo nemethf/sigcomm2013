@@ -1,0 +1,460 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Table &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Widget Reference List" href="toctree.html" />
+    <link rel="next" title="TabView" href="tabview.html" />
+    <link rel="prev" title="Stack" href="stack.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../references.html" >References</a>
+     &raquo;
+    <a href="widget_ref.html" >Widget Reference</a>
+     &raquo;
+    <a href="toctree.html" accesskey="U">Widget Reference List</a>
+     &raquo;
+  <a href="">Table</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="table">
+<span id="pages-widget-table-table"></span><h1>Table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h1>
+<p>The table package contains classes that allow you to build up virtual tables for showing data in a grid like view.</p>
+<div class="section" id="preview-image">
+<span id="pages-widget-table-preview-image"></span><h2>Preview Image<a class="headerlink" href="#preview-image" title="Permalink to this headline">¶</a></h2>
+<p><img alt="widget/table.png" src="../../_images/table.png" /></p>
+</div>
+<div class="section" id="description">
+<span id="pages-widget-table-description"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>A <tt class="docutils literal"><span class="pre">Table</span></tt> is a widget to show a set of data in a column based view. It is based on the idea of virtual rendering. This means that only the visible rows will be rendered, which increases the performance of the widget and makes the table capable of displaying thousands of rows. But it is important to know that the table has only virtual rows, not columns. Having a huge number of columns can still decrease performance.</p>
+</div>
+<div class="section" id="features">
+<span id="pages-widget-table-features"></span><h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column Feature</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Display grid data</td>
+<td>Takes an array containing an array for each row. The data in the row can be of almost any type.</td>
+</tr>
+<tr class="row-odd"><td>Set custom header</td>
+<td>Pre-built header renderer for icons and lables. Can be easily extended to supply a custom header cell renderer.</td>
+</tr>
+<tr class="row-even"><td>Column sorting</td>
+<td>Built-in sorting accesable to the user by a click on the table header.</td>
+</tr>
+<tr class="row-odd"><td>Reorganizing of columns</td>
+<td>Columns can be reorganized by the user via Drag&amp;Drop.</td>
+</tr>
+<tr class="row-even"><td>Change the visibility of columns</td>
+<td>A special column visibility menu is included. It offers the user a way to show / hide single columns.</td>
+</tr>
+<tr class="row-odd"><td>Contet menu support</td>
+<td>The table supports content menus for each cell.</td>
+</tr>
+<tr class="row-even"><td>Meta Columns</td>
+<td>You can define one or more column which have a separate scrolling if any. E.g. you could have the first column always visible, while the other columns scroll out of view.</td>
+</tr>
+<tr class="row-odd"><td>Resizable columns</td>
+<td>The user can resize each column individually.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Row Feature</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Render for different kinds of data types</td>
+<td>Special renderer for boolean, dates, HTML content, numbers, passwords and strings.</td>
+</tr>
+<tr class="row-odd"><td>Conditional rendering for individual table cells</td>
+<td>A conditional rendere is available which can render the data in different ways dependent on the content, like applying a red text colors to negative numbers.</td>
+</tr>
+<tr class="row-even"><td>Row filtering</td>
+<td>Filtering for specific data can be done with a filter method.</td>
+</tr>
+<tr class="row-odd"><td>Virtual rendering for rows</td>
+<td>Only the rows visible will be rendered which increases the speed of the table.</td>
+</tr>
+<tr class="row-even"><td>Highlight color for hovered row</td>
+<td>The currently hovered row can be highlighted.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">General Feature</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Capable of remote data gathering</td>
+<td>A remote data model can fetch data from the server. It fetches only the current visible data which means not the whole data needs to be transfered to the client on startup.</td>
+</tr>
+<tr class="row-odd"><td>Different selection modes</td>
+<td>The table offers single and multi selection in different variants.</td>
+</tr>
+<tr class="row-even"><td>Editable cells</td>
+<td>The cells can be set to editable. Build in editors are CheckBox, ComboBox, PasswrodField, SelectBox and TextField.</td>
+</tr>
+<tr class="row-odd"><td>Focus indicator</td>
+<td>The currently selected cell can have a focus indicator.</td>
+</tr>
+<tr class="row-even"><td>Statusbar</td>
+<td>The table has a status bar to show the number of rows and/or custom text.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examples">
+<span id="pages-widget-table-example-usage"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="simple">
+<h3>Simple<a class="headerlink" href="#simple" title="Permalink to this headline">¶</a></h3>
+<p>The most simple table can be build in five lines of code, as you cen see in this example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// table model</span>
+<span class="kd">var</span> <span class="nx">tableModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Simple</span><span class="p">();</span>
+<span class="nx">tableModel</span><span class="p">.</span><span class="nx">setColumns</span><span class="p">([</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;A number&quot;</span><span class="p">]);</span>
+<span class="nx">tableModel</span><span class="p">.</span><span class="nx">setData</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">12.23</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">849759438750</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]]);</span>
+
+<span class="c1">// table</span>
+<span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="nx">tableModel</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="nx">table</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>One of the importat parts of the table is the table model. The first line creates a simple table model. In the second and third line, we configure the table model with some column names and data. With that model, we can create a table and add it to our application, as the example shows in the last two lines.</p>
+</div>
+<div class="section" id="editable-column">
+<h3>Editable Column<a class="headerlink" href="#editable-column" title="Permalink to this headline">¶</a></h3>
+<p>Making for example the second column of our simple example editable can be done in one line:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// make second column editable</span>
+<span class="nx">tableModel</span><span class="p">.</span><span class="nx">setColumnEditable</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The first parameter here is the column (column numbering starts with 0), and the second one is to change the editable state.</p>
+</div>
+<div class="section" id="sorting">
+<h3>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h3>
+<p>Also adding a default sort order for the table is easy in one single line:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// sort the table on startup</span>
+<span class="nx">tableModel</span><span class="p">.</span><span class="nx">sortByColumn</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Again, the first argument is the column. The second argument is responsible for the sort order, <tt class="docutils literal"><span class="pre">true</span></tt> for ascending.</p>
+</div>
+<div class="section" id="conditional-cell-rendering">
+<h3>Conditional Cell Rendering<a class="headerlink" href="#conditional-cell-rendering" title="Permalink to this headline">¶</a></h3>
+<p>As a last addition to our example we build something more complex. We want to render all negative numbers in red and all positive numbers in green:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// conditional rendering</span>
+<span class="kd">var</span> <span class="nx">newRenderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">cellrenderer</span><span class="p">.</span><span class="nx">Conditional</span><span class="p">();</span>
+<span class="nx">newRenderer</span><span class="p">.</span><span class="nx">addNumericCondition</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">);</span>
+<span class="nx">newRenderer</span><span class="p">.</span><span class="nx">addNumericCondition</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">);</span>
+<span class="nx">table</span><span class="p">.</span><span class="nx">getTableColumnModel</span><span class="p">().</span><span class="nx">setDataCellRenderer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">newRenderer</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>For that purpose, qooxdoo has a built-in conditional renderer. In the first line, we create such a renderer. The second and third line set up our conditional rules. The last line tells the table column model to use that renderere for the column with the index 1.</p>
+</div>
+</div>
+<div class="section" id="uml-diagram">
+<span id="pages-widget-table-uml-diagram"></span><h2>UML Diagram<a class="headerlink" href="#uml-diagram" title="Permalink to this headline">¶</a></h2>
+<p><img alt="widget/table_uml.png" src="../../_images/table_uml.png" /></p>
+<p>This diagram shows how the table uses the different kinds of classes you can find in the table namespace. The diagram is divided in two sides. The left side is interesting for the user if he wants to extend the table or wants to use its custom cell renderer for example. The right side is usually a set of internal classes the tables uses to get its general tasks done.</p>
+</div>
+<div class="section" id="further-resources">
+<span id="pages-widget-table-further-resources"></span><h2>Further resources<a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#table">Table demos</a> in the online Demobrowser.</li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.table">API documentation for qx.ui.table</a> in the online APIViewer.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="stack.html"
+             title="previous chapter">« Stack</a>
+          <span class="separator">|</span>
+          <a class="next" href="tabview.html"
+             title="next chapter">TabView »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Table</a><ul>
+<li><a class="reference internal" href="#preview-image">Preview Image</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#simple">Simple</a></li>
+<li><a class="reference internal" href="#editable-column">Editable Column</a></li>
+<li><a class="reference internal" href="#sorting">Sorting</a></li>
+<li><a class="reference internal" href="#conditional-cell-rendering">Conditional Cell Rendering</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uml-diagram">UML Diagram</a></li>
+<li><a class="reference internal" href="#further-resources">Further resources</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tabview.html"
+                        title="next chapter">TabView</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="stack.html"
+                        title="previous chapter">Stack</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/widget/table.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

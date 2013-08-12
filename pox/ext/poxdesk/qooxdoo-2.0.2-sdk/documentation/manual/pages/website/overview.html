@@ -1,0 +1,438 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qx.Website Overview &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Website" href="../website.html" />
+    <link rel="next" title="Tutorial: Building Notifications" href="tutorial_web_developers.html" />
+    <link rel="prev" title="qx.Website" href="../website.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../website.html" accesskey="U">qx.Website</a>
+     &raquo;
+  <a href="">qx.Website Overview</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="qx-website-overview">
+<span id="pages-webite-overview-overview"></span><h1>qx.Website Overview<a class="headerlink" href="#qx-website-overview" title="Permalink to this headline">¶</a></h1>
+<p>This page is an overview of qx.Website's capabilities. It collects the existing documentation and tries to show the big picture.</p>
+<div class="section" id="basic-concept">
+<span id="pages-webite-overview-basic"></span><h2>Basic Concept<a class="headerlink" href="#basic-concept" title="Permalink to this headline">¶</a></h2>
+<p>The basic concept is simple. qx.Website offers one global object called <tt class="docutils literal"><span class="pre">q</span></tt> (short for query). This global object's main task is to query the DOM using selectors and offer convenience methods on the returned collection of elements.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">setStyle</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As you can see in the example above, qx.Website's idea of API design is to have an explicit API with a clear scope and readable names. In most cases, methods come in pairs: a getter and a setter. Another API concept is chaining:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">setStyle</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Unless noted otherwise, methods return the collection for chaining, such as the setStyle method in the example. It returns the collection created with <tt class="docutils literal"><span class="pre">q(&quot;#test&quot;)</span></tt> on which the append method is called.</p>
+<p><tt class="docutils literal"><span class="pre">q</span></tt> also offers static utility functions. These functions are usually attached to q in their own sub object. Let's take a look at a sample:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span> <span class="c1">// returns &quot;Number&quot;</span>
+</pre></div>
+</div>
+<p>The sub object (which could also be called a namespace) in the sample is <tt class="docutils literal"><span class="pre">type</span></tt> and contains a function <tt class="docutils literal"><span class="pre">get</span></tt> which will determine the type of a given argument.</p>
+<p>The code base of <tt class="docutils literal"><span class="pre">q</span></tt> is organized in modules, as you can see in the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer#qx.module">API viewer for qx.Desktop</a>. Using the generator, you can build your own library containing only the modules you need. Similarly, it is possible to include your own modules into a single, optimized file. Take a look at the <a class="reference internal" href="../development/skeletons.html#pages-development-skeletons-website"><em>Documentation of the qx.Website skeleton</em></a> to learn more.</p>
+</div>
+<div class="section" id="api-documentation">
+<span id="pages-webite-overview-api"></span><h2>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h2>
+<p>The best documentation is found in the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/website-api">API viewer</a> for qx.Website. It offers a detailed documentation of all available methods, sorted into modules.</p>
+</div>
+<div class="section" id="css-selector-support">
+<h2>CSS Selector Support<a class="headerlink" href="#css-selector-support" title="Permalink to this headline">¶</a></h2>
+<p>qx.Website uses the same CSS selector engine as jQuery, which is called <a class="reference external" href="http://sizzlejs.org">Sizzle</a>. Please check the <a class="reference external" href="https://github.com/jquery/sizzle/wiki/Sizzle-Home">Sizzle Documentation</a> for more details.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#id&quot;</span><span class="p">);</span> <span class="c1">// query for id</span>
+<span class="nx">q</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span> <span class="c1">// query for all div&#39;s</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="plugins">
+<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
+<p>qx.Website supports a plugin mechanism. All modules are written as qx.Website plugins. For further details about how to write plugins, take a look at the <a class="reference internal" href="plugins.html"><em>plugins documentation</em></a>.</p>
+</div>
+<div class="section" id="included-modules">
+<span id="pages-website-overview-included-modules"></span><h2>Included Modules<a class="headerlink" href="#included-modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="animation">
+<h3>Animation<a class="headerlink" href="#animation" title="Permalink to this headline">¶</a></h3>
+<p>Animations can enhance the user experience and help create appealing and user interfaces that feel natural. With modern browsers, CSS Animations and Transforms are emerging as new way of efficiently realizing this goal. No need to do it programmatically in JavaScript.</p>
+<p>To use animations with qx.Website, you can use the animation module. This is a cross-browser wrapper for CSS Animations and Transforms with the goal to conform closely to the specifications wherever possible. If no CSS Animations are supported, a JavaScript solution will work in place offering the same API and almost the same functionality as the CSS based solution.</p>
+<p>For further details, take a look at the <a class="reference internal" href="css3animation.html"><em>Animations and Transforms documentation</em></a>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">fadeIn</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<p>qx.Website offers an easy and elegant way to manipulate attributes and properties of DOM elements. This also includes setting the HTML content of an element.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// sets the HTML content</span>
+<span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">setHtml</span><span class="p">(</span><span class="s2">&quot;&lt;h2&gt;TEST&lt;/h2&gt;&quot;</span><span class="p">);</span>
+<span class="c1">// returns the value of the placeholder attribute</span>
+<span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;placeholder&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="css">
+<h3>CSS<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h3>
+<p>Working with CSS can be easy with the help of qx.Website. The CSS module includes many convenient helpers to set styles, classes, or dimensions.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// cross browser opacity setting</span>
+<span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">setStyle</span><span class="p">(</span><span class="s2">&quot;opacity&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="c1">// checks if &#39;myClass&#39; is applied</span>
+<span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s2">&quot;myClass&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment">
+<h3>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h3>
+<p>qx.Website covers most cross browser issues. Still, the environment module offers a lot of information about the environment the app is running in. This includes simple checks like browser name as well as information about the application itself.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// returns e.g. &quot;webkit&quot;</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;engine.name&quot;</span><span class="p">);</span>
+<span class="c1">// can be used to remove debugging code from the deployment version</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;qx.debug&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="manipulating">
+<h3>Manipulating<a class="headerlink" href="#manipulating" title="Permalink to this headline">¶</a></h3>
+<p>The manipulating module provides helpers to change the structure of the DOM. Appending or creating elements is also part of this module, as is manipulating the scroll position.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">setScrollTop</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span> <span class="c1">// removes all content</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="polyfill">
+<h3>Polyfill<a class="headerlink" href="#polyfill" title="Permalink to this headline">¶</a></h3>
+<p>A polyfill is best explained by a quote from an informative blog post:</p>
+<blockquote>
+<div>A polyfill, or polyfiller, is a piece of code (or plugin) that provides the technology that you, the developer, expect the browser to provide natively. Flattening the API landscape if you will. <a class="reference external" href="http://remysharp.com/2010/10/08/what-is-a-polyfill/">What is a polyfill</a></div></blockquote>
+<p>A list of included polyfills can be found in the API documentation of the module.</p>
+</div>
+<div class="section" id="template">
+<h3>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h3>
+<p>Templating is a powerful tool in web development. qx.Website uses mustache.js as its templating engine. For further information, see the <a class="reference external" href="https://github.com/janl/mustache.js/">mustache.js documentation</a>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// returns a collection containing the new element</span>
+<span class="nx">q</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;templateId&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="traversing">
+<h3>Traversing<a class="headerlink" href="#traversing" title="Permalink to this headline">¶</a></h3>
+<p>In the traversing module, you'll find helpers that work with the collection. A good example is the filter method, which reduces the number of elements in the collection. Other methods of this module will find children, ancestors or siblings of the elements in the collection.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// returns the children</span>
+<span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">getChildren</span><span class="p">();</span>
+<span class="c1">// returns all siblings having the class &#39;myClass&#39;</span>
+<span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">getSiblings</span><span class="p">(</span><span class="s2">&quot;.myClass&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="communication">
+<h3>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h3>
+<p>Pulling data from remote sources is another one of the most common use cases and usually the next logical step when it comes to improving your existing JavaScript powered website / application. Of course, you expect the underlying framework to provide you with a nice abstracted cross-browser solution that is easy to use. qx.Website offers multiple implementations to pull data.</p>
+<p>The first option is <a class="reference external" href="http://en.wikipedia.org/wiki/XHR">XHR</a>. qx.Website comes with <a class="reference internal" href="../communication.html#pages-communication-low-level-requests"><em>a wrapper around this widely used browser API</em></a> which hides inconsistencies and works around browser bugs.
+The second option is to use <a class="reference external" href="http://en.wikipedia.org/wiki/JSONP">JSONP</a>. This approach enables you to overcome <a class="reference external" href="http://en.wikipedia.org/wiki/Same_origin_policy">same orgin policy</a> restrictions and talk to any server which offers a JSON API like e.g <a class="reference external" href="https://dev.twitter.com/">Twitter</a>. qx.Website provides a <a class="reference internal" href="../communication/request_io.html"><em>nice and powerful API</em></a> with the same interface as the XHR transport to let you easily access any JSONP API out there.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">xhr</span><span class="p">(</span><span class="nx">url</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;loadend&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="blocker">
+<h3>Blocker<a class="headerlink" href="#blocker" title="Permalink to this headline">¶</a></h3>
+<p>The blocker module offers a way to block elements. This means they won't receive any native events until they are unblocked.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">block</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cookie">
+<h3>Cookie<a class="headerlink" href="#cookie" title="Permalink to this headline">¶</a></h3>
+<p>A convenient way to work with cookies is implemented in the cookie module. Setting, reading and deleting cookies is supported across browsers.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="placement">
+<h3>Placement<a class="headerlink" href="#placement" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes it can be necessary to place an element right beside another one. Think about a popup message or tooltip offering some context sensitive help. The placement module offers a method to place one element relative to another using one of several algorithms and taking available space into account.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">(</span><span class="s2">&quot;#test&quot;</span><span class="p">).</span><span class="nx">placeTo</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="s2">&quot;top-right&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../website.html"
+             title="previous chapter">« qx.Website</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial_web_developers.html"
+             title="next chapter">Tutorial: Building Notifications »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">qx.Website Overview</a><ul>
+<li><a class="reference internal" href="#basic-concept">Basic Concept</a></li>
+<li><a class="reference internal" href="#api-documentation">API Documentation</a></li>
+<li><a class="reference internal" href="#css-selector-support">CSS Selector Support</a></li>
+<li><a class="reference internal" href="#plugins">Plugins</a></li>
+<li><a class="reference internal" href="#included-modules">Included Modules</a><ul>
+<li><a class="reference internal" href="#animation">Animation</a></li>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#css">CSS</a></li>
+<li><a class="reference internal" href="#environment">Environment</a></li>
+<li><a class="reference internal" href="#manipulating">Manipulating</a></li>
+<li><a class="reference internal" href="#polyfill">Polyfill</a></li>
+<li><a class="reference internal" href="#template">Template</a></li>
+<li><a class="reference internal" href="#traversing">Traversing</a></li>
+<li><a class="reference internal" href="#communication">Communication</a></li>
+<li><a class="reference internal" href="#blocker">Blocker</a></li>
+<li><a class="reference internal" href="#cookie">Cookie</a></li>
+<li><a class="reference internal" href="#placement">Placement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial_web_developers.html"
+                        title="next chapter">Tutorial: Building Notifications</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../website.html"
+                        title="previous chapter">qx.Website</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/website/overview.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

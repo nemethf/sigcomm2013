@@ -1,0 +1,342 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Stores &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Data Binding" href="../data_binding.html" />
+    <link rel="next" title="Models" href="models.html" />
+    <link rel="prev" title="Controller" href="controller.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" >Core</a>
+     &raquo;
+    <a href="../data_binding.html" accesskey="U">Data Binding</a>
+     &raquo;
+  <a href="">Stores</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="stores">
+<span id="pages-data-binding-stores-stores"></span><h1>Stores<a class="headerlink" href="#stores" title="Permalink to this headline">¶</a></h1>
+<p>The main purpose of the store components is to load data from a source and convert that data into a <a class="reference internal" href="models.html"><em>model</em></a>. The task of loading data and converting the data into a model has been split up. The store itself takes care of loading the data but delegates the creation of model classes and instances to a marshaler. More information about the marsahling and the models itself can be found in the <a class="reference internal" href="models.html"><em>models section</em></a>.</p>
+<div class="section" id="json-store">
+<span id="pages-data-binding-stores-json-store"></span><h2>JSON Store<a class="headerlink" href="#json-store" title="Permalink to this headline">¶</a></h2>
+<p>The JSON store takes an URL, fetches the given data from that URL and converts the data using the JSON marshaler to qooxdoo model instances, which will be available in the model property after loading. The state of the loading process is mapped to a state property. For the loading of the data, a <tt class="docutils literal"><span class="pre">qx.io.request.Xhr</span></tt> will be used in the store.</p>
+<p>The following code shows how to use the JSON data store.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;json/data.json&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">Json</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>After setting the URL during the creation process, the loading will begin immediately. As soon as the data is loaded and converted, you can access the model with the following code.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">getModel</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="jsonp-store">
+<span id="pages-data-binding-stores-jsonp-store"></span><h2>JSONP Store<a class="headerlink" href="#jsonp-store" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://ajaxian.com/archives/jsonp-json-with-padding">JSONP</a> store is based on the <a class="reference internal" href="#pages-data-binding-stores-json-store"><em>JSON store</em></a> but uses a script tag for loading the data. Therefore, a parameter name for the callback and an URL must be specified.</p>
+<p>The following code shows how to use the JSONP data store.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;json/data.json&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">Jsonp</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;CallbackParamName&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>After setting the URL and the callback parameter name during the creation process, the loading will begin immediately.</p>
+</div>
+<div class="section" id="yql-store">
+<span id="pages-data-binding-stores-yql-store"></span><h2>YQL Store<a class="headerlink" href="#yql-store" title="Permalink to this headline">¶</a></h2>
+<p>YQL is the <a class="reference external" href="http://developer.yahoo.com/yql/">Yahoo! Query Language</a>. Yahoo! describes it as
+<em>&quot;[...] an expressive SQL-like language that lets you query, filter, and join data across Web services.&quot;</em>
+Based on the <a class="reference internal" href="#pages-data-binding-stores-jsonp-store"><em>JSONP store</em></a>, qooxdoo offers a YQL store, where you can specify the YQL queries and qooxdoo handles the rest.</p>
+<p>The following code demonstrates how to fetch some twitter messages.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="s2">&quot;select * from twitter.user.timeline where id=&#39;wittemann&#39;&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">Yql</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="offline-store">
+<span id="pages-data-binding-stores-offline-store"></span><h2>Offline Store<a class="headerlink" href="#offline-store" title="Permalink to this headline">¶</a></h2>
+<p>The Offline store uses HTML local or session storage to store the data on the client. That can be used for offline storage as well as for other storage purposes on the client. You should use the <a class="reference internal" href="../core/environment.html"><em>Environment</em></a> checks to make sure that the used storage technology is supported by the environment you want to run your code in.</p>
+<p>The following code demonstrates how to initialize the data store.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;html.storage.local&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">Offline</span><span class="p">(</span><span class="s2">&quot;my-test-key&quot;</span><span class="p">,</span> <span class="s2">&quot;local&quot;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">getModel</span><span class="p">()</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// initialize model ...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="combining-with-controllers">
+<span id="pages-data-binding-stores-combining-with-controllers"></span><h2>Combining with controllers<a class="headerlink" href="#combining-with-controllers" title="Permalink to this headline">¶</a></h2>
+<p>As described in the section above, you can access the model in the property after loading. The best solution is to use the model with a controller and then bind the the model properties with <a class="reference internal" href="single_value_binding.html"><em>Single Value Binding</em></a> together. The code for this could look something like this.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="nx">controller</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Using the <a class="reference internal" href="single_value_binding.html"><em>Single Value Binding</em></a>, the binding handles all the stuff related with the loading of the model data. That means that the data will be available in the controller as soon as its available in the store.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="controller.html"
+             title="previous chapter">« Controller</a>
+          <span class="separator">|</span>
+          <a class="next" href="models.html"
+             title="next chapter">Models »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Stores</a><ul>
+<li><a class="reference internal" href="#json-store">JSON Store</a></li>
+<li><a class="reference internal" href="#jsonp-store">JSONP Store</a></li>
+<li><a class="reference internal" href="#yql-store">YQL Store</a></li>
+<li><a class="reference internal" href="#offline-store">Offline Store</a></li>
+<li><a class="reference internal" href="#combining-with-controllers">Combining with controllers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="models.html"
+                        title="next chapter">Models</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="controller.html"
+                        title="previous chapter">Controller</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/data_binding/stores.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

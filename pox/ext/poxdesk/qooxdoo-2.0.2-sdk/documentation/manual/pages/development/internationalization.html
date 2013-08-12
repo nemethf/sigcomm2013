@@ -1,0 +1,431 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Internationalization &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Development" href="../development.html" />
+    <link rel="next" title="Image clipping and combining" href="image_clipping_and_combining.html" />
+    <link rel="prev" title="Using Parts" href="parts_using.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../development.html" accesskey="U">Development</a>
+     &raquo;
+  <a href="">Internationalization</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="internationalization">
+<span id="pages-internationalization-internationalization"></span><h1>Internationalization<a class="headerlink" href="#internationalization" title="Permalink to this headline">¶</a></h1>
+<p>We define internationalization (a.k.a. <em>&quot;I18N&quot;</em>) as composed of two distinct areas:</p>
+<dl class="docutils">
+<dt><strong>Localization</strong></dt>
+<dd>Adapting software to suit regional customs regarding date, time and number formatting, names for time units, countries, languages and so forth.</dd>
+<dt><strong>Translation</strong></dt>
+<dd>Translating user-visible strings in software, like labels on buttons, pop-up messages, headings, help texts, and so forth.</dd>
+</dl>
+<p>Localization largely relies on approved standards that are in use in any given regional and/or cultural area, and can therefore take advantage of standardized data and information. Translation is much more application-specific, and the relevant strings of an application have to be translated in any target language individually.</p>
+<div class="section" id="localization">
+<h2>Localization<a class="headerlink" href="#localization" title="Permalink to this headline">¶</a></h2>
+<p>Localization is the effort of displaying data in a way that conforms to regional and/or cultural habits. This mostly affects data of everyday life: monetary currencies, names and display formats used in dates and time, number formats and naming conventions in general (e.g. names of countries and languages in the world), to list the most common use cases. Writing a date as 01/31/1970 rather than 1970/01/31, or starting the week with Sunday rather than Monday fall in this category.</p>
+<p>A coherent set of these conventions taken together is usually referred to as a <a class="reference external" href="http://en.wikipedia.org/wiki/Locale">locale</a>, and they are signified by a country code or some derivative thereof. <em>en</em>, <em>en_US</em> and <em>en_UK</em> for example signify three distinct locales that are used in English speaking countries. The understanding is that there is a sort of inheritance relation between more general and more specific locales, so that e.g. <em>en_US</em> only needs to specify the items in which it deviates from the more general <em>en</em> locale, and relies on the <em>en</em> settings for all other on which they agree. For historical reasons there is a common &quot;ancestor&quot; to all locales which is called <em>C</em>. If not specified all locale settings fall back to those given in <em>C</em> (which is mostly a copy of <em>en</em>). qooxdoo supports this fall-back chain of locale settings by looking up a specific item e.g first in <em>en_US</em> (if that were the current locale), then <em>en</em> and then in <em>C</em>.</p>
+<p>To support such regional settings, qooxdoo uses data from the CLDR project, the <em>&quot;Common Locale Data Repository&quot;</em>, which collects data for known locales in a set of XML files. See the project's <a class="reference external" href="http://cldr.unicode.org">home page</a> and <a class="reference external" href="http://www.unicode.org/copyright.html">terms of use</a>.</p>
+</div>
+<div class="section" id="translation">
+<h2>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h2>
+<p>While translating a sentence from one human language into another is still a task mostly done by humans, qooxoo tries to provide tools to help in managing this process. This section describes how to translate either a new or an existing qooxdoo-based application. It shows how to <em>prepare</em> the application, <em>extract</em> the messages that shall be translated, and finally <em>update</em> and <em>run</em> the translated application.</p>
+<div class="section" id="prepare-the-application">
+<span id="pages-internationalization-prepare-the-application"></span><h3>Prepare the Application<a class="headerlink" href="#prepare-the-application" title="Permalink to this headline">¶</a></h3>
+<p>To translate an application, all translatable strings must be marked using one of the following functions:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">this.tr()</span></tt>: translate a message</li>
+<li><tt class="docutils literal"><span class="pre">this.trn()</span></tt>: translate a message that supports a plural form</li>
+<li><tt class="docutils literal"><span class="pre">this.trc()</span></tt>: translate a message and providing a comment</li>
+<li><tt class="docutils literal"><span class="pre">this.marktr()</span></tt>: mark a string for translation, but do not perform any translation</li>
+</ul>
+<p>You can use these methods right away for your own classes if they are derived from <tt class="docutils literal"><span class="pre">qx.ui.core.Widget</span></tt> or <tt class="docutils literal"><span class="pre">qx.application.AbstractGui</span></tt>. If that's not the case you have to include the mixin <tt class="docutils literal"><span class="pre">qx.locale.MTranslation</span></tt> manually:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;custom.MyClass&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">include</span> <span class="o">:</span> <span class="p">[</span><span class="nx">qx</span><span class="p">.</span><span class="nx">locale</span><span class="p">.</span><span class="nx">MTranslation</span><span class="p">],</span>
+  <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="example">
+<span id="pages-internationalization-example"></span><h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>Change original code like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>to:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Following, the four methods are explained in more detail:</p>
+</div>
+<div class="section" id="tr">
+<span id="pages-internationalization-tr"></span><h4>tr<a class="headerlink" href="#tr" title="Permalink to this headline">¶</a></h4>
+<p>Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p><em>tr</em> marks the string <tt class="docutils literal"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></tt> for translation (This string is often referred to as the <em>message id</em>, as it serves as the lookup key for any provided translation). This means that the string itself will be extracted when the appropriate generator job is run (see <a class="reference internal" href="#pages-internationalization-extract-the-messages"><em>further</em></a>). During application run time, <em>tr</em> returns the translation of the given string <em>under the current locale</em>. That means, the actual string you get at this point in time depends on the locale in effect. If, on the other hand, the environment setting <a class="reference internal" href="../core/environment.html#pages-core-environment-environment"><em>qx.dynlocale</em></a> is set to &quot;true&quot;, <em>tr</em> returns an instance of <tt class="docutils literal"><span class="pre">qx.locale.LocalizedString</span></tt>. The <tt class="docutils literal"><span class="pre">toString()</span></tt> method of the returned object performs the actual translation based on the current locale. This has the advantage that later changes to the locale (see <a class="reference internal" href="#pages-internationalization-run-the-translated-application"><em>further</em></a>) are immediately reflected in the widgets using this object, as most know how to handle and re-evaluate LocalizedString's. But you only need that setting if you plan to support locale switching during run time.</p>
+<p>If the string given to <em>tr</em> does not have a translation under the current locale, the string itself will be returned.</p>
+<p>There is one exception to the simple rule that all strings can just be replaced by wrapping them in an appropriate <tt class="docutils literal"><span class="pre">this.tr()</span></tt> function call: If init values of <a class="reference internal" href="../core/understanding_properties.html"><em>dynamic properties</em></a> are meant to be localizable, the init value has either to be set in the class constructor using <tt class="docutils literal"><span class="pre">this.tr()</span></tt>, or <tt class="docutils literal"><span class="pre">qx.locale.Manager.tr()</span></tt> has to be used inside the property declaration. See documentation on <a class="reference internal" href="../core/defining_properties.html#pages-defining-properties-defining-an-init-value"><em>Defining an init value</em></a> for details.</p>
+</div>
+<div class="section" id="trn">
+<span id="pages-internationalization-trn"></span><h4>trn<a class="headerlink" href="#trn" title="Permalink to this headline">¶</a></h4>
+<p>Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">trn</span><span class="p">(</span><span class="s2">&quot;Copied one file.&quot;</span><span class="p">,</span> <span class="s2">&quot;Copied %1 files.&quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">n</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Like <em>tr</em>, translates a message but takes differences between singular and plural forms into account. The first argument represents the singular form while the second argument represents the plural form. If the third argument is 1 the singular form is chosen, if it is bigger than 1 the plural form is chosen. All remaining parameters are the inputs for the format string.</p>
+</div>
+<div class="section" id="trc">
+<span id="pages-internationalization-trc"></span><h4>trc<a class="headerlink" href="#trc" title="Permalink to this headline">¶</a></h4>
+<p>Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">trc</span><span class="p">(</span><span class="s2">&quot;Helpful comment for the translator&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Translates the message as the <em>tr</em> method, but provides an additional comment which can be used to add some contextual information for the translator. This meaningful comment should help the translator to find the correct translation for the given string.</p>
+</div>
+<div class="section" id="marktr">
+<span id="pages-internationalization-marktr"></span><h4>marktr<a class="headerlink" href="#marktr" title="Permalink to this headline">¶</a></h4>
+<p>Sometimes it is necessary to mark a string for translation but not yet perform the translation. Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">marktr</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Marks the string <tt class="docutils literal"><span class="pre">Hello</span></tt> for translation and returns the string unmodified.</p>
+</div>
+<div class="section" id="format-strings">
+<span id="pages-internationalization-format-strings"></span><h4>Format Strings<a class="headerlink" href="#format-strings" title="Permalink to this headline">¶</a></h4>
+<p>Since sentences in different languages can have different structures, it is always better to prefer a format string over string concatenation to compose messages. This is why the methods above all support format strings like <tt class="docutils literal"><span class="pre">Copied</span> <span class="pre">%1</span> <span class="pre">files</span></tt> as messages and a variable number of additional arguments. The additional arguments are converted to strings and inserted into the original message. <tt class="docutils literal"><span class="pre">%</span></tt> is used as an escape character and the number following <tt class="docutils literal"><span class="pre">%</span></tt> references the corresponding additional argument.</p>
+</div>
+</div>
+<div class="section" id="extract-the-messages">
+<span id="pages-internationalization-extract-the-messages"></span><h3>Extract the Messages<a class="headerlink" href="#extract-the-messages" title="Permalink to this headline">¶</a></h3>
+<p>After the source code has been prepared, the desired languages of the application may be specified in <tt class="docutils literal"><span class="pre">config.json</span></tt>, in the <tt class="docutils literal"><span class="pre">LOCALES</span></tt> macro within the global <tt class="docutils literal"><span class="pre">let</span></tt> section, for example</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="s2">&quot;LOCALES&quot;</span>       <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;de&quot;</span><span class="p">,</span> <span class="s2">&quot;fr&quot;</span><span class="p">]</span>
+  <span class="p">},</span>
+</pre></div>
+</div>
+<p>This would add a German and a French translation to the project. For a more exhaustive list of available locales see <a class="reference external" href="http://unicode.org/cldr/apps/survey">here</a>.</p>
+<p>A run of</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">translation</span>
+</pre></div>
+</div>
+<p>will generate a <tt class="docutils literal"><span class="pre">.po</span></tt> file for each configured locale, with all translatable strings of the application (These files are usually stored in the <tt class="docutils literal"><span class="pre">source/translation</span></tt> folder of the application).</p>
+<p>If a specified translation does not yet exist, a new translation file will be created. In this example two files, <tt class="docutils literal"><span class="pre">source/translation/de.po</span></tt> and <tt class="docutils literal"><span class="pre">source/translation/fr.po</span></tt>, would be created.</p>
+<p>If such a file already exists, the newly extracted strings will be merged with this file, retaining all existing translations. Therefore, you can re-run <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">translation</span></tt> as often as you want. You should re-run it at least whenever you introduced new translatable strings into the source code, so they will be added to the .po files (see <a class="reference internal" href="#pages-internationalization-update-the-application"><em>further</em></a>).</p>
+</div>
+<div class="section" id="translate-the-messages">
+<span id="pages-internationalization-translate-the-messages"></span><h3>Translate the Messages<a class="headerlink" href="#translate-the-messages" title="Permalink to this headline">¶</a></h3>
+<p>These <tt class="docutils literal"><span class="pre">.po</span></tt> files are the actual files you - or your translator ;-) - would have to edit. Since qooxdoo internally uses well-established tools and formats for internationalization (<a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a> via <a class="reference external" href="http://pypi.python.org/pypi/polib">polib</a>), any &quot;po&quot;-aware editor or even a simple text editor can be used.</p>
+<p>Some of the programs that support manipulation of <tt class="docutils literal"><span class="pre">.po</span></tt> files are:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.poedit.net/">Poedit</a> (Windows, Mac OS X, Linux)</li>
+<li><a class="reference external" href="http://www.macupdate.com/app/mac/16246/locfactory-editor">LocFactory Editor</a> (Mac OS X)</li>
+<li><a class="reference external" href="http://l10n.kde.org/tools/">Lokalize</a> (Linux)</li>
+<li><a class="reference external" href="http://projects.gnome.org/gtranslator/">Gtranslator</a> (Linux)</li>
+</ul>
+</div>
+<div class="section" id="update-the-application">
+<span id="pages-internationalization-update-the-application"></span><h3>Update the Application<a class="headerlink" href="#update-the-application" title="Permalink to this headline">¶</a></h3>
+<p>After editing and saving the <tt class="docutils literal"><span class="pre">.po</span></tt> files, the next <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">source</span></tt> run integrates the translations into your application's source version. To get the effect of the new translations it can simply be reloaded in your browser.</p>
+<p>If the source code changes, e.g. by adding, removing or changing translatable strings, it can be merged with the existing translation files just by calling <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">translation</span></tt> again. Moreover, each <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">source</span></tt> - or <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">build</span></tt> if you are about to deploy your application - will pick up all current translatable strings from the source files and will merge them on the fly with the information from the .po files, using the result for the corresponding build job. This way, the generated application always contains all current translatable strings (But of course only those from the .po files can have actual translations with them).</p>
+</div>
+<div class="section" id="run-the-translated-application">
+<span id="pages-internationalization-run-the-translated-application"></span><h3>Run the translated Application<a class="headerlink" href="#run-the-translated-application" title="Permalink to this headline">¶</a></h3>
+<p>By default qooxdoo tries to use the browser's default language as its locale. You can change the language of the application by using <tt class="docutils literal"><span class="pre">qx.locale.Manager</span></tt>. For example, the following sets the language of the application to French:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">locale</span><span class="p">.</span><span class="nx">Manager</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">setLocale</span><span class="p">(</span><span class="s2">&quot;fr&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The qooxdoo widgets are supposed to update their contents on a locale change. Custom widgets may have to be modified to allow for an update on locale change. To inform the application of a language change, qooxdoo fires a <tt class="docutils literal"><span class="pre">changeLocale</span></tt> event.</p>
+<p>A widget that needs custom update logic may listen to this event:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">locale</span><span class="p">.</span><span class="nx">Manager</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;changeLocale&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_update</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="parts_using.html"
+             title="previous chapter">« Using Parts</a>
+          <span class="separator">|</span>
+          <a class="next" href="image_clipping_and_combining.html"
+             title="next chapter">Image clipping and combining »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Internationalization</a><ul>
+<li><a class="reference internal" href="#localization">Localization</a></li>
+<li><a class="reference internal" href="#translation">Translation</a><ul>
+<li><a class="reference internal" href="#prepare-the-application">Prepare the Application</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#tr">tr</a></li>
+<li><a class="reference internal" href="#trn">trn</a></li>
+<li><a class="reference internal" href="#trc">trc</a></li>
+<li><a class="reference internal" href="#marktr">marktr</a></li>
+<li><a class="reference internal" href="#format-strings">Format Strings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extract-the-messages">Extract the Messages</a></li>
+<li><a class="reference internal" href="#translate-the-messages">Translate the Messages</a></li>
+<li><a class="reference internal" href="#update-the-application">Update the Application</a></li>
+<li><a class="reference internal" href="#run-the-translated-application">Run the translated Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="image_clipping_and_combining.html"
+                        title="next chapter">Image clipping and combining</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="parts_using.html"
+                        title="previous chapter">Using Parts</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/development/internationalization.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

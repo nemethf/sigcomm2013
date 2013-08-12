@@ -1,0 +1,586 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Generator Configuration File &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Tooling" href="../tool.html" />
+    <link rel="next" title="Generator Script Optimizations" href="generator_optimizations.html" />
+    <link rel="prev" title="Generator Usage" href="generator_usage.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../tool.html" accesskey="U">Tooling</a>
+     &raquo;
+  <a href="">Generator Configuration File</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="generator-configuration-file">
+<span id="pages-tool-generator-config-generator-configuration-file"></span><h1>Generator Configuration File<a class="headerlink" href="#generator-configuration-file" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<span id="pages-tool-generator-config-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The configuration file that drives the generator adheres to the <a class="reference external" href="http://json.org/">JSON specification</a>. It has the following general structure:</p>
+<div class="highlight-javascript"><pre>{
+  "name" : ...,
+  "include : ...,
+  "jobs" :
+  {
+    "job1" : { ... },
+    "job2" : { ... },
+    ...
+    "jobN" : { ... }
+  }
+}</pre>
+</div>
+<p>The job names <tt class="docutils literal"><span class="pre">job1</span></tt>, ..., <tt class="docutils literal"><span class="pre">jobN</span></tt> are freely chooseable names but must form a valid key. JavaScript-style comments (<tt class="docutils literal"><span class="pre">/*...*/</span></tt> and <tt class="docutils literal"><span class="pre">//...</span></tt>) are permissible but only in rather robust places, like after a comma or directly after opening or before closing parentheses, but e.g. not between a key and its value.</p>
+<p>Quick links:</p>
+<ul class="simple">
+<li><a class="reference internal" href="generator_config_ref.html"><em>Generator Config Keys</em></a></li>
+<li><a class="reference internal" href="generator_config_macros.html"><em>Generator Config Macros</em></a></li>
+<li><a class="reference internal" href="generator_config_articles.html"><em>Configuration Detail Articles</em></a></li>
+<li><a class="reference internal" href="generator_config_background.html"><em>Implementation Background Information</em></a></li>
+</ul>
+</div>
+<div class="section" id="example">
+<span id="pages-tool-generator-config-example"></span><h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example of a minimal config file that defines a single job to create the source version of an application:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;jobs&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;source&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;QOOXDOO_PATH&quot;</span> <span class="o">:</span> <span class="s2">&quot;../..&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;APPLICATION&quot;</span> <span class="o">:</span> <span class="s2">&quot;custom&quot;</span>
+      <span class="p">],</span>
+
+      <span class="s2">&quot;library&quot;</span> <span class="o">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;manifest&quot;</span>     <span class="o">:</span> <span class="s2">&quot;${QOOXDOO_PATH}/framework/Manifest.json&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;manifest&quot;</span>     <span class="o">:</span> <span class="s2">&quot;./Manifest.json&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+
+      <span class="s2">&quot;compile-options&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;paths&quot;</span> <span class="o">:</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;file&quot;</span> <span class="o">:</span> <span class="s2">&quot;./source/script/${APPLICATION}.js&quot;</span>
+          <span class="p">}</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;compile&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;source&quot;</span> <span class="p">},</span>
+
+      <span class="s2">&quot;require&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;qx.log.Logger&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;qx.log.appender.Native&quot;</span><span class="p">]</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;qx.application&quot;</span> <span class="o">:</span> <span class="s2">&quot;${APPLICATION}.Application&quot;</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;cache&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;compile&quot;</span> <span class="o">:</span> <span class="s2">&quot;../../cache2&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="syntax">
+<span id="pages-tool-generator-config-syntax"></span><h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<p>Apart from the general Json rules, you can place '=' in front of job and key names, to indicate that this feature should prevail as specified when configs get merged. See <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-job-shadowing-and-partial-overriding"><em>here</em></a> for more details on that. The config system also allows the use of <em>macros</em>, details of which can be found <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-let-key"><em>here</em></a>. If you use keys outside those listed here in your configuration, you will be warned about them, and they will be ignored in the processing.</p>
+</div>
+<div class="section" id="valid-job-keys">
+<span id="pages-tool-generator-config-valid-job-keys"></span><h2>Valid Job Keys<a class="headerlink" href="#valid-job-keys" title="Permalink to this headline">¶</a></h2>
+<p>The value of each job is a map where the keys are <strong>not</strong> freely chooseable, but are predefined.</p>
+<p>Keys can be grouped into several categories:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">structure-changing</span></tt> - Keys that influence the configuration itself, e.g. the contents or structure of jobs, the job queue, or the config file as a whole (e.g. <em>extend, include (top-level), run</em>).</li>
+<li><tt class="docutils literal"><span class="pre">actions</span></tt> - Keys that if present trigger a certain action in the generator, which usually results in some output (e.g. <em>compile, api, localize</em>).</li>
+<li><tt class="docutils literal"><span class="pre">input/output-setting</span></tt> - Keys that specify input (e.g. classes or ranges of classes to deal with) and output (e.g. packaging, variants) options (e.g. <em>library, require, include</em>).</li>
+<li><tt class="docutils literal"><span class="pre">runtime-settings</span></tt> - Keys pertaining to the working needs of the generator (e.g. <em>cache</em>).</li>
+<li><tt class="docutils literal"><span class="pre">miscellaneous</span></tt> - Keys that don't fall in any of the other categories (e.g. <em>desc</em>).</li>
+</ul>
+<p>First, here is an overview table, to list all possible keys in a job (if the key has a different context, this is explicitly noted). Below that, you'll find a structured listing of all possible configuration keys in their respective context, with links to further information for each.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Action Keys</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="row-even"><td>api</td>
+<td>Triggers the generation of a custom Apiviewer application.</td>
+</tr>
+<tr class="row-odd"><td>clean-files</td>
+<td>Delete files and directories from the file system.</td>
+</tr>
+<tr class="row-even"><td>collect-environment-info</td>
+<td>Prints various infos about the qooxdoo environment (version etc.)</td>
+</tr>
+<tr class="row-odd"><td>combine-images</td>
+<td>Triggers creation of a combined image file that contains various images.</td>
+</tr>
+<tr class="row-even"><td>compile</td>
+<td>Triggers the generation of a source or build version of the app.</td>
+</tr>
+<tr class="row-odd"><td>copy-files</td>
+<td>Triggers files/directories to be copied.</td>
+</tr>
+<tr class="row-even"><td>copy-resources</td>
+<td>Triggers the copying of resources.</td>
+</tr>
+<tr class="row-odd"><td>fix-files</td>
+<td>Fix white space in source files.</td>
+</tr>
+<tr class="row-even"><td>lint-check</td>
+<td>Check source code with a lint-like utility.</td>
+</tr>
+<tr class="row-odd"><td>migrate-files</td>
+<td>Migrate source code to the current qooxdoo version.</td>
+</tr>
+<tr class="row-even"><td>pretty-print</td>
+<td>Format source files.</td>
+</tr>
+<tr class="row-odd"><td>provider</td>
+<td>Collects classes, resources and dependency info in a directory tree.</td>
+</tr>
+<tr class="row-even"><td>shell</td>
+<td>Triggers the execution of one or more external command(s).</td>
+</tr>
+<tr class="row-odd"><td>simulate</td>
+<td>Triggers the execution of a suite of integration tests.</td>
+</tr>
+<tr class="row-even"><td>slice-images</td>
+<td>Triggers cutting images into regions.</td>
+</tr>
+<tr class="row-odd"><td>translate</td>
+<td>Triggers updating of .po files.</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><strong>Structure-changing Keys</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="row-even"><td>default-job (top-level)</td>
+<td>Default job to be run.</td>
+</tr>
+<tr class="row-odd"><td>export (top-level)</td>
+<td>List of jobs to be exported to other config files.</td>
+</tr>
+<tr class="row-even"><td>extend</td>
+<td>Extend the current job with other jobs.</td>
+</tr>
+<tr class="row-odd"><td>include (top-level)</td>
+<td>Include external config files.</td>
+</tr>
+<tr class="row-even"><td>jobs (top-level)</td>
+<td>Define jobs.</td>
+</tr>
+<tr class="row-odd"><td>let</td>
+<td>Define macros.</td>
+</tr>
+<tr class="row-even"><td>let (top-level)</td>
+<td>Define default macros.</td>
+</tr>
+<tr class="row-odd"><td>run</td>
+<td>Define a list of jobs to run.</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><strong>Input/Output-setting Keys</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="row-even"><td>add-script</td>
+<td>Includes aritrary URIs to be loaded by the app.</td>
+</tr>
+<tr class="row-odd"><td>asset-let</td>
+<td>Defines macros that will be replaced in #asset hints.</td>
+</tr>
+<tr class="row-even"><td>compile-options</td>
+<td>Various options that taylor the <em>compile</em> action.</td>
+</tr>
+<tr class="row-odd"><td>dependencies</td>
+<td>Fine-tune dependency processing.</td>
+</tr>
+<tr class="row-even"><td>exclude</td>
+<td>Exclude classes from processing of the job.</td>
+</tr>
+<tr class="row-odd"><td>include</td>
+<td>Include classes to be processed in the job.</td>
+</tr>
+<tr class="row-even"><td>library</td>
+<td>Define libraries to be taken into account for this job.</td>
+</tr>
+<tr class="row-odd"><td>packages</td>
+<td>Define packages for this app.</td>
+</tr>
+<tr class="row-even"><td>require</td>
+<td>Define prerequisite classes (load time).</td>
+</tr>
+<tr class="row-odd"><td>environment</td>
+<td>Define key:value pairs for the app.</td>
+</tr>
+<tr class="row-even"><td>use</td>
+<td>Define prerequisite classes (run time).</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><strong>Runtime-setting Keys</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="row-odd"><td>cache</td>
+<td>Define the path to the cache directory.</td>
+</tr>
+<tr class="row-even"><td>config-warnings (experimental)</td>
+<td>Suppress warnings relating to configuration.</td>
+</tr>
+<tr class="row-odd"><td>log</td>
+<td>Tailor log output options.</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><strong>Miscellaneous Keys</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="row-even"><td>desc</td>
+<td>A descriptive string for the job.</td>
+</tr>
+<tr class="row-odd"><td>name (top-level)</td>
+<td>A descriptive string for the configuration file.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="listing-of-keys-in-context">
+<span id="pages-tool-generator-config-listing-of-keys-in-context"></span><h2>Listing of Keys in Context<a class="headerlink" href="#listing-of-keys-in-context" title="Permalink to this headline">¶</a></h2>
+<p>This shows the complete possible contents of the top-level configuration map. Further information is linked from the respective keys.</p>
+<ul class="simple">
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-name"><em>name</em></a> A name or descriptive text for the configuration file.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-include-top-level"><em>include</em></a> Include external config files. Takes a list of maps, where each map specifies an external configuration file, and options how to include it. (See special section on the <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-include-key-top-level-adding-features"><em>include key</em></a>)</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-let-top-level"><em>let</em></a> Define default macros. Takes a map (see the description of the job-level 'let' further down). This let map is included automatically into every job run. There is no explicit reference to it, so be aware of side effects.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-export"><em>export</em></a> List of jobs to be exported if this config file is included by another.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-default-job"><em>default-job</em></a> The name of a job to be run as default, i.e. when invoking the generator without job arguments.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-config-warnings"><em>config-warnings</em></a> <em>(experimental)</em> Suppress warnings from configuration aspects which you know are ok.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-jobs"><em>jobs</em></a> Map of jobs. Each key is the name of a job.<ul>
+<li><strong>&lt;jobname&gt;</strong> Each job's value is a map describing the job. The describing map can have any number of the following keys:<ul>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-api"><em>add-script</em></a> A list of URIs that will be loaded first thing when the app starts.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-api"><em>api</em></a> Triggers the generation of a custom Apiviewer application.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-asset-let"><em>asset-let</em></a> Defines macros that will be replaced in #asset hints in source files. (See special section on the <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-asset-let-key"><em>&quot;asset-let&quot; key</em></a>).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-cache"><em>cache</em></a> Define the path to cache directories, most importantly to the compile cache. (See special section on the <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-cache-key"><em>&quot;cache&quot; Key</em></a> key).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-clean-files"><em>clean-files</em></a> Triggers clean-up of files and directories within a project and the framework, e.g. deletion of generated files, cache contents, etc.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-collect-environment-info"><em>collect-environment-info</em></a> Collects various information about the qooxdoo environment (like version, cache, etc.) and prints it to the console.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-combine-images"><em>combine-images</em></a> Triggers creation of a combined image file that contains various images.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-compile"><em>compile</em></a> Triggers the generation of a source or build version of the application.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-compile-options"><em>compile-options</em></a> Define various options that influence compile runs (both source and build version).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-config-warnings"><em>config-warnings</em></a> <em>(experimental)</em> Suppress warnings from configuration aspects which you know are ok.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-copy-files"><em>copy-files</em></a> Triggers files/directories to be copied, usually between source and build version.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-copy-resources"><em>copy-resources</em></a> Triggers the copying of resources, usually between source and build version.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-dependencies"><em>dependencies</em></a> Fine-tune the processing of class dependencies.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-desc"><em>desc</em></a> A string describing the job.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-environment"><em>environment</em></a> Define key:value pairs for the application, covering settings, variants and features.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-exclude"><em>exclude</em></a> List classes to be excluded from the job. Takes an array of class specifiers.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-extend"><em>extend</em></a> Extend the current job with other jobs. Takes an array of job names. The information of these jobs are merged into the current job description, so the current job sort of &quot;inherits&quot; their settings. (See the special section on <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-extend-key"><em>&quot;extend&quot; semantics</em></a>).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-fix-files"><em>fix-files</em></a> Fix white space in source files.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-include"><em>include</em></a> List classes to be processed in the job. Takes an array of class specifiers.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-let"><em>let</em></a> Define macros. Takes a map where each key defines a macro and the value its expansion. (See the special section on <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-let-key"><em>macros</em></a>).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-library"><em>library</em></a> Define libraries to be taken into account for this job. Takes an array of maps, each map specifying one library to consider. The most important part therein is the &quot;manifest&quot; specification. (See special section on <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-manifest-files"><em>Manifest files</em></a>).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-lint-check"><em>lint-check</em></a> Check source code with a lint-like utility.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-log"><em>log</em></a> Tailor log output of job.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-migrate-files"><em>migrate-files</em></a> Migrate source code to the current qooxdoo version.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-packages"><em>packages</em></a> Define packages for the application. (See special section on <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-packages-key"><em>packages</em></a>).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-pretty-print"><em>pretty-print</em></a> Triggers code beautification of source class files (in-place-editing). An empty map value triggers default formatting, but further keys can tailor the output.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-provider"><em>provider</em></a> Collects classes, resources and dependency information and puts them in a specific directory structure under the <tt class="docutils literal"><span class="pre">provider</span></tt> root.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-require"><em>require</em></a> Define prerequisite classes needed at load time. Takes a map, where the keys are class names and the values lists of prerequisite classes.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-run"><em>run</em></a> Define a list of jobs to run in place of the current job. (See the special section on <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-run-key"><em>&quot;run&quot; semantics</em></a>).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-shell"><em>shell</em></a> Triggers the execution of one or more external command(s).</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-simulate"><em>simulate</em></a> Triggers the execution of a GUI test (simulated interaction) suite.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-slice-images"><em>slice-images</em></a> Triggers cutting images into regions.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-translate"><em>translate</em></a> Re-)generate .po files from source classes.</li>
+<li><a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-use"><em>use</em></a> Define prerequisite classes needed at run time. Takes a map, where the keys are class names and the values lists of prerequisite classes.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="generator_usage.html"
+             title="previous chapter">« Generator Usage</a>
+          <span class="separator">|</span>
+          <a class="next" href="generator_optimizations.html"
+             title="next chapter">Generator Script Optimizations »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Generator Configuration File</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#syntax">Syntax</a></li>
+<li><a class="reference internal" href="#valid-job-keys">Valid Job Keys</a></li>
+<li><a class="reference internal" href="#listing-of-keys-in-context">Listing of Keys in Context</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="generator_optimizations.html"
+                        title="next chapter">Generator Script Optimizations</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="generator_usage.html"
+                        title="previous chapter">Generator Usage</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/generator_config.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,283 @@
+# French
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: qooxdoo framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-05-19 10:11+0200\n"
+"PO-Revision-Date: 2010-04-27 15:58-0500\n"
+"Last-Translator: Julien Raclot <julien DOT raclot AT 1and1 DOT fr>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "%1 does not fit %2."
+msgstr "%1 ne correspond pas à %2."
+
+msgid "%1 is not a color! %2"
+msgstr "%1 n'est pas une couleur ! %2"
+
+msgid "%1 is not a number."
+msgstr "%1 n'est pas un chiffre."
+
+msgid "%1 is not a string."
+msgstr "%1 n'est pas une chaîne de caractères."
+
+msgid "%1 is not an url."
+msgstr "%1 n'est pas un URL."
+
+msgid "%1 is not in %2"
+msgstr "%1 n'est pas dans %2"
+
+msgid "%1 is not in the range from [%2, %3]."
+msgstr "%1 n'est pas dans l'intervalle [%2, %3]."
+
+msgid "'%1' is not an email address."
+msgstr "'%1'n'est pas une adresse email."
+
+msgid "Automatic"
+msgstr "Automatique"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Color Selector"
+msgstr "Sélecteur de couleurs"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "HSB"
+msgstr "TSV"
+
+msgid "Hex"
+msgstr "Hex"
+
+msgid "Last month"
+msgstr "Mois dernier"
+
+msgid "Last year"
+msgstr "Année dernière"
+
+msgid "Next month"
+msgstr "Mois prochain"
+
+msgid "Next year"
+msgstr "Année prochaine"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Open ColorSelector"
+msgstr "Ouvrir le sélecteur de couleurs"
+
+msgid "Presets"
+msgstr "Pré-réglages"
+
+msgid "Preview (Old/New)"
+msgstr "Aperçu (Ancien/Nouveau)"
+
+msgid "RGB"
+msgstr "RVB"
+
+msgid "Reset column widths"
+msgstr "Réinitialiser la largeur des colonnes"
+
+msgid "This field is required"
+msgstr "ce champ est requis"
+
+msgid "Visual"
+msgstr ""
+
+msgid "key_full_Alt"
+msgstr "Alternative"
+
+msgid "key_full_Apps"
+msgstr "Application"
+
+msgid "key_full_Backspace"
+msgstr "Effacement arrière"
+
+msgid "key_full_CapsLock"
+msgstr "Verrouillage des Majuscule"
+
+msgid "key_full_Control"
+msgstr "Contrôle"
+
+msgid "key_full_Control_Mac"
+msgstr ""
+
+msgid "key_full_Delete"
+msgstr "Suppression"
+
+msgid "key_full_Down"
+msgstr "Bas"
+
+msgid "key_full_End"
+msgstr "Fin"
+
+msgid "key_full_Enter"
+msgstr "Entrée"
+
+msgid "key_full_Escape"
+msgstr "Échappement"
+
+msgid "key_full_Home"
+msgstr "Origine"
+
+msgid "key_full_Insert"
+msgstr "Insertion"
+
+msgid "key_full_Left"
+msgstr "Gauche"
+
+msgid "key_full_Meta"
+msgstr "Meta"
+
+msgid "key_full_NumLock"
+msgstr "Verouillage Numérique"
+
+msgid "key_full_PageDown"
+msgstr "Page Suivante"
+
+msgid "key_full_PageUp"
+msgstr "Page Précédente"
+
+msgid "key_full_Pause"
+msgstr "Pause"
+
+msgid "key_full_PrintScreen"
+msgstr "Impression de l'écran"
+
+msgid "key_full_Right"
+msgstr "Droite"
+
+msgid "key_full_Scroll"
+msgstr "Arrêt défilement"
+
+msgid "key_full_Shift"
+msgstr "Majuscules"
+
+msgid "key_full_Space"
+msgstr "Espace"
+
+msgid "key_full_Tab"
+msgstr "Tabulation"
+
+msgid "key_full_Up"
+msgstr "Haut"
+
+msgid "key_full_Win"
+msgstr "Windows"
+
+msgid "key_short_Alt"
+msgstr "Alt"
+
+msgid "key_short_Apps"
+msgstr "App."
+
+msgid "key_short_Backspace"
+msgstr "Effacement Arrière"
+
+msgid "key_short_CapsLock"
+msgstr "Verr. Maj."
+
+msgid "key_short_Control"
+msgstr "Ctrl"
+
+msgid "key_short_Control_Mac"
+msgstr ""
+
+msgid "key_short_Delete"
+msgstr "Supp."
+
+msgid "key_short_Down"
+msgstr "Bas"
+
+msgid "key_short_End"
+msgstr "Fin"
+
+msgid "key_short_Enter"
+msgstr "Entrée"
+
+msgid "key_short_Escape"
+msgstr "Echap."
+
+msgid "key_short_Home"
+msgstr "Orig."
+
+msgid "key_short_Insert"
+msgstr "Ins."
+
+msgid "key_short_Left"
+msgstr "Gauche"
+
+msgid "key_short_Meta"
+msgstr "Meta"
+
+msgid "key_short_NumLock"
+msgstr "Verr. Num."
+
+msgid "key_short_PageDown"
+msgstr "Pg Suiv."
+
+msgid "key_short_PageUp"
+msgstr "Pg Préc."
+
+msgid "key_short_Pause"
+msgstr "Pause"
+
+msgid "key_short_PrintScreen"
+msgstr "Imp. Écran"
+
+msgid "key_short_Right"
+msgstr "Droite"
+
+msgid "key_short_Scroll"
+msgstr "Arrêt Défil"
+
+msgid "key_short_Shift"
+msgstr "Maj"
+
+msgid "key_short_Space"
+msgstr "Espace"
+
+msgid "key_short_Tab"
+msgstr "Tab"
+
+msgid "key_short_Up"
+msgstr "Haut"
+
+msgid "key_short_Win"
+msgstr "Win"
+
+msgid "one of one row"
+msgid_plural "%1 of %2 rows"
+msgstr[0] "ligne une de une"
+msgstr[1] "ligne %1 de %2"
+
+msgid "one row"
+msgid_plural "%1 rows"
+msgstr[0] "une ligne"
+msgstr[1] "%1 lignes"
+
+msgid "test Hello %1!"
+msgstr ""
+
+msgid "test Jonny"
+msgstr ""
+
+msgid "test One car"
+msgid_plural "test %1 cars"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "test affe"
+msgstr ""
+
+msgid "test one"
+msgstr ""
+
+msgid "test two"
+msgstr ""

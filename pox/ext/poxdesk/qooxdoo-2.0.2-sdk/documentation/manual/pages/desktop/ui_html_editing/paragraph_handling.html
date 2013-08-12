@@ -1,0 +1,399 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Paragraph Handling &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="HTML Editing" href="../ui_html_editing.html" />
+    <link rel="next" title="List Handling" href="list_handling.html" />
+    <link rel="prev" title="Undo and Redo" href="undo_redo.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" >qx.Desktop</a>
+     &raquo;
+    <a href="../ui_html_editing.html" accesskey="U">HTML Editing</a>
+     &raquo;
+  <a href="">Paragraph Handling</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="paragraph-handling">
+<span id="pages-ui-html-editing-paragraph-handling-paragraph-handling"></span><h1>Paragraph Handling<a class="headerlink" href="#paragraph-handling" title="Permalink to this headline">¶</a></h1>
+<p>The aim of the component is to facade all the browser differences concerning the behaviour when the user hits the <tt class="docutils literal"><span class="pre">Enter</span></tt>, the <tt class="docutils literal"><span class="pre">Shift+Enter</span></tt> or the <tt class="docutils literal"><span class="pre">Control+Enter</span></tt> combination. And this is by far not an easy task since the differences between the browsers are enormous.</p>
+<div class="section" id="formatting-across-multiple-paragraphs">
+<span id="pages-ui-html-editing-paragraph-handling-formatting-across-multiple-paragraphs"></span><h2>Formatting across multiple paragraphs<a class="headerlink" href="#formatting-across-multiple-paragraphs" title="Permalink to this headline">¶</a></h2>
+<p>Every formatting infos like <em>underline</em>, <em>bold</em>, <em>text color</em>, <em>text size</em> etc. are transferred to the new paragraph. It is likely that the user expects to write on with the same configuration/modifications he applied to the former paragraph.</p>
+</div>
+<div class="section" id="alignment">
+<span id="pages-ui-html-editing-paragraph-handling-alignment"></span><h2>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">¶</a></h2>
+<p>A paragraph in always aligned completely - the way a word processor also work. This <em>can</em> be irritating at the first time of use if e.g. a paragraph contains multiple lines of text each separated by normal line-breaks, but concerning alignment the paragraph is treated only as whole. So every line of the paragraph (=the whole paragraph) is aligned and not only the line the cursor is currently located.</p>
+</div>
+<div class="section" id="customization">
+<span id="pages-ui-html-editing-paragraph-handling-customization"></span><h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
+<p>The HtmlArea offers you two properties to customize the paragraph handling globally and thus customize the behaviour of the component.</p>
+<div class="section" id="insertparagraphonlinebreak">
+<span id="pages-ui-html-editing-paragraph-handling-insertparagraphonlinebreak"></span><h3>insertParagraphOnLinebreak<a class="headerlink" href="#insertparagraphonlinebreak" title="Permalink to this headline">¶</a></h3>
+<p>The default value of this property is <tt class="docutils literal"><span class="pre">true</span></tt>. It controls whether a new paragraph or a normal line-break is inserted when hitting the <tt class="docutils literal"><span class="pre">Enter</span></tt> key. Since the default behaviour of all word processors is to insert a new paragraph it is recommended to leave this property value with its default.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As every word processor the HtmlArea also supports inserting a normal line-break by using the key combination <tt class="docutils literal"><span class="pre">Shift+Enter</span></tt></p>
+</div>
+</div>
+<div class="section" id="insertlinebreakonctrlenter">
+<span id="pages-ui-html-editing-paragraph-handling-insertlinebreakonctrlenter"></span><h3>insertLinebreakOnCtrlEnter<a class="headerlink" href="#insertlinebreakonctrlenter" title="Permalink to this headline">¶</a></h3>
+<p>This property also has a default value of <tt class="docutils literal"><span class="pre">true</span></tt>. Since some users are familiar with the key combination <tt class="docutils literal"><span class="pre">Control+Enter</span></tt> to insert a normal line-break the HtmlArea component does support this. So in the default setup <tt class="docutils literal"><span class="pre">Control+Enter</span></tt> and <tt class="docutils literal"><span class="pre">Shift+Enter</span></tt> will end up with the same result.</p>
+</div>
+</div>
+<div class="section" id="technical-background">
+<span id="pages-ui-html-editing-paragraph-handling-technical-background"></span><h2>Technical Background<a class="headerlink" href="#technical-background" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="paragraph-handling-in-firefox">
+<span id="pages-ui-html-editing-paragraph-handling-paragraph-handling-in-firefox"></span><h3>Paragraph-Handling in Firefox<a class="headerlink" href="#paragraph-handling-in-firefox" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="browser-control">
+<span id="pages-ui-html-editing-paragraph-handling-browser-control"></span><h4>Browser control<a class="headerlink" href="#browser-control" title="Permalink to this headline">¶</a></h4>
+<p>Currently the HtmlArea does only take control and manage the paragraphs on its own if</p>
+<ul class="simple">
+<li>SHIFT and CTRL keys are not pressed</li>
+<li>caret is not within a word</li>
+<li>focus node is not an element (current line is not empty)</li>
+<li>the focus is inside a list</li>
+</ul>
+</div>
+<div class="section" id="htmlarea-control">
+<span id="pages-ui-html-editing-paragraph-handling-htmlarea-control"></span><h4>HtmlArea control<a class="headerlink" href="#htmlarea-control" title="Permalink to this headline">¶</a></h4>
+<p>If the HtmlArea with its paragraph handling takes control, the following actions are taken.</p>
+<div class="section" id="phase-1-collecting-styles">
+<span id="pages-ui-html-editing-paragraph-handling-phase-1-collecting-styles"></span><h5>Phase 1: Collecting styles<a class="headerlink" href="#phase-1-collecting-styles" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li>computed styles of the focus node are collected</li>
+<li>these styles are grouped in the correct order (e.g. special handling for text-decoration because the text-decoration is linked to the elements color value)</li>
+</ul>
+</div>
+<div class="section" id="phase-2-style-string-creation">
+<span id="pages-ui-html-editing-paragraph-handling-phase-2-style-string-creation"></span><h5>Phase 2: Style string creation<a class="headerlink" href="#phase-2-style-string-creation" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li>a <tt class="docutils literal"><span class="pre">style</span></tt> attribute based on the computed styles is generated for the paragraph element -&gt; only <tt class="docutils literal"><span class="pre">margin</span></tt>, <tt class="docutils literal"><span class="pre">padding</span></tt> and <tt class="docutils literal"><span class="pre">text-align</span></tt> can be applied at paragraph-level. All other styles need to be applied at span elements (=child elements)</li>
+<li>a string with nested <tt class="docutils literal"><span class="pre">span</span></tt> / <tt class="docutils literal"><span class="pre">font</span></tt> element string is created. This element string is applied to the paragraph element. The nested structure is necessary because some styles need to be applied in the right order</li>
+</ul>
+</div>
+<div class="section" id="phase-3-nodes-creation">
+<span id="pages-ui-html-editing-paragraph-handling-phase-3-nodes-creation"></span><h5>Phase 3: Nodes creation<a class="headerlink" href="#phase-3-nodes-creation" title="Permalink to this headline">¶</a></h5>
+<p>The following string is applied with the &quot;insertHtml&quot; command</p>
+<ul class="simple">
+<li>an empty <tt class="docutils literal"><span class="pre">span</span></tt> element with an ID</li>
+<li>a <tt class="docutils literal"><span class="pre">p</span></tt> element with the paragraph style</li>
+<li>the nested <tt class="docutils literal"><span class="pre">span</span></tt> / <tt class="docutils literal"><span class="pre">font</span></tt> string to reflect the formatting which can't be applied at paragraph level</li>
+</ul>
+</div>
+<div class="section" id="phase-4-cleanup">
+<span id="pages-ui-html-editing-paragraph-handling-phase-4-cleanup"></span><h5>Phase 4: Cleanup<a class="headerlink" href="#phase-4-cleanup" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li>Gecko inserts a <tt class="docutils literal"><span class="pre">p</span></tt> element on his own even if we intercept. This element gets removed afterwards by selecting this paragragph and inserting an empty DIV element at the selection</li>
+<li>the ID of the empty <tt class="docutils literal"><span class="pre">span</span></tt> is removed (Gecko will remove an empty <tt class="docutils literal"><span class="pre">span</span></tt> then automatically)</li>
+<li>if an empty paragraph is detected it will be removed to avoid rendering problems</li>
+</ul>
+</div>
+</div>
+<div class="section" id="reasons-for-own-paragraph-handling">
+<span id="pages-ui-html-editing-paragraph-handling-reasons-for-own-paragraph-handling"></span><h4>Reasons for own paragraph handling<a class="headerlink" href="#reasons-for-own-paragraph-handling" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>support to keep formatting across multiple paragraphs or lists</li>
+<li>keep the caret always inside a <tt class="docutils literal"><span class="pre">p</span></tt> element</li>
+<li>keep control of the kind of line-breaking which is inserted</li>
+<li>normalize line-breaking</li>
+<li>act like MS Word</li>
+</ul>
+</div>
+<div class="section" id="issues">
+<span id="pages-ui-html-editing-paragraph-handling-issues"></span><h4>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>DOM manipulations <strong>can</strong> break Undo/Redo since Gecko is expecting a DOM node which does not exist anymore</li>
+<li>edge cases can occur which are not targeted yet</li>
+<li>future browser implementation can change and mess up the current implementation</li>
+<li>MS Word behaviour can not be achieved in a browser, yet</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="undo_redo.html"
+             title="previous chapter">« Undo and Redo</a>
+          <span class="separator">|</span>
+          <a class="next" href="list_handling.html"
+             title="next chapter">List Handling »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Paragraph Handling</a><ul>
+<li><a class="reference internal" href="#formatting-across-multiple-paragraphs">Formatting across multiple paragraphs</a></li>
+<li><a class="reference internal" href="#alignment">Alignment</a></li>
+<li><a class="reference internal" href="#customization">Customization</a><ul>
+<li><a class="reference internal" href="#insertparagraphonlinebreak">insertParagraphOnLinebreak</a></li>
+<li><a class="reference internal" href="#insertlinebreakonctrlenter">insertLinebreakOnCtrlEnter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#technical-background">Technical Background</a><ul>
+<li><a class="reference internal" href="#paragraph-handling-in-firefox">Paragraph-Handling in Firefox</a><ul>
+<li><a class="reference internal" href="#browser-control">Browser control</a></li>
+<li><a class="reference internal" href="#htmlarea-control">HtmlArea control</a><ul>
+<li><a class="reference internal" href="#phase-1-collecting-styles">Phase 1: Collecting styles</a></li>
+<li><a class="reference internal" href="#phase-2-style-string-creation">Phase 2: Style string creation</a></li>
+<li><a class="reference internal" href="#phase-3-nodes-creation">Phase 3: Nodes creation</a></li>
+<li><a class="reference internal" href="#phase-4-cleanup">Phase 4: Cleanup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reasons-for-own-paragraph-handling">Reasons for own paragraph handling</a></li>
+<li><a class="reference internal" href="#issues">Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="list_handling.html"
+                        title="next chapter">List Handling</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="undo_redo.html"
+                        title="previous chapter">Undo and Redo</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/ui_html_editing/paragraph_handling.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

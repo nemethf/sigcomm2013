@@ -1,0 +1,347 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dock &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Layout Reference" href="../layout.html" />
+    <link rel="next" title="Grid" href="grid.html" />
+    <link rel="prev" title="Flow" href="flow.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../references.html" >References</a>
+     &raquo;
+    <a href="../layout.html" accesskey="U">Layout Reference</a>
+     &raquo;
+  <a href="">Dock</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="dock">
+<span id="pages-layout-dock-dock"></span><h1>Dock<a class="headerlink" href="#dock" title="Permalink to this headline">¶</a></h1>
+<p>Docks children to one of the edges.</p>
+<div class="section" id="preview-image">
+<span id="pages-layout-dock-preview-image"></span><h2>Preview Image<a class="headerlink" href="#preview-image" title="Permalink to this headline">¶</a></h2>
+<p><img alt="layout/dock.png" src="../../_images/dock.png" /></p>
+</div>
+<div class="section" id="features">
+<span id="pages-layout-dock-features"></span><h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Percent width for left/right/center attached children</li>
+<li>Percent height for top/bottom/center attached children</li>
+<li>Minimum and maximum dimensions</li>
+<li>Prioritized growing/shrinking (flex)</li>
+<li>Auto sizing</li>
+<li>Margins and Spacings</li>
+<li>Alignment in orthogonal axis (e.g. alignX of north attached)</li>
+<li>Different sort options for children</li>
+</ul>
+</div>
+<div class="section" id="description">
+<span id="pages-layout-dock-description"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">Dock</span></tt> layout attaches the children to the edges of the availble space. The space distribution respects the child order and starts with the first child. Every added child reduces the available space of the other ones. This is important because for example a left attached child reduces the available width for top attached children and vice-versa. This layout is mainly used for the basic application layout structure.</p>
+</div>
+<div class="section" id="layout-properties">
+<span id="pages-layout-dock-layout-properties"></span><h2>Layout properties<a class="headerlink" href="#layout-properties" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>edge</strong> <em>(String)</em>: The edge where the layout item should be docked. This may be one of <tt class="docutils literal"><span class="pre">north</span></tt>, <tt class="docutils literal"><span class="pre">east</span></tt>, <tt class="docutils literal"><span class="pre">south</span></tt>, <tt class="docutils literal"><span class="pre">west</span></tt> or <tt class="docutils literal"><span class="pre">center</span></tt>. (Required)</li>
+<li><strong>width</strong> <em>(String)</em>: Defines a percent width for the item. The percent width, when specified, is used instead of the width defined by the size hint. This is only supported for children added to the north or south edge or are centered in the middle of the layout. The minimum and maximum width still takes care of the elements limitations. It has no influence on the layout's size hint. Percents are mainly useful for widgets which are sized by the outer hierarchy.</li>
+<li><strong>height</strong> <em>(String)</em>: Defines a percent height for the item. The percent height, when specified, is used instead of the height defined by the size hint. This is only supported for children added to the west or east edge or are centered in the middle of the layout. The minimum and maximum height still takes care of the elements limitations. It has no influence on the layout's size hint. Percents are mainly useful for widgets which are sized by the outer hierarchy.</li>
+</ul>
+</div>
+<div class="section" id="alternative-names">
+<span id="pages-layout-dock-alternative-names"></span><h2>Alternative Names<a class="headerlink" href="#alternative-names" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>BorderLayout (Qt)</li>
+<li>DockPanel (XAML)</li>
+<li>BorderLayout (Java)</li>
+<li>BorderLayout (ExtJS)</li>
+</ul>
+</div>
+<div class="section" id="demos">
+<span id="pages-layout-dock-demos"></span><h2>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
+<p>Here are some links that demonstrate the usage of the layout:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#layout~Dock.html">Simple docks</a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#layout~Dock_AutoSize.html">Docks with auto sizing and spacings</a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#layout~Dock_FlexGrowing.html">Docks with flex sizes (growing)</a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#layout~Dock_FlexShrinking.html">Docks with flex sizes (shrinking)</a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#layout~Dock_Margin.html">Docks with child margins</a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#layout~Dock_PercentSize.html">Docks with percent sizes</a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#layout~Dock_Separator.html">Docks with separators</a></li>
+</ul>
+</div>
+<div class="section" id="api">
+<span id="pages-layout-dock-api"></span><h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Here is a link to the API of the layout manager:</div>
+<div class="line"><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/index.html#qx.ui.layout.Dock">qx.ui.layout.Dock</a></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="flow.html"
+             title="previous chapter">« Flow</a>
+          <span class="separator">|</span>
+          <a class="next" href="grid.html"
+             title="next chapter">Grid »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Dock</a><ul>
+<li><a class="reference internal" href="#preview-image">Preview Image</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#layout-properties">Layout properties</a></li>
+<li><a class="reference internal" href="#alternative-names">Alternative Names</a></li>
+<li><a class="reference internal" href="#demos">Demos</a></li>
+<li><a class="reference internal" href="#api">API</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="grid.html"
+                        title="next chapter">Grid</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="flow.html"
+                        title="previous chapter">Flow</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/layout/dock.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,4 @@
+config
+fat_dir/ssh_key.pub
+*.qcow2
+bin

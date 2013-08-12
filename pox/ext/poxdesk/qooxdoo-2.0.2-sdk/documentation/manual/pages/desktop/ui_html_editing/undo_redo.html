@@ -1,0 +1,340 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Undo and Redo &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="HTML Editing" href="../ui_html_editing.html" />
+    <link rel="next" title="Paragraph Handling" href="paragraph_handling.html" />
+    <link rel="prev" title="Default Paragraph Handling" href="default_paragraph_handling.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" >qx.Desktop</a>
+     &raquo;
+    <a href="../ui_html_editing.html" accesskey="U">HTML Editing</a>
+     &raquo;
+  <a href="">Undo and Redo</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="undo-and-redo">
+<span id="pages-ui-html-editing-undo-redo-undo-and-redo"></span><h1>Undo and Redo<a class="headerlink" href="#undo-and-redo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="limitations">
+<span id="pages-ui-html-editing-undo-redo-limitations"></span><h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<p>The implementation of undo/redo in the HtmlArea has some limitations you should be aware of.
+It is possible to <tt class="docutils literal"><span class="pre">undo</span></tt> all of your steps but <tt class="docutils literal"><span class="pre">redo</span></tt> is only possible when no other action occured between the undo and the redo action. If you undo several steps and e.g. enter some text you <strong>can not</strong> execute redo anymore.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you use the Undo/Redo functionality you have to make sure you are not manipulating the content of the HtmlArea by using the <tt class="docutils literal"><span class="pre">innerHTML</span></tt> property of an element.</p>
+<p class="last"><strong>This will break Undo/Redo functionality!</strong></p>
+</div>
+</div>
+<div class="section" id="implementation-description-on-a-high-level">
+<span id="pages-ui-html-editing-undo-redo-implementation-description-on-a-high-level"></span><h2>Implementation: Description on a high-level<a class="headerlink" href="#implementation-description-on-a-high-level" title="Permalink to this headline">¶</a></h2>
+<p>The implementation is split up into two different approaches.</p>
+<p>For Internet Explorer the <tt class="docutils literal"><span class="pre">execCommand</span></tt> approach can't be used anymore. The internal undo / redo stack gets broken on every DOM manipulation. So, if any qooxdoo decorator is used this approach is a dead end. Instead an own implementation using <tt class="docutils literal"><span class="pre">innerHTML</span></tt> is used for IE browsers.</p>
+<p>For all other browsers the base of the Undo/Redo functionality is to use the <tt class="docutils literal"><span class="pre">execCommand</span></tt> method to manipulate the content <strong>whenever</strong> possible. Each change which is performed with a call of <tt class="docutils literal"><span class="pre">execCommand</span></tt> is easy to undo/redo. For any manipulation which cannot be achieved using the built-in <tt class="docutils literal"><span class="pre">execCommand</span></tt> a special implementation for each browser is necessary (e.g. changing the background color of the whole document).</p>
+<div class="section" id="using-the-decorator-pattern">
+<span id="pages-ui-html-editing-undo-redo-using-the-decorator-pattern"></span><h3>Using the Decorator Pattern<a class="headerlink" href="#using-the-decorator-pattern" title="Permalink to this headline">¶</a></h3>
+<p>To easily integrate the undo/redo management with the commands of the HtmlArea the <tt class="docutils literal"><span class="pre">UndoManager</span></tt> class is a decorator of the <tt class="docutils literal"><span class="pre">CommandManager</span></tt> class. It takes the method calls from the HtmlArea class, collects the info for undo the action and calls the decorated <tt class="docutils literal"><span class="pre">commandManager</span></tt> class to actually perform the requested action. This keeps both implementations clean and separated.</p>
+</div>
+<div class="section" id="tracking-changes-using-stacks">
+<span id="pages-ui-html-editing-undo-redo-tracking-changes-using-stacks"></span><h3>Tracking changes using stacks<a class="headerlink" href="#tracking-changes-using-stacks" title="Permalink to this headline">¶</a></h3>
+<p>Two stacks keep track of the changes which are done to the content: an <strong>undo stack</strong> and the corresponding <strong>redo stack</strong>. Currently each stack holds four different types of changes:</p>
+<ul class="simple">
+<li>Command</li>
+<li>Content-block</li>
+<li>Custom</li>
+<li>Internal</li>
+</ul>
+<p>Each entry in the stacks is represented by an object which holds additional info (the type above is among this info).</p>
+<div class="section" id="command">
+<span id="pages-ui-html-editing-undo-redo-command"></span><h4>Command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h4>
+<p>Every change which is performed with the <tt class="docutils literal"><span class="pre">execCommand</span></tt> method is equipped with this type. These changes are the easiest to track and to undo/redo.</p>
+</div>
+<div class="section" id="content-block">
+<span id="pages-ui-html-editing-undo-redo-content-block"></span><h4>Content-block<a class="headerlink" href="#content-block" title="Permalink to this headline">¶</a></h4>
+<p>Each keypress event is observed to determine changes in the content and to mark a set of content changes as an own block which is capable for an undo/redo step. For example IE and Gecko do both recognize text changes as a content block if the text changes occured between two calls of <tt class="docutils literal"><span class="pre">execCommand</span></tt>.</p>
+</div>
+<div class="section" id="custom">
+<span id="pages-ui-html-editing-undo-redo-custom"></span><h4>Custom<a class="headerlink" href="#custom" title="Permalink to this headline">¶</a></h4>
+<p>These changes are the ones which cannot be handled with the built-in <tt class="docutils literal"><span class="pre">execCommand</span></tt> method. For example changing the background color of the whole document is a custom undo/redo step which needs to be handled in a special way by each browser.</p>
+</div>
+<div class="section" id="internal">
+<span id="pages-ui-html-editing-undo-redo-internal"></span><h4>Internal<a class="headerlink" href="#internal" title="Permalink to this headline">¶</a></h4>
+<p>These steps are included to keep the stacks intact if the user e.g. resizes an images with the handles provided by the browsers. It is possible to undo/redo these internal changes with the common <tt class="docutils literal"><span class="pre">execCommand</span></tt> method. The primary task here is to record these changes and add them to the stack(s).</p>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="default_paragraph_handling.html"
+             title="previous chapter">« Default Paragraph Handling</a>
+          <span class="separator">|</span>
+          <a class="next" href="paragraph_handling.html"
+             title="next chapter">Paragraph Handling »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Undo and Redo</a><ul>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+<li><a class="reference internal" href="#implementation-description-on-a-high-level">Implementation: Description on a high-level</a><ul>
+<li><a class="reference internal" href="#using-the-decorator-pattern">Using the Decorator Pattern</a></li>
+<li><a class="reference internal" href="#tracking-changes-using-stacks">Tracking changes using stacks</a><ul>
+<li><a class="reference internal" href="#command">Command</a></li>
+<li><a class="reference internal" href="#content-block">Content-block</a></li>
+<li><a class="reference internal" href="#custom">Custom</a></li>
+<li><a class="reference internal" href="#internal">Internal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="paragraph_handling.html"
+                        title="next chapter">Paragraph Handling</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="default_paragraph_handling.html"
+                        title="previous chapter">Default Paragraph Handling</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/ui_html_editing/undo_redo.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

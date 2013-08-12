@@ -1,0 +1,7 @@
+{"auth": {"AuthMethod" : "password",
+         "Username" : "nemethf@tmit.bme.hu",
+         "AuthString" : "******"
+         },
+"slice_name": "budapestple_allegra",
+"IdentityFile": "~/.ssh/id_rsa"
+}

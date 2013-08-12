@@ -1,0 +1,342 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial Part 1: The Beginning of a twitter App &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../../desktop.html" />
+    <link rel="next" title="Tutorial Part 2: Finishing the UI" href="tutorial-part-2.html" />
+    <link rel="prev" title="The Focus Layer" href="../focus_layer_impl.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Tutorial Part 1: The Beginning of a twitter App</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-part-1-the-beginning-of-a-twitter-app">
+<span id="pages-tutorial-part-1-tutorial-part-1-the-beginning-of-a-twitter-app"></span><h1>Tutorial Part 1: The Beginning of a twitter App<a class="headerlink" href="#tutorial-part-1-the-beginning-of-a-twitter-app" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-missing-manual">
+<span id="pages-tutorial-part-1-the-missing-manual"></span><h2>The Missing Manual<a class="headerlink" href="#the-missing-manual" title="Permalink to this headline">¶</a></h2>
+<p>We have heard it a couple of times: Users are missing a tutorial a bit more complex than the simple <a class="reference internal" href="../../tool/getting_started.html#pages-getting-started-helloworld-helloworld"><em>&quot;Hello World&quot; tutorial</em></a> we already have. Today, we want to close that gap between the first tutorial and the <a class="reference external" href="http://demo.qooxdoo.org">demo applications</a> included in the framework like the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/feedreader">Feedreader</a>.</p>
+<p>As you sure have read in the headline, we are building a simple twitter application. <a class="reference external" href="http://twitter.com">twitter</a> is a well known service for posting public short messages and has a <a class="reference external" href="http://apiwiki.twitter.com">good API</a> for accessing data. The following mockup shows you how the application should look like at the end.</p>
+<p><img alt="twitter mockup.png" src="../../../_images/twittermockup1.png" /></p>
+<p>If you take a closer look at the mockup, you see a <a class="reference internal" href="../../widget/window.html"><em>window</em></a> containing a <a class="reference internal" href="../../widget/toolbar.html"><em>toolbar</em></a>, a <a class="reference internal" href="../../widget/list.html"><em>list</em></a>, a <a class="reference internal" href="../../widget/textarea.html"><em>text area</em></a> and a <a class="reference internal" href="../../widget/button.html"><em>button</em></a> to post messages. This should cover some common scenarios of a typical qooxdoo application.</p>
+<p>In the first part you'll learn how to create a new application and how to build a part of the main UI. But before we get started, be sure you looked at the <a class="reference internal" href="../../tool/getting_started.html#pages-getting-started-helloworld-helloworld"><em>&quot;Hello World&quot; tutorial</em></a>. We rely on some of the fundamentals explained there.</p>
+</div>
+<div class="section" id="getting-started">
+<span id="pages-tutorial-part-1-getting-started"></span><h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>The first step is to get a working qooxdoo application where we can start our development. You should already have the qooxdoo SDK and know how to use <tt class="docutils literal"><span class="pre">create-application.py</span></tt>, so we just create an application called <tt class="docutils literal"><span class="pre">twitter</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">create</span><span class="o">-</span><span class="nx">application</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">name</span><span class="o">=</span><span class="nx">twitter</span>
+</pre></div>
+</div>
+<p>After that, we should check if everything works as expected. Change the directory to twitter and run <tt class="docutils literal"><span class="pre">./generate.py</span></tt>. Now the skeleton application is ready to run and you can open the index file located in the <tt class="docutils literal"><span class="pre">source</span></tt> directory. After that, open the <tt class="docutils literal"><span class="pre">Application.js</span></tt> file located in <tt class="docutils literal"><span class="pre">source/class/twitter/Application.js</span></tt> with your favorite editor and we are set up for development!</p>
+<p>You should see the unchanged skeleton code of the application containing the creation of a button. We don't need that anymore so you can delete it including all the listener stuff.</p>
+<p>The first part is to create a Window. As the <a class="reference internal" href="../../widget/window.html"><em>Window</em></a> contains all the UI controls, we should extend from the qooxdoo Window and add the controls within that class. Adding a new class is as easy as creating a new file. Just create a file parallel to the <tt class="docutils literal"><span class="pre">Application.js</span></tt> file named <tt class="docutils literal"><span class="pre">MainWindow.js</span></tt>. Now it is time to add some code to that file. We want to create a class so we use the qooxdoo function <tt class="docutils literal"><span class="pre">qx.Class.define</span></tt> for that. Add the following lines to your newly created file.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;twitter.MainWindow&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">Window</span><span class="p">,</span>
+
+    <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="s2">&quot;twitter&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>We have created our own class extending the qooxdoo Window. In the constructor, we already set the caption of the window, which is the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.window.Window">first constructor parameter of the qooxdoo window</a>. So you already have guessed it, <tt class="docutils literal"><span class="pre">this.base(arguments)</span></tt> calls the overridden method of the superclass, in this case the constructor.
+To test the window, we need to create an instance of it in the main application. Add these two lines of code in the Application.js file to create and open the window. Make sure to add it at the end of the main function in the application class.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">main</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">twitter</span><span class="p">.</span><span class="nx">MainWindow</span><span class="p">();</span>
+<span class="nx">main</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Now its time to test the whole thing in the browser. But before we can do that, we need to run the generator once more because we added the window class as new dependency. So run <tt class="docutils literal"><span class="pre">./generate.py</span></tt> and open the page in the browser. You should see a window in the top left corner having the name &quot;twitter&quot;.</p>
+</div>
+<div class="section" id="programming-as-configuring">
+<span id="pages-tutorial-part-1-programming-as-configuring"></span><h2>Programming as Configuring<a class="headerlink" href="#programming-as-configuring" title="Permalink to this headline">¶</a></h2>
+<p>The last task of this tutorial part is to configure the window. Opening the window in the left corner does not look so good, so we should move the window a bit away from the edges of the viewport. To do this add the following line to your application file:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">main</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Another thing we should configure are the buttons of the window. The user should not be able to close, minimize nor maximize the window. So we add the following lines of code in our windows constructor.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// hide the window buttons</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setShowClose</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setShowMaximize</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setShowMinimize</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The last thing we could change is the size of the window on startup. Of course the user can resize the window but we should take care of a good looking startup of the application. Changing the size is as easy as hiding the buttons, just tell the window in its constructor:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// adjust size</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>At this point, your application should look like this.</p>
+<p><img alt="step 1" src="../../../_images/step11.png" /></p>
+<p>Thats it for the first part. If you want to have the <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step1">code from the tutorial</a>, take a look at the project on github and just fork the project.
+The next part of the tutorial will contain the building of the rest of the UI. If you have feedback or want to see something special in further tutorials, just let us know!</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../focus_layer_impl.html"
+             title="previous chapter">« The Focus Layer</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial-part-2.html"
+             title="next chapter">Tutorial Part 2: Finishing the UI »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial Part 1: The Beginning of a twitter App</a><ul>
+<li><a class="reference internal" href="#the-missing-manual">The Missing Manual</a></li>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#programming-as-configuring">Programming as Configuring</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial-part-2.html"
+                        title="next chapter">Tutorial Part 2: Finishing the UI</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../focus_layer_impl.html"
+                        title="previous chapter">The Focus Layer</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/tutorials/tutorial-part-1.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

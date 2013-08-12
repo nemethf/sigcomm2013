@@ -1,0 +1,489 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RPC Server Writer Guide &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Communication" href="../communication.html" />
+    <link rel="next" title="Using the remote table model" href="../widget/table_remote_model.html" />
+    <link rel="prev" title="RPC (Remote Procedure Call)" href="rpc.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../communication.html" accesskey="U">Communication</a>
+     &raquo;
+  <a href="">RPC Server Writer Guide</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="rpc-server-writer-guide">
+<span id="pages-rpc-server-writer-guide-rpc-server-writer-guide"></span><h1>RPC Server Writer Guide<a class="headerlink" href="#rpc-server-writer-guide" title="Permalink to this headline">¶</a></h1>
+<p>Writing a new JSON-RPC server for use with qooxdoo is fairly easy.  If you follow these rules, you should end up with a conformant implementation. See also the other <a class="reference external" href="http://qooxdoo.org/contrib/project#backend">available qooxdoo RPC servers</a>.</p>
+<div class="section" id="json">
+<span id="pages-rpc-server-writer-guide-json"></span><h2>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<p>With the exception of the formatting of Javascript <tt class="docutils literal"><span class="pre">Date</span></tt> objects, all
+communication between client and server is formated as JSON, as described
+and documented at <a class="reference external" href="http://json.org">http://json.org</a>.</p>
+<div class="section" id="date-objects">
+<span id="pages-rpc-server-writer-guide-date-objects"></span><h3>Date Objects<a class="headerlink" href="#date-objects" title="Permalink to this headline">¶</a></h3>
+<p>Date objects are a problem in standard JSON encoding, because there is no
+&quot;literal&quot; syntax for a date in Javascript.  In Javascript, nearly everthing
+can be represented in literal form: objects by <tt class="docutils literal"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></tt>; arrays by <tt class="docutils literal"><span class="pre">[</span> <span class="pre">...</span> <span class="pre">]</span></tt>;
+etc.  The only native type which can not be represented as a literal is a
+Date.  For this reason, a format for passing Dates in JSON is defined here
+so that all conforming servers can parse the data received from clients.</p>
+<p>Date objects are sent as the following 'tokens'.</p>
+<ul class="simple">
+<li>The string <tt class="docutils literal"><span class="pre">new</span> <span class="pre">Date(Date.UTC(</span></tt></li>
+<li>The <strong>year</strong>, integer, e.g. <tt class="docutils literal"><span class="pre">2006</span></tt></li>
+<li>A comma</li>
+<li>The <strong>month</strong>, 0-relative integer, e.g. <tt class="docutils literal"><span class="pre">5</span></tt> is June</li>
+<li>A comma</li>
+<li>The <strong>day</strong> of the month, integer, range: <tt class="docutils literal"><span class="pre">1-31</span></tt></li>
+<li>A comma</li>
+<li>The <strong>hour</strong> of the day on a 24-hour clock, integer, range: <tt class="docutils literal"><span class="pre">0-23</span></tt></li>
+<li>A comma</li>
+<li>The <strong>minute</strong> of the hour, integer, range: <tt class="docutils literal"><span class="pre">0-59</span></tt></li>
+<li>A comma</li>
+<li>The <strong>second</strong> within the minute, integer, range: <tt class="docutils literal"><span class="pre">0-59</span></tt></li>
+<li>A comma</li>
+<li>The <strong>milliseconds</strong> within the second, integer, range: <tt class="docutils literal"><span class="pre">0-999</span></tt></li>
+<li>The string <tt class="docutils literal"><span class="pre">))</span></tt></li>
+</ul>
+<p>A resulting Date representation might therefore be:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">UTC</span><span class="p">(</span><span class="mi">2006</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">223</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="whitespace">
+<span id="pages-rpc-server-writer-guide-whitespace"></span><h4>Whitespace<a class="headerlink" href="#whitespace" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>when generating these date strings, implementations SHOULD NOT add white space before/after/between any of the fields within the date string</li>
+<li>when parsing these date strings, implementations SHOULD allow white space before/after/between any of the fields within the date string</li>
+</ul>
+</div>
+<div class="section" id="numbers">
+<span id="pages-rpc-server-writer-guide-numbers"></span><h4>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>when generating these date strings, implementations MUST NOT add leading zeros to the numeric values in the date string.  Doing so will cause them to be parsed as octal values.  Numbers MUST be passed in decimal (base 10) notation without leading zeros.</li>
+<li>when parsing these date strings, implementations MUST take the integer value of numeric portions of the string as base 10 values, even if leading zeros appear in the string representation of the numbers..</li>
+</ul>
+<p>Within the JSON protocol and in JSON messages between peers, <tt class="docutils literal"><span class="pre">Date</span></tt> objects
+are always passed as UTC.</p>
+</div>
+</div>
+</div>
+<div class="section" id="rpc">
+<span id="pages-rpc-server-writer-guide-rpc"></span><h2>RPC<a class="headerlink" href="#rpc" title="Permalink to this headline">¶</a></h2>
+<p>Remote procedure calls are issued using JSON seralization.  The basis for
+the objects used to send requests and responses are described and defined at
+<a class="reference external" href="http://json-rpc.org">http://json-rpc.org</a>, specifically <a class="reference external" href="http://json-rpc.org/wiki/specification">http://json-rpc.org/wiki/specification</a>.
+This document introduces a number of differences to that specification,
+based on real-life implementation discoveries and needs.  This portion of
+this document is an edited version of the JSON-RPC specification.</p>
+<div class="section" id="request-method-invocation">
+<span id="pages-rpc-server-writer-guide-request-method-invocation"></span><h3>request (method invocation)<a class="headerlink" href="#request-method-invocation" title="Permalink to this headline">¶</a></h3>
+<p>A remote method is invoked by sending a request to a remote service. The
+request is a single object serialized using JSON.</p>
+<p>It has four properties:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">service</span></tt> - A String containing the name of the service.  The server may use this to locate a set of related methods, all contained within the specified service.  The format of the supported service strings is up to the server implementation.</li>
+<li><tt class="docutils literal"><span class="pre">method</span></tt> - A String containing the name of the method to be invoked. The method must exist within the specified service.  The format of the method string is up to the server implementation.</li>
+<li><tt class="docutils literal"><span class="pre">params</span></tt> - An Array of objects to pass as arguments to the method.</li>
+<li><tt class="docutils literal"><span class="pre">id</span></tt> - The request id. This can be of any type. It is used to match the response with the request that it is replying to.  (qooxdoo always sends an integer value for id.)</li>
+</ul>
+</div>
+<div class="section" id="response">
+<span id="pages-rpc-server-writer-guide-response"></span><h3>response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h3>
+<p>When the method invocation completes, the service must reply with a
+response. The response is a single object serialized using JSON.</p>
+<p>It has three properties:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">result</span></tt> - The Object that was returned by the invoked method. This must be <tt class="docutils literal"><span class="pre">null</span></tt> in case there was an error invoking the method.</li>
+<li><tt class="docutils literal"><span class="pre">error</span></tt> - An <a class="reference internal" href="#pages-rpc-server-writer-guide-the-error-object"><em>Error Object</em></a> if there was an error invoking the method. It must be <tt class="docutils literal"><span class="pre">null</span></tt> if there was no error.  Note that determination of whether an error occurred is based on this property being <tt class="docutils literal"><span class="pre">null</span></tt>, not on result being <tt class="docutils literal"><span class="pre">null</span></tt>.  It is perfectly legal for both to be <tt class="docutils literal"><span class="pre">null</span></tt>, indicating a valid result with value <tt class="docutils literal"><span class="pre">null</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">id</span></tt> - This must be the same id as the request it is responding to.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-error-object">
+<span id="pages-rpc-server-writer-guide-the-error-object"></span><h2>The Error Object<a class="headerlink" href="#the-error-object" title="Permalink to this headline">¶</a></h2>
+<p>An error object contains two properties, <tt class="docutils literal"><span class="pre">origin</span></tt> and <tt class="docutils literal"><span class="pre">code</span></tt>:</p>
+<div class="section" id="origin">
+<span id="pages-rpc-server-writer-guide-origin"></span><h3>origin<a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">origin</span></tt> - An error can be originated in four locations, during the process of initiating and processing a remote procedure call.  Each possible origin is assigned an integer value, assigned to this property, as follows:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">1</span></tt> = the server can return errors to the client</li>
+<li><tt class="docutils literal"><span class="pre">2</span></tt> = methods invoked by the server can return errors</li>
+<li><tt class="docutils literal"><span class="pre">3</span></tt> = Transport (e.g. HTTP) errors can occur</li>
+<li><tt class="docutils literal"><span class="pre">4</span></tt> = the client determined that an error occurred, e.g. timeout</li>
+</ul>
+<p>A conforming server implementation MUST send value <tt class="docutils literal"><span class="pre">1</span></tt> or <tt class="docutils literal"><span class="pre">2</span></tt> and MAY NOT send any other value, for origin.  A client may detect Transport or locally-ascertained errors, but a server will never return those.</p>
+</div>
+<div class="section" id="code">
+<span id="pages-rpc-server-writer-guide-code"></span><h3>code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">code</span></tt> - An integer error code.  The value of code is hierarchically linked to origin; e.g. the same code represents different errors depending on the value of origin.</p>
+<p>One of these values of code SHALL be sent if origin = <tt class="docutils literal"><span class="pre">1</span></tt>, i.e. if the server detected the error.</p>
+<ul class="simple">
+<li>Error code, value <tt class="docutils literal"><span class="pre">1</span></tt>: Illegal Service The service name contains illegal characters or is otherwise deemed unacceptable to the JSON-RPC server.</li>
+<li>Error code, value <tt class="docutils literal"><span class="pre">2</span></tt>: Service Not Found The requested service does not exist at the JSON-RPC server.</li>
+<li>Error code, value <tt class="docutils literal"><span class="pre">3</span></tt>: Class Not Found If the JSON-RPC server divides service methods into subsets (classes), this indicates that the specified class was not found.  This is slightly more detailed than &quot;Method Not Found&quot;, but that error would always also be legal (and true) whenever this one is returned.</li>
+<li>Error code, value <tt class="docutils literal"><span class="pre">4</span></tt>: Method Not Found The method specified in the request is not found in the requested service.</li>
+<li>Error code, value <tt class="docutils literal"><span class="pre">5</span></tt>: Parameter Mismatch If a method discovers that the parameters (arguments) provided to it do not match the requisite types for the method's parameters, it should return this error code to indicate so to the caller.</li>
+<li>Error code, value <tt class="docutils literal"><span class="pre">6</span></tt>: Permission Denied A JSON-RPC service provider can require authentication, and that authentication can be implemented such the method takes authentication parameters, or such that a method or class of methods requires prior authentication.  If the caller has not properly authenticated to use the requested method, this error code is returned.</li>
+</ul>
+<p>If origin = <tt class="docutils literal"><span class="pre">2</span></tt>, i.e. the application (invoked method) detected the error, the value of the code property is entirely by agreement between the invoking client and the and invoked method.</p>
+</div>
+<div class="section" id="message">
+<span id="pages-rpc-server-writer-guide-message"></span><h3>message<a class="headerlink" href="#message" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">message</span></tt> - A free-form textual message describing the error.</p>
+</div>
+</div>
+<div class="section" id="other-errors">
+<span id="pages-rpc-server-writer-guide-other-errors"></span><h2>Other Errors<a class="headerlink" href="#other-errors" title="Permalink to this headline">¶</a></h2>
+<p>Errors detected by the server which indicate that the received data is not a
+JSON-RPC request SHOULD be simple text strings returned to the invoker,
+describing the error.  A web browser user who accidentally hits the URL of a
+JSON-RPC server should receive a textual, not Error Object, response,
+indicating that the server is expecting a JSON-RPC request.</p>
+</div>
+<div class="section" id="transport">
+<span id="pages-rpc-server-writer-guide-transport"></span><h2>Transport<a class="headerlink" href="#transport" title="Permalink to this headline">¶</a></h2>
+<p>There are exactly two standard transport facilities potentially used by
+qooxdoo's qx.io.remote.Rpc class:</p>
+<ul class="simple">
+<li>XmlHTTPRequest : The parameters of the remote procedure call are passed to
+the server using XmlHTTPRequest. The request will be issued using the
+<tt class="docutils literal"><span class="pre">POST</span></tt> method with <tt class="docutils literal"><span class="pre">Content</span> <span class="pre">Type:</span> <span class="pre">application/json</span></tt>. The data provided
+by the client will be the JSON-serialized request object. The
+JSON-serialized result object MUST be returned with <tt class="docutils literal"><span class="pre">Content</span> <span class="pre">Type:</span>
+<span class="pre">application/json</span></tt>. This transport will be used unless the request is issued
+as cross-domain.</li>
+<li>Script : If the client application invokes a cross-domain request, the
+request will be issued by URL-encoding the request object and wrapping it in
+a <tt class="docutils literal"><span class="pre">&lt;script&gt;</span></tt> tag. The request uses the <tt class="docutils literal"><span class="pre">GET</span></tt> method with <tt class="docutils literal"><span class="pre">Content</span> <span class="pre">Type:</span>
+<span class="pre">text/javascript</span></tt>. The response to a request received via this method MUST
+be a call to the static method
+<tt class="docutils literal"><span class="pre">qx.io.remote.transport.Script._requestFinished</span></tt> with parameters of the
+script id (a copy of the value of the incoming parameter
+<tt class="docutils literal"><span class="pre">_ScriptTransport_id</span></tt>) and the JSON-serialized result object.</li>
+</ul>
+<p>A server SHOULD issue an <tt class="docutils literal"><span class="pre">Other</span> <span class="pre">Error</span></tt> (textual reply) if it detects a
+method / content type pair other than the two supported ones.</p>
+</div>
+<div class="section" id="testing-a-new-server">
+<span id="pages-rpc-server-writer-guide-testing-a-new-server"></span><h2>Testing A New Server<a class="headerlink" href="#testing-a-new-server" title="Permalink to this headline">¶</a></h2>
+<p>To validate that your new server is operating properly, the following test
+methods may be created at your server:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">echo</span></tt> - Echo the one and only parameter back to the client, in the form: <tt class="docutils literal"><span class="pre">Client</span> <span class="pre">said:</span> <span class="pre">[</span> <span class="pre">&lt;parameter&gt;</span> <span class="pre">]</span></tt> where all text is literal except for <tt class="docutils literal"><span class="pre">&lt;parameter&gt;</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">sink</span></tt> - Sink all data and never return.  (&quot;Never&quot; is a long time, so it may be simulated by sleeping for 240 seconds.</li>
+<li><tt class="docutils literal"><span class="pre">sleep</span></tt> - Sleep for the number of seconds provided as the first parameter, and then return that parameter.</li>
+<li><tt class="docutils literal"><span class="pre">getInteger</span></tt> - Return the integer value <tt class="docutils literal"><span class="pre">1</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">getFloat</span></tt> - Return the floating point value <tt class="docutils literal"><span class="pre">1/3</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">getString</span></tt> - Return the string <tt class="docutils literal"><span class="pre">&quot;Hello</span> <span class="pre">world&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">getArrayInteger</span></tt> - Return an array containing the four integers <tt class="docutils literal"><span class="pre">[</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4</span> <span class="pre">]</span></tt> in that order.</li>
+<li><tt class="docutils literal"><span class="pre">getArrayString</span></tt> - Return an array containing the four strings <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;one&quot;,</span> <span class="pre">&quot;two&quot;,</span> <span class="pre">&quot;three&quot;,</span> <span class="pre">&quot;four&quot;</span> <span class="pre">]</span></tt> in that order</li>
+<li><tt class="docutils literal"><span class="pre">getObject</span></tt> - Return some arbitrary object</li>
+<li><tt class="docutils literal"><span class="pre">getTrue</span></tt> - Return the binary value <tt class="docutils literal"><span class="pre">true</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">getFalse</span></tt> - Return the binary value <tt class="docutils literal"><span class="pre">false</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">getNull</span></tt> - Return the value <tt class="docutils literal"><span class="pre">null</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">isInteger</span></tt> - Return <tt class="docutils literal"><span class="pre">true</span></tt> if the first parameter is an integer; <tt class="docutils literal"><span class="pre">false</span></tt> otherwise</li>
+<li><tt class="docutils literal"><span class="pre">isFloat</span></tt> - Return <tt class="docutils literal"><span class="pre">true</span></tt> if the first parameter is a float; <tt class="docutils literal"><span class="pre">false</span></tt> otherwise</li>
+<li><tt class="docutils literal"><span class="pre">isString</span></tt> - Return <tt class="docutils literal"><span class="pre">true</span></tt> if the first parameter is a string; <tt class="docutils literal"><span class="pre">false</span></tt> otherwise</li>
+<li><tt class="docutils literal"><span class="pre">isBoolean</span></tt> - Return <tt class="docutils literal"><span class="pre">true</span></tt> if the first parameter is either one of the boolean values <tt class="docutils literal"><span class="pre">true</span></tt> or <tt class="docutils literal"><span class="pre">false</span></tt>; return <tt class="docutils literal"><span class="pre">false</span></tt> otherwise.</li>
+<li><tt class="docutils literal"><span class="pre">isArray</span></tt> - Return <tt class="docutils literal"><span class="pre">true</span></tt> if the first parameter is an array; <tt class="docutils literal"><span class="pre">false</span></tt> otherwise</li>
+<li><tt class="docutils literal"><span class="pre">isObject</span></tt> - Return <tt class="docutils literal"><span class="pre">true</span></tt> if the first parameter is an object; <tt class="docutils literal"><span class="pre">false</span></tt> otherwise</li>
+<li><tt class="docutils literal"><span class="pre">isNull</span></tt> - Return <tt class="docutils literal"><span class="pre">true</span></tt> if the first parameter is the value <tt class="docutils literal"><span class="pre">null</span></tt>; <tt class="docutils literal"><span class="pre">false</span></tt> otherwise.</li>
+<li><tt class="docutils literal"><span class="pre">getParams</span></tt> - Echo all parameters back to the client, in received order</li>
+<li><tt class="docutils literal"><span class="pre">getParam</span></tt> - Echo the first parameter back to the client.  This is a synonym for the <tt class="docutils literal"><span class="pre">echo</span></tt> method.</li>
+<li><tt class="docutils literal"><span class="pre">getCurrentTimestamp</span></tt> - Return an object which has two properties:<ul>
+<li><tt class="docutils literal"><span class="pre">now</span></tt>: An integer representing the current time in a native format, e.g. as a number of seconds or milliseconds since midnight on 1 Jan 1970.</li>
+<li><tt class="docutils literal"><span class="pre">json</span></tt>: A <a class="reference internal" href="#pages-rpc-server-writer-guide-date-objects"><em>Date</em></a> object representing that same point in time</li>
+</ul>
+</li>
+</ul>
+<p>A test of all of the primitive RPC operations is available in the qooxdoo-contrib project RpcExample.  The third tab provides a test of the operations using synchronous requests, and the fourth tab tests the operations using asyncronous requests.
+Note that the results are displayed in the debug log (in Firebug or in the debug console enabled by pressing <tt class="docutils literal"><span class="pre">F7</span></tt>). You can look for <tt class="docutils literal"><span class="pre">true</span></tt> as a result of each request.</p>
+<p>A future test will validate that all returned values are as expected, and
+display a single &quot;passed/fail&quot; indication.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="rpc.html"
+             title="previous chapter">« RPC (Remote Procedure Call)</a>
+          <span class="separator">|</span>
+          <a class="next" href="../widget/table_remote_model.html"
+             title="next chapter">Using the remote table model »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">RPC Server Writer Guide</a><ul>
+<li><a class="reference internal" href="#json">JSON</a><ul>
+<li><a class="reference internal" href="#date-objects">Date Objects</a><ul>
+<li><a class="reference internal" href="#whitespace">Whitespace</a></li>
+<li><a class="reference internal" href="#numbers">Numbers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rpc">RPC</a><ul>
+<li><a class="reference internal" href="#request-method-invocation">request (method invocation)</a></li>
+<li><a class="reference internal" href="#response">response</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-error-object">The Error Object</a><ul>
+<li><a class="reference internal" href="#origin">origin</a></li>
+<li><a class="reference internal" href="#code">code</a></li>
+<li><a class="reference internal" href="#message">message</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-errors">Other Errors</a></li>
+<li><a class="reference internal" href="#transport">Transport</a></li>
+<li><a class="reference internal" href="#testing-a-new-server">Testing A New Server</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../widget/table_remote_model.html"
+                        title="next chapter">Using the remote table model</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="rpc.html"
+                        title="previous chapter">RPC (Remote Procedure Call)</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/communication/rpc_server_writer_guide.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

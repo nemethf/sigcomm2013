@@ -1,0 +1,414 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial: Building Notifications &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Website" href="../website.html" />
+    <link rel="next" title="Plugins" href="plugins.html" />
+    <link rel="prev" title="qx.Website Overview" href="overview.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../website.html" accesskey="U">qx.Website</a>
+     &raquo;
+  <a href="">Tutorial: Building Notifications</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-building-notifications">
+<span id="pages-tutorial-web-developers-low-level-tutorial-for-web-developers"></span><h1>Tutorial: Building Notifications<a class="headerlink" href="#tutorial-building-notifications" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="pages-tutorial-web-developers-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial we show some basic steps of using qx.Website. To do so, we build a simple notification system for web pages. The system should expose one method which brings up a bubble on the screen containing the notification message. The bubble should go away after a period of time. You might be familiar with <a class="reference external" href="http://growl.info/">Growl for OSX</a> which offers similar functionality.</p>
+</div>
+<div class="section" id="basics">
+<span id="pages-tutorial-web-developers-basics"></span><h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<p>Let's get started! As qx.Website is a simple JavaScript file, we first need to <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/framework/q-2.0.2.min.js">download the script file</a>. After that, we're going to create a simple HTML file in the same directory as the downloaded script and include it:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>qx.Website tutorial<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;q-2.0.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Having done that, you can load the page in your favorite browser and check if the title is there and the qx.Website library has been loaded. For instance, simply open a JavaScript console in your browser and see if <tt class="docutils literal"><span class="pre">q</span></tt> is defined. If so, we've completed the first step and can start building the application.</p>
+<p>Next, we need a script tag to place our code into. To keep it simple, we'll just put it in the head of the HTML page, right below the existing script tag.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+  <span class="c1">// your code here...</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;it works&quot;</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">console.log</span></tt> statement in the script will show us if it works. Reloading the page should bring up the log message in the browser's console. Now it's time to formulate a simple plan covering the next steps. We should first create the popup we want to show, then we can implement the notify method and finally, we can add some demo code to showcase our work. The following code should be placed in the script tag to replace the previous content.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// create the notification popup</span>
+<span class="kd">var</span> <span class="nx">popup</span><span class="p">;</span>
+
+<span class="c1">// create the notification API</span>
+<span class="kd">var</span> <span class="nx">notify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">delay</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+ <span class="c1">// do the notifying</span>
+<span class="p">}</span>
+
+<span class="c1">// DEMO</span>
+<span class="nx">notify</span><span class="p">(</span><span class="s2">&quot;This is ...&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+ <span class="nx">notify</span><span class="p">(</span><span class="s2">&quot;... a qx.Website notification demo.&quot;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>As you see, we've defined three arguments for the <tt class="docutils literal"><span class="pre">notify</span></tt> method:. First, the <tt class="docutils literal"><span class="pre">message</span></tt> to display, second a <tt class="docutils literal"><span class="pre">delay</span></tt> in milliseconds and finally a <tt class="docutils literal"><span class="pre">callback</span></tt> function, which will be executed as soon as the popup is gone. The demo code at the bottom shows how it should be used and should trigger two messages in sequence.</p>
+</div>
+<div class="section" id="popup">
+<span id="pages-tutorial-web-developers-popup"></span><h2>Popup<a class="headerlink" href="#popup" title="Permalink to this headline">¶</a></h2>
+<p>Let's take care of the popup now. This is where the qx.Website library comes in handy. The popup is going to be a simple div which can be added to the document's body. So we can do something like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">popup</span> <span class="o">=</span> <span class="nx">q</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;&lt;div&gt;&quot;</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This line line of code uses two essential methods of qx.Website. First, we create a new DOM element, which is wrapped in a collection. On that object, we call the <tt class="docutils literal"><span class="pre">appendTo</span></tt> method, which adds the newly created element to <tt class="docutils literal"><span class="pre">document.body</span></tt>. Now, reloading the page... brings up an error!?! Sure, we added our script in the head of the HTML document, which means <tt class="docutils literal"><span class="pre">document.body</span></tt> is not yet ready when our code gets executed. We need to wait until the document is ready until we can start. qx.Website offers a convenient way to do that. We just wrap the code we've written in a function and give that to <tt class="docutils literal"><span class="pre">q.ready</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">q</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Reloading the page, the error is gone but nothing else happens. How can we tell if it worked? Simple enough, we'll just style the div using CSS and make it visible. We won't go into any detail about the CSS here, so just copy and paste the following CSS rule into the HTML file's head section.</p>
+<div class="highlight-css"><div class="highlight"><pre><span class="o">&lt;</span><span class="nt">style</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span> <span class="nt">media</span><span class="o">=</span><span class="s2">&quot;screen&quot;</span><span class="o">&gt;</span>
+  <span class="nc">.popup</span> <span class="p">{</span>
+    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+    <span class="k">top</span><span class="o">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="k">right</span><span class="o">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">150px</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="m">#aaa</span><span class="p">;</span>
+    <span class="k">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Lucida Grande&quot;</span><span class="o">,</span> <span class="s2">&quot;DejaVu Sans&quot;</span><span class="o">,</span> <span class="s2">&quot;Verdana&quot;</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="o">:</span> <span class="m">14px</span><span class="p">;</span>
+    <span class="k">border</span><span class="o">:</span> <span class="k">solid</span> <span class="m">1px</span> <span class="m">#000000</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Now, the only thing missing is to set the CSS class for the popup div. That's as easy as calling another method in our previous code.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">popup</span> <span class="o">=</span> <span class="nx">q</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;&lt;div&gt;&quot;</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;popup&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now reload and you should see the popup in the upper right corner. Hm, but the styling is not done, right? A real popup has rounded corners! But wasn't that one of the newer CSS keys which is usually vendor prefixed? Yes! That means, we need to add a declaration for every known browser. No, wait a second. IE and Opera don't use the vendor prefix which means we only need to add the unprefixed key and one additional key each for WebKit and Mozilla.</p>
+<div class="highlight-css"><div class="highlight"><pre><span class="nt">-moz-border-radius</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="nt">-webkit-border-radius</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="nt">border-radius</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
+</pre></div>
+</div>
+<p>That was a lot of work for something as simple as a border radius! But we could have achieved that far more easily. Using qx.Website to set the style will take care of all the vendor prefix stuff! Just set the style on the newly created popup and you're done.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">popup</span> <span class="o">=</span> <span class="nx">q</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;&lt;div&gt;&quot;</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;popup&quot;</span><span class="p">).</span><span class="nx">setStyle</span><span class="p">(</span><span class="s2">&quot;border-radius&quot;</span><span class="p">,</span> <span class="s2">&quot;5px&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>That's about it for the popup. Looks good enough for the first prototype.</p>
+</div>
+<div class="section" id="notify">
+<span id="pages-tutorial-web-developers-notify"></span><h2>notify<a class="headerlink" href="#notify" title="Permalink to this headline">¶</a></h2>
+<p>Next, let's implement the notify method. We already added the function and only need to fill in the implementation. First, we want to set the message and show the popup. But we want to show the popup with some style and fade it in.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">notify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">delay</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">popup</span><span class="p">.</span><span class="nx">setHtml</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+  <span class="nx">popup</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>That was easy. The first line simply applies the message as inner HTML of the popup. The second line fades in the popup. This simple fadeIn applies a CSS animation in all browsers supporting CSS animations. If the browser doesn't support CSS animations, the fade in is done using JavaScript so you don't need to worry about that either! Reload the page and see your message in the popup fading in.
+As soon as the message is faded in, we should start a timer to trigger the fade out. But when does the animation end? Specifically for that, qx.Website offers an event named <tt class="docutils literal"><span class="pre">animationEnd</span></tt> which we can react to.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">popup</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">().</span><span class="nx">once</span><span class="p">(</span><span class="s2">&quot;animationEnd&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Again, we used the native <tt class="docutils literal"><span class="pre">console</span></tt> API to check if our code works. Running the code now should show the &quot;end&quot; message in the console as soon as the popup is faded in. A little hint: Make sure you add the listener only once using the <tt class="docutils literal"><span class="pre">once</span></tt> method. We don't want to keep piling up listeners on the popup. Now we can start the timer which will be a simple <tt class="docutils literal"><span class="pre">setTimeout</span></tt> offered by the browser. As soon as the time is over, we can fade out.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">popup</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">().</span><span class="nx">once</span><span class="p">(</span><span class="s2">&quot;animationEnd&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">popup</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">();</span>
+  <span class="p">},</span> <span class="nx">delay</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Now we are almost there. The only thing missing is to execute the <tt class="docutils literal"><span class="pre">callback</span></tt> as soon as the fade out has ended. Again, we listen to the <tt class="docutils literal"><span class="pre">animationEnd</span></tt> event and call the callback. But as this should be an optional parameter, we should check its availability before executing.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">popup</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">().</span><span class="nx">once</span><span class="p">(</span><span class="s2">&quot;animationEnd&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">popup</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">().</span><span class="nx">once</span><span class="p">(</span><span class="s2">&quot;animationEnd&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="nx">callback</span> <span class="o">&amp;&amp;</span> <span class="nx">callback</span><span class="p">.</span><span class="nx">call</span><span class="p">();</span>
+     <span class="p">});</span>
+  <span class="p">},</span> <span class="nx">delay</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Giving it a try should show both notification messages in sequence. Well done! We have implemented a (very) simple notification mechanism for web pages.</p>
+<div class="section" id="summary">
+<span id="pages-tutorial-web-developers-summary"></span><h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>In this tutorial, we used a small part of the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/website-api">qx.Website API</a>. First, we saw parts of the Manipulating module with <tt class="docutils literal"><span class="pre">q.create</span></tt> and <tt class="docutils literal"><span class="pre">.appendTo</span></tt>. After that, we used the CSS module with <tt class="docutils literal"><span class="pre">.setStyle</span></tt> and <tt class="docutils literal"><span class="pre">.addClass</span></tt> and the Attributes module with <tt class="docutils literal"><span class="pre">.setHtml</span></tt>. <tt class="docutils literal"><span class="pre">.fadeIn</span></tt> and <tt class="docutils literal"><span class="pre">.fadeOut</span></tt> are part of the Animation module and <tt class="docutils literal"><span class="pre">.once</span></tt> is part of the Event module. There are more methods in the named modules and there are additional modules you can experiment with.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="overview.html"
+             title="previous chapter">« qx.Website Overview</a>
+          <span class="separator">|</span>
+          <a class="next" href="plugins.html"
+             title="next chapter">Plugins »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial: Building Notifications</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#popup">Popup</a></li>
+<li><a class="reference internal" href="#notify">notify</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="plugins.html"
+                        title="next chapter">Plugins</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter">qx.Website Overview</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/website/tutorial_web_developers.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

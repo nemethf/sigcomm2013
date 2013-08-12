@@ -1,0 +1,283 @@
+# Dutch
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: qooxdoo framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-05-19 10:11+0200\n"
+"PO-Revision-Date: 2010-04-26 23:34+0100\n"
+"Last-Translator: Isaak Malik <isooik AT gmail DOT com>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "%1 does not fit %2."
+msgstr "%1 past niet %2."
+
+msgid "%1 is not a color! %2"
+msgstr "%1 is geen kleur! %2"
+
+msgid "%1 is not a number."
+msgstr "%1 is geen nummer."
+
+msgid "%1 is not a string."
+msgstr "%1 is geen string."
+
+msgid "%1 is not an url."
+msgstr "%1 is geen url."
+
+msgid "%1 is not in %2"
+msgstr "%1 is niet in %2"
+
+msgid "%1 is not in the range from [%2, %3]."
+msgstr "%1 is niet in het bereik van [%2, %3]."
+
+msgid "'%1' is not an email address."
+msgstr "'%1' is geen email adres."
+
+msgid "Automatic"
+msgstr "Automatisch"
+
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgid "Color Selector"
+msgstr "Kleur-instelling"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "HSB"
+msgstr "HSB"
+
+msgid "Hex"
+msgstr "Hex"
+
+msgid "Last month"
+msgstr "Laatste maand"
+
+msgid "Last year"
+msgstr "Laatste jaar"
+
+msgid "Next month"
+msgstr "Volgende maand"
+
+msgid "Next year"
+msgstr "Volgend jaar"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Open ColorSelector"
+msgstr "Open Kleurkiezer"
+
+msgid "Presets"
+msgstr "Voorkeuren"
+
+msgid "Preview (Old/New)"
+msgstr "Voorbeeld (Oud/Nieuw)"
+
+msgid "RGB"
+msgstr "RGB"
+
+msgid "Reset column widths"
+msgstr "Kolombreedte herstellen"
+
+msgid "This field is required"
+msgstr "Dit veld is verplicht"
+
+msgid "Visual"
+msgstr "Visueel"
+
+msgid "key_full_Alt"
+msgstr "Alt"
+
+msgid "key_full_Apps"
+msgstr "Contextmenu"
+
+msgid "key_full_Backspace"
+msgstr "Backspace"
+
+msgid "key_full_CapsLock"
+msgstr "Caps Lock"
+
+msgid "key_full_Control"
+msgstr "Control"
+
+msgid "key_full_Control_Mac"
+msgstr ""
+
+msgid "key_full_Delete"
+msgstr "Verwijderen"
+
+msgid "key_full_Down"
+msgstr "Pijl omlaag"
+
+msgid "key_full_End"
+msgstr "End"
+
+msgid "key_full_Enter"
+msgstr "Enter"
+
+msgid "key_full_Escape"
+msgstr "Escape"
+
+msgid "key_full_Home"
+msgstr "Positie 1"
+
+msgid "key_full_Insert"
+msgstr "Invoegen"
+
+msgid "key_full_Left"
+msgstr "Pijl links"
+
+msgid "key_full_Meta"
+msgstr "Meta"
+
+msgid "key_full_NumLock"
+msgstr "Num Lock"
+
+msgid "key_full_PageDown"
+msgstr "Volgende pagina"
+
+msgid "key_full_PageUp"
+msgstr "Vorige pagina"
+
+msgid "key_full_Pause"
+msgstr "Pauze"
+
+msgid "key_full_PrintScreen"
+msgstr "Schermafbeelding"
+
+msgid "key_full_Right"
+msgstr "Pijl rechts"
+
+msgid "key_full_Scroll"
+msgstr "Scroll Lock"
+
+msgid "key_full_Shift"
+msgstr "Shift"
+
+msgid "key_full_Space"
+msgstr "Spatiebalk"
+
+msgid "key_full_Tab"
+msgstr "Tabulator"
+
+msgid "key_full_Up"
+msgstr "Pijl omhoog"
+
+msgid "key_full_Win"
+msgstr "Windowstoets"
+
+msgid "key_short_Alt"
+msgstr "Alt"
+
+msgid "key_short_Apps"
+msgstr "Apps"
+
+msgid "key_short_Backspace"
+msgstr "Backspace"
+
+msgid "key_short_CapsLock"
+msgstr "Caps Lock"
+
+msgid "key_short_Control"
+msgstr "Ctrl"
+
+msgid "key_short_Control_Mac"
+msgstr ""
+
+msgid "key_short_Delete"
+msgstr "Del"
+
+msgid "key_short_Down"
+msgstr "Omlaag"
+
+msgid "key_short_End"
+msgstr "End"
+
+msgid "key_short_Enter"
+msgstr "Enter"
+
+msgid "key_short_Escape"
+msgstr "Esc"
+
+msgid "key_short_Home"
+msgstr "Home"
+
+msgid "key_short_Insert"
+msgstr "Ins"
+
+msgid "key_short_Left"
+msgstr "Links"
+
+msgid "key_short_Meta"
+msgstr "Meta"
+
+msgid "key_short_NumLock"
+msgstr "Num Lock"
+
+msgid "key_short_PageDown"
+msgstr "PgDn"
+
+msgid "key_short_PageUp"
+msgstr "PgUp"
+
+msgid "key_short_Pause"
+msgstr "Pause"
+
+msgid "key_short_PrintScreen"
+msgstr "PrtSc"
+
+msgid "key_short_Right"
+msgstr "Rechts"
+
+msgid "key_short_Scroll"
+msgstr "Scroll Lock"
+
+msgid "key_short_Shift"
+msgstr "Shift"
+
+msgid "key_short_Space"
+msgstr "Spatie"
+
+msgid "key_short_Tab"
+msgstr "Tab"
+
+msgid "key_short_Up"
+msgstr "Omhoog"
+
+msgid "key_short_Win"
+msgstr "Win"
+
+msgid "one of one row"
+msgid_plural "%1 of %2 rows"
+msgstr[0] "Een van een rij"
+msgstr[1] "%1 van %2 rijen"
+
+msgid "one row"
+msgid_plural "%1 rows"
+msgstr[0] "een rij"
+msgstr[1] "%1 rijen"
+
+msgid "test Hello %1!"
+msgstr ""
+
+msgid "test Jonny"
+msgstr ""
+
+msgid "test One car"
+msgid_plural "test %1 cars"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "test affe"
+msgstr ""
+
+msgid "test one"
+msgstr ""
+
+msgid "test two"
+msgstr ""

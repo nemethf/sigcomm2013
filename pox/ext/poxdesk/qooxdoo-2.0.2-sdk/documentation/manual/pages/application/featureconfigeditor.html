@@ -1,0 +1,374 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Feature Configuration Editor &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Standard Applications" href="../application.html" />
+    <link rel="next" title="Tooling" href="../tool.html" />
+    <link rel="prev" title="Simulator" href="../development/simulator.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../application.html" accesskey="U">Standard Applications</a>
+     &raquo;
+  <a href="">Feature Configuration Editor</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="feature-configuration-editor">
+<span id="pages-application-featureconfigeditor-featureconfigeditor"></span><h1>Feature Configuration Editor<a class="headerlink" href="#feature-configuration-editor" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="http://demo.qooxdoo.org/2.0.2/featureconfigeditor"><img alt="../../_images/featureconfigeditor.png" src="../../_images/featureconfigeditor.png" /></a>
+<p>A tool designed to help developers create configurations for browser-specific builds. Detected feature sets from multiple clients can be imported and compared to find common values. The selected features are displayed in JSON format and can be pasted straight into the application's <tt class="docutils literal"><span class="pre">config.json</span></tt>.</p>
+<div class="section" id="browser-specific-builds">
+<h2>Browser-specific builds<a class="headerlink" href="#browser-specific-builds" title="Permalink to this headline">¶</a></h2>
+<p>By predefining environment keys that correspond to certain browser-specific features, builds can be tailored towards certain clients. For example, legacy Internet Explorer versions (6,7 and 8) have very similar sets of features that are highly unlikely to change. Due to their comparatively poor JavaScript performance, they also particularly benefit from cutting down the size of the code that needs to be evaluated and the number of runtime feature checks, making them prime candidates for a custom build.</p>
+<div class="section" id="generator-configuration">
+<h3>Generator configuration<a class="headerlink" href="#generator-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Regardless of the usage scenario, developers need to make sure to carefully choose the environment settings to be hard-wired so as not to accidentally remove code needed by one of the target clients. The Feature Configration Editor was designed to facilitate this process by allowing developers to compare the feature sets of multiple browsers and create an environment configuration for common features.</p>
+<p>The following job config example shows how to create an application variant customized for IE 6, 7 and 8:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;build-script-legacyie&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;build-script&quot;</span><span class="p">],</span>
+
+  <span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;browser.name&quot;</span><span class="o">:</span><span class="s2">&quot;ie&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;css.borderradius&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;css.boxmodel&quot;</span><span class="o">:</span><span class="s2">&quot;content&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;css.boxshadow&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;css.gradients&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;css.placeholder&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;css.rgba&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;css.textoverflow&quot;</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;css.translate3d&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;ecmascript.objectcount&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;engine.name&quot;</span><span class="o">:</span><span class="s2">&quot;mshtml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;event.pointer&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;event.touch&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.audio&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.canvas&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.classlist&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.filereader&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.geolocation&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.svg&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.video&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.vml&quot;</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;html.webworker&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.xpath&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;html.xul&quot;</span><span class="o">:</span><span class="kc">false</span>
+  <span class="p">},</span>
+
+  <span class="s2">&quot;compile-options&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;paths&quot;</span><span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;file&quot;</span> <span class="o">:</span> <span class="s2">&quot;build/script/${APPLICATION}_ie.js&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By also running the default <tt class="docutils literal"><span class="pre">build-script</span></tt> job, an additional generic version of the application that makes no assumptions about client features can be generated whenever <tt class="docutils literal"><span class="pre">build</span></tt> is run:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;build&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;run&quot;</span> <span class="o">:</span>
+  <span class="p">[</span>
+    <span class="s2">&quot;build-resources&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;build-script&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;build-script-legacyie&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;build-files&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loading-a-specific-variant">
+<h3>Loading a specific variant<a class="headerlink" href="#loading-a-specific-variant" title="Permalink to this headline">¶</a></h3>
+<p>Finally, the application's <tt class="docutils literal"><span class="pre">index.html</span></tt> file must make sure the correct application variant is loaded based on the browser, e.g. by performing a simple user agent check:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;title&gt;</span>customapp<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="sr">/MSIE (6|7|8)\.0/</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">suffix</span> <span class="o">=</span> <span class="s2">&quot;_ie&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">scriptPath</span> <span class="o">=</span> <span class="s2">&quot;script/customapp&quot;</span> <span class="o">+</span> <span class="nx">suffix</span> <span class="o">+</span> <span class="s2">&quot;.js&quot;</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;&lt;script type=&quot;text\/javascript&quot; src=&quot;&#39;</span> <span class="o">+</span> <span class="nx">scriptPath</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&lt;\/script&gt;&#39;</span><span class="p">);</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../development/simulator.html"
+             title="previous chapter">« Simulator</a>
+          <span class="separator">|</span>
+          <a class="next" href="../tool.html"
+             title="next chapter">Tooling »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Feature Configuration Editor</a><ul>
+<li><a class="reference internal" href="#browser-specific-builds">Browser-specific builds</a><ul>
+<li><a class="reference internal" href="#generator-configuration">Generator configuration</a></li>
+<li><a class="reference internal" href="#loading-a-specific-variant">Loading a specific variant</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../tool.html"
+                        title="next chapter">Tooling</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../development/simulator.html"
+                        title="previous chapter">Simulator</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/application/featureconfigeditor.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

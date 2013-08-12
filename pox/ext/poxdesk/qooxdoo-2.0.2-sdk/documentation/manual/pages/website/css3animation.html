@@ -1,0 +1,319 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Transforms and Animations (CSS3) &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Website" href="../website.html" />
+    <link rel="next" title="Back-Button and Bookmark Support" href="back-button_and_bookmark_support.html" />
+    <link rel="prev" title="Client-side Storage" href="storage.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../website.html" accesskey="U">qx.Website</a>
+     &raquo;
+  <a href="">Transforms and Animations (CSS3)</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="transforms-and-animations-css3">
+<span id="pages-css3animation-the-event-layer"></span><h1>Transforms and Animations (CSS3)<a class="headerlink" href="#transforms-and-animations-css3" title="Permalink to this headline">¶</a></h1>
+<p>One of the big pieces in the whole CSS3 world are <a class="reference external" href="http://www.w3.org/TR/css3-animations/">animations</a> and <a class="reference external" href="http://www.w3.org/TR/css3-3d-transforms/">transforms</a> with all the hype about 3D, hardware acceleration and the combinations of both of them. But as always, the various browser vendors don't introduce these new features at the same time, with divergent feature sets and using different CSS keys.</p>
+<p>In order to address that, two classes have been added, one for <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/index.html#qx.bom.element.Transform">transfoms (API)</a> and one for <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/index.html#qx.bom.element.Animation">animations (API)</a>. We kept the API close to the CSS spec, thus all those of you familiar with it will recognize it quickly. For all of you who have no idea about all that new CSS stuff yet, when you get in touch with the qooxdoo API, you will also learn parts of the spec!</p>
+<div class="section" id="pages-css3animation-transforms">
+<span id="id1"></span><h2>Transforms<a class="headerlink" href="#pages-css3animation-transforms" title="Permalink to this headline">¶</a></h2>
+<p>Transforms are basically defined by their transform function and are only good for transforming elements. They are not responsible for any dynamic movement of elements. The basic transform functions will give you an idea what is possible with transforms: Scale, Translate, Rotate, Skew.</p>
+<p><img alt="Transform.png" src="../../_images/Transform.png" /></p>
+<p>But lets take a look at the transforms applied in the demo above.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;scale&quot;</span><span class="p">);</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">bom</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">Transform</span><span class="p">.</span><span class="nx">scale</span><span class="p">(</span><span class="nx">box</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">);</span>
+
+<span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;translate&quot;</span><span class="p">);</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">bom</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">Transform</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="nx">box</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;10px&quot;</span><span class="p">,</span> <span class="s2">&quot;10px&quot;</span><span class="p">]);</span>
+
+<span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;rotate&quot;</span><span class="p">);</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">bom</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">Transform</span><span class="p">.</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">box</span><span class="p">,</span> <span class="s2">&quot;45deg&quot;</span><span class="p">);</span>
+
+<span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;skew&quot;</span><span class="p">);</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">bom</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">Transform</span><span class="p">.</span><span class="nx">skew</span><span class="p">(</span><span class="nx">box</span><span class="p">,</span> <span class="s2">&quot;25deg&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>There is a lot of other stuff you can do with the new Transform class. <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/demo/bom/Transform.html">A demo</a> shows all the possibilities the native Transform API has to offer and with that, also what is provided by the qooxdoo wrapper. For the best result, use a webkit-based browser like Safari or Chrome to view the demo.</p>
+</div>
+<div class="section" id="id2">
+<h2>Animations<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Only with animations does dynamic behavior come into the application. As you can expect, animations define a change of something over a given amount of time. That's the key feature of animations. But what can be changed and how can we define that?
+The first question is easy to answer: We can change CSS properties. To answer the second question, see the following code:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">desc</span> <span class="o">=</span> <span class="p">{</span><span class="nx">duration</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="nx">timing</span><span class="o">:</span> <span class="s2">&quot;ease-out&quot;</span><span class="p">,</span> <span class="nx">keyFrames</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="mi">0</span> <span class="o">:</span> <span class="p">{</span><span class="s2">&quot;width&quot;</span> <span class="o">:</span> <span class="s2">&quot;30px&quot;</span><span class="p">},</span>
+  <span class="mi">70</span> <span class="o">:</span> <span class="p">{</span><span class="s2">&quot;width&quot;</span> <span class="o">:</span> <span class="s2">&quot;100px&quot;</span><span class="p">},</span>
+  <span class="mi">100</span> <span class="o">:</span> <span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="s2">&quot;30px&quot;</span><span class="p">}</span>
+<span class="p">}};</span>
+<span class="kd">var</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;box&quot;</span><span class="p">);</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">bom</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">Animation</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="nx">box</span><span class="p">,</span> <span class="nx">desc</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The main part of this code is the key frames map, here with three entries. The first one defined by 0 specifies the animations at the beginning of the animation. The next one defined by 70 holds the CSS properties at 70% of the animation time. The last one specifies the animation's state at 100% animation time. That is an easy animation which only takes simple CSS properties into account. But you can also animate transforms, which brings both technologies together.</p>
+<p>Take a look at <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/demo/bom/Animation.html">this demo</a>, showing a 3D rotation which you can try yourself. It shows the best results if you use a webkit-based browser like Safari or Chrome.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="storage.html"
+             title="previous chapter">« Client-side Storage</a>
+          <span class="separator">|</span>
+          <a class="next" href="back-button_and_bookmark_support.html"
+             title="next chapter">Back-Button and Bookmark Support »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Transforms and Animations (CSS3)</a><ul>
+<li><a class="reference internal" href="#pages-css3animation-transforms">Transforms</a></li>
+<li><a class="reference internal" href="#id2">Animations</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="back-button_and_bookmark_support.html"
+                        title="next chapter">Back-Button and Bookmark Support</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="storage.html"
+                        title="previous chapter">Client-side Storage</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/website/css3animation.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,556 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Appearance &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Custom Themes" href="ui_custom_themes.html" />
+    <link rel="prev" title="Theming" href="ui_theming.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Appearance</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="appearance">
+<span id="pages-desktop-ui-appearance-appearance"></span><h1>Appearance<a class="headerlink" href="#appearance" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-it">
+<span id="pages-desktop-ui-appearance-what-is-it"></span><h2>What is it?<a class="headerlink" href="#what-is-it" title="Permalink to this headline">¶</a></h2>
+<p>An appearance theme is the main part of the theme. It contains all appearance definitions which are responsible for holding all styling informations for the wigets. Usually the apperance theme is the biggest theme and uses all other theme classes like the Decorator- or Font-theme.</p>
+</div>
+<div class="section" id="theme-structure">
+<span id="pages-desktop-ui-appearance-theme-structure"></span><h2>Theme Structure<a class="headerlink" href="#theme-structure" title="Permalink to this headline">¶</a></h2>
+<p>A theme normally consists of a set of entries. Each entry has a key which is basically some kind of selector which matches to a specific widget. Missing selectors are presented as a warning when developing with debug code enabled.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.modern.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">selector</span> <span class="o">:</span> <span class="nx">entry</span><span class="p">,</span>
+    <span class="p">[...]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="selectors">
+<span id="pages-desktop-ui-appearance-selectors"></span><h2>Selectors<a class="headerlink" href="#selectors" title="Permalink to this headline">¶</a></h2>
+<p>In the most basic form each selector is identical to an appearance ID. This appearance ID is the value stored in the <tt class="docutils literal"><span class="pre">appearance</span></tt> property (<a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.Widget~appearance">API</a>) of each widget.</p>
+<p>The child control system ignores this appearance entry for widgets which function as a child control of another widget. In these cases the selector is the combination of the appearance ID of the parent widget plus the ID of the child control.</p>
+<p>In a classic <tt class="docutils literal"><span class="pre">Button</span></tt> there is a child control <tt class="docutils literal"><span class="pre">icon</span></tt> for example. The appearance selector for the image element which represents the icon is <tt class="docutils literal"><span class="pre">button/icon</span></tt>. As you can see the divider between the appearance ID and the child control is a simple slash (<tt class="docutils literal"><span class="pre">/</span></tt>).</p>
+<p>It is also possible that a widget, which is a child control itself, uses another child control. Generally the mechanism prepends the ID of each parent which is also a child control to the front of the selector. For example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">-</span> <span class="nx">pane</span>
+  <span class="o">-</span> <span class="nx">level1</span>
+    <span class="o">-</span> <span class="nx">level2</span>
+      <span class="o">-</span> <span class="nx">level3</span>
+</pre></div>
+</div>
+<p>the generated selector would be <tt class="docutils literal"><span class="pre">pane/level1/level2/level3</span></tt>. For <tt class="docutils literal"><span class="pre">pane</span></tt> which is not a child control of any other widget the appearance ID is used. For all others the child control ID is used. Again <tt class="docutils literal"><span class="pre">pane</span></tt> is not managed by any other widget so it is basically added by the developer of the application to another widget while <tt class="docutils literal"><span class="pre">level1</span></tt> to <tt class="docutils literal"><span class="pre">level3</span></tt> are managed by some type of combined widget and are added to each other without the work of the application developer.</p>
+<p>A classic example for this is the <tt class="docutils literal"><span class="pre">Spinner</span></tt> widget. A <tt class="docutils literal"><span class="pre">Spinner</span></tt> is basically a Grid layout with a <tt class="docutils literal"><span class="pre">TextField</span></tt> and two <tt class="docutils literal"><span class="pre">RepeatButtons</span></tt>. The three internal widgets are available under the sub control IDs <tt class="docutils literal"><span class="pre">textfield</span></tt>, <tt class="docutils literal"><span class="pre">upbutton</span></tt> and <tt class="docutils literal"><span class="pre">downbutton</span></tt>. The selectors for these kind of child controls are then:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">spinner/textfield</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">spinner/upbutton</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">spinner/downbutton</span></tt></li>
+</ul>
+<p>Each of these selectors must be defined by the selected appearance. Otherwise a warning about missing selectors is displayed.</p>
+</div>
+<div class="section" id="aliases">
+<span id="pages-desktop-ui-appearance-aliases"></span><h2>Aliases<a class="headerlink" href="#aliases" title="Permalink to this headline">¶</a></h2>
+<p>A entry can be defined with two different values, a string or a map. The first option is named &quot;alias&quot;, it is basically a string, redirecting to another selector. In the <tt class="docutils literal"><span class="pre">Spinner</span></tt> example from above we may just want to use aliases for the buttons. See the example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.modern.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="p">[...],</span>
+
+    <span class="s2">&quot;spinner/upbutton&quot;</span> <span class="o">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;spinner/downbutton&quot;</span> <span class="o">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+
+    <span class="p">[...]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>So we have mastered one essential part for appearance themes. It is basically the easiest part, but seen quite often. Compared to CSS you always have a full control about the styling of such an child control. There is no type of implicit inheritance. This may also be seen negatively, but most developers tend to like it more.</p>
+<p>Such an alias also redirects all child controls of the left hand selector to the right hand selector. This means that the icon inside the button is automatically redirected as well. Internally this mapping looks like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;spinner/upbutton&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;button&quot;</span>
+<span class="s2">&quot;spinner/upbutton/icon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;button/icon&quot;</span>
+<span class="s2">&quot;spinner/upbutton/label&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;button/label&quot;</span>
+</pre></div>
+</div>
+<p>This is super convenient for simple cases and additionally it is still possible to selectively override definitions for specific child controls.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.modern.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="p">[...],</span>
+
+    <span class="s2">&quot;myimage&quot;</span> <span class="o">:</span> <span class="p">[...],</span>
+
+    <span class="s2">&quot;spinner/upbutton&quot;</span> <span class="o">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;spinner/upbutton/icon&quot;</span> <span class="o">:</span> <span class="s2">&quot;myimage&quot;</span><span class="p">,</span>
+
+    <span class="p">[...]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Internally the above results into the following remapping:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;spinner/upbutton&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;button&quot;</span>
+<span class="s2">&quot;spinner/upbutton/icon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;myimage&quot;</span>
+<span class="s2">&quot;spinner/upbutton/label&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;button/label&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="entries">
+<span id="pages-desktop-ui-appearance-entries"></span><h2>Entries<a class="headerlink" href="#entries" title="Permalink to this headline">¶</a></h2>
+<p>The more complex full entry is a map with several sub entries where all are optional:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.modern.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="p">[...],</span>
+
+    <span class="s2">&quot;spinner/textfield&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">base</span> <span class="o">:</span> <span class="kc">true</span><span class="o">/</span><span class="kc">false</span><span class="p">,</span>
+      <span class="nx">include</span> <span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+      <span class="nx">alias</span> <span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+
+      <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">,</span> <span class="nx">styles</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">property</span> <span class="o">:</span> <span class="nx">states</span><span class="p">.</span><span class="nx">hovered</span> <span class="o">?</span> <span class="nx">value1</span> <span class="o">:</span> <span class="nx">value2</span><span class="p">,</span>
+          <span class="p">[...]</span>
+        <span class="p">};</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="p">[...]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="style-method">
+<span id="pages-desktop-ui-appearance-style-method"></span><h3>Style Method<a class="headerlink" href="#style-method" title="Permalink to this headline">¶</a></h3>
+<p>Let's start with the <tt class="docutils literal"><span class="pre">style</span></tt> sub entry. The value under this key should be a function which returns a set of properties to apply to the target widget. The first parameter of the function is named <tt class="docutils literal"><span class="pre">states</span></tt>. This is a map containing keys with boolean values which signalize which states are switched on. The data could be used to react on specific states like <tt class="docutils literal"><span class="pre">hovered</span></tt>, <tt class="docutils literal"><span class="pre">focused</span></tt>, <tt class="docutils literal"><span class="pre">selected</span></tt>, etc. The second parameter <tt class="docutils literal"><span class="pre">styles</span></tt> is only avaliable if a <tt class="docutils literal"><span class="pre">include</span></tt> key is given. If so, the <tt class="docutils literal"><span class="pre">styles</span></tt> parameter contains the styles of the included appearance. This may be very handy if you just want to add some padding and don't want to change it completely. In any case, you don't need to return the given styles. The returned styles and the <tt class="docutils literal"><span class="pre">styles</span></tt> argument will be merged by the appearance manager with a higher priority for the local (returned) styles.</p>
+<p>It is required that all properties applied in one state are applied in all other states. Something like this is seen as bad style and may result in wrong styling:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">states</span><span class="p">.</span><span class="nx">hovered</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// BAD: backgroundColor missing when widget isn&#39;t hovered!</span>
+
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Instead, you should always define the else case:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">states</span><span class="p">.</span><span class="nx">hovered</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// GOOD: there should be a setting for all possible states</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">undefined</span></tt> value means that no value should be applied. When qooxdoo runs through the returned map it calls the <tt class="docutils literal"><span class="pre">reset</span></tt> method for properties with a value of <tt class="docutils literal"><span class="pre">undefined</span></tt>. In most cases it would be also perfectly valid to use <tt class="docutils literal"><span class="pre">null</span></tt> instead of <tt class="docutils literal"><span class="pre">undefined</span></tt>, but keep in mind that <tt class="docutils literal"><span class="pre">null</span></tt> is stored using the setter (explicit null) and this way it overrides values given through the inheritance or through the init values. In short this means that <tt class="docutils literal"><span class="pre">undefined</span></tt> is the better choice in almost all cases.</p>
+</div>
+<p>One thing we have also seen in the example is that it is perfectly possible to create the return map using standard JavaScript and fill in keys during the runtime of the <tt class="docutils literal"><span class="pre">style</span></tt> method. This allows to use more complex statements to solve the requirements of today's themes were a lot of states or dependencies between states can have great impact on the result map.</p>
+</div>
+<div class="section" id="includes">
+<span id="pages-desktop-ui-appearance-includes"></span><h3>Includes<a class="headerlink" href="#includes" title="Permalink to this headline">¶</a></h3>
+<p>Includes are used to reuse the result of another key and merge it with the local data. Includes may also used standalone without the <tt class="docutils literal"><span class="pre">style</span></tt> key but this is merly the same like an alias. An alias is the faster and better choice in this case.</p>
+<p>The results of the include block are merged with lower priority than the local data so it just gets added to the map. To remove a key from the included map just define the key locally as well (using the <tt class="docutils literal"><span class="pre">style</span></tt> method) and set it to <tt class="docutils literal"><span class="pre">undefined</span></tt>.</p>
+<p>Includes do nothing to child controls. They just include exactly the given selector into the current selector.</p>
+</div>
+<div class="section" id="child-control-aliases">
+<span id="pages-desktop-ui-appearance-child-control-aliases"></span><h3>Child Control Aliases<a class="headerlink" href="#child-control-aliases" title="Permalink to this headline">¶</a></h3>
+<p>Child control aliases are compared to the normal aliases mentioned above, just define aliases for the child controls. They do not redirect the local selector to the selector defined by the alias. An example to make this more clear:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.modern.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="p">[...],</span>
+
+    <span class="s2">&quot;spinner/upbutton&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">alias</span> <span class="o">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+
+      <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">padding</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nx">icon</span> <span class="o">:</span> <span class="s2">&quot;decoration/arrows/up.gif&quot;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="p">[...]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The result mapping would look like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;spinner/upbutton&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;spinner/upbutton&quot;</span>
+<span class="s2">&quot;spinner/upbutton/icon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;button/image&quot;</span>
+<span class="s2">&quot;spinner/upbutton/label&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;button/label&quot;</span>
+</pre></div>
+</div>
+<p>As you can see the <tt class="docutils literal"><span class="pre">spinner/upbutton</span></tt> is kept in its original state. This allows one to just refine a specific outer part of a complex widget instead of the whole widget. It is also possible to include the orignal part of the <tt class="docutils literal"><span class="pre">button</span></tt> into the <tt class="docutils literal"><span class="pre">spinner/upbutton</span></tt> as well. This is useful to just override a few properties like seen in the following example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.theme.modern.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="p">[...],</span>
+
+    <span class="s2">&quot;spinner/upbutton&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="nx">alias</span> <span class="o">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+      <span class="nx">include</span> <span class="o">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+
+      <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">padding</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nx">icon</span> <span class="o">:</span> <span class="s2">&quot;decoration/arrows/up.gif&quot;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="p">[...]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>When <tt class="docutils literal"><span class="pre">alias</span></tt> and <tt class="docutils literal"><span class="pre">include</span></tt> are identically pointing to the same selector the result is identical to the real alias</p>
+</div>
+<div class="section" id="base-calls">
+<span id="pages-desktop-ui-appearance-base-calls"></span><h3>Base Calls<a class="headerlink" href="#base-calls" title="Permalink to this headline">¶</a></h3>
+<p>When extending themes the so-named <tt class="docutils literal"><span class="pre">base</span></tt> flag can be enabled to include the result of this selector of the derived theme into the local selector. This is quite comparable to the <tt class="docutils literal"><span class="pre">this.base(arguments,</span> <span class="pre">...)</span></tt> call in member functions of typical qooxdoo classes. It does all the things the super class has done plus the local things. Please note that all local defintions have higher priority than the inheritance. See next paragraph for details.</p>
+</div>
+<div class="section" id="priorities">
+<span id="pages-desktop-ui-appearance-priorities"></span><h3>Priorities<a class="headerlink" href="#priorities" title="Permalink to this headline">¶</a></h3>
+<p>Priority is quite an important topic when dealing with so many sources to fill a selector with styles. Logically the definitions of the <tt class="docutils literal"><span class="pre">style</span></tt> function are the ones with the highest priority followed by the <tt class="docutils literal"><span class="pre">include</span></tt> block. The least priority has the <tt class="docutils literal"><span class="pre">base</span></tt> flag for enabling the <em>base calls</em> in inherited themes.</p>
+</div>
+</div>
+<div class="section" id="states">
+<span id="pages-desktop-ui-appearance-states"></span><h2>States<a class="headerlink" href="#states" title="Permalink to this headline">¶</a></h2>
+<p>A state is used for every visual state a widget may have. Every state has flag character. It could only be enabled or disabled via the API <tt class="docutils literal"><span class="pre">addState</span></tt> or <tt class="docutils literal"><span class="pre">removeState</span></tt>.</p>
+</div>
+<div class="section" id="performance">
+<span id="pages-desktop-ui-appearance-performance"></span><h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo has a lot of impressive caching ideas behind the whole appearance handling. As one could easily imagine all these features are quite expensive when they are made on every widget instance and more important, each time a state is modified.</p>
+<div class="section" id="appearance-queue">
+<span id="pages-desktop-ui-appearance-appearance-queue"></span><h3>Appearance Queue<a class="headerlink" href="#appearance-queue" title="Permalink to this headline">¶</a></h3>
+<p>First of all we have the appearance queue. Widgets which are visible and inserted into a visible parent are automatically processed by this queue when changes happen or on the initial display of the widget. Otherwise the change is delayed until the widget gets visible (again).</p>
+<p>The queue also minimizes the effect of multiple state changes when they happen at once. All changes are combined into one lookup to the theme e.g. changing <tt class="docutils literal"><span class="pre">hovered</span></tt> and <tt class="docutils literal"><span class="pre">focused</span></tt> directly after each other would only result into one update instead of two. In a modern GUI typically each click influence a few widgets at once and in these widgets a few states at once so this optimization really pays of.</p>
+</div>
+<div class="section" id="selector-caching">
+<span id="pages-desktop-ui-appearance-selector-caching"></span><h3>Selector Caching<a class="headerlink" href="#selector-caching" title="Permalink to this headline">¶</a></h3>
+<p>Each widget comes with an appearance or was created as a child control of another widget. Because the detection of the selector is quite complex with iterations up to the parent chain, the resulting selector of each widget is cached. The system benefits from the idea that child controls are never moved outside the parent they belong to. So a child controls which is cached once keeps the selector for lifetime. The only thing which could invalidate the selectors of a widget and all of its child controls is the change of the property <tt class="docutils literal"><span class="pre">appearance</span></tt> in the parent of the child control.</p>
+</div>
+<div class="section" id="alias-caching">
+<span id="pages-desktop-ui-appearance-alias-caching"></span><h3>Alias Caching<a class="headerlink" href="#alias-caching" title="Permalink to this headline">¶</a></h3>
+<p>The support for aliases is resolved once per application load. So after a while all aliases are resolved to their final destination. This process is lazy and fills the redirection map with selector usage. This means that the relatively complex process of resolving all aliases is only done once.</p>
+<p>The list of resolved aliases can be seen when printing out the map under <tt class="docutils literal"><span class="pre">qx.theme.manager.Appearance.getInstance().__aliasMap</span></tt> to the log console. It just contains the fully resolved alias (aliases may redirect to each other as well).</p>
+</div>
+<div class="section" id="result-caching">
+<span id="pages-desktop-ui-appearance-result-caching"></span><h3>Result Caching<a class="headerlink" href="#result-caching" title="Permalink to this headline">¶</a></h3>
+<p>Further the result of each selector for a specific set of states is cached as well. This is maybe the most massive source of performance tweaks in the system. With the first usage, qooxdoo caches for example the result of <tt class="docutils literal"><span class="pre">button</span></tt> with the states <tt class="docutils literal"><span class="pre">hovered</span></tt> and <tt class="docutils literal"><span class="pre">focused</span></tt>. The result is used for any further request for such an appearance with the identical set of states. This caching is by the way the most evident reason why the appearance has no access to the individual widget. This would torpedate the caching in some way.</p>
+<p>This last caching also reduces the overhead of <tt class="docutils literal"><span class="pre">include</span></tt> and <tt class="docutils literal"><span class="pre">base</span></tt> statements which are quite intensive tasks because of the map merge character with which they have been implemented.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_theming.html"
+             title="previous chapter">« Theming</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_custom_themes.html"
+             title="next chapter">Custom Themes »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Appearance</a><ul>
+<li><a class="reference internal" href="#what-is-it">What is it?</a></li>
+<li><a class="reference internal" href="#theme-structure">Theme Structure</a></li>
+<li><a class="reference internal" href="#selectors">Selectors</a></li>
+<li><a class="reference internal" href="#aliases">Aliases</a></li>
+<li><a class="reference internal" href="#entries">Entries</a><ul>
+<li><a class="reference internal" href="#style-method">Style Method</a></li>
+<li><a class="reference internal" href="#includes">Includes</a></li>
+<li><a class="reference internal" href="#child-control-aliases">Child Control Aliases</a></li>
+<li><a class="reference internal" href="#base-calls">Base Calls</a></li>
+<li><a class="reference internal" href="#priorities">Priorities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#states">States</a></li>
+<li><a class="reference internal" href="#performance">Performance</a><ul>
+<li><a class="reference internal" href="#appearance-queue">Appearance Queue</a></li>
+<li><a class="reference internal" href="#selector-caching">Selector Caching</a></li>
+<li><a class="reference internal" href="#alias-caching">Alias Caching</a></li>
+<li><a class="reference internal" href="#result-caching">Result Caching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_custom_themes.html"
+                        title="next chapter">Custom Themes</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_theming.html"
+                        title="previous chapter">Theming</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_appearance.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

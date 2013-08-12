@@ -1,0 +1,413 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial Part 4.1: Form Handling &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../../desktop.html" />
+    <link rel="next" title="Tutorial Part 4.2: Custom Widgets" href="tutorial-part-4-2.html" />
+    <link rel="prev" title="Tutorial Part 3: Time for Communication" href="tutorial-part-3.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Tutorial Part 4.1: Form Handling</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-part-4-1-form-handling">
+<span id="pages-desktop-tutorials-tutorial-part-4-1-tutorial-part-4-1-form-handling"></span><h1>Tutorial Part 4.1: Form Handling<a class="headerlink" href="#tutorial-part-4-1-form-handling" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tutorial is outdated! twitter changed its API and does not allow basic authentication anymore. Still, the qooxdoo part is valid and worth trying even if you can not access your friends timeline anymore.</p>
+</div>
+<p>In the previous steps of this tutorial, we <a class="reference internal" href="tutorial-part-1.html"><em>laid the groundwork</em></a> for a Twitter client application, gave it a <a class="reference internal" href="tutorial-part-2.html"><em>neat UI</em></a> and implemented a <a class="reference internal" href="tutorial-part-3.html"><em>communication layer</em></a>. One thing this application still lacks is a nice way for users to input their Twitter user name and password in order to post a status update. Fortunately, qooxdoo comes with a <a class="reference internal" href="../ui_form_handling.html"><em>forms API</em></a> that takes the pain out of creating form elements and handling user input.</p>
+<p>Before we get started, make sure you're working on the version of the Twitter tutorial application tagged with <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step3">&quot;Step 3&quot; in the GitHub repository</a>. This includes the posting part of the communication layer that we'll be using in this tutorial.</p>
+<div class="section" id="the-plan">
+<span id="pages-desktop-tutorials-tutorial-part-4-1-the-plan"></span><h2>The plan<a class="headerlink" href="#the-plan" title="Permalink to this headline">¶</a></h2>
+<p>We want to create a new window with user name and password fields that pops up when the Twitter application starts. The values will be used to retrieve the user's list of Tweets. Seems simple enough, so let's get right down to business.</p>
+</div>
+<div class="section" id="creating-the-login-window">
+<span id="pages-desktop-tutorials-tutorial-part-4-1-creating-the-login-window"></span><h2>Creating the login window<a class="headerlink" href="#creating-the-login-window" title="Permalink to this headline">¶</a></h2>
+<p>We start by creating a new class called twitter.LoginWindow that inherits from <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/index.html#qx.ui.window.Window">qx.ui.window.Window</a>, similar to the MainWindow class from the first part of this tutorial:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;twitter.LoginWindow&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">Window</span><span class="p">,</span>
+  <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="s2">&quot;Login&quot;</span><span class="p">,</span> <span class="s2">&quot;twitter/t_small-c.png&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The Login window will only contain the form, which takes care of its own layout. So for the window itself, a Basic layout will suffice. We'll also make the window modal:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">layout</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">layout</span><span class="p">.</span><span class="nx">Basic</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setLayout</span><span class="p">(</span><span class="nx">layout</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setModal</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-the-form">
+<span id="pages-desktop-tutorials-tutorial-part-4-1-adding-the-form"></span><h2>Adding the Form<a class="headerlink" href="#adding-the-form" title="Permalink to this headline">¶</a></h2>
+<p>Now it's time to add a form and populate it with a pair of fields:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Form</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">username</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">TextField</span><span class="p">();</span>
+<span class="nx">username</span><span class="p">.</span><span class="nx">setRequired</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="s2">&quot;Username&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">password</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">PasswordField</span><span class="p">();</span>
+<span class="nx">password</span><span class="p">.</span><span class="nx">setRequired</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="s2">&quot;Password&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Note how the fields are marked as required. This is a simple kind of validation and in this case it's all we need, which is why the third argument for <tt class="docutils literal"><span class="pre">form.add</span></tt> is null instead of a validation function. Required fields will be displayed with an asterisk (*) next to their label.</p>
+<p>The next step is to add a dash of data binding awesomeness:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">Form</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">form</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">model</span> <span class="o">=</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">createModel</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Just like in the previous tutorial, we create a <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/index.html#qx.data.controller.Form">controller</a> without a model. Then, we ask the controller to create a model from the form's elements. This model will be used to serialize the form data.</p>
+<p>The form still needs a &quot;submit&quot; button, so we'll add one, plus a &quot;cancel&quot; button to close the window:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">loginbutton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Login&quot;</span><span class="p">);</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">addButton</span><span class="p">(</span><span class="nx">loginbutton</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">cancelbutton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Cancel&quot;</span><span class="p">);</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">addButton</span><span class="p">(</span><span class="nx">cancelbutton</span><span class="p">);</span>
+<span class="nx">cancelbutton</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>That's all the elements we need, let's get them displayed. We'll let one of qooxdoo's built-in <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/index.html#qx.ui.form.renderer">form renderer</a> classes worry about the form's layout:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">Single</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">renderer</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The renderer is a widget, so we can just add it to the window. In addition to the standard renderers, it's fairly simple to create a cusstom renderer by subclassing <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/index.html#qx.ui.form.renderer.AbstractRenderer">qx.ui.form.renderer.AbstractRenderer</a>, though that's outside the scope of this tutorial.</p>
+</div>
+<div class="section" id="accessing-the-form-values">
+<span id="pages-desktop-tutorials-tutorial-part-4-1-accessing-the-form-values"></span><h2>Accessing the form values<a class="headerlink" href="#accessing-the-form-values" title="Permalink to this headline">¶</a></h2>
+<p>Similar to MainWindow, we'll use an event to notify the other parts of our application of changes to the form. As you'll remember, the &quot;event&quot; section is on the same level as the constructor in the class declaration:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">events</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;changeLoginData&quot;</span> <span class="o">:</span> <span class="s2">&quot;qx.event.type.Data&quot;</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>Then we add a listener to the submit button that retrieves the values from the model object and attaches them to a data event, making sure the form validates, i.e. both fields aren't empty.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">loginbutton</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">validate</span><span class="p">())</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">loginData</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">username</span> <span class="o">:</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">getModel</span><span class="p">().</span><span class="nx">getUsername</span><span class="p">(),</span>
+      <span class="nx">password</span> <span class="o">:</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">getModel</span><span class="p">().</span><span class="nx">getPassword</span><span class="p">()</span>
+    <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">fireDataEvent</span><span class="p">(</span><span class="s2">&quot;changeLoginData&quot;</span><span class="p">,</span> <span class="nx">loginData</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tying-it-all-together">
+<h2>Tying it all together<a class="headerlink" href="#tying-it-all-together" title="Permalink to this headline">¶</a></h2>
+<p>Now to integrate the login window with the other parts of the application. Twitter's friends timeline uses .htaccess for authentication so we can add the login details to the request sent by <tt class="docutils literal"><span class="pre">TwitterService.fetchTweets()</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">fetchTweets</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">__store</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">login</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">username</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">login</span> <span class="o">=</span> <span class="nx">username</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="nx">password</span> <span class="o">+</span> <span class="s2">&quot;@&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;http://&quot;</span> <span class="o">+</span> <span class="nx">login</span> <span class="o">+</span> <span class="s2">&quot;twitter.com/statuses/friends_timeline.json&quot;</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">__store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">Jsonp</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;callback&quot;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">__store</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="s2">&quot;tweets&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">__store</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>All that's left is to show the login window when the application is started and call <tt class="docutils literal"><span class="pre">fetchTweets</span></tt> with the information from the <tt class="docutils literal"><span class="pre">changeLoginData</span></tt> event.
+In the main application class, we'll create an instance of twitter.LoginWindow, position it next to the MainWindow and open it:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">__loginWindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">twitter</span><span class="p">.</span><span class="nx">LoginWindow</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">__loginWindow</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span><span class="mi">30</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">__loginWindow</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>And finally, we'll attach a listener to <tt class="docutils literal"><span class="pre">changeLoginData</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">__loginWindow</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;changeLoginData&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">loginData</span> <span class="o">=</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">getData</span><span class="p">();</span>
+  <span class="nx">service</span><span class="p">.</span><span class="nx">fetchTweets</span><span class="p">(</span><span class="nx">loginData</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="nx">loginData</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Note how all the other calls to <tt class="docutils literal"><span class="pre">service.fetchTweets</span></tt> can remain unchanged: By making the login window modal, we've made sure the first call, which creates the store, contains the login data. Any subsequent calls (i.e. after reloading or posting an update) will use the same store so they won't need the login details.</p>
+<p>OK, time to run <tt class="docutils literal"><span class="pre">generate.py</span></tt> and load the application in a browser to make sure everything works like it's supposed to.</p>
+<p><img alt="Twitter client application with login window" src="../../../_images/step41.png" /></p>
+<p>Twitter client application with login window</p>
+<p>And that's it for the form handling chapter. As usual, you'll find the tutorial <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step4.1">code on GitHub</a>. Watch out for the next chapter, which will focus on developing your own custom widgets.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="tutorial-part-3.html"
+             title="previous chapter">« Tutorial Part 3: Time for Communication</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial-part-4-2.html"
+             title="next chapter">Tutorial Part 4.2: Custom Widgets »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial Part 4.1: Form Handling</a><ul>
+<li><a class="reference internal" href="#the-plan">The plan</a></li>
+<li><a class="reference internal" href="#creating-the-login-window">Creating the login window</a></li>
+<li><a class="reference internal" href="#adding-the-form">Adding the Form</a></li>
+<li><a class="reference internal" href="#accessing-the-form-values">Accessing the form values</a></li>
+<li><a class="reference internal" href="#tying-it-all-together">Tying it all together</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial-part-4-2.html"
+                        title="next chapter">Tutorial Part 4.2: Custom Widgets</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="tutorial-part-3.html"
+                        title="previous chapter">Tutorial Part 3: Time for Communication</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/tutorials/tutorial-part-4-1.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

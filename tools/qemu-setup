@@ -1,0 +1,93 @@
+#!/bin/bash
+# Copyright (c) 2013 Andras Gulyas, Balazs Sonkoly, Felician Nemeth
+#
+# This file is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with POX.  If not, see <http://www.gnu.org/licenses/>.
+
+# This scripts takes a PLE node as input, deploys the qemu VM image
+# file and the environment for running it and finally runs the image
+# on the node..
+
+ple_node=$1
+slice_name=${2:-budapestple_sigcomm}
+private_key=${3:-~/.ssh/id_rsa_planetlab}
+symbolic_name=${4:-$ple_node}
+image_file=${5:-debian_squeeze_i386_mptcp.qcow2}
+overlay_file=${6:-overlay_${image_file}}
+pox_url=${7}
+num_if=${8}
+LOG=log/qemu.$symbolic_name
+DEBUG=0
+
+tools_dir=$(dirname "${BASH_SOURCE[0]}")
+tools_dir=$(cd $tools_dir; pwd)
+tunproxy=$tools_dir/tunproxy-auto.py
+tunproxy_dep=$tools_dir/jsonrpc
+tunproxy_dep="${tunproxy_dep} $tools_dir/ping.py"
+qemu_run_script=$(dirname "${BASH_SOURCE[0]}")/run-qemu
+bin=$tools_dir/bin
+
+ssh_port=46322      # the virtual machine can be accessed at the next
+		    # available port starting from this number via ssh
+		    # from the outside world
+fat_dir=$tools_dir/fat_dir
+mkdir -p $fat_dir
+mkdir -p log
+mkdir -p cache
+
+function d_print () {
+    if [ $DEBUG == 1 ]; then
+	echo $*
+    else
+	echo $* >> $LOG
+    fi
+}
+
+if [ "$ple_node" == ""  ]
+then
+    echo "Usage: qemu-setup ple_node"
+    exit
+fi
+
+ssh -i $private_key -l $slice_name $ple_node pkill qemu
+ssh -i $private_key -l $slice_name $ple_node mkdir -p fat_dir
+
+d_print "rsync necessary files with $ple_node"
+if [ $DEBUG == 1 ]; then
+    Rsync="rsync -av --progress --log-file=$LOG -e \"ssh -i $private_key\""
+else
+    Rsync="rsync -a --log-file=$LOG -e \"ssh -i $private_key\""
+fi
+eval $Rsync $bin $image_file $overlay_file $qemu_run_script $tunproxy_dep $tunproxy \
+            $slice_name@$ple_node:
+eval $Rsync ${fat_dir}/ssh_key.pub $slice_name@$ple_node:fat_dir
+
+# Finding a  port for ssh connections to the virtual machine
+d_print "Searching for an availble TCP port for ssh forwarding at $ple_node"
+exec 2>/dev/null 3>/dev/tcp/${ple_node}/${ssh_port}
+while [ $? = 0 ]
+do
+    ssh_port=$(($ssh_port+1))
+    exec 2>/dev/null 3>/dev/tcp/${ple_node}/${ssh_port}
+done
+d_print "$ssh_port is not used, we will use that."
+
+d_print "Starting qemu image at $ple_node. This can take a while."
+d_print "You can ssh soon to this qemu virtual machine as:"
+d_print "  ssh root@$ple_node -p $ssh_port"
+echo $ssh_port > cache/ssh_port.$symbolic_name
+
+rpc_url="$pox_url/hostconfig/"
+ssh -t -i $private_key -l $slice_name $ple_node \
+    ./run-qemu $ssh_port $pox_url $symbolic_name $rpc_url $num_if \
+    &>> $LOG &

@@ -1,0 +1,452 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Development &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../index.html" />
+    <link rel="up" title="Table of Contents" href="../toc.html" />
+    <link rel="next" title="Application Skeletons" href="development/skeletons.html" />
+    <link rel="prev" title="Using the remote table model" href="widget/table_remote_model.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../index.html">Manual (v2.0.2)</a> &raquo;
+  <a href="">Development</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<p>This section touches on various aspects and tools related to development activities with qooxdoo. Topics range from the various qooxdoo application types, over discussions of performance, unit testing and debugging, to internationalization and parts, a specific means to partition and lazily load application components.</p>
+<div class="section" id="application-creation">
+<h2>Application Creation<a class="headerlink" href="#application-creation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/skeletons.html">Application Skeletons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/skeletons.html#desktop">Desktop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/skeletons.html#inline">Inline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/skeletons.html#mobile">Mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/skeletons.html#native">Native</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/skeletons.html#website">Website</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/skeletons.html#server">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/skeletons.html#contribution">Contribution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/logging.html">Logging System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/logging.html#writing-log-messages">Writing Log Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/logging.html#log-appenders">Log Appenders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/logging.html#writing-custom-log-appenders">Writing Custom Log Appenders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development/debugging.html">Debugging Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/debugging.html#introspection">Introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/debugging.html#memory-leaks">Memory leaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/debugging.html#ajax">AJAX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/debugging.html#debugging-tools">Debugging Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/debugging.html#code-instrumentation-idioms">Code Instrumentation Idioms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/debugging.html#getting-at-your-objects">Getting at your Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/debugging.html#firebug-usage-idioms">Firebug Usage Idioms</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/memory_management.html">Memory Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/memory_management.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/memory_management.html#disposing-an-application">Disposing an application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/memory_management.html#example-destructor">Example destructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/memory_management.html#how-to-test-the-destructor">How to test the destructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/memory_management.html#finding-memory-leaks">Finding memory leaks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development/profiling.html">Profiling Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/profiling.html#how-to-enable-the-profiler">How to enable the Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/profiling.html#how-to-use-the-profiler">How to use the Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/profiling.html#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/profiling.html#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/unit_testing.html">Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/frame_apps_testrunner.html">Test Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/simulator.html">Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/simulator_locators.html">Simulator: Locating elements</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="code-organisation">
+<h2>Code Organisation<a class="headerlink" href="#code-organisation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/library_custom.html">Custom Libraries</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="parts">
+<h2>Parts<a class="headerlink" href="#parts" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/parts_overview.html">Parts and Packages Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/parts_overview.html#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/parts_overview.html#development-model">Development Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/parts_overview.html#loading-parts">Loading Parts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development/parts_using.html">Using Parts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/parts_using.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/parts_using.html#in-depth-configuring-the-include-key-of-your-parts">In Depth: Configuring the &quot;include&quot; Key of your Parts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/parts_using.html#advanced-usage-part-collapsing">Advanced Usage: Part Collapsing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="further-resources">
+<h3>Further Resources<a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="tool/generator_config_ref.html#pages-tool-generator-config-ref-packages"><em>Generator Configuration</em></a></li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/index.html#qx.io.PartLoader">qooxdoo API</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="internationalization">
+<h2>Internationalization<a class="headerlink" href="#internationalization" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/internationalization.html">Internationalization, Localization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/internationalization.html#localization">Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/internationalization.html#translation">Translation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/image_clipping_and_combining.html">Image clipping and combining</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/image_clipping_and_combining.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/image_clipping_and_combining.html#run-image-jobs">Run image jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/image_clipping_and_combining.html#benefits">Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development/write_api_documentation.html">Writing API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/write_api_documentation.html#the-structure-of-a-documentation-comment">The structure of a documentation comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/write_api_documentation.html#inline-markup">Inline Markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/write_api_documentation.html#supported-attributes">Supported attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/write_api_documentation.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/write_api_documentation.html#handling-of-data-types">Handling of data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/write_api_documentation.html#init-js-files">__init__.js Files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development/reporting_bugs.html">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/aspects_template.html">An Aspect Template Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/internet_explorer_specific_settings.html">Internet Explorer specific settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/internet_explorer_specific_settings.html#document-mode-in-ie8">Document Mode in IE8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/internet_explorer_specific_settings.html#using-alpha-transparent-pngs">Using alpha-transparent PNGs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/internet_explorer_specific_settings.html#url-rewriting-under-https">URL-Rewriting under HTTPS</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="widget/table_remote_model.html"
+             title="previous chapter">« Using the remote table model</a>
+          <span class="separator">|</span>
+          <a class="next" href="development/skeletons.html"
+             title="next chapter">Application Skeletons »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Development</a><ul>
+<li><a class="reference internal" href="#application-creation">Application Creation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging">Debugging</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#performance">Performance</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#code-organisation">Code Organisation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#parts">Parts</a><ul>
+<li><a class="reference internal" href="#further-resources">Further Resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#internationalization">Internationalization</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="development/skeletons.html"
+                        title="next chapter">Application Skeletons</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="widget/table_remote_model.html"
+                        title="previous chapter">Using the remote table model</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../_sources/pages/development.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

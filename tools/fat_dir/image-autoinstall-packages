@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# This script installs mptcp and some useful packages on top of a
+# debian_squeeze_i386_standard.qcow2 image
+#
+# the original image is here: http://people.debian.org/~aurel32/qemu/i386/
+
+wget -q -O - http://multipath-tcp.org/mptcp.gpg.key | apt-key add -
+echo deb http://multipath-tcp.org/repos/apt/debian squeeze main > /etc/apt/sources.list.d/mptcp.list
+
+
+apt-get update
+apt-get install -y linux-mptcp
+apt-get install -y openssh-server
+apt-get install -y tcpdump      
+apt-get install -y iperf
+apt-get install -y libnss-mdns
+
+cp /mnt/vm-inside-interface-config /etc/init.d
+chmod 755 /etc/init.d/vm-inside-interface-config
+update-rc.d vm-inside-interface-config defaults
+
+printf "For using mptcp please reboot.\n"
+
+# apt-get install -y emacs23-nox

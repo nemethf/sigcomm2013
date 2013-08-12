@@ -1,0 +1,339 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data Binding &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../index.html" />
+    <link rel="up" title="Core" href="core.html" />
+    <link rel="next" title="Data Binding Introduction" href="data_binding/data_binding.html" />
+    <link rel="prev" title="Environment" href="core/environment.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="core.html" accesskey="U">Core</a>
+     &raquo;
+  <a href="">Data Binding</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="data-binding">
+<span id="pages-data-binding"></span><h1>Data Binding<a class="headerlink" href="#data-binding" title="Permalink to this headline">¶</a></h1>
+<p>Data binding is a <a class="reference external" href="http://en.wikipedia.org/wiki/Data_binding">concept</a> by which two data items are bound, so that changes to one are propagated to the second, and vice versa. This requires the possibility to detect such changes during runtime. In qooxdoo, <a class="reference internal" href="core/understanding_properties.html#pages-understanding-properties-understanding-properties"><em>class properties</em></a> fulfil this requirement.</p>
+<p>Using data binding allows you to e.g. keep two widgets automatically synchronized over the runtime of your application, although they might be spatially separated and have wildly different visual representations (e.g. a text field and a spinner).</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_binding/data_binding.html">Data Binding Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/data_binding.html#the-main-idea">The main idea</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/data_binding.html#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/data_binding.html#store">Store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/data_binding.html#model">Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/data_binding.html#controller">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/data_binding.html#view">View</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_binding/data_binding.html#demos-api-and-cheatsheet">Demos, API and CheatSheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_binding/single_value_binding.html">Single Value Binding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html#binding-a-single-property-to-another-property">Binding a single property to another property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html#binding-a-data-event-to-property">Binding a data event to property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html#bind-a-property-chain-to-another-property">Bind a property chain to another property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html#bind-an-array-to-a-property">Bind an array to a property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html#options-conversion-and-validation">Options: Conversion and Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html#managing-bindings">Managing bindings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html#debugging">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/single_value_binding.html#tech-notes">Tech notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_binding/controller.html">Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/controller.html#selection">Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/controller.html#delegate">Delegate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/controller.html#configureitem">configureItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/controller.html#binditem">bindItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/controller.html#createitem">createItem</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/controller.html#object-controller">Object Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/controller.html#list-controller">List Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/controller.html#tree-controller">Tree Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/controller.html#form-controller">Form Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/controller.html#combining-controller">Combining Controller</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_binding/stores.html">Stores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/stores.html#json-store">JSON Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/stores.html#jsonp-store">JSONP Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/stores.html#yql-store">YQL Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/stores.html#offline-store">Offline Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/stores.html#combining-with-controllers">Combining with controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_binding/models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/models.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/models.html#data-array">Data Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/models.html#importance-of-events">Importance of events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/models.html#disposing">Disposing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/models.html#json-marshaler">JSON Marshaler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/models.html#toclass">toClass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/models.html#tomodel">toModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_binding/models.html#createmodel-static">createModel (static)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_binding/models.html#how-to-get-my-own-code-into-the-model">How to get my own code into the model?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="core/environment.html"
+             title="previous chapter">« Environment</a>
+          <span class="separator">|</span>
+          <a class="next" href="data_binding/data_binding.html"
+             title="next chapter">Data Binding Introduction »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="data_binding/data_binding.html"
+                        title="next chapter">Data Binding Introduction</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="core/environment.html"
+                        title="previous chapter">Environment</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../_sources/pages/data_binding.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

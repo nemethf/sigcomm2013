@@ -1,0 +1,333 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Basic Widgets &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Interaction" href="ui_interaction.html" />
+    <link rel="prev" title="Widget" href="../widget.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Basic Widgets</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="basic-widgets">
+<span id="pages-ui-widgets-widgets"></span><h1>Basic Widgets<a class="headerlink" href="#basic-widgets" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This chapter introduces some of the widgets found in qooxdoo. For a full list of widgets, please refer to the <a class="reference internal" href="../widget/widget_ref.html"><em>Widget Reference</em></a>.</p>
+</div>
+<div class="section" id="labels">
+<span id="pages-ui-widgets-labels"></span><h2>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">¶</a></h2>
+<p>Labels are one of the basic building blocks in applications. The qooxdoo Label supports two modes: One which combines simple single line text content with the possibility to automatically render an ellipsis in cases where not enough room is available. This is often the best choice for all types of simple labels and is the default mode in qooxdoo. Through technical restrictions it is not possible to insert HTML in a so-configured instance. The other mode allows rich content (HTML) and adds the option for multi-line content together with an advanced mechanism called <em>Height4Width</em> which automatically re-wraps content based on the available width. This mode however cannot handle automatic ellipsis (which makes less sense in multiline labels, but is also not technologically possible).</p>
+<p>More details: <a class="reference internal" href="../widget/label.html"><em>Label</em></a></p>
+</div>
+<div class="section" id="images">
+<span id="pages-ui-widgets-images"></span><h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
+<p>The second building block of applications. The image class in qooxdoo is quite sophisticated. PNG transparency is available in all browsers. Image data (e.g. format and dimension) is automatically pre-cached by the build system and distributed to the application for optional performance (avoiding page reflow during application startup for example).</p>
+<p>This data also makes it possible to allow semi-automatic image sprites, a feature which becomes more important in larger applications. Image sprites combine multiple images (perhaps even with multiple states) in a single image instance. Only the relevant part is shown, all other states or images are cropped. This has positive effects on the latency (e.g. number of HTTP requests needed) and also improves the runtime performance (switching a state in an image sprite is much faster than replacing the source of an image instance). Image sprites can be introduced in any application at any time without changing the application code. The original image path is automatically interpreted as a clipped image source with the needed offsets. Please note that this feature largely depends on qooxdoo's tool chain which is required to generate the image data for the client.</p>
+<p>A major restriction of this technology is that the options to resize images on the client side are crippled (the normal image is rendered through a background-image definition and allows no stretching at all). The alternate mode renders the image using a normal image element. This is a good alternative whenever a part of the application depends on this scaling feature but should not be used unless necessary.</p>
+<p>More details: <a class="reference internal" href="../widget/image.html"><em>Image</em></a></p>
+</div>
+<div class="section" id="atoms">
+<span id="pages-ui-widgets-atoms"></span><h2>Atoms<a class="headerlink" href="#atoms" title="Permalink to this headline">¶</a></h2>
+<p>Atoms have been in qooxdoo for quite some time now. Basically, this widget combines an Image with a Label and allows some alignment options for them. Both content types are optional and toggle-able. The Atom supports shrinking like the Label while keeping the image intact. Atoms are used by many higher level widgets like Buttons (in Tab Views, Toolbars, ...) or List Items etc.</p>
+<p>More details: <a class="reference internal" href="../widget/atom.html"><em>Atom</em></a></p>
+</div>
+<div class="section" id="buttons">
+<span id="pages-ui-widgets-buttons"></span><h2>Buttons<a class="headerlink" href="#buttons" title="Permalink to this headline">¶</a></h2>
+<p>The Button is basically an Atom with some additional events. All relevant rendering features are already provided by the Atom. Several variants of the Button are available: Repeat, Radio or Toggle Button.</p>
+<p>The Button can be connected to a Command (a class to work with key bindings etc.) and fires an <tt class="docutils literal"><span class="pre">execute</span></tt> event when clicked (or activated via the keyboard). The Repeat Button fires the <tt class="docutils literal"><span class="pre">execute</span></tt> event in an interval while being pressed. The Toggle Button (which toggles between checked and unchecked) is an exception to this and fires a <tt class="docutils literal"><span class="pre">change</span></tt> event on each transition of the <tt class="docutils literal"><span class="pre">checked</span></tt> property.</p>
+<p>More details: <a class="reference internal" href="../widget/button.html"><em>Button</em></a></p>
+</div>
+<div class="section" id="text-fields">
+<span id="pages-ui-widgets-text-fields"></span><h2>Text Fields<a class="headerlink" href="#text-fields" title="Permalink to this headline">¶</a></h2>
+<p>The Text Field is one of the most commonly used form elements. It fires two events: The <tt class="docutils literal"><span class="pre">input</span></tt> event is fired on every keystroke or other type of text modification. This event fires &quot;live&quot;, i.e. whenever a modification is made. If the application does not need this level of detailed information, it should use the <tt class="docutils literal"><span class="pre">change</span></tt> event which fires after the modification is done, typically after the field has lost focus.</p>
+<p>The Text Field supports basic label alignment to <tt class="docutils literal"><span class="pre">left</span></tt>, <tt class="docutils literal"><span class="pre">center</span></tt> or <tt class="docutils literal"><span class="pre">right</span></tt>. Preventing user inputs is possible through the property <tt class="docutils literal"><span class="pre">enabled</span></tt> or <tt class="docutils literal"><span class="pre">readOnly</span></tt>. Disabling a widget greys it out and makes it unresponsive for all types of interaction while <tt class="docutils literal"><span class="pre">readOnly</span></tt> only prevents the modification of the value and normally has no special visual indication when enabled.</p>
+<p>More details: <a class="reference internal" href="../widget/textfield.html"><em>TextField</em></a></p>
+</div>
+<div class="section" id="popups">
+<span id="pages-ui-widgets-popups"></span><h2>Popups<a class="headerlink" href="#popups" title="Permalink to this headline">¶</a></h2>
+<p>Popups and Tooltips are comparable in some way. Both are rendered above other content (while tooltips are even above Popups). Both widgets are automatically inserted into the application root widget (can be overridden when needed).</p>
+<p>Popups may be used for notification panels or a type of modal sub dialog. Basically they are just a container (with a configurable layout) which lays above normal content.</p>
+<p>By default, popups are automatically hidden if the user interacts with some other part of the application. This behavior is controllable through the <tt class="docutils literal"><span class="pre">autoHide</span></tt> property. Popups are automatically moved back inside the viewport. In fact, it is not possible to place Popups outside the viewport (not even partly). This behavior makes sense in almost every case and improves the usability of popups in general.</p>
+<p>With <tt class="docutils literal"><span class="pre">bringToFront</span></tt> and <tt class="docutils literal"><span class="pre">sendToBack</span></tt> the popups' zIndex can be controlled in relation to other visible popups.</p>
+<p>More details: <a class="reference internal" href="../widget/popup.html"><em>PopUp</em></a></p>
+</div>
+<div class="section" id="tooltips">
+<span id="pages-ui-widgets-tooltips"></span><h2>Tooltips<a class="headerlink" href="#tooltips" title="Permalink to this headline">¶</a></h2>
+<p>Tooltips are basically Popups with an Atom in them. But Tooltips improve on many of the features of the normal Popup. The automatic positioning support as mentioned for the Popups supports offsets as well and automatically moves the Tooltip to the best possible side in relation to the mouse cursor's position.</p>
+<p>Although it's generally not necessary, every popup can be configured with an individual timeout. This is useful when building different type of tooltips e.g. to display system notifications etc.</p>
+<p>More details: <a class="reference internal" href="../widget/tooltip.html"><em>ToolTip</em></a></p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../widget.html"
+             title="previous chapter">« Widget</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_interaction.html"
+             title="next chapter">Interaction »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Basic Widgets</a><ul>
+<li><a class="reference internal" href="#labels">Labels</a></li>
+<li><a class="reference internal" href="#images">Images</a></li>
+<li><a class="reference internal" href="#atoms">Atoms</a></li>
+<li><a class="reference internal" href="#buttons">Buttons</a></li>
+<li><a class="reference internal" href="#text-fields">Text Fields</a></li>
+<li><a class="reference internal" href="#popups">Popups</a></li>
+<li><a class="reference internal" href="#tooltips">Tooltips</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_interaction.html"
+                        title="next chapter">Interaction</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../widget.html"
+                        title="previous chapter">Widget</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_widgets.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

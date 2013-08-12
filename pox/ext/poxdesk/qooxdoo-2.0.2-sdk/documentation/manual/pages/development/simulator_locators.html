@@ -1,0 +1,373 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simulator: Locating elements &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Development" href="../development.html" />
+    <link rel="next" title="Custom Libraries" href="library_custom.html" />
+    <link rel="prev" title="Simulator" href="simulator.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../development.html" accesskey="U">Development</a>
+     &raquo;
+  <a href="">Simulator: Locating elements</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="simulator-locating-elements">
+<span id="pages-development-simulator-locators-simulator-locators"></span><h1>Simulator: Locating elements<a class="headerlink" href="#simulator-locating-elements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="selenium-locators">
+<h2>Selenium locators<a class="headerlink" href="#selenium-locators" title="Permalink to this headline">¶</a></h2>
+<p>Selenium offers several built-in <a class="reference external" href="http://seleniumhq.org/docs/02_selenium_ide.html#locating-elements">locator strategies</a>.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://seleniumhq.org/docs/02_selenium_ide.html#locating-by-identifier">Identifier locators</a> are very fast and reliable, but IDs must be assigned manually by the application developer, e.g.:</li>
+</ul>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">firstButton</span><span class="p">.</span><span class="nx">getContainerElement</span><span class="p">().</span><span class="nx">getDomElement</span><span class="p">().</span><span class="nx">id</span> <span class="o">=</span> <span class="s2">&quot;firstButton&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference external" href="http://seleniumhq.org/docs/02_selenium_ide.html#locating-by-xpath">XPath locators</a> are not well suited for qooxdoo applications which usually consist of a great number of DOM elements that can take quite a while to traverse, especially when using wildcards. More importantly, the DOM is likely to change during the application's runtime, making XPath locators unreliable.</li>
+<li>The same caveat applies to <a class="reference external" href="http://seleniumhq.org/docs/02_selenium_ide.html#locating-by-dom">DOM locators</a></li>
+</ul>
+</div>
+<div class="section" id="qooxdoo-specific-locators">
+<h2>qooxdoo-specific locators<a class="headerlink" href="#qooxdoo-specific-locators" title="Permalink to this headline">¶</a></h2>
+<p>These are custom locator strategies designed specifically for qooxdoo applications.</p>
+<div class="section" id="qxh-locator-search-the-qooxdoo-widget-hierarchy">
+<span id="pages-development-simulator-locators-qxh"></span><h3>qxh Locator: Search the qooxdoo widget hierarchy<a class="headerlink" href="#qxh-locator-search-the-qooxdoo-widget-hierarchy" title="Permalink to this headline">¶</a></h3>
+<p>This strategy locates elements within the application's widget hierarchy by following relations between JavaScript objects.
+In order to achieve this, it uses a syntax that is very similar to XPath, but also differs in significant ways.</p>
+<p>A qxh locator is a sequence of one or more location steps, separated by /. No leading or trailing / is allowed. All searches are anchored to the root object (which is either the Application object or the application root widget, see further down). During the search each location step selects an object which will be used as the root for the rest of the search. The following possibilities exist to specify a location step:</p>
+<ul class="simple">
+<li><strong>&lt;string&gt;</strong> A simple string that cannot be resolved otherwise is taken to be the literal identifier of a JavaScript property of the current object. So a locator step of <tt class="docutils literal"><span class="pre">mytoolbar</span></tt> will signify a JavaScript property named <tt class="docutils literal"><span class="pre">mytoolbar</span></tt> on the current object.</li>
+</ul>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qxh</span><span class="o">=</span><span class="nx">mytoolbar</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>qx. ...</strong> A string starting with qx. is taken to be a qooxdoo classname, e.g. qx.ui.basic.Label. It signifies a child which is an instance of the given class.</li>
+</ul>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qxh</span><span class="o">=</span><span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>child[N]</strong> Signifies the Nth child of the object returned by the previous step.</li>
+</ul>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qxh</span><span class="o">=</span><span class="nx">child</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>[&#64;attrib{=value}]</strong> Selects a child that has a property <em>attrib</em> which has a value of <em>value</em>. The specification of a value is optional. &quot;Property&quot; here covers both qooxdoo as well as generic JavaScript properties.</li>
+</ul>
+<div class="highlight-javascript"><pre>qxh=[@label=".*Label$"]</pre>
+</div>
+<p>As for the values, only string comparisons are possible, but you can specify a RegExp as value as the comparisons will be RegExp matches.</p>
+<ul class="simple">
+<li>The special token <strong>*</strong> is a wildcard operator. It covers the semantics of XPath's <em>//</em> and <em>descendant-or-self</em> constructs. The wildcard can span zero to multiple levels of the object hierarchy. This saves you from always specifying absolute locators, e.g.</li>
+</ul>
+<div class="highlight-javascript"><pre>qxh=*/[@label="My Button"]</pre>
+</div>
+<p>This will recursively search from the first level below the search root for an object with a label property that matches the string “My Button”. As you might expect, these recursive searches take more time than other searches, so it is good advice to be as specific in your locator as possible. To that end, you can use mutliple wildcards in the same locator, like</p>
+<div class="highlight-javascript"><pre>qxh=*/[@label="Section 3"]/[@page]/*/[@label="First Button"]</pre>
+</div>
+<p>This will search recursively from the root for an object with label “Section 3” and then, assuming it is a ButtonView which has a page property, navigate to the corresponding page, where it again searches recursively for an item with label “First Button”. This is much more effective than searching the entire object space with “*/[&#64;label=“First Button”]”.</p>
+<ul class="simple">
+<li><strong>app:</strong> Three special operators at the beginning of a locator specify which object space you want to search:<ul>
+<li><em>app:</em> signifies the object space down from <tt class="docutils literal"><span class="pre">qx.core.Init.getInstance().getApplication()</span></tt></li>
+<li><em>inline:</em> signifies the object space down from the root widget of a &quot;qooxdoo isle&quot; in an inline application. See <a class="reference external" href="http://qooxdoo.org/contrib/project/simulator/qooxdoo-tests-with-selenium#testing_inline_applications">this article</a> for details.</li>
+<li><em>doc:</em> (or anything else for that matter, including nothing) signifies the object space down from the application's root widget, i.e. <tt class="docutils literal"><span class="pre">qx.core.Init.getApplication().getRoot()</span></tt>.</li>
+</ul>
+</li>
+</ul>
+<p>As with all Selenium locators, there are no set-valued results (as with generic XPath), and each locator has to come up with at most one result element. Therefore, for each location step, the first match wins, i.e. if there are multiple children that match the current specification, the first child is taken as the root for the rest of the search. Backtracking is only done for wildcard (*) searches.</p>
+</div>
+<div class="section" id="qxhv-locator-search-visible-widgets-only">
+<span id="pages-development-simulator-locators-qxhv"></span><h3>qxhv Locator: Search visible widgets only<a class="headerlink" href="#qxhv-locator-search-visible-widgets-only" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">qxhv=</span></tt> locator works just like <tt class="docutils literal"><span class="pre">qxh=</span></tt>, except that for each step, only qooxdoo widgets with the &quot;visibility&quot; property set to &quot;visible&quot; are considered. This means that no descendants of invisible container widgets will be found. In some cases, this can lead to unexpected results. For example, in many qooxdoo applications, the root folder of a qx.ui.tree.Tree is set to be invisible. In that case, the <tt class="docutils literal"><span class="pre">qxhv</span></tt> locator would never find the root node's descendants, even though they are visible in the GUI.</p>
+</div>
+<div class="section" id="qxidv-locator-search-visible-widgets-using-html-ids">
+<span id="pages-development-simulator-locators-qxidv"></span><h3>qxidv Locator: Search visible widgets using HTML IDs<a class="headerlink" href="#qxidv-locator-search-visible-widgets-using-html-ids" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">qxidv=</span></tt> locator searches for an HTML element with the given ID and looks at the qooxdoo widget it belongs to. Only if the widget is visible is the element returned, otherwise the locator will fail.</p>
+</div>
+<div class="section" id="qxhybrid-locator-combine-locator-strategies">
+<span id="pages-development-simulator-locators-qxhybrid"></span><h3>qxhybrid locator: Combine locator strategies<a class="headerlink" href="#qxhybrid-locator-combine-locator-strategies" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">qxhybrid=</span></tt> locator allows you to combine different locator strategies. It consists of multiple sub-locators separated by double ampersands (&amp;&amp;), each of which is applied to the DOM element returned by the previous locator. The first sub-locator can be of any supported type (qx* or any of Selenium's built-in locator types) while the following steps can be either qx* or XPath locators.</p>
+<p>The primary use case for this strategy is testing applications where HTML IDs have been assigned to container widgets but not to child widgets such as e.g. list items (that may be generated during the application's runtime).</p>
+<p>An example: Suppose an application contains a list widget (<tt class="docutils literal"><span class="pre">qx.ui.form.List</span></tt>) with the HTML ID &quot;options&quot;. This is easy to find using Selenium's default ID locator:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">options</span>
+</pre></div>
+</div>
+<p>Now in order to find a list item which has the label text &quot;Foo&quot;, the following hybrid locator could be used:</p>
+<div class="highlight-javascript"><pre>qxhybrid=options&amp;&amp;qxh=[@label=Foo]</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="simulator.html"
+             title="previous chapter">« Simulator</a>
+          <span class="separator">|</span>
+          <a class="next" href="library_custom.html"
+             title="next chapter">Custom Libraries »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Simulator: Locating elements</a><ul>
+<li><a class="reference internal" href="#selenium-locators">Selenium locators</a></li>
+<li><a class="reference internal" href="#qooxdoo-specific-locators">qooxdoo-specific locators</a><ul>
+<li><a class="reference internal" href="#qxh-locator-search-the-qooxdoo-widget-hierarchy">qxh Locator: Search the qooxdoo widget hierarchy</a></li>
+<li><a class="reference internal" href="#qxhv-locator-search-visible-widgets-only">qxhv Locator: Search visible widgets only</a></li>
+<li><a class="reference internal" href="#qxidv-locator-search-visible-widgets-using-html-ids">qxidv Locator: Search visible widgets using HTML IDs</a></li>
+<li><a class="reference internal" href="#qxhybrid-locator-combine-locator-strategies">qxhybrid locator: Combine locator strategies</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="library_custom.html"
+                        title="next chapter">Custom Libraries</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="simulator.html"
+                        title="previous chapter">Simulator</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/development/simulator_locators.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

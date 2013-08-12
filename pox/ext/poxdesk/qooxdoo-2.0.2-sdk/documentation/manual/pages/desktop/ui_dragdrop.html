@@ -1,0 +1,490 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Drag &amp; Drop &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Inline Widgets" href="ui_inline.html" />
+    <link rel="prev" title="Selection Handling" href="ui_selection.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Drag &amp; Drop</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="drag-drop">
+<span id="pages-desktop-ui-dragdrop-drag-drop"></span><h1>Drag &amp; Drop<a class="headerlink" href="#drag-drop" title="Permalink to this headline">¶</a></h1>
+<p>Drag &amp; Drop is one of the essential technologies in today's applications. An operation must have a starting point (e.g. where the mouse was clicked), may have any number of intermediate steps (widgets that the mouse moves over during a drag), and must either have an end point (the widget above which the mouse button was released), or be canceled.</p>
+<p>qooxdoo comes with a powerful event-based layer which supports drag&amp;drop with full data exchange capabilities. Every widget can be configured to cooperate with drag&amp;drop be it as sender (draggable), receiver (droppable) or both. A sender (drag target) can send data to any receiver (drop target).</p>
+<p>You may like to see an example first:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#ui~DragDrop.html">Drag&amp;Drop for Lists</a></li>
+</ul>
+<div class="section" id="basics">
+<span id="pages-desktop-ui-dragdrop-basics"></span><h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<p>To enable Drag &amp; Drop the properties <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.Widget~draggable">draggable</a> and  <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.Widget~droppable">droppable</a> must be enabled on the specific widgets. For list type sources or targets it's often enough to make the top-level widget drag- or droppable e.g. the list instead of the list items.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">dragTarget</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">List</span><span class="p">;</span>
+<span class="nx">dragTarget</span><span class="p">.</span><span class="nx">setDraggable</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">dropTarget</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">List</span><span class="p">;</span>
+<span class="nx">dropTarget</span><span class="p">.</span><span class="nx">setDroppable</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The basic drag&amp;drop should start working with these properties enabled, but it will show the no-drop cursor over all potential targets. To fix this one needs to register actions (and optionally data types) supported by the drag target. This can be done during the <tt class="docutils literal"><span class="pre">dragstart</span></tt> event which is fired on the drag target:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">dragTarget</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;dragstart&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addAction</span><span class="p">(</span><span class="s2">&quot;move&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The drop target can then add a listener to react for the <tt class="docutils literal"><span class="pre">drop</span></tt> event.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">dropTarget</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">getRelatedTarget</span><span class="p">());</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The listener now shows an alert box which should present the identification ID (classname + hash code) of the drag target. Theoretically this could already be used to transfer data from A to B.</p>
+</div>
+<div class="section" id="data-handling">
+<span id="pages-desktop-ui-dragdrop-data-handling"></span><h2>Data Handling<a class="headerlink" href="#data-handling" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo also supports advanced data handling in drag&amp;drop sessions. The basic idea is to register the supported drag data types and then let the drop target choose which one to handle (if any at all).</p>
+<p>To register some types write a listener for <tt class="docutils literal"><span class="pre">dragstart</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">source</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;dragstart&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addAction</span><span class="p">(</span><span class="s2">&quot;move&quot;</span><span class="p">);</span>
+
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addType</span><span class="p">(</span><span class="s2">&quot;qx/list-items&quot;</span><span class="p">);</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addType</span><span class="p">(</span><span class="s2">&quot;html/list&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>This is basically only the registration for the types which could theoretically be delivered to the target. The IDs used are just strings. They have no special meaning. They could be identical to typical mime-types like <tt class="docutils literal"><span class="pre">text/plain</span></tt> but there is no need for this.</p>
+<p>The preparation of the data (if not directly available) is done lazily by the <tt class="docutils literal"><span class="pre">droprequest</span></tt> event which will explained later. The next step is to let the target work with the incoming data. The following code block appends all the dropped children to the end of the list.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">target</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s2">&quot;qx/list-items&quot;</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">l</span><span class="o">=</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The last step needed to get the thing to fly is to prepare the data for being dragged around. This might look like the following example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">source</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;droprequest&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getCurrentType</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">type</span> <span class="o">==</span> <span class="s2">&quot;qx/list-items&quot;</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">();</span>
+
+    <span class="c1">// Add data to manager</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">addData</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">items</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">type</span> <span class="o">==</span> <span class="s2">&quot;html/list&quot;</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// TODO: support for HTML markup</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="support-multiple-actions">
+<span id="pages-desktop-ui-dragdrop-support-multiple-actions"></span><h3>Support Multiple Actions<a class="headerlink" href="#support-multiple-actions" title="Permalink to this headline">¶</a></h3>
+<p>One thing one might consider is to add support for multiple actions. In the above example it would be imaginable to copy or move the items around. To make this possible one could add all supported actions during the <tt class="docutils literal"><span class="pre">drag</span></tt> event. This might look like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">source</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;dragstart&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Register supported actions</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addAction</span><span class="p">(</span><span class="s2">&quot;copy&quot;</span><span class="p">);</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addAction</span><span class="p">(</span><span class="s2">&quot;move&quot;</span><span class="p">);</span>
+
+  <span class="c1">// Register supported types</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addType</span><span class="p">(</span><span class="s2">&quot;qx/list-items&quot;</span><span class="p">);</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addType</span><span class="p">(</span><span class="s2">&quot;html/list&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The action to use is modifiable by the user through pressing of modifier keys during the drag&amp;drop process. The preparation of the data is done through the <tt class="docutils literal"><span class="pre">droprequest</span></tt> as well. Here one can use the action (call <tt class="docutils literal"><span class="pre">e.getCurrentAction()</span></tt> to get the selected action) to apply different modifications on the original data. A modified version of the code listed above might look like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">source</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;droprequest&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getCurrentAction</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getCurrentType</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">result</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">type</span> <span class="o">===</span> <span class="s2">&quot;qx/list-items&quot;</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">action</span> <span class="o">==</span> <span class="s2">&quot;copy&quot;</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">copy</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">l</span><span class="o">=</span><span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">copy</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">clone</span><span class="p">();</span>
+      <span class="p">}</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="nx">copy</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">case</span> <span class="o">==</span> <span class="s2">&quot;html/list&quot;</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// TODO: support for HTML markup</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Remove selected items on move</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">action</span> <span class="o">==</span> <span class="s2">&quot;move&quot;</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">selection</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">l</span><span class="o">=</span><span class="nx">selection</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">selection</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Add data to manager</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addData</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>As known from major operating systems, exactly three actions are supported:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">move</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">copy</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">alias</span></tt></li>
+</ul>
+<p>which could be combined in any way the developer likes. qooxdoo renders a matching cursor depending on the currently selected action during the drag&amp;drop sequence. The event <tt class="docutils literal"><span class="pre">dragchange</span></tt> is fired on the source widget on every change of the currently selected action.</p>
+</div>
+</div>
+<div class="section" id="runtime-checks">
+<span id="pages-desktop-ui-dragdrop-runtime-checks"></span><h2>Runtime checks<a class="headerlink" href="#runtime-checks" title="Permalink to this headline">¶</a></h2>
+<p>There are a few other pleasantries. For example it is possible for <tt class="docutils literal"><span class="pre">droppable</span></tt> widgets to ignore a specific incoming data type. This can be done by preventing the default action on the incoming <tt class="docutils literal"><span class="pre">dragover</span></tt> event:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">target</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;dragover&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">someRunTimeCheck</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>This could be used to dynamically accept or disallow specific types of drop events depending on the application status or any other given condition. The user then gets a <tt class="docutils literal"><span class="pre">nodrop</span></tt> cursor to signal that the hovered target does not accept the data. To query the source object for supported types or actions one would call the methods <tt class="docutils literal"><span class="pre">supportsAction</span></tt> or <tt class="docutils literal"><span class="pre">supportsType</span></tt> on the incoming event object.</p>
+<p>Something comparable is possible during the <tt class="docutils literal"><span class="pre">dragstart</span></tt> event:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">source</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;dragstart&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">someRunTimeCheck</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>This prevents the dragging of data from the source widget when some runtime condition is not solved. This is especially useful to call some external functionality to check whether a desired action is possible. In this case it might also depend on the other properties of the source widget e.g. in a mail program it is possible to drag the selection of the tree to another folder, with one exception: the inbox. This could easily be solved with such a feature.</p>
+</div>
+<div class="section" id="drag-session">
+<span id="pages-desktop-ui-dragdrop-drag-session"></span><h2>Drag Session<a class="headerlink" href="#drag-session" title="Permalink to this headline">¶</a></h2>
+<p>During the drag session the <tt class="docutils literal"><span class="pre">drag</span></tt> event is fired for every move of the mouse. This event may be used to &quot;attach&quot; an image or widget to the mouse cursor to indicate the type of data or object dragged around. It may also be used to render a line during a reordering drag&amp;drop session (see next paragraph). It supports the methods <tt class="docutils literal"><span class="pre">getDocumentLeft</span></tt> and <tt class="docutils literal"><span class="pre">getDocumentTop</span></tt> known from the <tt class="docutils literal"><span class="pre">mousemove</span></tt> event. This data may be used for the positioning of a cursor.</p>
+<p>When hovering a widget the <tt class="docutils literal"><span class="pre">dragover</span></tt> event is fired on the &quot;interim&quot; target. When leaving the widget the <tt class="docutils literal"><span class="pre">dragleave</span></tt> event is fired. The <tt class="docutils literal"><span class="pre">dragover</span></tt> is cancelable and has information about the related target (the source widget) through <tt class="docutils literal"><span class="pre">getRelatedTarget</span></tt> on the incoming event object.</p>
+<p>Another quite useful event is the <tt class="docutils literal"><span class="pre">dragend</span></tt> event which is fired at every end of the drag session. This event is fired in both cases, when the transaction has modified anything or not. It is fired when pressing Escape or stopping the session any other way as well.</p>
+<p>A typical sequence of events could look like this:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">dragstart</span></tt> on source (once)</li>
+<li><tt class="docutils literal"><span class="pre">drag</span></tt> on source (mouse move)</li>
+<li><tt class="docutils literal"><span class="pre">dragover</span></tt> on target (mouse over)</li>
+<li><tt class="docutils literal"><span class="pre">dragchange</span></tt> on source (action change)</li>
+<li><tt class="docutils literal"><span class="pre">dragleave</span></tt> on target (mouse out)</li>
+<li><tt class="docutils literal"><span class="pre">drop</span></tt> on target (once)</li>
+<li><tt class="docutils literal"><span class="pre">droprequest</span></tt> on source (normally once)</li>
+<li><tt class="docutils literal"><span class="pre">dragend</span></tt> on source (once)</li>
+</ul>
+</div>
+<div class="section" id="reordering-items">
+<span id="pages-desktop-ui-dragdrop-reordering-items"></span><h2>Reordering items<a class="headerlink" href="#reordering-items" title="Permalink to this headline">¶</a></h2>
+<p>Items may also be reordered inside one widget using the drag&amp;drop API. This action is normally not directly data related and may be used without adding any types to the drag&amp;drop session.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">reorder</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;dragstart&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addAction</span><span class="p">(</span><span class="s2">&quot;move&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">reorder</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Using the selection sorted by the original index in the list</span>
+  <span class="kd">var</span> <span class="nx">sel</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getSortedSelection</span><span class="p">();</span>
+
+  <span class="c1">// This is the original target hovered</span>
+  <span class="kd">var</span> <span class="nx">orig</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getOriginalTarget</span><span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">l</span><span class="o">=</span><span class="nx">sel</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Insert before the marker</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">addBefore</span><span class="p">(</span><span class="nx">sel</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">orig</span><span class="p">);</span>
+
+    <span class="c1">// Recover selection as it gets lost during child move</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">addToSelection</span><span class="p">(</span><span class="nx">sel</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_selection.html"
+             title="previous chapter">« Selection Handling</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_inline.html"
+             title="next chapter">Inline Widgets »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Drag &amp; Drop</a><ul>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#data-handling">Data Handling</a><ul>
+<li><a class="reference internal" href="#support-multiple-actions">Support Multiple Actions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#runtime-checks">Runtime checks</a></li>
+<li><a class="reference internal" href="#drag-session">Drag Session</a></li>
+<li><a class="reference internal" href="#reordering-items">Reordering items</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_inline.html"
+                        title="next chapter">Inline Widgets</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_selection.html"
+                        title="previous chapter">Selection Handling</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_dragdrop.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

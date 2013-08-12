@@ -1,0 +1,446 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Communication &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../index.html" />
+    <link rel="up" title="Table of Contents" href="../toc.html" />
+    <link rel="next" title="Higher-level requests" href="communication/request_io.html" />
+    <link rel="prev" title="RequireJS Support" href="server/requirejs.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../index.html">Manual (v2.0.2)</a> &raquo;
+  <a href="">Communication</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="communication">
+<h1>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h1>
+<p>Sending HTTP requests and receiving responses is an important feature of almost every application running in the browser. Most commonly, the technique used is termed Ajax. qooxdoo’s communication stack offers many ways to facilitate HTTP communication at different levels of abstraction.</p>
+<div class="section" id="low-level-requests">
+<span id="pages-communication-low-level-requests"></span><h2>Low-level requests<a class="headerlink" href="#low-level-requests" title="Permalink to this headline">¶</a></h2>
+<p>At the very core, HTTP requests from the browser are made by interfacing with the HTTP client API or by adding a script tag to the document. Classes dealing with those low-level transport methods can be found in the <tt class="docutils literal"><span class="pre">qx.bom.request</span></tt> namespace. Usually they are not instantiated directly by the user.</p>
+<p><tt class="docutils literal"><span class="pre">Xhr</span></tt> is a wrapper of the HTTP client API offered by the browser. It’s purpose is to hide inconsistencies and to work around bugs found in popular implementations. The interface of <tt class="docutils literal"><span class="pre">qx.bom.request.Xhr</span></tt> is similar to <a class="reference external" href="http://www.w3.org/TR/XMLHttpRequest2/">XMLHttpRequest</a>, the HTTP client API specified by the W3C.</p>
+<p><tt class="docutils literal"><span class="pre">Script</span></tt> is a script loader. Internally, the class deals with adding and removing script tags to the document and keeping track of the load status. Just like <tt class="docutils literal"><span class="pre">qx.bom.request.Xhr</span></tt>, the interface is modeled based on XMLHttpRequest.</p>
+<p><tt class="docutils literal"><span class="pre">Jsonp</span></tt> builds on the script loader and adds functionality needed to receive JSONP responses. JSONP stands for JSON with padding and is a technique to safely receive remote data. It's main advantage compared to to <tt class="docutils literal"><span class="pre">Xhr</span></tt> is that cross-origin requests are supported in all browsers.</p>
+</div>
+<div class="section" id="higher-level-requests">
+<h2>Higher-level requests<a class="headerlink" href="#higher-level-requests" title="Permalink to this headline">¶</a></h2>
+<p>Classes found in <tt class="docutils literal"><span class="pre">qx.io.request</span></tt> build on the groundwork laid by <tt class="docutils literal"><span class="pre">qx.bom.request</span></tt>. Properties allow to conveniently setup a request and fine-grained events facilitate handling changes of the request's status or response.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="communication/request_io.html">Higher-level requests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#choosing-an-appropriate-transport">Choosing an appropriate transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#basic-setup">Basic Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#events-and-states">Events and states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#response">Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#data-binding">Data binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#debugging">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#specific-to-xhr">Specific to XHR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="communication/request_io.html#parsing">Parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/request_io.html#id2">Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/request_io.html#accepting">Accepting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/request_io.html#caching">Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="communication/request_io.html#specific-to-json">Specific to JSON</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="communication/request_io.html#callback">Callback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/request_io.html#id3">Caching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Note that historically, qooxdoo comes with two transport layers. The old transport layer is described below.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="communication/remote_io.html">AJAX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="communication/remote_io.html#mimetypes-supported">Mimetypes supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/remote_io.html#request-data">Request data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/remote_io.html#request-configuration-properties">Request configuration (properties)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/remote_io.html#available-events">Available events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/remote_io.html#response-object">Response object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/remote_io.html#simple-example">Simple example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rest">
+<h2>REST<a class="headerlink" href="#rest" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">qx.io.rest.Resource</span></tt> is a client-side wrapper of a REST resource.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="communication/rest.html">REST (Representational State Transfer)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="communication/rest.html#configuring-actions">Configuring actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rest.html#invoking-actions">Invoking actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rest.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rest.html#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rest.html#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rest.html#helpers">Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rest.html#data-binding">Data binding</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="remote-procedure-calls-rpc">
+<h2>Remote Procedure Calls (RPC)<a class="headerlink" href="#remote-procedure-calls-rpc" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="communication/rpc.html">RPC (Remote Procedure Call)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc.html#json-rpc-protocol">JSON-RPC Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc.html#making-remote-calls">Making remote calls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc.html#basic-call-syntax">Basic call syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc.html#parameter-and-result-conversion">Parameter and result conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc.html#aborting-a-call">Aborting a call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc.html#error-handling">Error handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc.html#cross-domain-calls">Cross-domain calls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc.html#writing-your-own-services">Writing your own services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc.html#java">Java</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="communication/rpc.html#accessing-the-session">Accessing the session</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc.html#debugging-backends">Debugging Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc.html#creating-mockup-data">Creating mockup data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc.html#qooxdoo-json-rpc-specification">qooxdoo JSON-RPC specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc.html#adding-to-the-standard">Adding to the standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc.html#extending-the-standard">Extending the standard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="rpc-servers">
+<h3>RPC Servers<a class="headerlink" href="#rpc-servers" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="communication/rpc_server_writer_guide.html">RPC Server Writer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc_server_writer_guide.html#json">JSON</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc_server_writer_guide.html#date-objects">Date Objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="communication/rpc_server_writer_guide.html#whitespace">Whitespace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="communication/rpc_server_writer_guide.html#numbers">Numbers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc_server_writer_guide.html#rpc">RPC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc_server_writer_guide.html#request-method-invocation">request (method invocation)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc_server_writer_guide.html#response">response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc_server_writer_guide.html#the-error-object">The Error Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc_server_writer_guide.html#origin">origin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc_server_writer_guide.html#code">code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="communication/rpc_server_writer_guide.html#message">message</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc_server_writer_guide.html#other-errors">Other Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc_server_writer_guide.html#transport">Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication/rpc_server_writer_guide.html#testing-a-new-server">Testing A New Server</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="specific-widget-communication">
+<h2>Specific Widget Communication<a class="headerlink" href="#specific-widget-communication" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="widget/table_remote_model.html">Using the remote table model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="widget/table_remote_model.html#implement-your-subclass">Implement your subclass</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="widget/table_remote_model.html#using-your-remote-model">Using your remote model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="widget/table_remote_model.html#sorting-your-data">Sorting your data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="widget/table_remote_model.html#backend">Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="widget/table_remote_model.html#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="server/requirejs.html"
+             title="previous chapter">« RequireJS Support</a>
+          <span class="separator">|</span>
+          <a class="next" href="communication/request_io.html"
+             title="next chapter">Higher-level requests »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Communication</a><ul>
+<li><a class="reference internal" href="#low-level-requests">Low-level requests</a></li>
+<li><a class="reference internal" href="#higher-level-requests">Higher-level requests</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#rest">REST</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#remote-procedure-calls-rpc">Remote Procedure Calls (RPC)</a><ul>
+<li><a class="reference internal" href="#rpc-servers">RPC Servers</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#specific-widget-communication">Specific Widget Communication</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="communication/request_io.html"
+                        title="next chapter">Higher-level requests</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="server/requirejs.html"
+                        title="previous chapter">RequireJS Support</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../_sources/pages/communication.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

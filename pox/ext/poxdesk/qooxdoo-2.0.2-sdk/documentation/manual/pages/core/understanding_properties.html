@@ -1,0 +1,447 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction to Properties &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Core" href="../core.html" />
+    <link rel="next" title="Properties in more detail" href="defining_properties.html" />
+    <link rel="prev" title="Mixins" href="mixins.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" accesskey="U">Core</a>
+     &raquo;
+  <a href="">Introduction to Properties</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="introduction-to-properties">
+<span id="pages-understanding-properties-understanding-properties"></span><h1>Introduction to Properties<a class="headerlink" href="#introduction-to-properties" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo comes with its own convenient and sophisticated property management system. In order to understand its power we will first take a look at the ordinary property handling in plain JavaScript first.</p>
+<div class="section" id="ordinary-property-handling">
+<span id="pages-understanding-properties-ordinary-property-handling"></span><h2>Ordinary Property Handling<a class="headerlink" href="#ordinary-property-handling" title="Permalink to this headline">¶</a></h2>
+<p>Let's say we have a property <tt class="docutils literal"><span class="pre">width</span></tt> for an object <tt class="docutils literal"><span class="pre">obj</span></tt>.</p>
+<p>As is a good practice in regular high-level programming languages you should not access object properties directly:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// NOT RECOMMENDED: direct access to properties</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>  <span class="c1">// setting a value</span>
+<span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>  <span class="c1">// getting the current value</span>
+</pre></div>
+</div>
+<p>Instead you should work with properties only through so-called <em>accessor methods</em> (&quot;getters&quot;) and <em>mutator methods</em> (&quot;setters&quot;):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// direct access is no good practice</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>  <span class="c1">// setting a value</span>
+<span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">getWidth</span><span class="p">();</span>  <span class="c1">// getting the current value</span>
+</pre></div>
+</div>
+<p>Of course, directly accessing properties may be faster because no indirection by a function call is needed. Nonetheless, in practice this does not outweight the disadvantages. Direct access to properties does not hide internal implementation details and is a less maintainable solution (Well, you don't program web applications in assembler code, do you?).</p>
+<p>A typical implementation of the accessor and mutator methods would look like the following, where those instance methods are declared in the <tt class="docutils literal"><span class="pre">members</span></tt> section of the class definition:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// ordinary example #1</span>
+<span class="nx">members</span><span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">getWidth</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_width</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="nx">setWidth</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">width</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_width</span> <span class="o">=</span> <span class="nx">width</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">width</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Something that is very familiar to the typical programmer of Java or any other comparable language. Still, it is not very convenient. Even this trivial implementation of only the basic feature requires a lot of keystrokes. More advanced features like type checks, performance optimizations, firing events for value changes, etc. need to be coded by hand. An improved version of the setter could read:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// ordinary example #2</span>
+<span class="nx">members</span><span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">setWidth</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">width</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">width</span> <span class="o">!=</span> <span class="s2">&quot;number&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Type check: Make sure it is a valid number</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&quot;Invalid value: Need a valid integer value: &quot;</span> <span class="o">+</span> <span class="nx">width</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_width</span> <span class="o">!=</span> <span class="nx">width</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Optimization: Only set value, if different from the existing value</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_width</span> <span class="o">=</span> <span class="nx">width</span><span class="p">;</span>
+
+      <span class="c1">// User code that should be run for the new value</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setStyleProperty</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="nx">width</span><span class="o">+</span> <span class="s2">&quot;px&quot;</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="k">return</span> <span class="nx">width</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Large part of the code found here is for managing the validation and storage of the incoming data. The property-specific user code is rather short.</p>
+</div>
+<div class="section" id="qooxdoo-property-handling">
+<span id="pages-understanding-properties-qooxdoo-property-handling"></span><h2>qooxdoo Property Handling<a class="headerlink" href="#qooxdoo-property-handling" title="Permalink to this headline">¶</a></h2>
+<p>Let's see how the above example can be written using qooxdoo's property implementation. The property itself is declared in the <tt class="docutils literal"><span class="pre">properties</span></tt> section of the class definition. Only if some property-specific code needs to be run in the setter, an additional <tt class="docutils literal"><span class="pre">apply</span></tt> method has to be given:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// qooxdoo version of ordinary example #2</span>
+<span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">width</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;Number&quot;</span><span class="p">,</span> <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;applyWidth&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">members</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">applyWidth</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setStyleProperty</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="nx">value</span> <span class="o">+</span> <span class="s2">&quot;px&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Compare that to the lengthy code of the ordinary code example above! Much shorter and nicer, also by objective means. And it almost only contains the &quot;real code&quot;.</p>
+<p>The apply method may optionally be defined for each property you add to your class. As soon as you define a key &quot;apply&quot; in your property declaration map the method  gets automatically called on each property modification (but not during initial initialization). If you do not define an apply method, the property just handles the fundamental storage of your data and its disposal.</p>
+<p>Despite needing much less explicit code (keep in mind, for <em>every</em> property), it actually contains at least as many features as the hand-tuned code: The type of the property is checked automatically (<tt class="docutils literal"><span class="pre">Number</span></tt> in the example above). Moreover, new values are only stored (and the optional apply method called) if different from the existing values. A tiny but important optimization.</p>
+<div class="section" id="change-events">
+<span id="pages-understanding-properties-change-events"></span><h3>Change Events<a class="headerlink" href="#change-events" title="Permalink to this headline">¶</a></h3>
+<p>qooxdoo supports full-featured event-based programming throughout the framework. So-called <em>change events</em> are a good example for this powerful concept.</p>
+<p>Each property may optionally behave as an observable. This means it can send out an event at any time the property value changes. Such a change event (an instance of <tt class="docutils literal"><span class="pre">qx.event.type.Data</span></tt>) is declared by providing a custom name in the <tt class="docutils literal"><span class="pre">event</span></tt> key of the property definition. While you are free to choose any event name you like, the qooxdoo framework tries to consistently use the naming convention <tt class="docutils literal"><span class="pre">&quot;change</span> <span class="pre">+</span> <span class="pre">Propertyname&quot;</span></tt>, e.g. <tt class="docutils literal"><span class="pre">&quot;changeWidth&quot;</span></tt> for a change of property <tt class="docutils literal"><span class="pre">width</span></tt>. In order to get notified of any value changes, you simply attach an event listener to the object instance containing the property in question.</p>
+<p>For example, if you would like the <tt class="docutils literal"><span class="pre">element</span></tt> property of a Widget instance <tt class="docutils literal"><span class="pre">widget</span></tt> to fire an event named <tt class="docutils literal"><span class="pre">&quot;changeElement&quot;</span></tt> any time the value changes.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">element</span><span class="o">:</span> <span class="p">{</span> <span class="nx">event</span><span class="o">:</span> <span class="s2">&quot;changeElement&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If this happens, you would like to set the DOM element's content:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">widget</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;changeElement&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">getValue</span><span class="p">().</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The anonymous function acts as an event handler that receives the event object as variable <tt class="docutils literal"><span class="pre">e</span></tt>. Calling the predefined method <tt class="docutils literal"><span class="pre">getValue()</span></tt> returns the new value of property <tt class="docutils literal"><span class="pre">element</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="available-methods">
+<span id="pages-understanding-properties-available-methods"></span><h2>Available Methods<a class="headerlink" href="#available-methods" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo's dynamic properties not only make sure that all properties behave in a consistent way, but also guarantee that the API to access and manipulate properties are identical.
+The user is only confronted with a single interface, where the method names are easy to understand.
+Each property creates (at least) the following set of methods:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">setPropertyName()</span></tt>: Mutator method (&quot;setter&quot;) to set a new property value.</li>
+<li><tt class="docutils literal"><span class="pre">getPropertyName()</span></tt>: Accessor method (&quot;getter&quot;) that returns  the current value.</li>
+</ul>
+<p>Additionally, all properties of boolean type (declared by <tt class="docutils literal"><span class="pre">check:</span> <span class="pre">&quot;Boolean&quot;</span></tt>) provide the following convenience methods:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">isPropertyName()</span></tt>: Identical to <tt class="docutils literal"><span class="pre">getPropertyName()</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">togglePropertyName()</span></tt>: Toggles between true and false.</li>
+</ul>
+</div>
+<div class="section" id="property-groups">
+<span id="pages-understanding-properties-property-groups"></span><h2>Property Groups<a class="headerlink" href="#property-groups" title="Permalink to this headline">¶</a></h2>
+<p>Property groups is a layer above the property system explained in the last paragraphs. They make it possible to set multiple values in one step using one <tt class="docutils literal"><span class="pre">set</span></tt> call. <tt class="docutils literal"><span class="pre">qx.ui.core.Widget</span></tt> supports the property group <tt class="docutils literal"><span class="pre">padding</span></tt>. <tt class="docutils literal"><span class="pre">padding</span></tt> simply sets the <tt class="docutils literal"><span class="pre">paddingLeft</span></tt>, <tt class="docutils literal"><span class="pre">paddingRight</span></tt>, <tt class="docutils literal"><span class="pre">paddingTop</span></tt> and <tt class="docutils literal"><span class="pre">paddingBottom</span></tt> property.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The result is identical to:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">widget</span><span class="p">.</span><span class="nx">setPaddingTop</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPaddingRight</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPaddingBottom</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPaddingLeft</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As you can see the property groups are a nice really convenient feature.</p>
+<div class="section" id="shorthand-support">
+<span id="pages-understanding-properties-shorthand-support"></span><h3>Shorthand support<a class="headerlink" href="#shorthand-support" title="Permalink to this headline">¶</a></h3>
+<p>One more thing. The property group handling also supports some CSS like magic like the shorthand mode for example. This means that you can define only some edges in one call and the others get filled automatically:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// four arguments</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="nx">top</span><span class="p">,</span> <span class="nx">right</span><span class="p">,</span> <span class="nx">bottom</span><span class="p">,</span> <span class="nx">left</span><span class="p">);</span>
+
+<span class="c1">// three arguments</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="nx">top</span><span class="p">,</span> <span class="nx">right</span><span class="o">+</span><span class="nx">left</span><span class="p">,</span> <span class="nx">bottom</span><span class="p">);</span>
+
+<span class="c1">// two arguments</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="nx">top</span><span class="o">+</span><span class="nx">bottom</span><span class="p">,</span> <span class="nx">right</span><span class="o">+</span><span class="nx">left</span><span class="p">);</span>
+
+<span class="c1">// one argument</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="nx">top</span><span class="o">+</span><span class="nx">right</span><span class="o">+</span><span class="nx">bottom</span><span class="o">+</span><span class="nx">left</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As you can see this can also reduce the code base and make it more userfriendly.</p>
+<p>BTW: The values of a property group can also be given an array as first argument e.g. these two lines work identically:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// arguments list</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+
+<span class="c1">// first argument as array</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more information regarding declaration, usage and internal functionality please see the  <a class="reference internal" href="defining_properties.html"><em>the developer documentation</em></a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="mixins.html"
+             title="previous chapter">« Mixins</a>
+          <span class="separator">|</span>
+          <a class="next" href="defining_properties.html"
+             title="next chapter">Properties in more detail »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Introduction to Properties</a><ul>
+<li><a class="reference internal" href="#ordinary-property-handling">Ordinary Property Handling</a></li>
+<li><a class="reference internal" href="#qooxdoo-property-handling">qooxdoo Property Handling</a><ul>
+<li><a class="reference internal" href="#change-events">Change Events</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#available-methods">Available Methods</a></li>
+<li><a class="reference internal" href="#property-groups">Property Groups</a><ul>
+<li><a class="reference internal" href="#shorthand-support">Shorthand support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="defining_properties.html"
+                        title="next chapter">Properties in more detail</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="mixins.html"
+                        title="previous chapter">Mixins</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/core/understanding_properties.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

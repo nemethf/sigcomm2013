@@ -1,0 +1,421 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Menu Handling &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Window Management" href="window_management.html" />
+    <link rel="prev" title="Form Handling" href="ui_form_handling.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Menu Handling</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="menu-handling">
+<span id="pages-ui-menu-handling-menu-handling"></span><h1>Menu Handling<a class="headerlink" href="#menu-handling" title="Permalink to this headline">¶</a></h1>
+<p>Menus are well-established user interface elements in GUIs. They are popup-like controls that provide simple or cascading lists of buttons. Typical uses show menus opening off from buttons in tool bars, or popping up as context menus on mouse right-clicks e.g. on a tree element.</p>
+<p>Here are a few examples:</p>
+<p><img alt="file_menu.png" src="../../_images/file_menu.png" /></p>
+<p><img alt="complex_menu.png" src="../../_images/complex_menu.png" /></p>
+<p><img alt="context_menu.png" src="../../_images/context_menu.png" /></p>
+<p>The <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#widget~Menu.html">Demobrowser</a> provides further examples.</p>
+<p>Menus can be constructed in a qooxdoo application using widgets from the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.menu">qx.ui.menu</a> name space.
+The main class from this package is <tt class="docutils literal"><span class="pre">Menu</span></tt>. Other classes allow you to tailor the appearance and the behaviour of the menu you create. You can even use checkboxes and radiobuttons inside your menus.</p>
+<div class="section" id="simple-example">
+<span id="pages-ui-menu-handling-simple-example"></span><h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<p>Here is a simple menu example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Create the menu</span>
+<span class="kd">var</span> <span class="nx">menu</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Menu</span><span class="p">();</span>
+
+<span class="c1">// Creates the command</span>
+<span class="kd">var</span> <span class="nx">command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s2">&quot;Control+O&quot;</span><span class="p">);</span>
+<span class="nx">command</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;Open action&quot;</span><span class="p">);</span>
+<span class="p">},</span><span class="k">this</span><span class="p">);</span>
+
+<span class="c1">// Add some content</span>
+<span class="kd">var</span> <span class="nx">openButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="s2">&quot;icon/16/actions/document-open.png&quot;</span><span class="p">,</span> <span class="nx">command</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">closeButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Close&quot;</span><span class="p">);</span>
+
+<span class="nx">menu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">openButton</span><span class="p">);</span>
+<span class="nx">menu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">closeButton</span><span class="p">);</span>
+
+<span class="c1">// Add behaviour</span>
+<span class="nx">closeButton</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;Close action&quot;</span><span class="p">);</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+
+<span class="c1">// Create a button that will hold the menu</span>
+<span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">MenuButton</span><span class="p">(</span><span class="s2">&quot;Menu&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">menu</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>There are a couple of things to note here:</p>
+<ul class="simple">
+<li>The main widget is the <tt class="docutils literal"><span class="pre">menu</span></tt> of type <tt class="docutils literal"><span class="pre">qx.ui.menu.Menu</span></tt>.</li>
+<li>Menu buttons are of type <tt class="docutils literal"><span class="pre">qx.ui.menu.Button</span></tt> and are created individually.</li>
+<li>They are then added to the menu. The buttons will appear in the menu in the order they are added.</li>
+<li>The <tt class="docutils literal"><span class="pre">closeButton</span></tt> is created with the minimal set of parameters, namely just the string for the button label. For a more advanced solution, see the <tt class="docutils literal"><span class="pre">openButton</span></tt>: you can optionally specify a button icon, and a command <tt class="docutils literal"><span class="pre">qx.event.Command</span></tt> that is invoked if the button or the shortcut is pressed/selected.</li>
+<li>You can supply missing or updated features after the widget's creation; e.g. the callback function for the <tt class="docutils literal"><span class="pre">closeButton</span></tt> is provided in a separate method call to <tt class="docutils literal"><span class="pre">addListener()</span></tt>.</li>
+<li>The canonical event for the selection of a menu button is the <tt class="docutils literal"><span class="pre">execute</span></tt> event. (This is in line with other button flavors throughout the qooxdoo framework, e.g. the regular <tt class="docutils literal"><span class="pre">qx.ui.form.Button</span></tt>).</li>
+</ul>
+</div>
+<div class="section" id="complex-menu-sample">
+<span id="pages-ui-menu-handling-complex-menu-sample"></span><h2>Complex Menu Sample<a class="headerlink" href="#complex-menu-sample" title="Permalink to this headline">¶</a></h2>
+<p>This example should show how to create a menu structure with submenu and how to handle with groups.</p>
+<p>Qooxdoo has some widgets that need a menu to handle user interaction. For this sample we will chose the <tt class="docutils literal"><span class="pre">qx.ui.toolbar.ToolBar</span></tt> to create the menu structure. To see a overview, witch widgets uses a menu, take a look in the <a class="reference internal" href="../widget/menu.html"><em>Menu</em></a>.</p>
+<p>This code snippet show how to create a &quot;ToolBar&quot; with to menu items &quot;File&quot; and &quot;View&quot;:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Create the toolbar and add to the DOM</span>
+<span class="kd">var</span> <span class="nx">toolBar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">ToolBar</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="nx">toolBar</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">left</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="nx">top</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="nx">right</span><span class="o">:</span> <span class="mi">20</span>
+<span class="p">});</span>
+
+<span class="c1">// Create &quot;File&quot; menu</span>
+<span class="kd">var</span> <span class="nx">fileButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">MenuButton</span><span class="p">(</span><span class="s2">&quot;File&quot;</span><span class="p">);</span>
+<span class="nx">toolBar</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">fileButton</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">fileMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Menu</span><span class="p">();</span>
+<span class="nx">fileMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;New&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">__getNewMenu</span><span class="p">()));</span>
+<span class="nx">fileMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Open...&quot;</span><span class="p">,</span> <span class="s2">&quot;icon/16/actions/document-open.png&quot;</span><span class="p">));</span>
+<span class="nx">fileMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Separator</span><span class="p">());</span>
+<span class="nx">fileMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Save&quot;</span><span class="p">,</span> <span class="s2">&quot;icon/16/actions/document-save.png&quot;</span><span class="p">));</span>
+<span class="nx">fileMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Save As...&quot;</span><span class="p">,</span> <span class="s2">&quot;icon/16/actions/document-save-as.png&quot;</span><span class="p">));</span>
+<span class="nx">fileMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Separator</span><span class="p">());</span>
+<span class="nx">fileMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Exit&quot;</span><span class="p">,</span> <span class="s2">&quot;icon/16/actions/application-exit.png&quot;</span><span class="p">));</span>
+<span class="nx">fileButton</span><span class="p">.</span><span class="nx">setMenu</span><span class="p">(</span><span class="nx">fileMenu</span><span class="p">);</span>
+
+<span class="c1">// Create &quot;View&quot; menu</span>
+<span class="kd">var</span> <span class="nx">viewButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">MenuButton</span><span class="p">(</span><span class="s2">&quot;View&quot;</span><span class="p">);</span>
+<span class="nx">toolBar</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">viewButton</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">viewMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Menu</span><span class="p">();</span>
+<span class="nx">viewMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Panes&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">__getPanesMenu</span><span class="p">()));</span>
+<span class="nx">viewMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Syntax&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">__getSyntaxMenu</span><span class="p">()));</span>
+<span class="nx">viewMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Separator</span><span class="p">());</span> <span class="c1">// First kind to add a separator</span>
+<span class="nx">viewMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">CheckBox</span><span class="p">(</span><span class="s2">&quot;Show ruler&quot;</span><span class="p">));</span>
+<span class="nx">viewMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">CheckBox</span><span class="p">(</span><span class="s2">&quot;Show line numbers&quot;</span><span class="p">));</span>
+<span class="nx">viewMenu</span><span class="p">.</span><span class="nx">addSeparator</span><span class="p">();</span> <span class="c1">// A other kind to add a separator</span>
+<span class="nx">viewMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;ASCII table...&quot;</span><span class="p">));</span>
+<span class="nx">viewButton</span><span class="p">.</span><span class="nx">setMenu</span><span class="p">(</span><span class="nx">viewMenu</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>There are a couple of things to note here:</dt>
+<dd><ul class="first last simple">
+<li>The <tt class="docutils literal"><span class="pre">qx.ui.menu.Menu</span></tt> could get some different children (Button, Seperator, CheckBox, ...)</li>
+<li>The fourth parameter in <tt class="docutils literal"><span class="pre">qx.ui.menu.Button</span></tt> is also a menu. So it is possible to create submenus.</li>
+<li>There are tow kinds to add a separator to a menu. The first kind is to create a <tt class="docutils literal"><span class="pre">Separator</span></tt> instance and add this to the menu. Or the other kind is to call the <tt class="docutils literal"><span class="pre">addSeparator</span></tt> method from the <tt class="docutils literal"><span class="pre">Menu</span></tt> instance.</li>
+</ul>
+</dd>
+</dl>
+<p>The next code snipped should explain how to create a menu, which contain RadioButtons, but only one could be selected:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">__getSyntaxMenu</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">syntaxMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Menu</span><span class="p">();</span>
+
+  <span class="kd">var</span> <span class="nx">cDialectMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Menu</span><span class="p">();</span>
+  <span class="nx">cDialectMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">RadioButton</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">));</span>
+  <span class="nx">cDialectMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">RadioButton</span><span class="p">(</span><span class="s2">&quot;C Sharp&quot;</span><span class="p">));</span>
+  <span class="nx">cDialectMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">RadioButton</span><span class="p">(</span><span class="s2">&quot;C Plus Plus&quot;</span><span class="p">));</span>
+
+  <span class="kd">var</span> <span class="nx">htmlButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">RadioButton</span><span class="p">(</span><span class="s2">&quot;HTML&quot;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">jsButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">RadioButton</span><span class="p">(</span><span class="s2">&quot;JavaScript&quot;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">cdialectButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;C Dialect&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">cDialectMenu</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">pythonButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">RadioButton</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">);</span>
+
+  <span class="nx">syntaxMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">htmlButton</span><span class="p">);</span>
+  <span class="nx">syntaxMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">jsButton</span><span class="p">);</span>
+  <span class="nx">syntaxMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cdialectButton</span><span class="p">);</span>
+  <span class="nx">syntaxMenu</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">pythonButton</span><span class="p">);</span>
+
+  <span class="c1">// Configure and fill radio group</span>
+  <span class="kd">var</span> <span class="nx">langGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">RadioGroup</span><span class="p">();</span>
+  <span class="nx">langGroup</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">htmlButton</span><span class="p">,</span> <span class="nx">jsButton</span><span class="p">,</span> <span class="nx">pythonButton</span><span class="p">);</span>
+  <span class="nx">langGroup</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">langGroup</span><span class="p">,</span> <span class="nx">cdialectButton</span><span class="p">.</span><span class="nx">getMenu</span><span class="p">().</span><span class="nx">getChildren</span><span class="p">());</span>
+
+  <span class="k">return</span> <span class="nx">syntaxMenu</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can see, that the menu contains <tt class="docutils literal"><span class="pre">RadioButton</span></tt> and all <tt class="docutils literal"><span class="pre">RadioButton</span></tt> should grouped in one <tt class="docutils literal"><span class="pre">RadioGroup</span></tt>, but the <tt class="docutils literal"><span class="pre">RadioButton</span></tt> in the submenu &quot;C Dialect&quot; should also be considered in the <tt class="docutils literal"><span class="pre">RadioGroup</span></tt>.</p>
+<p>To add a <tt class="docutils literal"><span class="pre">RadioButton</span></tt> to the <tt class="docutils literal"><span class="pre">RadioGroup</span></tt> call the <tt class="docutils literal"><span class="pre">add()</span></tt> method from the <tt class="docutils literal"><span class="pre">RadioGroup</span></tt>. The parameter from <tt class="docutils literal"><span class="pre">add()</span></tt> is a variable number of items which should be added. You can see that the code calls a <tt class="docutils literal"><span class="pre">langGroup.add.apply()</span></tt> method to add the <tt class="docutils literal"><span class="pre">RadioButton</span></tt> from the &quot;C Dialect&quot; submenu. This is no qooxdoo construction, the <tt class="docutils literal"><span class="pre">apply()</span></tt> method is a construction from JavaScript and it is not important to know how thus the method works.</p>
+</div>
+<div class="section" id="additional-menu-topics">
+<span id="pages-ui-menu-handling-additional-menu-topics"></span><h2>Additional Menu Topics<a class="headerlink" href="#additional-menu-topics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="menu-positioning">
+<span id="pages-ui-menu-handling-menu-positioning"></span><h3>Menu positioning<a class="headerlink" href="#menu-positioning" title="Permalink to this headline">¶</a></h3>
+<p>Qooxdoo will go a long way to position a menu sensibly and with regard to the enclosing container, so that menu buttons are always fully visible if the menu is opened.</p>
+<p>The <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/demobrowser/#ui~Placement.html">Placement</a> demo shows how the menus are positioned.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_form_handling.html"
+             title="previous chapter">« Form Handling</a>
+          <span class="separator">|</span>
+          <a class="next" href="window_management.html"
+             title="next chapter">Window Management »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Menu Handling</a><ul>
+<li><a class="reference internal" href="#simple-example">Simple Example</a></li>
+<li><a class="reference internal" href="#complex-menu-sample">Complex Menu Sample</a></li>
+<li><a class="reference internal" href="#additional-menu-topics">Additional Menu Topics</a><ul>
+<li><a class="reference internal" href="#menu-positioning">Menu positioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="window_management.html"
+                        title="next chapter">Window Management</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_form_handling.html"
+                        title="previous chapter">Form Handling</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_menu_handling.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

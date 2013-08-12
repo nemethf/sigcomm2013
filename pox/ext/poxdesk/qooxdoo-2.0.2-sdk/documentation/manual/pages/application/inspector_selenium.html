@@ -1,0 +1,358 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using the Inspector to write Selenium tests &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Inspector" href="inspector.html" />
+    <link rel="next" title="Simulator" href="../development/simulator.html" />
+    <link rel="prev" title="Inspector" href="inspector.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../application.html" >Standard Applications</a>
+     &raquo;
+    <a href="inspector.html" accesskey="U">Inspector</a>
+     &raquo;
+  <a href="">Using the Inspector to write Selenium tests</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="using-the-inspector-to-write-selenium-tests">
+<span id="pages-application-inspector-selenium-using-the-qooxdoo-inspector-to-write-selenium-tests"></span><h1>Using the Inspector to write Selenium tests<a class="headerlink" href="#using-the-inspector-to-write-selenium-tests" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo's Inspector is not only a very useful tool for application developers, it can also help you write Selenium tests.</p>
+<div class="section" id="the-selenium-window">
+<span id="pages-application-inspector-selenium-the-selenium-window"></span><h2>The Selenium window<a class="headerlink" href="#the-selenium-window" title="Permalink to this headline">¶</a></h2>
+<p>From qooxdoo 1.2 onward, the Inspector features a Selenium window that duplicates some of the functionality of the Selenium IDE Firefox extension, with a qooxdoo twist. It can generate locator strings for any qooxdoo widget and run Selenium commands against the inspected application. The result is a simple Selenium test case that can be exported in the &quot;Selenese&quot; HTML format.</p>
+<img alt="../../_images/inspector_selenium_window.png" src="../../_images/inspector_selenium_window.png" />
+<div class="section" id="prerequisites">
+<span id="pages-application-inspector-selenium-prerequisites"></span><h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<p>The Selenium window needs to load <strong>Selenium Core</strong> (the JavaScript part of Selenium) This can be downloaded as a zip archive from the <a class="reference external" href="http://seleniumhq.org/download/">Selenium website</a>.</p>
+<p>If the Inspector is loaded over HTTP, the required scripts can be loaded directly from their online repository as described below.</p>
+</div>
+<div class="section" id="configuration">
+<span id="pages-application-inspector-selenium-configuration"></span><h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Clicking the Options button (the only part of the Selenium window that is active initially) opens a window where this setting can be defined. Enter the URI of a directory with the contents of the Selenium Core zip file.</p>
+<p>The protocol used <strong>must</strong> be the same the Inspector is loaded over:</p>
+<ul class="simple">
+<li>If you're loading the Inspector from your local file system, extract the archive locally and use a file system URI (<tt class="docutils literal"><span class="pre">file:///...</span></tt>).</li>
+<li>If the Inspector is loaded from a web server, the Selenium Core directory must be accessed over HTTP. In this case, Same Origin Policy restrictions do <strong>not</strong> apply, so the script directory needn't be on the same server as the Inspector itself. If it is, a relative path can be used.</li>
+</ul>
+<p>In the latter case, you can simply click the <tt class="docutils literal"><span class="pre">Use</span> <span class="pre">default</span> <span class="pre">URI</span></tt> button. This will enter the URL of the Selenium code repository in the text field.</p>
+<p>Click &quot;OK&quot; after configuring the paths. The rest of the Selenium window's GUI will be activated once the external scripts are loaded. The configured URI is saved in a cookie so this step is only necessary once per browser.</p>
+</div>
+<div class="section" id="controls">
+<span id="pages-application-inspector-selenium-controls"></span><h3>Controls<a class="headerlink" href="#controls" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="toolbar">
+<span id="pages-application-inspector-selenium-toolbar"></span><h4>Toolbar<a class="headerlink" href="#toolbar" title="Permalink to this headline">¶</a></h4>
+<img alt="../../_images/inspector_selenium_toolbar.png" src="../../_images/inspector_selenium_toolbar.png" />
+<p>Pressing the <strong>plus button</strong> will add a new line to the test case. This consists of a default command (<tt class="docutils literal"><span class="pre">qxClick</span></tt>) and a <tt class="docutils literal"><span class="pre">qxh</span></tt> locator pointing to the widget currently selected in the Inspector.</p>
+<p>The <strong>minus button</strong> removes the currently selected lines from the test case.</p>
+<p>The <strong>slider</strong> controls the delay between individual commands when playing back a test case. In some cases, e.g. clicking a button that opens a new window, it will be necessary to set this to a higher value to make sure the application finishes rendering before the next command executes.</p>
+<p>The <strong>play button</strong> executes selected test commands. If no commands are selected, the will all be run.</p>
+<p>While the <strong>record button</strong> is active, a new line will be added whenever a new widget is selected in the Inspector.</p>
+<p>The <strong>import/export button</strong> opens a new window containing the current test case in Selenese format. To import a Selenese test case, paste it into the text field and click <tt class="docutils literal"><span class="pre">Import</span></tt>.</p>
+<p>The <strong>options button</strong> opens a dialog where external script paths can be configured.</p>
+</div>
+<div class="section" id="test-commands">
+<span id="pages-application-inspector-selenium-test-commands"></span><h4>Test Commands<a class="headerlink" href="#test-commands" title="Permalink to this headline">¶</a></h4>
+<img alt="../../_images/inspector_selenium_command_table.png" src="../../_images/inspector_selenium_command_table.png" />
+<p>The table underneath the toolbar lists the commands in the current test case. Select one or more rows to execute their commands using the play button. Commands, locators and parameters can be edited by double clicking. Editing commands will display a combo box listing all commands supported by Selenium Core.</p>
+</div>
+<div class="section" id="log">
+<span id="pages-application-inspector-selenium-log"></span><h4>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h4>
+<p>The log area displays any messages generated by Selenium Core while running commands.</p>
+</div>
+<div class="section" id="selenese-window">
+<span id="pages-application-inspector-selenium-tutorial"></span><h4>Selenese window<a class="headerlink" href="#selenese-window" title="Permalink to this headline">¶</a></h4>
+<img alt="../../_images/inspector_selenese_window.png" src="../../_images/inspector_selenese_window.png" />
+<p>Opened by clicking the Import/Export button in the toolbar, the Selenese window displays the current test case in Selenese format. This can be copied and pasted into a file, e.g. to be run by Selenium RC.
+Selenese import is also supported by pasting the contents of a Selenese file in the text area and clicking <tt class="docutils literal"><span class="pre">Import</span></tt>. This will replace any commands in the current test case with those from the pasted Selenese.</p>
+</div>
+</div>
+<div class="section" id="tutorial">
+<h3>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h3>
+<p>To demonstrate the Selenium window, let's write a small test case for the qooxdoo Feed Reader: We'll automate the procedure of adding a new user-defined feed.</p>
+<p>For this we'll need both the Feed Reader itself and the Inspector, of course: Generate both by running <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">source,inspector</span></tt> in the <tt class="docutils literal"><span class="pre">application/feedreader</span></tt> directory of  your qooxdoo SDK or SVN checkout, then open <tt class="docutils literal"><span class="pre">application/feedreader/inspector/index.html</span></tt> in your favorite browser.</p>
+<p>Now configure the external scripts as described above.</p>
+<p>Time to start automating: Click the <strong>Inspect Widget</strong> button in the Inspector's toolbar, then click the Feed Reader's <strong>Add Feed</strong> button. <tt class="docutils literal"><span class="pre">qx.ui.toolbar.Button[xy]</span></tt> should now be listed as the inspected widget. If you clicked the button's icon or label, that's fine too.</p>
+<p>Click the <strong>plus button</strong> and a new line is added to the test case. Select that line and press <strong>play</strong> and the Add Feed window should open. You might need to move some Inspector windows around to see it.</p>
+<p>Now click the <strong>record</strong> button, select <strong>Inspect widget</strong> again and click the upper text field in the Add Feed window. The new command will be added immediately. Select <strong>Inspect Widget</strong> again and click the second text field, then repeat the process for the <strong>Add</strong> button. We're done adding commands, so you can deactivate the <strong>record</strong> button and then close the Add Feed window.</p>
+<p>Of course we want to type in the text fields instead of clicking them, so we need to change the commands: Double click the first column of the second row that currently says <tt class="docutils literal"><span class="pre">qxClick</span></tt>. Open the dropdown menu that appears and select <tt class="docutils literal"><span class="pre">qxType</span></tt>.
+Now double click this command's <tt class="docutils literal"><span class="pre">value</span></tt> cell and enter a title for the new feed to be added, e.g. &quot;Selenium Blogs&quot;.</p>
+<p>Repeat this step for the next row to define the new feed's URL, e.g. &quot;<a class="reference external" href="http://feeds.feedburner.com/Selenium">http://feeds.feedburner.com/Selenium</a>&quot;.</p>
+<p>That's all the steps we need, so let's watch Selenium work. Set the slider to something around 1.5 seconds, select all four commands in the table and press the <strong>play</strong> button. If all went according to plan, we can click the <strong>export</strong> button to get a Selenese version of our test case to save.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="inspector.html"
+             title="previous chapter">« Inspector</a>
+          <span class="separator">|</span>
+          <a class="next" href="../development/simulator.html"
+             title="next chapter">Simulator »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Using the Inspector to write Selenium tests</a><ul>
+<li><a class="reference internal" href="#the-selenium-window">The Selenium window</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#controls">Controls</a><ul>
+<li><a class="reference internal" href="#toolbar">Toolbar</a></li>
+<li><a class="reference internal" href="#test-commands">Test Commands</a></li>
+<li><a class="reference internal" href="#log">Log</a></li>
+<li><a class="reference internal" href="#selenese-window">Selenese window</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tutorial">Tutorial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../development/simulator.html"
+                        title="next chapter">Simulator</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="inspector.html"
+                        title="previous chapter">Inspector</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/application/inspector_selenium.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

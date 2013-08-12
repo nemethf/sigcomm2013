@@ -1,0 +1,285 @@
+# Italian
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: qooxdoo framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-15 10:00+0100\n"
+"PO-Revision-Date: 2010-04-23 22:22+0200\n"
+"Last-Translator: Alessandro Sala <alessandro DOT sala AT mclink DOT net>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "%1 does not fit %2."
+msgstr "%1 non corrisponde a %2."
+
+msgid "%1 is not a color! %2"
+msgstr "%1 non è un colore! %2"
+
+msgid "%1 is not a number."
+msgstr "%1 non è un numero."
+
+msgid "%1 is not a string."
+msgstr "%1 non è una stringa."
+
+msgid "%1 is not an url."
+msgstr "%1 non è un url."
+
+msgid "%1 is not in %2"
+msgstr "%1 non è contenuto in %2"
+
+msgid "%1 is not in the range from [%2, %3]."
+msgstr "%1 non è compreso nell'intervallo [%2, %3]."
+
+msgid "'%1' is not an email address."
+msgstr "'%1' non è un indirizzo email."
+
+msgid "Automatic"
+msgstr "Automatico"
+
+msgid "Cancel"
+msgstr "Annulla"
+
+msgid "Color Selector"
+msgstr "Selettore dei Colori"
+
+msgid "Details"
+msgstr "Dettagli"
+
+msgid "HSB"
+msgstr "TSL"
+
+msgid "Hex"
+msgstr "Hex"
+
+msgid "Last month"
+msgstr "Mese precedente"
+
+msgid "Last year"
+msgstr "Anno precedente"
+
+msgid "Next month"
+msgstr "Mese successivo"
+
+msgid "Next year"
+msgstr "Anno successivo"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Open ColorSelector"
+msgstr "Apri il Selettore dei Colori"
+
+msgid "Presets"
+msgstr "Predefiniti"
+
+msgid "Preview (Old/New)"
+msgstr "Anteprima (Vecchio/Nuovo)"
+
+msgid "RGB"
+msgstr "RGB"
+
+msgid "Reset column widths"
+msgstr "Ripristina le larghezze delle colonne"
+
+msgid "This field is required"
+msgstr "Questo campo è obbligatorio"
+
+msgid "Visual"
+msgstr "Selezione visuale"
+
+msgid "key_full_Alt"
+msgstr "Alt"
+
+msgid "key_full_Apps"
+msgstr "Tasto Menu"
+
+msgid "key_full_Backspace"
+msgstr "Backspace"
+
+msgid "key_full_CapsLock"
+msgstr "Blocca Maiuscole"
+
+msgid "key_full_Control"
+msgstr "Control"
+
+msgid "key_full_Control_Mac"
+msgstr ""
+
+msgid "key_full_Delete"
+msgstr "Cancella"
+
+msgid "key_full_Down"
+msgstr "Freccia Giù"
+
+msgid "key_full_End"
+msgstr "Fine"
+
+msgid "key_full_Enter"
+msgstr "Invio"
+
+msgid "key_full_Escape"
+msgstr "Escape"
+
+msgid "key_full_Home"
+msgstr "Inizio"
+
+msgid "key_full_Insert"
+msgstr "Inserisci"
+
+msgid "key_full_Left"
+msgstr "Freccia Sinistra"
+
+msgid "key_full_Meta"
+msgstr "Meta"
+
+msgid "key_full_NumLock"
+msgstr "Blocca Numeri"
+
+msgid "key_full_PageDown"
+msgstr "Pagina Giù"
+
+msgid "key_full_PageUp"
+msgstr "Pagina Su"
+
+msgid "key_full_Pause"
+msgstr "Pausa"
+
+msgid "key_full_PrintScreen"
+msgstr "Stampa Schermo"
+
+msgid "key_full_Right"
+msgstr "Freccia Destra"
+
+msgid "key_full_Scroll"
+msgstr "Blocca Scorrimento"
+
+msgid "key_full_Shift"
+msgstr "Maiuscole"
+
+msgid "key_full_Space"
+msgstr "Spazio"
+
+msgid "key_full_Tab"
+msgstr "Tabulazione"
+
+msgid "key_full_Up"
+msgstr "Freccia Su"
+
+msgid "key_full_Win"
+msgstr "Tasto Windows"
+
+msgid "key_short_Alt"
+msgstr "Alt"
+
+msgid "key_short_Apps"
+msgstr "Menu"
+
+msgid "key_short_Backspace"
+msgstr "Backspace"
+
+msgid "key_short_CapsLock"
+msgstr "Bloc Maiusc"
+
+msgid "key_short_Control"
+msgstr "Ctrl"
+
+msgid "key_short_Control_Mac"
+msgstr ""
+
+msgid "key_short_Delete"
+msgstr "Canc"
+
+msgid "key_short_Down"
+msgstr "Giù"
+
+msgid "key_short_End"
+msgstr "Fine"
+
+msgid "key_short_Enter"
+msgstr "Invio"
+
+msgid "key_short_Escape"
+msgstr "Esc"
+
+msgid "key_short_Home"
+msgstr "Inizio"
+
+msgid "key_short_Insert"
+msgstr "Ins"
+
+msgid "key_short_Left"
+msgstr "Sinistra"
+
+msgid "key_short_Meta"
+msgstr "Meta"
+
+msgid "key_short_NumLock"
+msgstr "Bloc Num"
+
+msgid "key_short_PageDown"
+msgstr "Pag Giù"
+
+msgid "key_short_PageUp"
+msgstr "Pag Su"
+
+msgid "key_short_Pause"
+msgstr "Pausa"
+
+msgid "key_short_PrintScreen"
+msgstr "Stamp"
+
+msgid "key_short_Right"
+msgstr "Destra"
+
+msgid "key_short_Scroll"
+msgstr "Bloc Scorr"
+
+msgid "key_short_Shift"
+msgstr "Maiusc"
+
+msgid "key_short_Space"
+msgstr "Spazio"
+
+msgid "key_short_Tab"
+msgstr "Tab"
+
+msgid "key_short_Up"
+msgstr "Su"
+
+msgid "key_short_Win"
+msgstr "Win"
+
+msgid "one of one row"
+msgid_plural "%1 of %2 rows"
+msgstr[0] "una di una riga"
+msgstr[1] "%1 di %2 righe"
+
+msgid "one row"
+msgid_plural "%1 rows"
+msgstr[0] "una riga"
+msgstr[1] "%1 righe"
+
+msgid "test Hello %1!"
+msgstr ""
+
+msgid "test Jonny"
+msgstr ""
+
+msgid "test One car"
+msgid_plural "test %1 cars"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "test affe"
+msgstr ""
+
+msgid "test one"
+msgstr ""
+
+msgid "test two"
+msgstr ""

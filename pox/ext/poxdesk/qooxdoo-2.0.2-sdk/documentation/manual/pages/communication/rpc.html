@@ -1,0 +1,571 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RPC (Remote Procedure Call) &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Communication" href="../communication.html" />
+    <link rel="next" title="RPC Server Writer Guide" href="rpc_server_writer_guide.html" />
+    <link rel="prev" title="REST (Representational State Transfer)" href="rest.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../communication.html" accesskey="U">Communication</a>
+     &raquo;
+  <a href="">RPC (Remote Procedure Call)</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="rpc-remote-procedure-call">
+<span id="pages-rpc-rpc-remote-procedure-call"></span><h1>RPC (Remote Procedure Call)<a class="headerlink" href="#rpc-remote-procedure-call" title="Permalink to this headline">¶</a></h1>
+<p><strong>qooxdoo includes an advanced RPC mechanism for direct calls to server-side methods. It allows you to write true client/server applications without having to worry about the communication details.</strong></p>
+<p>The qooxdoo RPC is based on <a class="reference external" href="http://json-rpc.org/">JSON-RPC</a> as the serialization and method call protocol, and qooxdoo provides server backends for Java, PHP, and Perl projects. A Python backend library is also provided by a third party. All parameters and return values are automatically converted between JavaScript and the server-side language.</p>
+<div class="section" id="json-rpc-protocol">
+<span id="pages-rpc-json-rpc-protocol"></span><h2>JSON-RPC Protocol<a class="headerlink" href="#json-rpc-protocol" title="Permalink to this headline">¶</a></h2>
+<p>According to <a class="reference external" href="http://en.wikipedia.org/wiki/JSON-RPC">JSON-RPC (Wikipedia)</a> &quot;[JSON-RPC] is a very simple protocol (and very similar to XML-RPC), defining only a handful of data types and commands. In contrast to XML-RPC or SOAP, it allows for bidirectional communication between the service and the client, treating each more like peers and allowing peers to call one another or send notifications to one another. It also allows multiple calls to be sent to a peer which may be answered out of order.&quot; The current servers do not yet support bi-directional communication.</p>
+</div>
+<div class="section" id="setup">
+<span id="pages-rpc-setup"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>To make use of the RPC, you need to set up a server backend first.</p>
+<p>Configuration of each server backend needs slightly different treatment. Please see the <a class="reference external" href="http://qooxdoo.org/contrib/project#backend">backend</a> relevant to you.</p>
+<p>Your favorite language is missing? Feel free to write your own qooxdoo RPC server, consult the <a class="reference internal" href="rpc_server_writer_guide.html"><em>RPC Server Writer Guide</em></a> for details.</p>
+</div>
+<div class="section" id="making-remote-calls">
+<span id="pages-rpc-making-remote-calls"></span><h2>Making remote calls<a class="headerlink" href="#making-remote-calls" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-call-syntax">
+<span id="pages-rpc-basic-call-syntax"></span><h3>Basic call syntax<a class="headerlink" href="#basic-call-syntax" title="Permalink to this headline">¶</a></h3>
+<p>To make remote calls, you need to create an instance of the Rpc class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rpc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">remote</span><span class="p">.</span><span class="nx">Rpc</span><span class="p">(</span>
+    <span class="s2">&quot;http://localhost:8080/qooxdoo/.qxrpc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;qooxdoo.test&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The first parameter is the URL of the backend (in this example a Java backend on localhost). The second is the name of the service you'd like to call. In Java, this is the fully qualified name of a class. (The Java backend includes the <tt class="docutils literal"><span class="pre">qooxdoo.test</span></tt> service used in the example. The class name is lowercase to keep it in sync with the PHP examples - in Java-only projects, you would of course use standard Java naming conventions.)</p>
+<p>When you have the Rpc instance, you can make synchronous and asynchronous calls:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// synchronous call</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">rpc</span><span class="p">.</span><span class="nx">callSync</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Result of sync call: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">exc</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Exception during sync call: &quot;</span> <span class="o">+</span> <span class="nx">exc</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// asynchronous call</span>
+<span class="kd">var</span> <span class="nx">handler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">exc</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">exc</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Result of async call: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Exception during async call: &quot;</span> <span class="o">+</span> <span class="nx">exc</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">rpc</span><span class="p">.</span><span class="nx">callAsync</span><span class="p">(</span><span class="nx">handler</span><span class="p">,</span> <span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>For synchronous calls, the first parameter is the method name. After that, one or more parameters for this method may follow (in this case, a single string). Please note that synchronous calls typically block the browser UI until the result arrives, so they should only be used sparingly (if at all)!</p>
+<p>Asynchronous calls work similarly. The only difference is an additional first parameter that specifies a handler function. This function is called when the result of the method call is available or when an exception occurred.</p>
+<p>You can also use qooxdoo event listeners for asynchronous calls - just use <tt class="docutils literal"><span class="pre">callAsyncListeners</span></tt> instead of <tt class="docutils literal"><span class="pre">callAsync</span></tt>. More details can be found in the <a class="reference external" href="http://api.qooxdoo.org/#qx.io.remote.Rpc">API documentation</a>.</p>
+<p>One difference between the qooxdoo RPC and other RPC implementations are client stubs. These are small wrapper classes that provide the same methods as the corresponding server classes, so they can be called like ordinary JavaScript methods. In qooxdoo, there are no such stubs by default, so you have to provide the method name as a string. The advantage is that there's no additional build step for generating stubs, and it's also not necessary to &quot;register&quot; your server classes at runtime (which would be a prerequisite for dynamic stub generation). If you really want or need client stubs, you currently have to write the stubs (or a generator for them) yourself. Future qooxdoo versions may include such a generator.</p>
+</div>
+<div class="section" id="parameter-and-result-conversion">
+<span id="pages-rpc-parameter-and-result-conversion"></span><h3>Parameter and result conversion<a class="headerlink" href="#parameter-and-result-conversion" title="Permalink to this headline">¶</a></h3>
+<p>All method parameters and result values are automatically converted to and from the backend language. Using the Java backend, you can even have overloaded methods, and the correct one will be picked based on the provided parameters.</p>
+<p>The following table lists the data types supported by the Java backend and the corresponding JavaScript types:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="73%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Java type</th>
+<th class="head">JavaScript type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>int, long, double, Integer, Long, Double</td>
+<td>number</td>
+</tr>
+<tr class="row-odd"><td>boolean, Boolean</td>
+<td>boolean</td>
+</tr>
+<tr class="row-even"><td>String</td>
+<td>String</td>
+</tr>
+<tr class="row-odd"><td>java.util.Date</td>
+<td>Date</td>
+</tr>
+<tr class="row-even"><td>Array (of any of the supported types)</td>
+<td>Array</td>
+</tr>
+<tr class="row-odd"><td>java.util.Map</td>
+<td>Object</td>
+</tr>
+<tr class="row-even"><td>JavaBean</td>
+<td>Object</td>
+</tr>
+</tbody>
+</table>
+<p>The first few cases are quite simple, but the last two need some more explanation. If a Java method expects a <tt class="docutils literal"><span class="pre">java.util.Map</span></tt>, you can send any JavaScript object to it. All properties of the object are converted to Java and become members of the Java Map. When a Map is used as a return value, it's converted to a JavaScript object in a similar way: A new object is created, and then all key/value pairs in the map are converted themselves and then added as properties to this object. (Please note that &quot;properties&quot; is used here in the native JavaScript sense, not in the sense of <a class="reference internal" href="../core/understanding_properties.html"><em>qooxdoo properties</em></a>.)</p>
+<p>JavaBeans are converted in a similar way. The properties of the JavaBean become JavaScript properties and vice versa. If a JavaScript object contains properties for which no corresponding setters exist in the JavaBean, they are ignored.</p>
+<p>For performance reasons, recursive conversion of JavaBeans and Maps is performed without checking for cycles! If there's a reference cycle somewhere, you end up with a StackOverflowException. The same is true when you try to send a JavaScript object to the server: If it (indirectly) references itself, you get a recursion error in the browser.</p>
+<p>Besides the fully-automatic conversions, there's also a class hinting mechanism. You can use it in case you need to send a specific sub-class to the server (see below for details). However, it can't be used to instantiate classes without a default constructor yet. Future qooxdoo versions may provide more extensive class hinting support.</p>
+</div>
+<div class="section" id="aborting-a-call">
+<span id="pages-rpc-aborting-a-call"></span><h3>Aborting a call<a class="headerlink" href="#aborting-a-call" title="Permalink to this headline">¶</a></h3>
+<p>You can abort an asynchronous call while it's still being performed:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Rpc instantiation and handler function left out for brevity</span>
+
+<span class="kd">var</span> <span class="nx">callref</span> <span class="o">=</span> <span class="nx">rpc</span><span class="p">.</span><span class="nx">callAsync</span><span class="p">(</span><span class="nx">handler</span><span class="p">,</span> <span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+
+<span class="nx">rpc</span><span class="p">.</span><span class="nx">abort</span><span class="p">(</span><span class="nx">callref</span><span class="p">);</span>
+  <span class="c1">// the handler will be called with an abort exception</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="error-handling">
+<span id="pages-rpc-error-handling"></span><h3>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h3>
+<p>When you make a synchronous call, you can catch an exception to handle errors. In its <tt class="docutils literal"><span class="pre">rpcdetails</span></tt> property, the exception contains an object that describes the error in more detail. The same details are also available in the second parameter in an asynchronous handler function, as well as in the events fired by <tt class="docutils literal"><span class="pre">callAsyncListeners</span></tt>.</p>
+<p>The following example shows how errors can be handled:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// creation of the Rpc instance left out for brevity</span>
+
+<span class="kd">var</span> <span class="nx">showDetails</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span>
+        <span class="s2">&quot;origin: &quot;</span> <span class="o">+</span> <span class="nx">details</span><span class="p">.</span><span class="nx">origin</span> <span class="o">+</span>
+        <span class="s2">&quot;; code: &quot;</span> <span class="o">+</span> <span class="nx">details</span><span class="p">.</span><span class="nx">code</span> <span class="o">+</span>
+        <span class="s2">&quot;; message: &quot;</span> <span class="o">+</span> <span class="nx">details</span><span class="p">.</span><span class="nx">message</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// error handling for sync calls</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">rpc</span><span class="p">.</span><span class="nx">callSync</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">exc</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">showDetails</span><span class="p">(</span><span class="nx">exc</span><span class="p">.</span><span class="nx">rpcdetails</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// error handling for async calls</span>
+<span class="kd">var</span> <span class="nx">handler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">exc</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">exc</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">showDetails</span><span class="p">(</span><span class="nx">exc</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">rpc</span><span class="p">.</span><span class="nx">callAsync</span><span class="p">(</span><span class="nx">handler</span><span class="p">,</span> <span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The following <tt class="docutils literal"><span class="pre">origin</span></tt>'s are defined:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Constant</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>qx.io.remote.Rpc.origin.server</td>
+<td>The error occurred on the server (e.g. when a non-existing method is called).</td>
+</tr>
+<tr class="row-odd"><td>qx.io.remote.Rpc.origin.application</td>
+<td>The error occurred inside the server application (i.e. during a method call in non-qooxdoo code).</td>
+</tr>
+<tr class="row-even"><td>qx.io.remote.Rpc.origin.transport</td>
+<td>The error occurred in the communication layer (e.g. when the Rpc instance was constructed with an URL where no backend is deployed, resulting in an HTTP 404 error).</td>
+</tr>
+<tr class="row-odd"><td>qx.io.remote.Rpc.origin.local</td>
+<td>The error occurred locally (when the call timed out or when it was aborted).</td>
+</tr>
+</tbody>
+</table>
+<p>The <tt class="docutils literal"><span class="pre">code</span></tt> depends on the origin. For the server and application origins, the possible codes are defined by the backend implementation. For transport errors, it's the HTTP status code. For local errors, the following codes are defined:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="63%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Constant</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>qx.io.remote.Rpc.localError.timeout</td>
+<td>A timeout occurred.</td>
+</tr>
+<tr class="row-odd"><td>qx.io.remote.Rpc.localError.abort</td>
+<td>The call was aborted.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cross-domain-calls">
+<span id="pages-rpc-cross-domain-calls"></span><h3>Cross-domain calls<a class="headerlink" href="#cross-domain-calls" title="Permalink to this headline">¶</a></h3>
+<p>Using the qooxdoo RPC implementation, you can also make calls across domain boundaries. On the client side, all you have to do is specify the correct destination URL in the Rpc constructor and set the crossDomain property to <tt class="docutils literal"><span class="pre">true</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rpc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">remote</span><span class="p">.</span><span class="nx">Rpc</span><span class="p">(</span><span class="s2">&quot;http://targetdomain.com/appname/.qxrpc&quot;</span><span class="p">);</span>
+<span class="nx">rpc</span><span class="p">.</span><span class="nx">setCrossDomain</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>On the server side, you need to configure the backend to accept cross-domain calls (see the documentation comments in the various backend implementations).</p>
+</div>
+</div>
+<div class="section" id="writing-your-own-services">
+<span id="pages-rpc-writing-your-own-services"></span><h2>Writing your own services<a class="headerlink" href="#writing-your-own-services" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="java">
+<span id="pages-rpc-java"></span><h3>Java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h3>
+<p>Writing your own remotely callable methods is very easy. Just create a class like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kr">package</span> <span class="nx">my</span><span class="p">.</span><span class="kr">package</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="nx">net</span><span class="p">.</span><span class="nx">sf</span><span class="p">.</span><span class="nx">qooxdoo</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">RemoteService</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">net</span><span class="p">.</span><span class="nx">sf</span><span class="p">.</span><span class="nx">qooxdoo</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">RemoteServiceException</span><span class="p">;</span>
+
+<span class="kr">public</span> <span class="kr">class</span> <span class="nx">MyService</span> <span class="kr">implements</span> <span class="nx">RemoteService</span> <span class="p">{</span>
+
+    <span class="kr">public</span> <span class="kr">int</span> <span class="nx">add</span><span class="p">(</span><span class="kr">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">b</span><span class="p">)</span> <span class="kr">throws</span> <span class="nx">RemoteServiceException</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>All you need to do is include this class in your webapp (together with the qooxdoo backend classes), and it will be available for calls from JavaScript! You don't need to write or modify any configuration files, and you don't need to register this class anywhere. The only requirements are:</p>
+<ol class="arabic simple">
+<li>The class has to implement the <tt class="docutils literal"><span class="pre">RemoteService</span></tt> interface. This is a so-called tagging interface, i.e. it has no methods.</li>
+<li>All methods that should be remotely available must be declared to throw a <tt class="docutils literal"><span class="pre">RemoteServiceException</span></tt>.</li>
+</ol>
+<p>Both requirements are there to protect arbitrary Java code from being called.</p>
+<div class="section" id="accessing-the-session">
+<span id="pages-rpc-accessing-the-session"></span><h4>Accessing the session<a class="headerlink" href="#accessing-the-session" title="Permalink to this headline">¶</a></h4>
+<p>There is one instance of a service class per session. To get access to the current session, you can provide an <em>injection</em> method called <tt class="docutils literal"><span class="pre">setQooxdooEnvironment</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kr">package</span> <span class="nx">my</span><span class="p">.</span><span class="kr">package</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="nx">javax</span><span class="p">.</span><span class="nx">servlet</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">HttpSession</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="nx">net</span><span class="p">.</span><span class="nx">sf</span><span class="p">.</span><span class="nx">qooxdoo</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">Environment</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">net</span><span class="p">.</span><span class="nx">sf</span><span class="p">.</span><span class="nx">qooxdoo</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">RemoteService</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">net</span><span class="p">.</span><span class="nx">sf</span><span class="p">.</span><span class="nx">qooxdoo</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">RemoteServiceException</span><span class="p">;</span>
+
+<span class="kr">public</span> <span class="kr">class</span> <span class="nx">MyService</span> <span class="kr">implements</span> <span class="nx">RemoteService</span> <span class="p">{</span>
+
+    <span class="kr">private</span> <span class="nx">Environment</span> <span class="nx">_env</span><span class="p">;</span>
+
+    <span class="kr">public</span> <span class="k">void</span> <span class="nx">setQooxdooEnvironment</span><span class="p">(</span><span class="nx">Environment</span> <span class="nx">env</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_env</span> <span class="o">=</span> <span class="nx">env</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="k">void</span> <span class="nx">someRemoteMethod</span><span class="p">()</span> <span class="kr">throws</span> <span class="nx">RemoteServiceException</span> <span class="p">{</span>
+        <span class="nx">HttpSession</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">_env</span><span class="p">.</span><span class="nx">getRequest</span><span class="p">().</span><span class="nx">getSession</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The environment provides access to the current request (via <tt class="docutils literal"><span class="pre">getRequest</span></tt>) and the RpcServlet instance that is handling the current call (via <tt class="docutils literal"><span class="pre">getRpcServlet</span></tt>).</p>
+</div>
+</div>
+</div>
+<div class="section" id="debugging-backends">
+<span id="pages-rpc-debugging-backends"></span><h2>Debugging Backends<a class="headerlink" href="#debugging-backends" title="Permalink to this headline">¶</a></h2>
+<p>In order to debug your service methods on the backend independently of the client application, use the <a class="reference external" href="http://qooxdoo.org/contrib/project#rpcconsole">RpcConsole</a> contribution.</p>
+</div>
+<div class="section" id="creating-mockup-data">
+<span id="pages-rpc-creating-mockup-data"></span><h2>Creating mockup data<a class="headerlink" href="#creating-mockup-data" title="Permalink to this headline">¶</a></h2>
+<p>The RpcConsole also contains a mixin class for qx.io.remote.Rpc which allows to prepare code relying on a json-rpc backend to work with static mockup data independently of the server. This allows to develop client and server independently and to create static demos. For more information, see the documentation of the <a class="reference external" href="http://qooxdoo.org/contrib/project/rpcconsole">RpcConsole (project)</a> contribution.</p>
+</div>
+<div class="section" id="qooxdoo-json-rpc-specification">
+<span id="pages-rpc-qooxdoo-json-rpc-specification"></span><h2>qooxdoo JSON-RPC specification<a class="headerlink" href="#qooxdoo-json-rpc-specification" title="Permalink to this headline">¶</a></h2>
+<p>In order to qualify as a qooxdoo json-rpc backend, a server must comply with the qooxdoo JSON-RPC server specifications. See the  <a class="reference internal" href="rpc_server_writer_guide.html"><em>RPC Server Writer Guide</em></a> for more details.</p>
+<div class="section" id="adding-to-the-standard">
+<span id="pages-rpc-adding-to-the-standard"></span><h3>Adding to the standard<a class="headerlink" href="#adding-to-the-standard" title="Permalink to this headline">¶</a></h3>
+<p>If you think that the standard is missing a feature that should be implemented in all backends, please add it as a <a class="reference external" href="http://bugzilla.qooxdoo.org/enter_bug.cgi?product=contrib&amp;component=RpcExample">bug</a>, marking it as a &quot;core feature request&quot;.</p>
+</div>
+<div class="section" id="extending-the-standard">
+<span id="pages-rpc-extending-the-standard"></span><h3>Extending the standard<a class="headerlink" href="#extending-the-standard" title="Permalink to this headline">¶</a></h3>
+<p>If a server <em>extends</em> the standard with a certain optional behavior, please add a detailed description to it on the <a class="reference external" href="http://qooxdoo.org/docs/general/rpc/jsonrpc_extensions">JSON-RPC Extensions page</a>, with information which server implements this behavior. Please also add a <a class="reference external" href="http://bugzilla.qooxdoo.org/enter_bug.cgi?product=contrib&amp;component=RpcExample">bug</a>, marked as a &quot;extension&quot; so that other server maintainers can discuss the pros and cons of adding the extension to their own servers.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="rest.html"
+             title="previous chapter">« REST (Representational State Transfer)</a>
+          <span class="separator">|</span>
+          <a class="next" href="rpc_server_writer_guide.html"
+             title="next chapter">RPC Server Writer Guide »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">RPC (Remote Procedure Call)</a><ul>
+<li><a class="reference internal" href="#json-rpc-protocol">JSON-RPC Protocol</a></li>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#making-remote-calls">Making remote calls</a><ul>
+<li><a class="reference internal" href="#basic-call-syntax">Basic call syntax</a></li>
+<li><a class="reference internal" href="#parameter-and-result-conversion">Parameter and result conversion</a></li>
+<li><a class="reference internal" href="#aborting-a-call">Aborting a call</a></li>
+<li><a class="reference internal" href="#error-handling">Error handling</a></li>
+<li><a class="reference internal" href="#cross-domain-calls">Cross-domain calls</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#writing-your-own-services">Writing your own services</a><ul>
+<li><a class="reference internal" href="#java">Java</a><ul>
+<li><a class="reference internal" href="#accessing-the-session">Accessing the session</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging-backends">Debugging Backends</a></li>
+<li><a class="reference internal" href="#creating-mockup-data">Creating mockup data</a></li>
+<li><a class="reference internal" href="#qooxdoo-json-rpc-specification">qooxdoo JSON-RPC specification</a><ul>
+<li><a class="reference internal" href="#adding-to-the-standard">Adding to the standard</a></li>
+<li><a class="reference internal" href="#extending-the-standard">Extending the standard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="rpc_server_writer_guide.html"
+                        title="next chapter">RPC Server Writer Guide</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="rest.html"
+                        title="previous chapter">REST (Representational State Transfer)</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/communication/rpc.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

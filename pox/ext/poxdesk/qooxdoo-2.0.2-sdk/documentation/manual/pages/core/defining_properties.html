@@ -1,0 +1,797 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Properties in more detail &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Core" href="../core.html" />
+    <link rel="next" title="Initialization Behavior" href="property_behavior.html" />
+    <link rel="prev" title="Introduction to Properties" href="understanding_properties.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" accesskey="U">Core</a>
+     &raquo;
+  <a href="">Properties in more detail</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="properties-in-more-detail">
+<span id="pages-defining-properties-defining-properties"></span><h1>Properties in more detail<a class="headerlink" href="#properties-in-more-detail" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please take a look at <a class="reference internal" href="property_features.html"><em>Property features summarized</em></a> first to get an compact overview of the available features.</p>
+</div>
+<div class="section" id="declaration">
+<span id="pages-defining-properties-basic-property-declaration"></span><h2>Declaration<a class="headerlink" href="#declaration" title="Permalink to this headline">¶</a></h2>
+<p>The following code creates a property <tt class="docutils literal"><span class="pre">myProperty</span></tt> and the corresponding functions like <tt class="docutils literal"><span class="pre">setMyProperty()</span></tt> and <tt class="docutils literal"><span class="pre">getMyProperty()</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span>
+<span class="p">...</span>
+<span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">myProperty</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p>You should define at least one of the attributes <tt class="docutils literal"><span class="pre">init</span></tt>, <tt class="docutils literal"><span class="pre">nullable</span></tt> or <tt class="docutils literal"><span class="pre">inheritable</span></tt>. Otherwise, the first call to the getter would stop with an exception because the computed value is not (yet) defined.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As an alternative to the <tt class="docutils literal"><span class="pre">init</span></tt> key you could set the init value of the property by calling an initializing function <tt class="docutils literal"><span class="pre">this.initMyProperty(value)</span></tt> in the constructor. See below for details.</p>
+</div>
+<p>Please also have a look at the <a class="reference internal" href="properties_quickref.html"><em>Quick Reference</em></a>.</p>
+</div>
+<div class="section" id="handling-changes-of-property-values">
+<span id="pages-defining-properties-working-with-the-property-value"></span><h2>Handling changes of property values<a class="headerlink" href="#handling-changes-of-property-values" title="Permalink to this headline">¶</a></h2>
+<p>You have multiple possibilities to react on each property change. With <em>change</em> the modification of a property is meant, where the old and the new values differ from each other.</p>
+<p>As a class developer the easiest solution with the best performance is to define an apply method. As a user of a class (the one who creates instances) it is the best to simply attach an event listener to the instance, if such an corresponding event is provided in the property declaration.</p>
+<div class="section" id="defining-an-apply-method">
+<span id="pages-defining-properties-defining-an-apply-method"></span><h3>Defining an apply method<a class="headerlink" href="#defining-an-apply-method" title="Permalink to this headline">¶</a></h3>
+<p>To attach an apply method you must add a key <tt class="docutils literal"><span class="pre">apply</span></tt> to your configuration which points to a name of a function which needs to be available in your <tt class="docutils literal"><span class="pre">members</span></tt> section. As the apply method normally should not be called directly, it is always a good idea to make the method at least protected by prefixing the name with an underscore <tt class="docutils literal"><span class="pre">_</span></tt>.</p>
+<p>The return value of the apply method is ignored. The first argument is the actual value, the second one is the former or old value. The last argument is the name of the property which can come very handy if you use one apply mehtod for more than one property. The second and third arguments are optional and may be left out.</p>
+<div class="section" id="example">
+<span id="pages-defining-properties-example-value"></span><h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">width</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyWidth&quot;</span> <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="nx">members</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">_applyWidth</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The applying method is only called when the value has changed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When using reference data types like <tt class="docutils literal"><span class="pre">Object</span></tt> or <tt class="docutils literal"><span class="pre">Array</span></tt> the apply method is <strong>always</strong> called, since these are different objects and indeed different values. This is JavaScript functionality and not qooxdoo specific.</p>
+</div>
+<p>For a more technical description, take a look at the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.core.Property">API documentation of qx.core.Property</a></p>
+</div>
+</div>
+<div class="section" id="providing-an-event-interface">
+<span id="pages-defining-properties-providing-an-event-interface"></span><h3>Providing an event interface<a class="headerlink" href="#providing-an-event-interface" title="Permalink to this headline">¶</a></h3>
+<p>For the users of a class it is in many cases a nice idea to also support an event to react on property changes. The event is defined using the <tt class="docutils literal"><span class="pre">event</span></tt> key where the value is the name of the event which should be fired.</p>
+<p>qooxdoo fires a <tt class="docutils literal"><span class="pre">qx.event.type.Data</span></tt> which supports the methods <tt class="docutils literal"><span class="pre">getData()</span></tt> and <tt class="docutils literal"><span class="pre">getOldData()</span></tt> to allow easy access to the new and old property value, respectively.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Events are only useful for public properties. Events for protected and private properties are usually not a good idea.</p>
+</div>
+<div class="section" id="pages-defining-properties-example-event">
+<span id="id1"></span><h4>Example<a class="headerlink" href="#pages-defining-properties-example-event" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">label</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">event</span> <span class="o">:</span> <span class="s2">&quot;changeLabel&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="c1">// later in your application code:</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;changeLabel&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="init-values">
+<span id="pages-defining-properties-supporting-init-values"></span><h2>Init values<a class="headerlink" href="#init-values" title="Permalink to this headline">¶</a></h2>
+<p>Init values are supported by all properties. These values are stored separately by the property engine. This way it is possible to fallback to the init value when property values are being reset.</p>
+<div class="section" id="defining-an-init-value">
+<span id="pages-defining-properties-defining-an-init-value"></span><h3>Defining an init value<a class="headerlink" href="#defining-an-init-value" title="Permalink to this headline">¶</a></h3>
+<p>There are two ways to set an init value of a property.</p>
+<div class="section" id="init-value-in-declaration">
+<span id="pages-defining-properties-init-value-in-declaration"></span><h4>Init value in declaration<a class="headerlink" href="#init-value-in-declaration" title="Permalink to this headline">¶</a></h4>
+<p>The <em>preferred</em> way for regular init values is to simply declare them by an <tt class="docutils literal"><span class="pre">init</span></tt> key in the property configuration map. You can use this key standalone or in combination with <tt class="docutils literal"><span class="pre">nullable</span></tt> and/or <tt class="docutils literal"><span class="pre">inheritable</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">myProperty</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">init</span> <span class="o">:</span> <span class="s2">&quot;hello&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="init-value-in-constructor">
+<span id="pages-defining-properties-init-value-in-constructor"></span><h4>Init value in constructor<a class="headerlink" href="#init-value-in-constructor" title="Permalink to this headline">¶</a></h4>
+<p>Alternatively, you could set the init value of the property in the constructor of the class. This is only recommended for cases where a declaration of an init value as explained above is not sufficient.</p>
+<p>Using an initializing function <tt class="docutils literal"><span class="pre">this.initMyProperty(value)</span></tt> in the constructor would allow you to assign complex non-primitive types (so-called &quot;reference types&quot; like <tt class="docutils literal"><span class="pre">Array</span></tt>, <tt class="docutils literal"><span class="pre">Object</span></tt>) that should not be shared among instances, but be unique on instance level.</p>
+<p>Another scenario would be to use a localizable init value when <a class="reference internal" href="../development/internationalization.html"><em>internationalizing your application</em></a>: Because <tt class="docutils literal"><span class="pre">this.tr()</span></tt> cannot be used in the property definition, you may either use the static <tt class="docutils literal"><span class="pre">qx.locale.Manager.tr()</span></tt> there instead, or use <tt class="docutils literal"><span class="pre">this.tr()</span></tt> in the call of the initializing function in the constructor.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You need to add a <tt class="docutils literal"><span class="pre">deferredInit:true</span></tt> to the property configuration to allow for a deferred initialization for reference types as mentioned above.</p>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;qx.MyClass&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">construct</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initMyProperty</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]);</span>
+  <span class="p">},</span>
+  <span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="nx">myProperty</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">deferredInit</span> <span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="applying-an-init-value">
+<span id="pages-defining-properties-applying-an-init-value"></span><h3>Applying an init value<a class="headerlink" href="#applying-an-init-value" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to apply the init value using an user-defined apply method. To do this call the init method <tt class="docutils literal"><span class="pre">this.initMyProperty(value)</span></tt> somewhere in your constructor - this &quot;change&quot; will than trigger calling the apply method. Of course, this only makes sense in cases where you have at least an <tt class="docutils literal"><span class="pre">apply</span></tt> or <tt class="docutils literal"><span class="pre">event</span></tt> entry in the property definition.</p>
+<p>If you do not use the init method you must be sure that the instances created from the classes are in a consistent state. The getter will return the init value even if not initialized. This may be acceptable in some cases, e.g. for properties without <tt class="docutils literal"><span class="pre">apply</span></tt> or <tt class="docutils literal"><span class="pre">event</span></tt>. But there are other cases, where the developer needs to be carefully and call the init method because otherwise the getter returns wrong information about the internal state (due to an inconsistency between init and applied value).</p>
+<p>Like calling the <tt class="docutils literal"><span class="pre">this.initMyProperty(value)</span></tt> method itself, you could call the setter and use the defined init value as parameter. This will call the apply method, not like in the usual cases when setting the same value which is aready set.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">setColor</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">);</span> <span class="c1">// apply will be invoked</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">setColor</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">);</span> <span class="c1">// apply will NOT be invoked</span>
+<span class="p">},</span>
+
+<span class="nx">properties</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">color</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">init</span> <span class="o">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyColor&quot;</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="nx">members</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">_applyColor</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example illustrates how the behavior differs from the default behavior of the property system due to the already mentioned inconsistency between init and applied value.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+
+  <span class="c1">// Initialize color with predefined value</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">initColor</span><span class="p">();</span>
+
+  <span class="c1">// Initialize store with empty array</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">initStore</span><span class="p">([]);</span>
+<span class="p">},</span>
+
+<span class="nx">properties</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">color</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">init</span> <span class="o">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyColor&quot;</span>
+  <span class="p">},</span>
+
+  <span class="nx">store</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyStore&quot;</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="nx">members</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">_applyColor</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something...</span>
+  <span class="p">},</span>
+
+  <span class="nx">_applyStore</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above example you can see the different usage possibilities regarding properties and their init values. If you do not want to share &quot;reference types&quot; (like <tt class="docutils literal"><span class="pre">Array</span></tt>, <tt class="docutils literal"><span class="pre">Object</span></tt>) between instances, the init values of these have to be declared in the constructor and not in the property definition.</p>
+<p>If an <tt class="docutils literal"><span class="pre">init</span></tt> value is given in the property declaration, the init method does not accept any parameters. The init methods always use the predefined init values. In cases where there is no <tt class="docutils literal"><span class="pre">init</span></tt> value given in the property declaration, it is possible to call the init method with one parameter, which represents the init value. This may be useful to apply reference types to each instance. Thus they would not be shared between instances.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please remember that init values are not for incoming user values. Please use <tt class="docutils literal"><span class="pre">init</span></tt> only for class defined things, not for user values. Otherwise you torpedo the multi-value idea behind the dynamic properties.</p>
+</div>
+</div>
+<div class="section" id="refining-init-values">
+<span id="pages-defining-properties-refining-init-values"></span><h3>Refining init values<a class="headerlink" href="#refining-init-values" title="Permalink to this headline">¶</a></h3>
+<p>Derived classes can refine the init value of a property defined by their super class. This is however the only modification which is allowed through inheritance. To refine a property just define two keys inside the property (re-)definition: <tt class="docutils literal"><span class="pre">init</span></tt> and <tt class="docutils literal"><span class="pre">refine</span></tt>. <tt class="docutils literal"><span class="pre">refine</span></tt> is a simple boolean flag which must be configured to true.</p>
+<p>Normally properties could not be overridden. This is the reason for the <tt class="docutils literal"><span class="pre">refine</span></tt> flag . The flag informs the implementation that the developer is aware of the feature and the modification which should be applied.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">width</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">refine</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">init</span> <span class="o">:</span> <span class="mi">100</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will change the default value at definition time. <tt class="docutils literal"><span class="pre">refine</span></tt> is a better solution than a simple <tt class="docutils literal"><span class="pre">set</span></tt> call inside the constructor because it the initial value is stored in a separate namespace as the user value and so it is possible for the user to fall back to the default value suggested by the developer of a class.</p>
+</div>
+</div>
+<div class="section" id="checking-incoming-values">
+<span id="pages-defining-properties-checking-incoming-values"></span><h2>Checking incoming values<a class="headerlink" href="#checking-incoming-values" title="Permalink to this headline">¶</a></h2>
+<p>You can check incoming values by adding a <tt class="docutils literal"><span class="pre">check</span></tt> key to the corresponding property definition. But keep in mind that these checks only apply in the development (source) version of the application. Due to performance optimization, we strip these checks for the build version. If you want a property validation, take a look at the <a class="reference internal" href="#pages-defining-properties-validation-incoming-values"><em>validation section</em></a>.</p>
+<div class="section" id="predefined-types">
+<span id="pages-defining-properties-predefined-types"></span><h3>Predefined types<a class="headerlink" href="#predefined-types" title="Permalink to this headline">¶</a></h3>
+<p>You can check against one of these predefined types:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Boolean</span></tt>, <tt class="docutils literal"><span class="pre">String</span></tt>, <tt class="docutils literal"><span class="pre">Number</span></tt>, <tt class="docutils literal"><span class="pre">Integer</span></tt>, <tt class="docutils literal"><span class="pre">Float</span></tt>, <tt class="docutils literal"><span class="pre">Double</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Object</span></tt>, <tt class="docutils literal"><span class="pre">Array</span></tt>, <tt class="docutils literal"><span class="pre">Map</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Class</span></tt>, <tt class="docutils literal"><span class="pre">Mixin</span></tt>, <tt class="docutils literal"><span class="pre">Interface</span></tt>, <tt class="docutils literal"><span class="pre">Theme</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Error</span></tt>, <tt class="docutils literal"><span class="pre">RegExp</span></tt>, <tt class="docutils literal"><span class="pre">Function</span></tt>, <tt class="docutils literal"><span class="pre">Date</span></tt>, <tt class="docutils literal"><span class="pre">Node</span></tt>, <tt class="docutils literal"><span class="pre">Element</span></tt>, <tt class="docutils literal"><span class="pre">Document</span></tt>, <tt class="docutils literal"><span class="pre">Window</span></tt>, <tt class="docutils literal"><span class="pre">Event</span></tt></li>
+</ul>
+<p>Due to the fact that JavaScript only supports the <tt class="docutils literal"><span class="pre">Number</span></tt> data type, <tt class="docutils literal"><span class="pre">Float</span></tt> and <tt class="docutils literal"><span class="pre">Double</span></tt> are handled identically to <tt class="docutils literal"><span class="pre">Number</span></tt>. Both are still useful, though, as they are supported by the Javadoc-like comments and the API viewer.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">width</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">init</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">check</span><span class="o">:</span> <span class="s2">&quot;Integer&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="possible-values">
+<span id="pages-defining-properties-possible-values"></span><h3>Possible values<a class="headerlink" href="#possible-values" title="Permalink to this headline">¶</a></h3>
+<p>One can define an explicit list of possible values:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">color</span><span class="o">:</span> <span class="p">{</span> <span class="nx">init</span> <span class="o">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="nx">check</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span> <span class="p">]</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Providing a list of possible values only works with primitive types (like strings and numbers), but not with reference types (like objects, functions, etc.).</p>
+</div>
+</div>
+<div class="section" id="instance-checks">
+<span id="pages-defining-properties-instance-checks"></span><h3>Instance checks<a class="headerlink" href="#instance-checks" title="Permalink to this headline">¶</a></h3>
+<p>It is also possible to only allow for instances of a class. This is not an explicit class name check, but rather an <tt class="docutils literal"><span class="pre">instanceof</span></tt> check. This means also instances of <em>any</em> class derived from the given class will be accepted. The class is defined using a string, thereby to not influencing the load time dependencies of a class.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">logger</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;qx.log.Logger&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interface-checks">
+<span id="pages-defining-properties-interface-checks"></span><h3>Interface checks<a class="headerlink" href="#interface-checks" title="Permalink to this headline">¶</a></h3>
+<p>The incoming value can be checked against an interface, i.e. the value (typically an instance of a class) must implement the given interface. The interface is defined using a string, thereby not influencing the load time dependencies of a class.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">application</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;qx.application.IApplication&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementing-custom-checks">
+<span id="pages-defining-properties-implementing-custom-checks"></span><h3>Implementing custom checks<a class="headerlink" href="#implementing-custom-checks" title="Permalink to this headline">¶</a></h3>
+<p>Custom checks are possible as well, using a custom function defined inside the property definition. This is useful for all complex checks which could not be solved with the built-in possibilities documented above.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">progress</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">init</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">check</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example demonstrates how to handle numeric values which only accept a given range of numbers (here 0 .. 100). The possibilities for custom checks are only limited by the developer's imagination. ;-)</p>
+<div class="section" id="alternative-solution">
+<span id="pages-defining-properties-alternative-solution"></span><h4>Alternative solution<a class="headerlink" href="#alternative-solution" title="Permalink to this headline">¶</a></h4>
+<p>As an alternative to the custom check <em>function</em>, you may also define a <em>string</em> which will directly be incorporated into the setters and used in a very efficient way. The above example could be coded like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">progress</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">init</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;!isNaN(value) &amp;&amp; value &gt;= 0 &amp;&amp; value &lt;= 100&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is more efficient, particularly for checks involving rather small tests, as it omits the function call that would be needed in the variant above.</p>
+</div>
+</div>
+</div>
+<div class="section" id="transforming-incoming-values">
+<span id="pages-defining-properties-transforming-incoming-values"></span><h2>Transforming incoming values<a class="headerlink" href="#transforming-incoming-values" title="Permalink to this headline">¶</a></h2>
+<p>You can transform incoming values before they are stored by using the transform key to the corresponding property definition.  The transform method occurs before the check and apply functions and can also throw an error if the value passed to it is invalid.  This  method is useful if you wish accept different formats or value types for a property.</p>
+<div class="section" id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Here we define both a check and transform method for the width property. Though the check method requires that the property be a integer, we can use the transform method to accept a string and transform it into an integer. Note that we can still rely on the check method to catch any other incorrect values, such as if the user mistakenly assigned a Widget to the property.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span>
+<span class="p">{</span>
+   <span class="nx">width</span> <span class="o">:</span>
+   <span class="p">{</span>
+      <span class="nx">init</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">transform</span><span class="o">:</span> <span class="s2">&quot;_transformWidth&quot;</span><span class="p">,</span>
+      <span class="nx">check</span><span class="o">:</span> <span class="s2">&quot;Integer&quot;</span>
+   <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="nx">members</span> <span class="o">:</span>
+<span class="p">{</span>
+   <span class="nx">_transformWidth</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">lang</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">isString</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">)</span>
+      <span class="p">{</span>
+          <span class="nx">value</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="validation-of-incoming-values">
+<span id="pages-defining-properties-validation-incoming-values"></span><h2>Validation of incoming values<a class="headerlink" href="#validation-of-incoming-values" title="Permalink to this headline">¶</a></h2>
+<p>Validation of a property can prevent the property from being set if it is not valid. In that case, a validation error should be thrown by the validator function. Otherwise, the validator can just do nothing.</p>
+<div class="section" id="using-a-predefined-validator">
+<span id="pages-defining-properties-using-a-predefined-validator"></span><h3>Using a predefined validator<a class="headerlink" href="#using-a-predefined-validator" title="Permalink to this headline">¶</a></h3>
+<p>If you use predefined validators, they will throw a validation error for you. You can find a set of predefined validators in  qx.util.Validate. The following example shows the usage of a range validator.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">application</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">validate</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">Validate</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-a-custom-validator">
+<span id="pages-defining-properties-using-a-custom-validator"></span><h3>Using a custom validator<a class="headerlink" href="#using-a-custom-validator" title="Permalink to this headline">¶</a></h3>
+<p>If the predefined validators are not enough for you validation, you can specify your own validator.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">application</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">validate</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">ValidationError</span><span class="p">(</span>
+          <span class="s2">&quot;Validation Error: &quot;</span><span class="p">,</span> <span class="nx">value</span> <span class="o">+</span> <span class="s2">&quot; is greater than 10.&quot;</span>
+        <span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validation-method-as-member">
+<span id="pages-defining-properties-validation-method-as-member"></span><h3>Validation method as member<a class="headerlink" href="#validation-method-as-member" title="Permalink to this headline">¶</a></h3>
+<p>You can define a validation method as a member of the class containing the property. If you have such a member validator, you can just specify the method name as a sting</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">application</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">validate</span> <span class="o">:</span> <span class="s2">&quot;_validateApplication&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="enabling-theme-support">
+<span id="pages-defining-properties-enabling-theme-support"></span><h2>Enabling theme support<a class="headerlink" href="#enabling-theme-support" title="Permalink to this headline">¶</a></h2>
+<p>The property system supports <em>multiple values per property</em> as explained in the paragraph about the init values. The theme value is another possible value that can be stored in a property. It has a lower priority than the user value and a higher priority than the init value. The <tt class="docutils literal"><span class="pre">setThemed</span></tt> and <tt class="docutils literal"><span class="pre">resetThemed</span></tt> methods are part of qooxdoo's theme layer and should not be invoked by the user directly.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">setter</span>                                    <span class="nx">value</span>                   <span class="nx">resetter</span>
+
+<span class="nx">setProperty</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>            <span class="o">^</span>           <span class="nx">user</span>           <span class="o">|</span>        <span class="nx">resetProperty</span><span class="p">()</span>
+                              <span class="o">|</span>                          <span class="o">|</span>
+<span class="nx">setThemedProperty</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>   <span class="nx">Priority</span>       <span class="nx">theme</span>      <span class="nx">Fallback</span>     <span class="nx">resetThemedProperty</span><span class="p">()</span>
+                              <span class="o">|</span>                          <span class="o">|</span>
+<span class="nx">initProperty</span><span class="p">([</span><span class="nx">value</span><span class="p">])</span>         <span class="o">|</span>           <span class="nx">init</span>           <span class="nx">v</span>        <span class="nx">n</span><span class="p">.</span><span class="nx">a</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>To enable theme support it is sufficient to add a <tt class="docutils literal"><span class="pre">themeable</span></tt> key to the property definition and set its value to <tt class="docutils literal"><span class="pre">true</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">width</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">themeable</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">init</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;Number&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal"><span class="pre">themeable</span></tt> should only be enabled for truely <em>theme-relevant</em> properties like color and decorator, but not for <em>functional</em> properties like enabled, tabIndex, etc.</p>
+</div>
+</div>
+<div class="section" id="working-with-inheritance">
+<span id="pages-defining-properties-working-with-inheritance"></span><h2>Working with inheritance<a class="headerlink" href="#working-with-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>Another great feature of the new property system is inheritance. This is primarily meant for widgets, but should be usable in independent parent-children architectures, too.</p>
+<p>Inheritance quickly becomes nothing short of vital for the property system, if you consider that it can reduce redundancy dramatically. It is advantageous both in terms of coding size and storage space, because a value only needs to be declared once for multiple objects inside an hierarchy. Beyond declaring such an inheritable property once, only intended exceptions to the inherited values need to be given to locally override those values.</p>
+<p>The inheritance as supported by qooxdoo's properties is comparable to the inheritance known from CSS. This means, for example, that all otherwise undefined values of inheritable properties automatically fall back to the corresponding parent's value.</p>
+<p>Each property may also have an explicit user value of string <tt class="docutils literal"><span class="pre">&quot;inherit&quot;</span></tt>. The inherited value, which is normally only used as a fallback value, can thus be emphasized by setting <tt class="docutils literal"><span class="pre">&quot;inherit&quot;</span></tt> explicitly. The user may set a property to <tt class="docutils literal"><span class="pre">&quot;inherit&quot;</span></tt> in order to enforce lookup by inheritance, and thereby ignoring init and appearance values.</p>
+<p>To mark a property as inheritable simply add the key <tt class="docutils literal"><span class="pre">inheritable</span></tt> and set it to <tt class="docutils literal"><span class="pre">true</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">color</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">inheritable</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Optionally, you can configure an init value of <tt class="docutils literal"><span class="pre">inherit</span></tt>. This is especially a good idea if the property should not be nullable:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">color</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">inheritable</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">init</span><span class="o">:</span> <span class="s2">&quot;inherit&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="inheritable-css-properties">
+<span id="pages-defining-properties-inheritable-css-properties"></span><h3>Inheritable CSS properties<a class="headerlink" href="#inheritable-css-properties" title="Permalink to this headline">¶</a></h3>
+<p>To give you an idea for what kind of custom properties inheritance is particularly useful, the following list of prominent CSS properties which support inheritance may be a good orientation:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">color</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">cursor</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">font</span></tt>, <tt class="docutils literal"><span class="pre">font-family</span></tt>, ...</li>
+<li><tt class="docutils literal"><span class="pre">line-height</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">list-style</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">text-align</span></tt></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This list of CSS properties is only meant for orientation and does not reflect any of qooxdoo widget properties.</p>
+</div>
+</div>
+</div>
+<div class="section" id="internal-methods">
+<span id="pages-defining-properties-internal-methods"></span><h2>Internal methods<a class="headerlink" href="#internal-methods" title="Permalink to this headline">¶</a></h2>
+<p>The property documentation in the user manual explains the public, non-internal methods for each property. However, there are some more, which are not meant for public use:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">this.resetProperty(value)</span></tt> : For properties which are inheritable. Used by the inheritance system to transfer values from parent to child widgets.</li>
+<li><tt class="docutils literal"><span class="pre">this.setThemedProperty(value)</span></tt> : For properties with <tt class="docutils literal"><span class="pre">appearance</span></tt> enabled. Used to store a separate value for the appearance of this property. Used by the appearance layer.</li>
+<li><tt class="docutils literal"><span class="pre">this.resetThemedProperty(value)</span></tt> : For properties with <tt class="docutils literal"><span class="pre">appearance</span></tt> enabled. Used to reset the separately stored appearance value of this property. Used by the appearance layer.</li>
+</ul>
+</div>
+<div class="section" id="defining-property-groups">
+<span id="pages-defining-properties-defining-property-groups"></span><h2>Defining property groups<a class="headerlink" href="#defining-property-groups" title="Permalink to this headline">¶</a></h2>
+<p>Property groups is a convenient feature as it automatically generates setters and resetters (but no getters) for a group of properties. A definition of such a group reads:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">location</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">group</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span> <span class="p">]</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see, property groups are defined in the same map as &quot;regular&quot; properties. From a user perspective the API with setters and resetters is equivalent to the API of regular properties:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">obj</span><span class="p">.</span><span class="nx">setLocation</span><span class="p">(</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+<span class="c1">// instead of</span>
+<span class="c1">// obj.setLeft(50);</span>
+<span class="c1">// obj.setTop(100);</span>
+</pre></div>
+</div>
+<div class="section" id="shorthand-support">
+<span id="pages-defining-properties-shorthand-support"></span><h3>Shorthand support<a class="headerlink" href="#shorthand-support" title="Permalink to this headline">¶</a></h3>
+<p>Additionaly, you may also provide a mode which modifies the incoming data before calling the setter of each group members. Currently, the only available modifier is <tt class="docutils literal"><span class="pre">shorthand</span></tt>, which emulates the well-known CSS shorthand support for qooxdoo properties. For more information regarding this feature, please have a look at the <a class="reference internal" href="understanding_properties.html"><em>user manual</em></a>. The definition of such a property group reads:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">padding</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">group</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;paddingTop&quot;</span><span class="p">,</span> <span class="s2">&quot;paddingRight&quot;</span><span class="p">,</span> <span class="s2">&quot;paddingBottom&quot;</span><span class="p">,</span> <span class="s2">&quot;paddingLeft&quot;</span> <span class="p">],</span>
+    <span class="nx">mode</span> <span class="o">:</span> <span class="s2">&quot;shorthand&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For example, this would allow to set the property in the following way:</p>
+<div class="highlight-javascript"><pre>obj.setPadding( 10, 20 );
+
+// instead of
+// obj.setPaddingTop(10);
+// obj.setPaddingRight(20);
+// obj.setPaddingBottom(10);
+// obj.setPaddingLeft(20);
+}
+
+    .. _pages/defining_properties#when_to_use_properties:</pre>
+</div>
+</div>
+</div>
+<div class="section" id="when-to-use-properties">
+<h2>When to use properties?<a class="headerlink" href="#when-to-use-properties" title="Permalink to this headline">¶</a></h2>
+<p>Since properties in qooxdoo support advanced features like validation, events and so on, they might not be quite as lean and fast as an ordinarily coded property that only supports a setter and getter. If you do not need these advanced features or the variable you want to store is <em>extremely</em> time critical, it might be better not to use qooxdoo's dynamic properties in those cases. You might instead want to create your own setters and getters (if needed) and store the value just as a hidden private variable (e.g. <tt class="docutils literal"><span class="pre">__varName</span></tt>) inside your object.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="understanding_properties.html"
+             title="previous chapter">« Introduction to Properties</a>
+          <span class="separator">|</span>
+          <a class="next" href="property_behavior.html"
+             title="next chapter">Initialization Behavior »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Properties in more detail</a><ul>
+<li><a class="reference internal" href="#declaration">Declaration</a></li>
+<li><a class="reference internal" href="#handling-changes-of-property-values">Handling changes of property values</a><ul>
+<li><a class="reference internal" href="#defining-an-apply-method">Defining an apply method</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#providing-an-event-interface">Providing an event interface</a><ul>
+<li><a class="reference internal" href="#pages-defining-properties-example-event">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#init-values">Init values</a><ul>
+<li><a class="reference internal" href="#defining-an-init-value">Defining an init value</a><ul>
+<li><a class="reference internal" href="#init-value-in-declaration">Init value in declaration</a></li>
+<li><a class="reference internal" href="#init-value-in-constructor">Init value in constructor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#applying-an-init-value">Applying an init value</a></li>
+<li><a class="reference internal" href="#refining-init-values">Refining init values</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#checking-incoming-values">Checking incoming values</a><ul>
+<li><a class="reference internal" href="#predefined-types">Predefined types</a></li>
+<li><a class="reference internal" href="#possible-values">Possible values</a></li>
+<li><a class="reference internal" href="#instance-checks">Instance checks</a></li>
+<li><a class="reference internal" href="#interface-checks">Interface checks</a></li>
+<li><a class="reference internal" href="#implementing-custom-checks">Implementing custom checks</a><ul>
+<li><a class="reference internal" href="#alternative-solution">Alternative solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#transforming-incoming-values">Transforming incoming values</a><ul>
+<li><a class="reference internal" href="#id2">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validation-of-incoming-values">Validation of incoming values</a><ul>
+<li><a class="reference internal" href="#using-a-predefined-validator">Using a predefined validator</a></li>
+<li><a class="reference internal" href="#using-a-custom-validator">Using a custom validator</a></li>
+<li><a class="reference internal" href="#validation-method-as-member">Validation method as member</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enabling-theme-support">Enabling theme support</a></li>
+<li><a class="reference internal" href="#working-with-inheritance">Working with inheritance</a><ul>
+<li><a class="reference internal" href="#inheritable-css-properties">Inheritable CSS properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#internal-methods">Internal methods</a></li>
+<li><a class="reference internal" href="#defining-property-groups">Defining property groups</a><ul>
+<li><a class="reference internal" href="#shorthand-support">Shorthand support</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#when-to-use-properties">When to use properties?</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="property_behavior.html"
+                        title="next chapter">Initialization Behavior</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="understanding_properties.html"
+                        title="previous chapter">Introduction to Properties</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/core/defining_properties.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

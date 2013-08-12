@@ -1,0 +1,368 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Property features summarized &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Core" href="../core.html" />
+    <link rel="next" title="Environment" href="environment.html" />
+    <link rel="prev" title="Initialization Behavior" href="property_behavior.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" accesskey="U">Core</a>
+     &raquo;
+  <a href="">Property features summarized</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="property-features-summarized">
+<span id="pages-property-features-property-features"></span><h1>Property features summarized<a class="headerlink" href="#property-features-summarized" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The chapter gives you an compact but extensive overview of the features offered by qooxdoo's property system.
+Please refer to <a class="reference internal" href="defining_properties.html"><em>Properties in more detail</em></a> for an explanation of how to define and use properties.</p>
+</div>
+<div class="section" id="value-checks">
+<span id="pages-property-features-value-checks"></span><h2>Value checks<a class="headerlink" href="#value-checks" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Built-in types for most common things</li>
+<li>Runtime checks (development version only)</li>
+<li>Instance checks by simply define the classname of the class to check for (always use an instanceof operation - a real classname is not available anymore)</li>
+<li>Custom check method by simply attaching a function to the declaration</li>
+<li>Custom check defined by a string which will be compiled into the resulting setters (faster than the above variant)</li>
+<li>Define multiple possible (primitive) values using an array</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="validation">
+<span id="pages-property-features-validation"></span><h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Validation in both development and build version</li>
+<li>Predefined validators for default validation</li>
+<li>Throws a special validation error</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="advanced-value-handling">
+<span id="pages-property-features-advanced-value-handling"></span><h2>Advanced value handling<a class="headerlink" href="#advanced-value-handling" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Multi value support. Support to store different values for init, inheritance, style and user including a automatic fallback mechanism between them.</li>
+<li>Inheritance support. Inheritance of properties defined by a parent widget e.g. inherit enabled from a groupbox to all form elements. Uses the inheritance if the computed value would be <tt class="docutils literal"><span class="pre">undefined</span></tt> or explicitly set to <tt class="docutils literal"><span class="pre">&quot;inherit&quot;</span></tt>. The getter simply returns <tt class="docutils literal"><span class="pre">&quot;inherit&quot;</span></tt> for inheritable properties which are otherwise unset.</li>
+<li>Blocks unintentionally <tt class="docutils literal"><span class="pre">undefined</span></tt> values in all setters with an exception. To reset a value one must use the <tt class="docutils literal"><span class="pre">reset</span></tt> or <tt class="docutils literal"><span class="pre">unstyle</span></tt> method which are available too.</li>
+<li>Overriding of a value by setting a property explicitly to <tt class="docutils literal"><span class="pre">null</span></tt></li>
+<li>Properties must be explicitly configured as <tt class="docutils literal"><span class="pre">&quot;nullable&quot;</span></tt> (like in .Net). The default is <tt class="docutils literal"><span class="pre">false</span></tt> which means that incoming <tt class="docutils literal"><span class="pre">null</span></tt> values will result in an exception.</li>
+<li>Accessing nullable properties with <tt class="docutils literal"><span class="pre">undefined</span></tt> values will result in a normalization to <tt class="docutils literal"><span class="pre">null</span></tt>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="convenience">
+<span id="pages-property-features-convenience"></span><h2>Convenience<a class="headerlink" href="#convenience" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Convenient toggle method for boolean properties</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="notification">
+<span id="pages-property-features-notification"></span><h2>Notification<a class="headerlink" href="#notification" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Support for a custom apply rountine</li>
+<li>Event firing with a custom named event</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="initialization">
+<span id="pages-property-features-initialization"></span><h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo automatically correctly initializes properties. This is true for both, properties which have defined an <tt class="docutils literal"><span class="pre">init</span></tt> value and also for the other properties which are <tt class="docutils literal"><span class="pre">nullable</span></tt>. This means that after you have created an instance the properties correctly reflect the applied value. Default values assigned by <tt class="docutils literal"><span class="pre">init</span></tt> also execute the configured <tt class="docutils literal"><span class="pre">apply</span></tt> methods and dispatch configured events to inform already added listeners.</p>
+<p><a class="reference internal" href="property_behavior.html"><em>Initialization Behavior</em></a></p>
+</div>
+<div class="section" id="performance">
+<span id="pages-property-features-performance"></span><h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<p>Automatic optimization of all setters to the optimal highly-tuned result code. Impressive tailor made high performance setters are the result.</p>
+<p>Please note that after the definition point of a property the setters are not yet available. Wrappers for them will be created with the first instance and the final code will be generated with the first use of such a setter. This first use will also automatically unwrap the property setter to directly use the generated one.</p>
+</div>
+<div class="section" id="memory-managment">
+<span id="pages-property-features-memory-managment"></span><h2>Memory managment<a class="headerlink" href="#memory-managment" title="Permalink to this headline">¶</a></h2>
+<p>Automatic memory management. This means all so-configured properties which contain complex data objects get automatically disposed with the object disposal. The affected built-in types are already auto-configured this way. Also all properties which need an instance of a class, defined by using a classname as <tt class="docutils literal"><span class="pre">check</span></tt> are automatically handled.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that this does not actually call dispose() on the object but just removes the property value etc i.e. dereferences the object. You still need to call dispose() if necessary.</p>
+</div>
+<p>For all other properties which contain complex data the developer must add a <tt class="docutils literal"><span class="pre">dispose</span></tt> key with a value of <tt class="docutils literal"><span class="pre">true</span></tt> to the property declaration. For example if there is no <tt class="docutils literal"><span class="pre">check</span></tt> defined or the <tt class="docutils literal"><span class="pre">check</span></tt> definition points to a function.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is not needed for primitive types like strings and numbers.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="property_behavior.html"
+             title="previous chapter">« Initialization Behavior</a>
+          <span class="separator">|</span>
+          <a class="next" href="environment.html"
+             title="next chapter">Environment »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Property features summarized</a><ul>
+<li><a class="reference internal" href="#value-checks">Value checks</a></li>
+<li><a class="reference internal" href="#validation">Validation</a></li>
+<li><a class="reference internal" href="#advanced-value-handling">Advanced value handling</a></li>
+<li><a class="reference internal" href="#convenience">Convenience</a></li>
+<li><a class="reference internal" href="#notification">Notification</a></li>
+<li><a class="reference internal" href="#initialization">Initialization</a></li>
+<li><a class="reference internal" href="#performance">Performance</a></li>
+<li><a class="reference internal" href="#memory-managment">Memory managment</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="environment.html"
+                        title="next chapter">Environment</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="property_behavior.html"
+                        title="previous chapter">Initialization Behavior</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/core/property_features.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

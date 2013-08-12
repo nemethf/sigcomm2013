@@ -1,0 +1,31 @@
+#!/bin/bash
+# /etc/init.d/pox-vm
+
+### BEGIN INIT INFO
+# Provides:          pox-vm
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Bring up socket interfaces at boot time
+# Description:       Socket onterfaces.
+### END INIT INFO
+
+case "$1" in
+    start)
+        pkill qemu
+        cd /home/budapestple_sigcomm
+        bin/bin/qemu-system-i386 -m 512 -hda debian_wheezy_i386_sigcomm_controller.qcow2 -redir tcp:46322::22 -redir tcp:6633::6633 -redir tcp:8000::8000 &
+        ;;
+    stop)
+        pkill qemu
+        ;;
+    *)
+        echo "Usage: /etc/init.d/pox-vm {start|stop}"
+        exit 1
+        ;;
+esac
+
+exit 0
+
+

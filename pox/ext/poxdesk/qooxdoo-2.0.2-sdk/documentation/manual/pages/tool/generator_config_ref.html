@@ -1,0 +1,1280 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Generator Config Keys &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="References" href="../references.html" />
+    <link rel="next" title="Generator Config Macros" href="generator_config_macros.html" />
+    <link rel="prev" title="Generator Default Jobs" href="generator_default_jobs.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../references.html" accesskey="U">References</a>
+     &raquo;
+  <a href="">Generator Config Keys</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="generator-config-keys">
+<span id="pages-tool-generator-config-ref-reference-listing-of-config-keys"></span><h1>Generator Config Keys<a class="headerlink" href="#generator-config-keys" title="Permalink to this headline">¶</a></h1>
+<p>This page contains the complete list of configuration keys and their sub-structures.</p>
+<p>Mandatory keys in a context are marked <em>'(required)'</em>, all other keys can be considered optional (most have default values). Special note boxes starting with <em>'peer-keys'</em> indicate interactions of the current key with other  configuration keys that should be present in the job for the current key to function properly. E.g. the key <a class="reference internal" href="#pages-tool-generator-config-ref-compile"><em>compile</em></a> will use the peer-key <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a> in the job definition for its workings. Again, in many cases fall-back defaults will be in place, but relying on them might lead to sub-optimal results.</p>
+<div class="section" id="add-css">
+<span id="pages-tool-generator-config-ref-add-css"></span><h2>add-css<a class="headerlink" href="#add-css" title="Permalink to this headline">¶</a></h2>
+<p>Add CSS files to the application. Takes a list.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;add-css&quot;</span> <span class="o">:</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;uri&quot;</span> <span class="o">:</span> <span class="s2">&quot;&lt;css-uri&gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-compile"><em>compile</em></a></p>
+</div>
+<ul class="simple">
+<li><strong>uri</strong> <em>(required)</em> : URI with which the css file will be loaded, relative to the index.html.</li>
+</ul>
+</div>
+<div class="section" id="add-script">
+<span id="pages-tool-generator-config-ref-add-script"></span><h2>add-script<a class="headerlink" href="#add-script" title="Permalink to this headline">¶</a></h2>
+<p>Add pre-fabricated JS files to the application. Takes a list.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;add-script&quot;</span> <span class="o">:</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;uri&quot;</span> <span class="o">:</span> <span class="s2">&quot;&lt;script-uri&gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-compile"><em>compile</em></a></p>
+</div>
+<ul class="simple">
+<li><strong>uri</strong> <em>(required)</em> : URI with which the script will be loaded, relative to the index.html.</li>
+</ul>
+</div>
+<div class="section" id="api">
+<span id="pages-tool-generator-config-ref-api"></span><h2>api<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>Triggers the generation of a custom Apiviewer application. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;api&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;path&quot;</span>   <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;verify&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;links&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-include"><em>include</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a></p>
+</div>
+<ul class="simple">
+<li><strong>path</strong> <em>(required)</em> : Path where the Apiviewer application is to be stored, relative to the current directory.</li>
+<li><strong>verify</strong> : Things to check during generation of API data.<ul>
+<li><strong>links</strong> : Check internal documentation links (&#64;link{...}) for consistency.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="asset-let">
+<span id="pages-tool-generator-config-ref-asset-let"></span><h2>asset-let<a class="headerlink" href="#asset-let" title="Permalink to this headline">¶</a></h2>
+<p>Defines macros that will be replaced in #asset hints. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;asset-let&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;&lt;macro_name&gt;&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each entry is</p>
+<ul class="simple">
+<li>&lt;macro_name&gt; : [&lt;list of replacement strings&gt;] Like with macros, references (through '${macro_name}') to these keys in #asset hints in source files will be replaced. Unlike macros, each listed value will be used, and the result is the list of all ensuing expressions, so that all resulting assets will be honored.</li>
+</ul>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-asset-let-key"><em>Special section</em></a></p>
+</div>
+<div class="section" id="cache">
+<span id="pages-tool-generator-config-ref-cache"></span><h2>cache<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h2>
+<p>Define the paths to cache directories, particularly to the compile cache. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;cache&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;compile&quot;</span>     <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;downloads&quot;</span>   <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;invalidate-on-tool-change&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>compile</strong> : path to the &quot;main&quot; cache, the directory where compile results are cached, relative to the current (default:  &quot;<a class="reference internal" href="generator_config_macros.html"><em>${CACHE}</em></a>&quot;)</li>
+<li><strong>downloads</strong> : directory where to put downloads (e.g. <tt class="docutils literal"><span class="pre">contrib://*</span></tt> libraries), relative to the current (default: &quot;<a class="reference internal" href="generator_config_macros.html"><em>${CACHE}</em></a>/downloads&quot;)</li>
+<li><strong>invalidate-on-tool-change</strong> : when true, the <em>compile</em> cache (but not the downloads) will be cleared whenever the tool chain is newer (relevant mainly for trunk users; default: <em>true</em>)</li>
+</ul>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-cache-key"><em>Special section</em></a></p>
+</div>
+<div class="section" id="clean-files">
+<span id="pages-tool-generator-config-ref-clean-files"></span><h2>clean-files<a class="headerlink" href="#clean-files" title="Permalink to this headline">¶</a></h2>
+<p>Triggers clean-up of files and directories within a project and the framework, e.g. deletion of generated files, cache contents, etc. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;clean-files&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;&lt;doc_string&gt;&quot;</span> <span class="o">:</span>
+  <span class="p">[</span>
+    <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;&lt;path&gt;&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a></p>
+</div>
+<p>Each key is a doc string that will be used in logging when deleting the corresponding files.</p>
+<ul class="simple">
+<li>&lt;doc_string&gt; : arbitrary string</li>
+<li>&lt;path&gt;       : file/path to be deleted; may be relative to config file location; <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-file-globs"><em>file globs</em></a> allowed</li>
+</ul>
+</div>
+<div class="section" id="collect-environment-info">
+<span id="pages-tool-generator-config-ref-collect-environment-info"></span><h2>collect-environment-info<a class="headerlink" href="#collect-environment-info" title="Permalink to this headline">¶</a></h2>
+<p>Triggers the collection of information about the qooxdoo environment, and prints it to the console. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;collect-environment-info&quot;</span> <span class="o">:</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a></p>
+</div>
+<p>This key currently takes no subkeys, but you still have to provide an empty map. The information collected includes the qooxdoo version, the Python version, the path to the cache, stats about the cache contents, whether the current application has been built, asf.</p>
+</div>
+<div class="section" id="combine-images">
+<span id="pages-tool-generator-config-ref-combine-images"></span><h2>combine-images<a class="headerlink" href="#combine-images" title="Permalink to this headline">¶</a></h2>
+<p>Triggers the creation of combined image files that contain various other images. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;combine-images&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;montage-cmd&quot;</span> <span class="o">:</span> <span class="s2">&quot;&lt;string_template&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;images&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;&lt;output_image&gt;&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;altstring&gt;&quot;</span> <span class="p">],</span>
+      <span class="s2">&quot;layout&quot;</span><span class="o">:</span> <span class="p">(</span><span class="s2">&quot;horizontal&quot;</span><span class="o">|</span><span class="s2">&quot;vertical&quot;</span><span class="p">),</span>
+      <span class="s2">&quot;input&quot;</span> <span class="o">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;prefix&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;altstring&gt;&quot;</span> <span class="p">],</span>
+          <span class="s2">&quot;files&quot;</span>  <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;path&gt;&quot;</span> <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Unless you are generating a base64 combined image, this key requires an external program (ImageMagic) to run successfully.</p>
+</div>
+<ul>
+<li><p class="first"><strong>montage-cmd</strong> <em>(experimental)</em>: command line for the ImageMagick <cite>montage</cite> command. If you create a binary combined image (e.g. .png, .gif), the <em>montage</em> command line utility will be invoked. This command template will be used to invoke it, and is exposed here so you can adjust it to your local ImageMagick installation. If you tweak this template and shuffle things around, make sure the placholders <tt class="docutils literal"><span class="pre">%(&lt;name&gt;)s</span></tt> remain intact. Example values are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">&quot;montage</span> <span class="pre">&#64;%(tempfile)s</span> <span class="pre">-geometry</span> <span class="pre">+0+0</span> <span class="pre">-gravity</span> <span class="pre">NorthWest</span> <span class="pre">-tile</span> <span class="pre">%(orientation)s</span> <span class="pre">-background</span> <span class="pre">None</span> <span class="pre">%(combinedfile)s&quot;</span></tt> <em>(for ImageMagick v6.x)</em></li>
+<li><tt class="docutils literal"><span class="pre">&quot;montage</span> <span class="pre">-geometry</span> <span class="pre">+0+0</span> <span class="pre">-gravity</span> <span class="pre">NorthWest</span> <span class="pre">-tile</span> <span class="pre">%(orientation)s</span> <span class="pre">-background</span> <span class="pre">None</span> <span class="pre">&#64;%(tempfile)s</span> <span class="pre">%(combinedfile)s</span></tt>&quot; <em>(for ImageMagick v5.x)</em></li>
+</ul>
+<p>(default: <em>&quot;&quot;</em>)</p>
+</li>
+<li><p class="first"><strong>images</strong> : map with combine entries</p>
+<ul>
+<li><p class="first"><strong>&lt;output_image&gt;</strong> : path of output file; may be relative to the config file location; the file ending determins the file format; use <em>.png</em>, <em>.gif</em>, etc. for binary formats, or <em>.b64.json</em> for base64 combined image</p>
+<ul>
+<li><p class="first"><strong>prefix</strong> <em>(required)</em>: takes a list; the first element is a prefix of the path given in &lt;output_image&gt;, leading up to, but not including, the library name space of the output image; this prefix will be stripped from the ouput path, and will be replaced by an optional second element of this setting, to eventually obtain the image id of the output image;</p>
+</li>
+<li><p class="first"><strong>layout</strong> : either &quot;horizontal&quot; or &quot;vertical&quot;; defines the layout of images within the combined image (default: &quot;horizontal&quot;)</p>
+</li>
+<li><p class="first"><strong>input</strong> <em>(required)</em>: list of groups of input files, each group sharing the same prefix; each group consists of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>prefix</strong> <em>(required)</em>: takes a list; analogous to the <em>prefix</em> attribute of the ouput image, the first element of the setting will be stripped from the path of each input file, and replaced by an optional second element, to obtain the corresponding image id</li>
+<li><strong>files</strong> : the list of input image files (<a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-file-globs"><em>file globs</em></a> allowed); may be relative to config file location</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The image id's of both the input and output files will be collected in an accompanying <em>&lt;output_name&gt;.meta</em> file, for later processing by the generator when creating source and build versions of the app. You may move these files around after creation, but you'll have to keep the combined image and its .meta file together in the same directory. At generation time, the generator will look for an accompanying .meta file for every image file it finds in a library. The combined image's image id will be refreshed from its current location relative to the library's resource path. But the clipped images (the images inside the combined image) will be registered under the image id's given in the .meta file (and for browser that don't support combined images, they'll have to be available on disk under this exact image id).</p>
+</div>
+<div class="section" id="compile">
+<span id="pages-tool-generator-config-ref-compile"></span><h2>compile<a class="headerlink" href="#compile" title="Permalink to this headline">¶</a></h2>
+<p>Triggers the generation of a source or build version of the app. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;compile&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;(source|build|hybrid)&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-compile-options"><em>compile-options</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-include"><em>include</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a></p>
+</div>
+<p>Generate Javascript file(s) for the application that can be loaded in the browser. This includes an inital file that acts as the loader and needs to be included by e.g. the hosting index.html page, and possibly other JS files with class code, I18N files, asf. All necessary settings for the compile run are given in the <em>compile-options</em> key, so make sure this one is properly filled.</p>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>type</strong> : which build type of the application should be generated (default: <em>source</em>); the types are:<ul>
+<li><strong>source</strong> : all class code and other resources (images etc.) required for the application are referenced in their original source files on disk (e.g. application classes, framework classes, contrib/library classes, etc.); this is optimal for development and debugging (per-file error messages, setting break-points, additional checks and logging are enabled, etc.) but loads slower due to the many individual files; it is also less amenable to loading the application through a web server, and should usually be run directly from the disk (using the <em>file://</em> protocol)</li>
+<li><strong>hybrid</strong> : is also a development build type and combines some of the advantages of the build version with the source version; as with the source build type, a selected set of classes are loaded directly from their source files (as specified in <a class="reference internal" href="#pages-tool-generator-config-ref-compile-options"><em>compile-options/code/except</em></a>); the other classes required by the application are compiled together in common .js files; this allows for faster load times while retaining good debuggability of the selected classes</li>
+<li><strong>build</strong> : is the deployment build type; all classes are compiled into a set of common .js files, to minimize load requests; the class code is optionally compressed and optimized (cf. <a class="reference internal" href="#pages-tool-generator-config-ref-compile-options"><em>compile-options/code/optimize</em></a>); resource files from all involved libraries are copied to the build directoy, so that it is fully functional and self-contained, and can be copied to e.g. a web server; this build type is unsuitable for development activities, as the code is hard to read and certain development features are optimized away, so it should only be used for production deployment of the application</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="compile-options">
+<span id="pages-tool-generator-config-ref-compile-options"></span><h2>compile-options<a class="headerlink" href="#compile-options" title="Permalink to this headline">¶</a></h2>
+<p>Specify various options for compile (and other) keys. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;compile-options&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;paths&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;file&quot;</span>            <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;file-prefix&quot;</span>     <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;app-root&quot;</span>        <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gzip&quot;</span>            <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+    <span class="s2">&quot;loader-template&quot;</span> <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;uris&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;script&quot;</span>          <span class="o">:</span> <span class="s2">&quot;script&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;resource&quot;</span>        <span class="o">:</span> <span class="s2">&quot;resource&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;add-nocache-param&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;code&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;format&quot;</span>          <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+    <span class="s2">&quot;locales&quot;</span>         <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;de&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;optimize&quot;</span>        <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;basecalls&quot;</span><span class="p">,</span> <span class="s2">&quot;comments&quot;</span><span class="p">,</span> <span class="s2">&quot;privates&quot;</span><span class="p">,</span> <span class="s2">&quot;strings&quot;</span><span class="p">,</span> <span class="s2">&quot;variables&quot;</span><span class="p">,</span> <span class="s2">&quot;variants&quot;</span><span class="p">,</span> <span class="s2">&quot;whitespace&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;decode-uris-plug&quot;</span>  <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;except&quot;</span>          <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;myapp.classA&quot;</span><span class="p">,</span> <span class="s2">&quot;myapp.util.*&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <em>compile-options</em> key informs all compile actions of the generator. Settings of this key are used e.g. by the jobs that create the source and the build version of an application, though in varying degrees (e.g. the source job only utilizes a few of the settings in this key, and ignores the others). Output Javascript file(s) are generated into the directory of the <em>paths/file</em> value, with <em>path/file</em> itself being the primary output file. If <em>paths/file</em> is not given, the <tt class="docutils literal"><span class="pre">APPLICATION</span></tt> macro has to be set in the global <a class="reference internal" href="generator_config.html#pages-tool-generator-config-listing-of-keys-in-context"><em>let</em></a> section with a proper name, in order to determine a default output file name. For further information see the individual key descriptions to find out which build type utilizes it (in the descriptions, <em>(&lt;type&gt;)</em> refers to the <a class="reference internal" href="#pages-tool-generator-config-ref-compile"><em>compile/type</em></a>, e.g. <em>source</em> or <em>build</em>)</p>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>paths</strong> : paths for the generated output<ul>
+<li><strong>file</strong> : the path to the compile output file; can be relative to the config's directory (default: <em>&lt;type&gt;/script/&lt;appname&gt;.js</em>)</li>
+<li><strong>file-prefix</strong> : path to a file containing JavaScript which will be inserted verbatim at the beginning of each generated output file; this could be a comment with copyright headers (default: <em>undefined</em>)</li>
+<li><strong>app-root</strong> : (<em>source</em>) relative (in the above sense) path to the directory containing the app’s HTML page (default: <em>./source</em>)</li>
+<li><strong>loader-template</strong> : path to a JS file that will be used as an alternative loader template; for possible macros and structure see the default (default: <em>${QOOXDOO_PATH}/tool/data/generator/loader.tmpl.js</em>)</li>
+<li><strong>gzip</strong> : whether to gzip output file(s) (default: <em>false</em>)</li>
+</ul>
+</li>
+<li><strong>uris</strong> : URIs used to reference code and resources<ul>
+<li><strong>script</strong> : (<em>build</em>) URI from application root to code directory (default: <em>&quot;script&quot;</em>)</li>
+<li><strong>resource</strong> : (<em>build</em>) URI from application root to resource directory (default: <em>&quot;resource&quot;</em>)</li>
+<li><strong>add-nocache-param</strong> : (<em>source</em>) whether to add a <tt class="docutils literal"><span class="pre">?nocache=&lt;random_number&gt;</span></tt> parameter to the URI, to overrule browser caching when loading the application; use the <a class="reference internal" href="generator_config_macros.html"><em>ADD_NOCACHE_PARAM</em></a> macro to tweak this setting for <em>source</em> builds (default: <em>false</em>)</li>
+</ul>
+</li>
+<li><strong>code</strong> : code options<ul>
+<li><strong>format</strong> : (<em>build</em>) whether to apply simple output formatting (it adds some sensible line breaks to the output code) (default: <em>false</em>)</li>
+<li><strong>locales</strong> : (<em>build</em>) a list of locales to include (default: <em>[&quot;C&quot;]</em>)</li>
+<li><strong>optimize</strong> : list of dimensions for optimization, max. [&quot;basecalls&quot;, &quot;comments&quot;, &quot;privates&quot;, &quot;strings&quot;, &quot;variables&quot;, &quot;variants&quot;, &quot;whitespace&quot;] (default: <em>[&lt;all&gt;]</em>) <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-optimize-key"><em>special section</em></a></li>
+<li><strong>decode-uris-plug</strong> : path to a file containing JS code, which will be plugged into the loader script, into the <tt class="docutils literal"><span class="pre">qx.$$loader.decodeUris()</span></tt> method. This allows you to post-process script URIs, e.g. through pattern matching. The current produced script URI is available and can be modified in the variable <tt class="docutils literal"><span class="pre">euri</span></tt>.</li>
+<li><strong>except</strong> : (<em>hybrid</em>) exclude the classes specified in the class pattern list from compilation when creating a <a class="reference internal" href="#pages-tool-generator-config-ref-compile"><em>hybrid</em></a> version of the application</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="config-warnings">
+<span id="pages-tool-generator-config-ref-config-warnings"></span><h2>config-warnings<a class="headerlink" href="#config-warnings" title="Permalink to this headline">¶</a></h2>
+<p><em>(experimental)</em></p>
+<p>Taylor configuration warnings. This key can appear both at the config top-level, or at the job-level. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;config-warnings&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;job-shadowing&quot;</span>    <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;source-script&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;tl-unknown-keys&quot;</span>  <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;baz&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;job-unknown-keys&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;&lt;config_key&gt;&quot;</span>     <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Turn off warnings printed by the generator to the console for specific configuration issues. The key is honored both at the top level of the configuration map, and within individual jobs, but some of the sub-keys are only sensible if used at the top-level (This is indicated with the individual key in the list below). Warnings are on by default (equivalent to assigning e.g. <em>[&quot;*&quot;]</em> to the corresponding key). Like with the global <em>let</em>, a top-level <em>config-warnings</em> key is inherited by every job in the config, so its settings are like job defaults. If a given key is not applicable in its context, it is ignored. To turn off <strong>all</strong> warnings for a single generator run (independent of settings given in this key) use the generator <tt class="docutils literal"><span class="pre">-q</span></tt> <a class="reference internal" href="generator_usage.html#pages-tool-generator-usage-command-line-options"><em>command line option</em></a>.</p>
+<ul class="simple">
+<li><strong>job-shadowing</strong> <em>(top-level)</em> : Job names listed here are not warned about if the current config has a job of this name, and shadows another job of the same name from an included configuration.</li>
+<li><strong>tl-unknown-keys</strong> <em>(top-level)</em> : List of config keys on the top-level configuration map which are unknown to the generator, but should not be warned about.</li>
+<li><strong>job-unknown-keys</strong> : List of config keys within a job which are unknown to the generator, but should not be warned about.</li>
+<li><strong>&lt;config_key&gt;</strong> : This is a generic form, where <em>&lt;config_key&gt;</em> has to be a legal job-level configuration key (Unknown keys, as stated above, are silently skipped). Currently supported keys are <tt class="docutils literal"><span class="pre">exclude</span></tt>, but more keys (like &quot;let&quot;, &quot;packages&quot;, ...) might follow. The usual value is a list, where the empty list <em>[]</em> means that config warnings for this key are generally on (none exempted), and <em>[&quot;*&quot;]</em> means they are generally off (all exempted). The interpretation of the value is key dependent.<ul>
+<li><strong>exclude</strong> : <em>[]</em> List of class patterns in the <em>exclude</em> key that the generator should not warn about.</li>
+<li><strong>environment</strong> : <em>[]</em> The key recognizes specific elements in its list value:<ul>
+<li><strong>non-literal-keys</strong> : Don't warn if calls to <cite>qx.core.Environment</cite> use non-literal keys (e.g. <em>&quot;qx.core.Environment.get(foo)&quot;</em> where <em>foo</em> is a variable).</li>
+<li><strong>variants-and-url-settings</strong> : Don't warn if the <cite>qx.allowUrlSettings:true</cite> environment is set while at the same time <cite>variants</cite> optimization is on (the two sort of contradict each other).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="copy-files">
+<span id="pages-tool-generator-config-ref-copy-files"></span><h2>copy-files<a class="headerlink" href="#copy-files" title="Permalink to this headline">¶</a></h2>
+<p>Triggers files/directories to be copied. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;copy-files&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;files&quot;</span>     <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;path&gt;&quot;</span> <span class="p">],</span>
+  <span class="s2">&quot;source&quot;</span> <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;target&quot;</span>  <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a></p>
+</div>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>files</strong> <em>(required)</em> : an array of files/directories to copy; entries will be interpreted relative to the <tt class="docutils literal"><span class="pre">source</span></tt> key value</li>
+<li><strong>source</strong> : root directory to copy from; may be relative to config file location (default: &quot;source&quot;)</li>
+<li><strong>target</strong>  : root directory to copy to; may be relative to config file location (default: &quot;build&quot;)</li>
+</ul>
+</div>
+<div class="section" id="copy-resources">
+<span id="pages-tool-generator-config-ref-copy-resources"></span><h2>copy-resources<a class="headerlink" href="#copy-resources" title="Permalink to this headline">¶</a></h2>
+<p>Triggers the copying of resources. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;copy-resources&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;target&quot;</span> <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-include"><em>include</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a></p>
+</div>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>target</strong> : root target directory to copy resources to; may be relative to the config file location (default: &quot;build&quot;)</li>
+</ul>
+<p>Unlike <a class="reference internal" href="#pages-tool-generator-config-ref-copy-files"><em>copy-files</em></a>, <tt class="docutils literal"><span class="pre">copy-resources</span></tt> does not take either a &quot;source&quot; key, nor a &quot;files&quot; key. Rather, a bit of implicit knowledge is applied. Resources will be copied from the involved libraries' <tt class="docutils literal"><span class="pre">source/resource</span></tt> directories (this obviates a &quot;source&quot; key). The list of needed resources is derived from the class files (e.g. from <tt class="docutils literal"><span class="pre">#asset</span></tt> hints - this obviates the &quot;files&quot; key), and then the libraries are searched for in order. From the first library that provides a certain resource, this resource is copied to the target folder. This way you can use most resources from a standard library (like the qooxdoo framework library), but still &quot;shadow&quot; a few of them by resources of the same path from a different library, just by tweaking the order in which these libraries are listed in the <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a> key.</p>
+</div>
+<div class="section" id="default-job">
+<span id="pages-tool-generator-config-ref-default-job"></span><h2>default-job<a class="headerlink" href="#default-job" title="Permalink to this headline">¶</a></h2>
+<p>Default job to be run. Takes a string.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;default-job&quot;</span> <span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+</pre></div>
+</div>
+<p>If this key is present in a configuration file, the named job will be run by default when no job argument is passed to the generator on the command line.</p>
+</div>
+<div class="section" id="dependencies">
+<span id="pages-tool-generator-config-ref-dependencies"></span><h2>dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Allows you to influence the way class dependencies are processed by the generator. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;dependencies&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;follow-static-initializers&quot;</span>  <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+  <span class="s2">&quot;sort-topological&quot;</span>            <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>follow-static-initializers</strong> <em>(experimental!)</em>: Try to resolve dependencies introduced in class definitions when calling static methods to initialize map keys (default: <em>false</em>).</li>
+<li><strong>sort-topological</strong> <em>(experimental!)</em>: Sort the classes using a topological sorting of the load-time dependency graph (default: <em>false</em>).</li>
+</ul>
+</div>
+<div class="section" id="desc">
+<span id="pages-tool-generator-config-ref-desc"></span><h2>desc<a class="headerlink" href="#desc" title="Permalink to this headline">¶</a></h2>
+<p>Provides some descriptive text for the job.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;desc&quot;</span> <span class="o">:</span> <span class="s2">&quot;Some text.&quot;</span>
+</pre></div>
+</div>
+<p>The descriptive string provided here will be used when listing jobs on the command line. (Be aware since this is a normal job key it will be passed on through job inheritance, so when you look at a specific job in the job listing you might see the job description of some ancestor job).</p>
+</div>
+<div class="section" id="environment">
+<span id="pages-tool-generator-config-ref-environment"></span><h2>environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h2>
+<p>Define global key-value mappings for the application. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;&lt;key&gt;&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="nx">value</span> <span class="o">|</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">value</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...</span> <span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The &quot;environment&quot; of a qooxdoo application can be viewed as a global, write-once key-value store. The <em>environment</em> key in a configuration allows you to pre-define values for such keys. All key-value pairs are available at run time through <a class="reference external" href="http://api.qooxdoo.org/2.0.2/#qx.core.Environment">qx.core.Environment</a>. There are pre-defined keys that are established by qooxdoo, and you can add user-defined keys. Both are handled the same.</p>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>&lt;key&gt;</strong> : a global key; keys are just strings; see <a class="reference external" href="http://api.qooxdoo.org/2.0.2/#qx.core.Environment">qx.core.Environment</a> for a list of pre-defined keys; if you provide a user-defined key, make sure it starts with a name space and a dot (e.g. <em>&quot;myapp.keyA&quot;</em>); the entry's value is either a scalar value, or a list of such values.</li>
+</ul>
+<p>As soon as you specify more than one element in the list value for a key, the generator will generate different builds for each element. If the current job has more than one key defined with multiple elements in the value, the generator will generate a dedicated build <strong>for each possible combination</strong> of the given keys. See special section.</p>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-environment-key"><em>Special section</em></a></p>
+</div>
+<div class="section" id="exclude">
+<span id="pages-tool-generator-config-ref-exclude"></span><h2>exclude<a class="headerlink" href="#exclude" title="Permalink to this headline">¶</a></h2>
+<p>Exclude classes from processing in the job. Takes an array of class specifiers.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;exclude&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;qx.util.*&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Classes specified through the <em>exclude</em> key are excluded from the job processing, e.g. from the generated build output. The class specifiers can include simple wildcards like &quot;qx.util.*&quot; denoting class id's matching this pattern, including those from sub-name spaces.</p>
+</div>
+<div class="section" id="export">
+<span id="pages-tool-generator-config-ref-export"></span><h2>export<a class="headerlink" href="#export" title="Permalink to this headline">¶</a></h2>
+<p>List of jobs to be exported if this config file is included by another, or to the generator if it is an argument.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;export&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;job1&quot;</span><span class="p">,</span> <span class="s2">&quot;job2&quot;</span><span class="p">,</span> <span class="s2">&quot;job3&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Only exported jobs will be seen by importing config files. If the current configuration file is used as an argument to the generator (either implicitly or explicitly with <em>-c</em>), these are the jobs the generator will list with <em>generate.py x</em>, and only these jobs will be runnable with <em>generate.py &lt;jobname&gt;</em>.</p>
+</div>
+<div class="section" id="extend">
+<span id="pages-tool-generator-config-ref-extend"></span><h2>extend<a class="headerlink" href="#extend" title="Permalink to this headline">¶</a></h2>
+<p>Extend the current job with other jobs. Takes an array of job names.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;job1&quot;</span><span class="p">,</span> <span class="s2">&quot;job2&quot;</span><span class="p">,</span> <span class="s2">&quot;job3&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>The information of these (previously defined) jobs are merged into the current job description. Keys and their values missing in the current description are added, existing keys take precedence and are retained (with some keys that are merged).</p>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-extend-key"><em>Special section</em></a></p>
+</div>
+<div class="section" id="fix-files">
+<span id="pages-tool-generator-config-ref-fix-files"></span><h2>fix-files<a class="headerlink" href="#fix-files" title="Permalink to this headline">¶</a></h2>
+<p>Fix white space in Javascript class files. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;fix-files&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;eol-style&quot;</span> <span class="o">:</span> <span class="s2">&quot;(LF|CR|CRLF)&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;tab-width&quot;</span> <span class="o">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a></p>
+</div>
+<p><em>fix-files</em> will normalize white space in source code, by converting tabs to spaces, removing trailing white space in lines, and unifying the line end character sequence.</p>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>eol-style</strong> : determines which line end character sequence to use (default: <em>LF</em>)</li>
+<li><strong>tab-width</strong> : the number of spaces to replace tabs with (default: <em>2</em>)</li>
+</ul>
+</div>
+<div class="section" id="include">
+<span id="pages-tool-generator-config-ref-include"></span><h2>include<a class="headerlink" href="#include" title="Permalink to this headline">¶</a></h2>
+<p>Include classes to be processed in the job. Takes an array of class specifiers.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;include&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;qx.util.*&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The class specifiers can include simple wildcards like 'qx.util.*' denoting all classes starting with the 'qx.util' name space. A leading '=' in front of a class specifier (e.g. '=qx.util.*') means 'without dependencies'. In this case, exactly the listed classes are included (wildcards expanded), but not their dependencies. Otherwise, for the given classes their dependencies are calculated recursively, and those classes are also included.</p>
+</div>
+<div class="section" id="include-top-level">
+<span id="pages-tool-generator-config-ref-include-top-level"></span><h2>include (top-level)<a class="headerlink" href="#include-top-level" title="Permalink to this headline">¶</a></h2>
+<p>Include external config files. Takes a list of maps.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;include&quot;</span> <span class="o">:</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;path&quot;</span>   <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;as&quot;</span>     <span class="o">:</span> <span class="s2">&quot;&lt;name&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;import&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;job1&quot;</span><span class="p">,</span> <span class="s2">&quot;job2&quot;</span><span class="p">,</span> <span class="s2">&quot;job3&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;block&quot;</span>  <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;job4&quot;</span><span class="p">,</span> <span class="s2">&quot;job5&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Within each specifying map, you can specify</p>
+<ul class="simple">
+<li><strong>path</strong> <em>(required)</em>: Path string to the external config file which is interpreted <em>relative</em> to the current config file</li>
+<li><strong>as</strong> : Identifier that will be used to prefix the external job names on import; without it, job names will be imported as they are.</li>
+<li><strong>import</strong> : List of job names to import; this list will be intersected with the <tt class="docutils literal"><span class="pre">export</span></tt> list of the external config, and the resulting list of jobs will be included. :  A single entry can also be a map of the form <em>{&quot;name&quot;: &lt;jobname&gt;, &quot;as&quot;: &lt;alias&gt;}</em>, so you can import individual jobs under a different name.</li>
+<li><strong>block</strong> : List of job names to block during import; this is the opposite of the <tt class="docutils literal"><span class="pre">import</span></tt> key and allows you to block certain jobs from being imported (helpful if you want to import most but not all of the jobs offered by the external configuration).</li>
+</ul>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-include-key-top-level-adding-features"><em>Special section</em></a></p>
+</div>
+<div class="section" id="jobs">
+<span id="pages-tool-generator-config-ref-jobs"></span><h2>jobs<a class="headerlink" href="#jobs" title="Permalink to this headline">¶</a></h2>
+<p>Define jobs for the generator. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;jobs&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;&lt;job_name&gt;&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="o">&lt;</span><span class="nx">job_definition</span><span class="o">&gt;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Job definitions can take a lot of the predefined keys that are listed on this page (see the <a class="reference internal" href="generator_config.html#pages-tool-generator-config-listing-of-keys-in-context"><em>overview</em></a> to get a comprehensive list). The can hold &quot;actions&quot; (keys that cause the generator to perform some action), or just settings (which makes them purely declarative). The latter case is only useful if those jobs are included by others (through the <a class="reference internal" href="#pages-tool-generator-config-ref-extend"><em>extend</em></a> key, and thus hold settings that are used by several jobs (thereby saving you from typing).</p>
+</div>
+<div class="section" id="let">
+<span id="pages-tool-generator-config-ref-let"></span><h2>let<a class="headerlink" href="#let" title="Permalink to this headline">¶</a></h2>
+<p>Define macros. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;&lt;macro_name&gt;&quot;</span>  <span class="o">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;&lt;macro_name1&gt;&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="p">...</span> <span class="p">],</span>
+  <span class="s2">&quot;&lt;macro_name2&gt;&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each key defines a macro and the value of its expansion. The expansion may contain references to previously defined macros (but no recursive references). References are denoted by enclosing the macro name with <tt class="docutils literal"><span class="pre">${...}</span></tt> and can only be used in strings. If the value of the macro is a string, references to it can be embedded in other strings (e.g. like &quot;/home/${user}/profile&quot;); if the value is a structured expression, like an array or map, references to it must fill the entire string (e.g. like &quot;${MyList}&quot;).</p>
+<ul class="simple">
+<li>&lt;macro_name&gt; : The name of the macro.</li>
+</ul>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-let-key"><em>Special section</em></a></p>
+</div>
+<div class="section" id="let-top-level">
+<span id="pages-tool-generator-config-ref-let-top-level"></span><h2>let (top-level)<a class="headerlink" href="#let-top-level" title="Permalink to this headline">¶</a></h2>
+<p>Define default macros. Takes a map (see the other <a class="reference internal" href="#pages-tool-generator-config-ref-let"><em>'let'</em></a>). Everything of the normal 'let' applies here, except that this let map is included automatically into every job run. There is no explicit reference to it, so be aware of side effects.</p>
+</div>
+<div class="section" id="library">
+<span id="pages-tool-generator-config-ref-library"></span><h2>library<a class="headerlink" href="#library" title="Permalink to this headline">¶</a></h2>
+<p>Define libraries to be taken into account for this job. Takes an array of maps.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;library&quot;</span> <span class="o">:</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;manifest&quot;</span>   <span class="o">:</span> <span class="s2">&quot;&lt;path&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;uri&quot;</span>        <span class="o">:</span> <span class="s2">&quot;&lt;from_html_to_manifest_dir&gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Each map can contain the keys</p>
+<ul class="simple">
+<li><strong>manifest</strong> <em>(required)</em> : path to the &quot;Manifest&quot; file of the library; may be relative to config file location; may use <tt class="docutils literal"><span class="pre">contrib://</span></tt> scheme</li>
+<li><strong>uri</strong> : URI prefix from your HTML file to the directory of the library's &quot;Manifest&quot; file</li>
+</ul>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-library-key-and-manifest-files"><em>Special section</em></a></p>
+</div>
+<div class="section" id="lint-check">
+<span id="pages-tool-generator-config-ref-lint-check"></span><h2>lint-check<a class="headerlink" href="#lint-check" title="Permalink to this headline">¶</a></h2>
+<p>Check Javscript source code with a lint-like utility. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;lint-check&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;allowed-globals&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;qx&quot;</span><span class="p">,</span> <span class="s2">&quot;${APPLICATION}&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-include"><em>include</em></a></p>
+</div>
+<p>Keys are:</p>
+<ul class="simple">
+<li><strong>allowed-globals</strong> : list of names that are not to be reported as bad use of globals</li>
+</ul>
+</div>
+<div class="section" id="log">
+<span id="pages-tool-generator-config-ref-log"></span><h2>log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h2>
+<p>Configure log/reporting features. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;log&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;classes-unused&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;custom.*&quot;</span><span class="p">,</span> <span class="s2">&quot;qx.util.*&quot;</span> <span class="p">],</span>
+  <span class="s2">&quot;privates&quot;</span>       <span class="o">:</span> <span class="p">(</span><span class="s2">&quot;on&quot;</span><span class="o">|</span><span class="s2">&quot;off&quot;</span><span class="p">),</span>
+  <span class="s2">&quot;resources&quot;</span>      <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;file&quot;</span>         <span class="o">:</span> <span class="s2">&quot;&lt;filename&gt;&quot;</span>
+  <span class="p">}</span>
+  <span class="s2">&quot;filter&quot;</span>         <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;debug&quot;</span>        <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;generator.code.PartBuilder.*&quot;</span> <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;dependencies&quot;</span>   <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span>         <span class="o">:</span> <span class="p">(</span><span class="s2">&quot;using&quot;</span><span class="o">|</span><span class="s2">&quot;used-by&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;phase&quot;</span>        <span class="o">:</span> <span class="p">(</span><span class="s2">&quot;runtime&quot;</span><span class="o">|</span><span class="s2">&quot;loadtime&quot;</span><span class="o">|</span><span class="kc">null</span><span class="p">),</span>
+    <span class="s2">&quot;include-transitive-load-deps&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+    <span class="s2">&quot;force-fresh-deps&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+    <span class="s2">&quot;format&quot;</span>       <span class="o">:</span> <span class="p">(</span><span class="s2">&quot;txt&quot;</span><span class="o">|</span><span class="s2">&quot;dot&quot;</span><span class="o">|</span><span class="s2">&quot;json&quot;</span><span class="o">|</span><span class="s2">&quot;provider&quot;</span><span class="o">|</span><span class="s2">&quot;flare&quot;</span><span class="o">|</span><span class="s2">&quot;term&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;dot&quot;</span>          <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;root&quot;</span>           <span class="o">:</span> <span class="s2">&quot;custom.Application&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;file&quot;</span>           <span class="o">:</span> <span class="s2">&quot;&lt;filename&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;radius&quot;</span>         <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="s2">&quot;span-tree-only&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+      <span class="s2">&quot;compiled-class-size&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;json&quot;</span>         <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;file&quot;</span>       <span class="o">:</span> <span class="s2">&quot;&lt;filename&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pretty&quot;</span>     <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;flare&quot;</span>        <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;file&quot;</span>       <span class="o">:</span> <span class="s2">&quot;&lt;filename&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pretty&quot;</span>     <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-include"><em>include</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-compile-options"><em>compile-options</em></a></p>
+</div>
+<p>This key allows you to enable logging features along various axes.</p>
+<ul class="simple">
+<li><strong>classes-unused</strong> : Report unused classes for the name space patterns given in the list.</li>
+<li><strong>privates</strong> : print out list of classes that use a specific private member</li>
+<li><strong>resources</strong>: writes the map of resource infos for the involved classes to a json-formatted file<ul>
+<li><strong>file</strong> : output file path (default <em>resources.json</em>)</li>
+</ul>
+</li>
+<li><strong>filter</strong> : allows you to define certain log filter<ul>
+<li><strong>debug</strong> : in debug (&quot;verbose&quot;) logging enabled with the <tt class="docutils literal"><span class="pre">-v</span></tt> command line switch, only print debug messages from generator modules that match the given pattern</li>
+</ul>
+</li>
+<li><strong>dependencies</strong> : print out dependency relations of classes<ul>
+<li><strong>type</strong> <em>(required)</em>: which kind of dependencies to log<ul>
+<li><tt class="docutils literal"><span class="pre">using</span></tt>: dependencies of the current class to other classes; uses the <strong>using</strong> key; supports <tt class="docutils literal"><span class="pre">txt</span></tt>, <tt class="docutils literal"><span class="pre">dot</span></tt>, <tt class="docutils literal"><span class="pre">json</span></tt> and <tt class="docutils literal"><span class="pre">flare</span></tt> output formats</li>
+<li><tt class="docutils literal"><span class="pre">used-by</span></tt>: dependencies of other classes to the current class; supports only <tt class="docutils literal"><span class="pre">txt</span></tt> format</li>
+</ul>
+</li>
+<li><strong>phase</strong> : limit logging to run-time or load-time dependencies; use <tt class="docutils literal"><span class="pre">null</span></tt> if you want to have both (default: <em>loadtime</em>)</li>
+<li><strong>include-transitive-load-deps</strong> : for <em>load-time</em> dependencies, whether transitive dependencies (i.e. dependencies that are not lexically in the code, but are required at load-time by some lexical dependency) should be included (default: <em>true</em>)</li>
+<li><strong>force-fresh-deps</strong> : force to re-calculate the class dependencies before logging them; this will take considerably longer but assures that the dependencies match exactly the latest state of the source trees (interesting after <em>statics</em> optimization; default: <em>false</em>)</li>
+<li><strong>format</strong> : format of the dependency output (default: <em>txt</em>)<ul>
+<li><tt class="docutils literal"><span class="pre">txt</span></tt>: textual output to the console</li>
+<li><tt class="docutils literal"><span class="pre">dot</span></tt>: generation of a Graphviz dot file; uses the <strong>dot</strong> key</li>
+<li><tt class="docutils literal"><span class="pre">json</span></tt>: &quot;native&quot; Json data structure (reflecting the hierarchy of the txt output class -&gt; [run|load]); uses the <strong>json</strong> key</li>
+<li><tt class="docutils literal"><span class="pre">provider</span></tt>: similar to the <tt class="docutils literal"><span class="pre">json</span></tt> output, but all id's are given as path suffixes (slashes between name spaces, file extensions), and dependencies are extended with resource id's and translatable string keys (as <tt class="docutils literal"><span class="pre">translation#&lt;key&gt;</span></tt>); uses the <strong>json</strong> key</li>
+<li><tt class="docutils literal"><span class="pre">flare</span></tt>: Json output suitable for Prefuse Flare depencency graphs; uses the <strong>flare</strong> key</li>
+<li><tt class="docutils literal"><span class="pre">term</span></tt>: textual output to the console, in the form of a term <em>depends(&lt;class&gt;, [&lt;load-deps&gt;,...], [&lt;run-deps&gt;,...])</em></li>
+</ul>
+</li>
+<li><strong>dot</strong>:<ul>
+<li><strong>span-tree-only</strong>: only create the spanning tree from the root node, rather than the full dependency graph; reduces graph complexity by limiting incoming edges to one (i.e. for all classes at most one arrow pointing to them will be shown), even if more dependency relations exist</li>
+<li><strong>root</strong> : the root class for the <tt class="docutils literal"><span class="pre">dot</span></tt> format output; only dependencies starting off of this class are included</li>
+<li><strong>file</strong> : output file path (default <em>deps.dot</em>)</li>
+<li><strong>radius</strong> : include only nodes that are within the given radius (or graph distance) to the root node</li>
+<li><strong>compiled-class-size</strong> : use compiled class size to highlight graph nodes, rather than source file sizes; if true classes might have to be compiled to determine their compiled size, which could cause the log job to run longer; compile optimization settings are searched for in <a class="reference internal" href="#pages-tool-generator-config-ref-compile-options"><em>compile-options/code/optimize</em></a>, defaulting to none;  (default <em>true</em>)</li>
+</ul>
+</li>
+<li><strong>json</strong>:<ul>
+<li><strong>file</strong> : output file path (default <em>deps.json</em>)</li>
+<li><strong>pretty</strong> : produce formatted Json, with spaces and indentation; if <em>false</em> produce compact format (default: <em>false</em>)</li>
+</ul>
+</li>
+<li><strong>flare</strong>:<ul>
+<li><strong>file</strong> : output file path (default <em>flare.json</em>)</li>
+<li><strong>pretty</strong> : produce formatted Json, with spaces and indentation; if <em>false</em> produce compact format (default: <em>false</em>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-log-key"><em>Special section</em></a>.</p>
+</div>
+<div class="section" id="migrate-files">
+<span id="pages-tool-generator-config-ref-migrate-files"></span><h2>migrate-files<a class="headerlink" href="#migrate-files" title="Permalink to this headline">¶</a></h2>
+<p>Migrate source files to current qooxdoo version. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;migrate-files&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+   <span class="s2">&quot;from-version&quot;</span> <span class="o">:</span> <span class="s2">&quot;0.7&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;migrate-html&quot;</span> <span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This key will invoke the mechanical migration tool of qooxdoo, which will run through the class files an apply successive sequences of patches and replacements to them. This allows to apply migration steps automatically to an existing qooxdoo application, to make it better comply with the current SDK version (the version the key is run in). Mind that you might have to do further adaptions by hand after the automatic migration has run. The migration tool itself is interactive and allows entering migration parameters by hand.</p>
+<ul class="simple">
+<li><strong>from-version</strong> : qooxdoo version of the code before migration</li>
+<li><strong>migrate-html</strong> : whether to patch .html files in the application (e.g. the index.html)</li>
+</ul>
+</div>
+<div class="section" id="name">
+<span id="pages-tool-generator-config-ref-name"></span><h2>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p>Provides some descriptive text for the whole configuration file.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Some text.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="packages">
+<span id="pages-tool-generator-config-ref-packages"></span><h2>packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>Define packages for this app. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;packages&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;parts&quot;</span>  <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;&lt;part_name&gt;&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;include&quot;</span>                  <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;app.class1&quot;</span><span class="p">,</span> <span class="s2">&quot;app.class2&quot;</span><span class="p">,</span> <span class="s2">&quot;app.class3.*&quot;</span> <span class="p">],</span>
+      <span class="s2">&quot;expected-load-order&quot;</span>      <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;no-merge-private-package&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;sizes&quot;</span>  <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;min-package&quot;</span>           <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;min-package-unshared&quot;</span>  <span class="o">:</span> <span class="mi">1</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;init&quot;</span>             <span class="o">:</span> <span class="s2">&quot;&lt;part_name&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;separate-loader&quot;</span>  <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+  <span class="s2">&quot;i18n-as-parts&quot;</span>    <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+  <span class="s2">&quot;additional-merge-constraints&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">),</span>
+  <span class="s2">&quot;verifier-bombs-on-error&quot;</span>      <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-compile"><em>compile</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-include"><em>include</em></a></p>
+</div>
+<p>Keys are</p>
+<ul class="simple">
+<li><strong>parts</strong> : map of part names and their properties<ul>
+<li>&lt;part_name&gt; :<ul>
+<li><strong>include</strong> <em>(required)</em>: list of class patterns</li>
+<li><strong>expected-load-order</strong> : integer &gt; 0 (default: <em>undefined</em>)</li>
+<li><strong>no-merge-private-package</strong> : whether the package specific to that individual part should not be merged; this can be used when carving out resource-intensive parts (default: <em>false</em>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>sizes</strong> : size constraints on packages<ul>
+<li><strong>min-package</strong> : minimal size of a package in KB (default: 0)</li>
+<li><strong>min-package-unshared</strong> : minimal size of an unshared package in KB (default: &lt;min-package&gt;)</li>
+</ul>
+</li>
+<li><strong>init</strong> : name of the initial part, i.e. the part to be loaded first (default: <em>&quot;boot&quot;</em>)</li>
+<li><strong>separate-loader</strong> : whether loader information should be included with the boot package, or be separate; if set true, the loader package will contain no class code (default: <em>false</em>)</li>
+<li><strong>i18n-as-parts</strong> : whether internationalization information (translations, CLDR data) should be included with the packages, or be separate; if set true, the code packages will contain no i18n data; rather, i18n data will be generated in dedicated parts, which have to be loaded by the application explicitly; see <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-i18n-with-boot"><em>special section</em></a> (default: <em>false</em>)</li>
+<li><strong>additional-merge-constraints</strong> : if set to false, the generator will be more permissive when merging one package into another, which might result in fewer packages at the end, but can also result in consistencies which the part verifier will complain about (default: <em>true</em>)</li>
+<li><strong>verifier-bombs-on-error</strong> : whether the part verifier should raise an exception, or just warn and continue (default: <em>true</em>)</li>
+</ul>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-packages-key"><em>Special section</em></a></p>
+</div>
+<div class="section" id="pretty-print">
+<span id="pages-tool-generator-config-ref-pretty-print"></span><h2>pretty-print<a class="headerlink" href="#pretty-print" title="Permalink to this headline">¶</a></h2>
+<p>Triggers code beautification of source class files (in-place-editing). An empty map value triggers default formatting, but further keys can tailor the output.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;pretty-print&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;general&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;indent-string&quot;</span>        <span class="o">:</span> <span class="s2">&quot;  &quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;comments&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;block&quot;</span>  <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;add&quot;</span>  <span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;trailing&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;keep-column&quot;</span>        <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">&quot;comment-cols&quot;</span>       <span class="o">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span>
+      <span class="s2">&quot;padding&quot;</span>            <span class="o">:</span> <span class="s2">&quot;  &quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;code&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;align-with-curlies&quot;</span>   <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;open-curly&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;newline-before&quot;</span>     <span class="o">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;indent-before&quot;</span>      <span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-include"><em>include</em></a></p>
+</div>
+<p>Keys are:</p>
+<ul class="simple">
+<li><strong>general</strong> : General settings.<ul>
+<li><strong>indent-string</strong> : &quot;&lt;whitespace_string&gt;&quot;, e.g. &quot;t&quot; for tab (default: &quot;  &quot; (2 spaces))</li>
+</ul>
+</li>
+<li><strong>comments</strong> : Settings for pretty-printing comments.<ul>
+<li><strong>block</strong> : Settings for block comments (&quot;/*...*/&quot;)<ul>
+<li><strong>add</strong> : (true|false) Whether to automatically add JSDoc comment templates, e.g. ahead of method definitions (default: true)</li>
+</ul>
+</li>
+<li><strong>trailing</strong> : Settings for pretty-printing line-end (&quot;trailing&quot;) comments (&quot;//...&quot;).<ul>
+<li><strong>keep-column</strong> : (true|false) Tries to fix the column of the trailing comments to the value in the original source (default: false)</li>
+<li><strong>comment-cols</strong> : [n1, n2, ..., nN] Column positions to start trailing comments at, e.g. [50, 70, 90] (default: [])</li>
+<li><strong>padding</strong> : &quot;&lt;whitespace_string&gt;&quot; White space to be inserted after statement end and beginning of comment (default: &quot;  &quot; (2 spaces))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>code</strong> : Settings for pretty-printing code blocks.<ul>
+<li><strong>align-with-curlies</strong> : (true|false) Whether to put a block at the same column as the surrounding/ending curly bracket (default: false)</li>
+<li><strong>open-curly</strong> : Settings for the opening curly brace '{'.<ul>
+<li><strong>newline-before</strong> : &quot;([aA]|[nN]|[mM])&quot; Whether to insert a line break before the opening curly always (aA), never (nN) or mixed (mM) depending on block complexity (default: &quot;m&quot;)</li>
+<li><strong>indent-before</strong> : (true|false) Whether to indent the opening curly if it is on a new line (default: false)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="provider">
+<span id="pages-tool-generator-config-ref-provider"></span><h2>provider<a class="headerlink" href="#provider" title="Permalink to this headline">¶</a></h2>
+<p>Collects application classes, resources, translateable strings and dependency information in a specific directory structure, under the <tt class="docutils literal"><span class="pre">provider</span></tt> root directory. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;provider&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;app-root&quot;</span> <span class="o">:</span> <span class="s2">&quot;./provider&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;include&quot;</span>  <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;${APPLICATION}.*&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;exclude&quot;</span>  <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;${APPLICATION}.test.*&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a></p>
+</div>
+<p>Keys are:</p>
+<ul class="simple">
+<li><strong>app-root</strong> : Chose a different root directory for the output (default: <em>./provider</em>).</li>
+<li><strong>include</strong>  : Name spaces for classes and resources to be included (default: <em>${APPLICATION}.*</em>).</li>
+<li><strong>exclude</strong>  : Name spaces for classes and resources to be excluded (default: <em>${APPLICATION}.test.*</em>).</li>
+</ul>
+</div>
+<div class="section" id="require">
+<span id="pages-tool-generator-config-ref-require"></span><h2>require<a class="headerlink" href="#require" title="Permalink to this headline">¶</a></h2>
+<p>Define prerequisite classes needed at load time. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;require&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;&lt;class_name&gt;&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;qx.util&quot;</span><span class="p">,</span> <span class="s2">&quot;qx.fx&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each key is a</p>
+<ul class="simple">
+<li>&lt;class_name&gt; : each value is an array of required classes for this class.</li>
+</ul>
+</div>
+<div class="section" id="run">
+<span id="pages-tool-generator-config-ref-run"></span><h2>run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
+<p>Define a list of jobs to run. Takes an array of job names.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;run&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;&lt;job1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;job2&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;job3&gt;&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>These jobs will all be run in place of the defining job (which is sort of a 'meta-job'). All further settings in the defining job will be inherited by the listed jobs (so be careful of side effects).</p>
+<p><a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-run-key"><em>Special section</em></a></p>
+</div>
+<div class="section" id="shell">
+<span id="pages-tool-generator-config-ref-shell"></span><h2>shell<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
+<p>Triggers the execution of external commands. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;shell&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;command&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="s2">&quot;echo foo bar baz&quot;</span><span class="o">|</span><span class="p">[</span><span class="s2">&quot;echo foo&quot;</span><span class="p">,</span> <span class="s2">&quot;echo bar&quot;</span><span class="p">,</span> <span class="s2">&quot;echo baz&quot;</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a></p>
+</div>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>command</strong> : command string or list of command strings to execute by shell</li>
+</ul>
+<p><em>Note</em>: Generally, the command string is passed to the executing shell &quot;as is&quot;, with one exception: Relative paths are absolutized, so you can run those jobs from remote directories. In order to achieve this, all strings of the command are searched for path separators (e.g. '/' on Posix systems, '\' on Windows - be sure to encode this as '\\' on Windows as '\' is the Json escape character). Those strings are regarded as paths and - unless they are already absolute - are absolutized, relative to the path of the current config. So e.g. instead of writing</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;cp file1 file2&quot;</span>
+</pre></div>
+</div>
+<p>you should write</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;cp ./file1 ./file2&quot;</span>
+</pre></div>
+</div>
+<p>and it will work from everywhere.</p>
+</div>
+<div class="section" id="simulate">
+<span id="pages-tool-generator-config-ref-simulate"></span><h2>simulate<a class="headerlink" href="#simulate" title="Permalink to this headline">¶</a></h2>
+<p>Runs a suite of GUI tests (simulated interaction). Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;simulate&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;java-classpath&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;../rhino/js.jar&quot;</span><span class="p">,</span> <span class="s2">&quot;../selenium/selenium-java-client-driver.jar&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;qxselenium-path&quot;</span> <span class="o">:</span> <span class="s2">&quot;${SIMULATOR_ROOT}/tool&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;rhino-class&quot;</span> <span class="o">:</span> <span class="s2">&quot;org.mozilla.javascript.tools.shell.Main&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;simulator-script&quot;</span> <span class="o">:</span> <span class="s2">&quot;${BUILD_PATH}/script/simulator.js&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Possible keys are</p>
+<ul class="simple">
+<li><strong>java-classpath</strong> <em>(required)</em>: Java classpath argument for Rhino application. Takes an Array. Must point to the Selenium client driver and Rhino JARs. (default: <em>${SIMULATOR_CLASSPATH}</em>)</li>
+<li><strong>qxselenium-path</strong> <em>(required)</em>: Location of the QxSelenium Java class. (default: <em>${SIMULATOR_ROOT}/tool</em>)</li>
+<li><strong>rhino-class</strong> <em>(required)</em>: Full name of the Mozilla Rhino class that should be used to run the simulation. Set to <em>org.mozilla.javascript.tools.debugger.Main</em> to run the test application in Rhino's visual debugger. (default: <em>org.mozilla.javascript.tools.shell.Main</em>)</li>
+<li><strong>simulator-script</strong> <em>(required)</em>: Path of the compiled Simulator application to be run. (default: <em>${ROOT}/simulator/script/simulator.js</em>)</li>
+</ul>
+</div>
+<div class="section" id="slice-images">
+<span id="pages-tool-generator-config-ref-slice-images"></span><h2>slice-images<a class="headerlink" href="#slice-images" title="Permalink to this headline">¶</a></h2>
+<p>Triggers cutting images into regions. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;slice-images&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;convert-cmd&quot;</span> <span class="o">:</span> <span class="s2">&quot;&lt;string_template&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;images&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;&lt;input_image&gt;&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;prefix&quot;</span>       <span class="o">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;border-width&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="mi">5</span> <span class="o">|</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]),</span>
+        <span class="s2">&quot;trim-width&quot;</span>   <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This key requires an external program (ImageMagic) to run successfully.</p>
+</div>
+<ul>
+<li><p class="first"><strong>convert-cmd</strong> <em>(experimental)</em>: command line for the ImageMagick <cite>convert</cite> command. If you create clippings of an image, the <em>convert</em> command line utility will be invoked. This command template will be used to invoke it, and is exposed here so you can adjust it to your local ImageMagick installation. If you tweak this template and shuffle things around, make sure the placholders <tt class="docutils literal"><span class="pre">%(&lt;name&gt;)s</span></tt> remain intact. Example value:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">&quot;convert</span> <span class="pre">%(infile)s</span> <span class="pre">-crop</span> <span class="pre">%(xoff)sx%(yoff)s+%(xorig)s+%(yorig)s</span> <span class="pre">+repage</span> <span class="pre">%(outfile)s&quot;</span></tt> <em>(for ImageMagick v5.x, v6.x)</em></li>
+</ul>
+<p>(default: <em>&quot;&quot;</em>)</p>
+</li>
+<li><p class="first"><strong>images</strong> : map with slice entries.</p>
+<ul class="simple">
+<li><strong>&lt;input_image&gt;</strong> :  path to input file for the slicing; may be relative to config file location<ul>
+<li><strong>prefix</strong> <em>(required)</em> : file name prefix used for the output files; will be interpreted relative to the input file location (so a plain name will result in output files in the same directory, but you can also navigate away with <tt class="docutils literal"><span class="pre">../../....</span></tt> etc.)</li>
+<li><strong>border-width</strong> : pixel width to cut into original image when slicing borders etc. Takes either a single integer (common border width for all sides) or an array of four integers (top, right, bottom, left).</li>
+<li><strong>trim-width</strong> : reduce the width of the center slice to no more than 20 pixels. (default: <em>true</em>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="translate">
+<span id="pages-tool-generator-config-ref-translate"></span><h2>translate<a class="headerlink" href="#translate" title="Permalink to this headline">¶</a></h2>
+<p>(Re-)generate the .po files (usually located in <tt class="docutils literal"><span class="pre">source/translation</span></tt>) from source classes. Takes a map. The source classes of the  specified name space are scanned for translatable strings. Those strings are extracted and put into map files (.po files), one for each language. Those .po files can then be edited to contain the proper translations of the source strings. For a new locale, a new file will be generated. For existing .po files, re-running the job will add and remove entries as appropriate, but otherwise keep existing translations.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;translate&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;namespaces&quot;</span>               <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;qx.util&quot;</span> <span class="p">],</span>
+  <span class="s2">&quot;locales&quot;</span>                  <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;de&quot;</span> <span class="p">],</span>
+  <span class="s2">&quot;pofile-with-metadata&quot;</span>     <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+  <span class="s2">&quot;poentry-with-occurrences&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">peer-keys: <a class="reference internal" href="#pages-tool-generator-config-ref-cache"><em>cache</em></a>, <a class="reference internal" href="#pages-tool-generator-config-ref-library"><em>library</em></a></p>
+</div>
+<ul class="simple">
+<li><strong>namespaces</strong> <em>(required)</em> : List of name spaces for which .po files should be updated.</li>
+<li><strong>locales</strong> :  List of locale identifiers to update.</li>
+<li><strong>pofile-with-metadata</strong> : Whether meta data is automatically added to a <em>new</em> .po file; on existing .po files the meta data is retained (default: <em>true</em>)</li>
+<li><strong>poentry-with-occurrences</strong> : Whether each PO entry is preceded by <tt class="docutils literal"><span class="pre">#:</span></tt> comments in the <em>.po</em> files, which indicate in which source file(s) and line number(s) this key is used (default: <em>true</em>)</li>
+</ul>
+</div>
+<div class="section" id="use">
+<span id="pages-tool-generator-config-ref-use"></span><h2>use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h2>
+<p>Define prerequisite classes needed at run time. Takes a map.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;use&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;&lt;class_name&gt;&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;qx.util&quot;</span><span class="p">,</span> <span class="s2">&quot;qx.fx&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each key is a</p>
+<ul class="simple">
+<li><strong>&lt;class_name&gt;</strong> : each value is an array of used classes of this class.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="generator_default_jobs.html"
+             title="previous chapter">« Generator Default Jobs</a>
+          <span class="separator">|</span>
+          <a class="next" href="generator_config_macros.html"
+             title="next chapter">Generator Config Macros »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Generator Config Keys</a><ul>
+<li><a class="reference internal" href="#add-css">add-css</a></li>
+<li><a class="reference internal" href="#add-script">add-script</a></li>
+<li><a class="reference internal" href="#api">api</a></li>
+<li><a class="reference internal" href="#asset-let">asset-let</a></li>
+<li><a class="reference internal" href="#cache">cache</a></li>
+<li><a class="reference internal" href="#clean-files">clean-files</a></li>
+<li><a class="reference internal" href="#collect-environment-info">collect-environment-info</a></li>
+<li><a class="reference internal" href="#combine-images">combine-images</a></li>
+<li><a class="reference internal" href="#compile">compile</a></li>
+<li><a class="reference internal" href="#compile-options">compile-options</a></li>
+<li><a class="reference internal" href="#config-warnings">config-warnings</a></li>
+<li><a class="reference internal" href="#copy-files">copy-files</a></li>
+<li><a class="reference internal" href="#copy-resources">copy-resources</a></li>
+<li><a class="reference internal" href="#default-job">default-job</a></li>
+<li><a class="reference internal" href="#dependencies">dependencies</a></li>
+<li><a class="reference internal" href="#desc">desc</a></li>
+<li><a class="reference internal" href="#environment">environment</a></li>
+<li><a class="reference internal" href="#exclude">exclude</a></li>
+<li><a class="reference internal" href="#export">export</a></li>
+<li><a class="reference internal" href="#extend">extend</a></li>
+<li><a class="reference internal" href="#fix-files">fix-files</a></li>
+<li><a class="reference internal" href="#include">include</a></li>
+<li><a class="reference internal" href="#include-top-level">include (top-level)</a></li>
+<li><a class="reference internal" href="#jobs">jobs</a></li>
+<li><a class="reference internal" href="#let">let</a></li>
+<li><a class="reference internal" href="#let-top-level">let (top-level)</a></li>
+<li><a class="reference internal" href="#library">library</a></li>
+<li><a class="reference internal" href="#lint-check">lint-check</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#migrate-files">migrate-files</a></li>
+<li><a class="reference internal" href="#name">name</a></li>
+<li><a class="reference internal" href="#packages">packages</a></li>
+<li><a class="reference internal" href="#pretty-print">pretty-print</a></li>
+<li><a class="reference internal" href="#provider">provider</a></li>
+<li><a class="reference internal" href="#require">require</a></li>
+<li><a class="reference internal" href="#run">run</a></li>
+<li><a class="reference internal" href="#shell">shell</a></li>
+<li><a class="reference internal" href="#simulate">simulate</a></li>
+<li><a class="reference internal" href="#slice-images">slice-images</a></li>
+<li><a class="reference internal" href="#translate">translate</a></li>
+<li><a class="reference internal" href="#use">use</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="generator_config_macros.html"
+                        title="next chapter">Generator Config Macros</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="generator_default_jobs.html"
+                        title="previous chapter">Generator Default Jobs</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/generator_config_ref.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

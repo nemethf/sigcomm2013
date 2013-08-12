@@ -1,0 +1,613 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Generator Default Jobs &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="References" href="../references.html" />
+    <link rel="next" title="Generator Config Keys" href="generator_config_ref.html" />
+    <link rel="prev" title="Grow" href="../layout/grow.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../references.html" accesskey="U">References</a>
+     &raquo;
+  <a href="">Generator Default Jobs</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="generator-default-jobs">
+<span id="pages-tool-generator-default-jobs-default-generator-jobs"></span><h1>Generator Default Jobs<a class="headerlink" href="#generator-default-jobs" title="Permalink to this headline">¶</a></h1>
+<p>This page describes the jobs that are automatically available to all skeleton-based applications (particularly, applications with config.json files that include the framework's <em>application.json</em> config file). Mainly this is just a reference list with short descriptions of what the jobs do. But in some cases, there is comprehensive documentation about the interface of this job and how it can be parametrized (This would usually require changing your <em>config.json</em> configuration file).</p>
+<div class="section" id="action-jobs">
+<span id="pages-tool-generator-default-jobs-action-jobs"></span><h2>Action Jobs<a class="headerlink" href="#action-jobs" title="Permalink to this headline">¶</a></h2>
+<p>These jobs can be invoked with the generator, e.g. as <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">&lt;jobname&gt;</span></tt>.</p>
+<div class="section" id="api">
+<span id="pages-tool-generator-default-jobs-api"></span><h3>api<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
+<p>Create api doc for the current library. Use the following macros to tailor the scope of classes that are going to show up in the customized apiviewer application:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;API_INCLUDE&quot;</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&lt;class_patt1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;class_patt2&gt;&quot;</span><span class="p">,</span> <span class="p">...]</span>
+<span class="s2">&quot;API_EXCLUDE&quot;</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&lt;class_patt1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;class_patt2&gt;&quot;</span><span class="p">,</span> <span class="p">...]</span>
+</pre></div>
+</div>
+<p>The syntax for the class pattern is like those for the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-include"><em>include</em></a> config key.</p>
+<p>Classes, which are not covered by <tt class="docutils literal"><span class="pre">API_INCLUDE</span></tt>, are nevertheless included in the api data with their full class description <em>if</em> they are required for inheritance relationships (e.g. a class that is included derives from a class which is not). If such a required class is explicitly <em>excluded</em> with <tt class="docutils literal"><span class="pre">API_EXCLUDE</span></tt>, a stub entry for it will be included in the api data to just show the inheritance relationship.</p>
+</div>
+<div class="section" id="api-data">
+<span id="pages-tool-generator-default-jobs-api-data"></span><h3>api-data<a class="headerlink" href="#api-data" title="Permalink to this headline">¶</a></h3>
+<p>Create the api data for the current library. This is included in the <a class="reference internal" href="#pages-tool-generator-default-jobs-api"><em>api</em></a> job, but allows you to re-generate the api data <em>.json</em> files for the classes without re-generating the Apiviewer application as well. Moreover, you can supply class names as command line arguments to only re-generate the api data for those:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">sh</span><span class="o">&gt;</span> <span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">api</span><span class="o">-</span><span class="nx">data</span> <span class="nx">my</span><span class="p">.</span><span class="nx">own</span><span class="p">.</span><span class="nx">ClassA</span> <span class="p">...</span>
+</pre></div>
+</div>
+<p>Beware though that in such a case the tree information provided to the Apiviewer (i.e. what you see in the Apiviewer's tree view on the left) is also restricted to those classes (augmented by stubs for their ancestors for hierarchy resolution). But this should be fine for developing API documenation for specific classes.</p>
+</div>
+<div class="section" id="build">
+<span id="pages-tool-generator-default-jobs-build"></span><h3>build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h3>
+<p>Create build version of current application.</p>
+</div>
+<div class="section" id="clean">
+<span id="pages-tool-generator-default-jobs-clean"></span><h3>clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h3>
+<p>Remove local cache and generated .js files (source/build).</p>
+</div>
+<div class="section" id="distclean">
+<span id="pages-tool-generator-default-jobs-distclean"></span><h3>distclean<a class="headerlink" href="#distclean" title="Permalink to this headline">¶</a></h3>
+<p>Remove the cache and all generated artefacts of this library (source, build, ...).</p>
+</div>
+<div class="section" id="fix">
+<span id="pages-tool-generator-default-jobs-fix"></span><h3>fix<a class="headerlink" href="#fix" title="Permalink to this headline">¶</a></h3>
+<p>Normalize whitespace in .js files of the current library (tabs, eol, ...).</p>
+</div>
+<div class="section" id="info">
+<span id="pages-tool-generator-default-jobs-info"></span><h3>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h3>
+<p>Running this job will print out various information about your setup on the console. Information includes your qooxdoo and Python version, whether source and/or build version of your app has been built, stats on the cache, asf.</p>
+</div>
+<div class="section" id="inspector">
+<span id="pages-tool-generator-default-jobs-inspector"></span><h3>inspector<a class="headerlink" href="#inspector" title="Permalink to this headline">¶</a></h3>
+<p>Create an instance of the Inspector in the current application. The inspector is a debugging tool that allows you to inspect your custom application while running. You need to run the <em>source</em> job first, the run the <em>inspector</em> job. You will then be able to open the file <tt class="docutils literal"><span class="pre">source/inspector.html</span></tt> in your browser. The source version of your application will be loaded into the inspector automatically.</p>
+</div>
+<div class="section" id="lint">
+<span id="pages-tool-generator-default-jobs-lint"></span><h3>lint<a class="headerlink" href="#lint" title="Permalink to this headline">¶</a></h3>
+<p>Check the source code of the .js files of the current library.</p>
+</div>
+<div class="section" id="migration">
+<span id="pages-tool-generator-default-jobs-migration"></span><h3>migration<a class="headerlink" href="#migration" title="Permalink to this headline">¶</a></h3>
+<p>Migrate the .js files of the current library to the current qooxdoo version.</p>
+<div class="section" id="running-the-migration-job">
+<h4>Running the migration job<a class="headerlink" href="#running-the-migration-job" title="Permalink to this headline">¶</a></h4>
+<p>Here is a sample run of the migration job:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">migration</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">NOTE</span><span class="o">:</span>    <span class="nx">To</span> <span class="nx">apply</span> <span class="nx">only</span> <span class="nx">the</span> <span class="nx">necessary</span> <span class="nx">changes</span> <span class="nx">to</span> <span class="nx">your</span> <span class="nx">project</span><span class="p">,</span> <span class="nx">we</span>
+         <span class="nx">need</span> <span class="nx">to</span> <span class="nx">know</span> <span class="nx">the</span> <span class="nx">qooxdoo</span> <span class="nx">version</span> <span class="nx">it</span> <span class="nx">currently</span> <span class="nx">works</span> <span class="kd">with</span><span class="p">.</span>
+
+<span class="nx">Please</span> <span class="nx">enter</span> <span class="nx">your</span> <span class="nx">current</span> <span class="nx">qooxdoo</span> <span class="nx">version</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span> <span class="o">:</span>
+</pre></div>
+</div>
+<p>Enter your qooxdoo version or just hit return if you are using the version given in square brackets.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">MIGRATION</span> <span class="nx">SUMMARY</span><span class="o">:</span>
+
+<span class="nx">Current</span> <span class="nx">qooxdoo</span> <span class="nx">version</span><span class="o">:</span>   <span class="mf">1.0</span>
+<span class="nx">Upgrade</span> <span class="nx">path</span><span class="o">:</span>              <span class="mf">1.0</span><span class="p">.</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="mf">1.1</span> <span class="o">-&gt;</span> <span class="mf">1.2</span>
+
+<span class="nx">Affected</span> <span class="nx">Classes</span><span class="o">:</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">Header</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">Article</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">Tree</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">PreferenceWindow</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">ToolBar</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">FeedParser</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">Table</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">Application</span>
+    <span class="nx">feedreader</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">DemoTest</span>
+
+<span class="nx">NOTE</span><span class="o">:</span>    <span class="nx">It</span> <span class="nx">is</span> <span class="nx">advised</span> <span class="nx">to</span> <span class="k">do</span> <span class="nx">a</span> <span class="s1">&#39;generate.py distclean&#39;</span> <span class="nx">before</span> <span class="nx">migrating</span> <span class="nx">any</span> <span class="nx">files</span><span class="p">.</span>
+         <span class="nx">If</span> <span class="nx">you</span> <span class="nx">choose</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="nx">a</span> <span class="nx">subprocess</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">invoked</span> <span class="nx">to</span> <span class="nx">run</span> <span class="nx">distclean</span><span class="p">,</span>
+         <span class="nx">and</span> <span class="nx">after</span> <span class="nx">completion</span> <span class="nx">you</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">prompted</span> <span class="k">if</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">to</span>
+         <span class="k">continue</span> <span class="kd">with</span> <span class="nx">the</span> <span class="nx">migration</span><span class="p">.</span> <span class="nx">If</span> <span class="nx">you</span> <span class="nx">choose</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">distclean</span>
+         <span class="nx">step</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">skipped</span> <span class="p">(</span><span class="nx">which</span> <span class="nx">might</span> <span class="nx">result</span> <span class="k">in</span> <span class="nx">potentially</span> <span class="nx">unnecessary</span>
+         <span class="nx">files</span> <span class="nx">being</span> <span class="nx">migrated</span><span class="p">).</span>
+
+<span class="nx">Do</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">to</span> <span class="nx">run</span> <span class="s1">&#39;distclean&#39;</span> <span class="nx">now</span><span class="o">?</span> <span class="p">[</span><span class="nx">yes</span><span class="p">]</span> <span class="o">:</span>
+</pre></div>
+</div>
+<p>Enter &quot;yes&quot;.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">WARNING</span><span class="o">:</span> <span class="nx">The</span> <span class="nx">migration</span> <span class="nx">process</span> <span class="nx">will</span> <span class="nx">update</span> <span class="nx">the</span> <span class="nx">files</span> <span class="k">in</span> <span class="nx">place</span><span class="p">.</span> <span class="nx">Please</span> <span class="nx">make</span>
+         <span class="nx">sure</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">have</span> <span class="nx">a</span> <span class="nx">backup</span> <span class="nx">of</span> <span class="nx">your</span> <span class="nx">project</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">complete</span> <span class="nx">output</span> <span class="nx">of</span> <span class="nx">the</span>
+         <span class="nx">migration</span> <span class="nx">process</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">logged</span> <span class="nx">to</span> <span class="s1">&#39;migration.log&#39;</span><span class="p">.</span>
+
+<span class="nx">Do</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">to</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">migration</span> <span class="nx">now</span><span class="o">?</span> <span class="p">[</span><span class="nx">no</span><span class="p">]</span> <span class="o">:</span>
+</pre></div>
+</div>
+<p>Enter &quot;yes&quot;.</p>
+<p>Check <tt class="docutils literal"><span class="pre">migration.log</span></tt> for messages that contain <em>foo.js has been modified. Storing modifications ...</em> to verify changes to class code.</p>
+</div>
+</div>
+<div class="section" id="simulation-build">
+<span id="pages-tool-generator-default-jobs-simulation-build"></span><h3>simulation-build<a class="headerlink" href="#simulation-build" title="Permalink to this headline">¶</a></h3>
+<p>Creates a runner application (the <a class="reference internal" href="../development/simulator.html#pages-development-simulator-simulator"><em>Simulator</em></a>) for Selenium-based GUI interaction tests of the current library.</p>
+</div>
+<div class="section" id="simulation-run">
+<h3>simulation-run<a class="headerlink" href="#simulation-run" title="Permalink to this headline">¶</a></h3>
+<p>Starts Rhino and executes a <a class="reference internal" href="../development/simulator.html#pages-development-simulator-simulator"><em>Simulator</em></a> test application generated by <tt class="docutils literal"><span class="pre">simulation-build</span></tt>.
+The Simulator is configured using the &quot;<a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-environment"><em>environment</em></a>&quot; key of this job. The following settings are supported:</p>
+<ul class="simple">
+<li><strong>simulator.testBrowser</strong> (String, default: <tt class="docutils literal"><span class="pre">*firefox3</span></tt>)<ul>
+<li>A browser launcher as supported by Selenium RC (see the Selenium documentation for details).</li>
+</ul>
+</li>
+<li><strong>simulator.autHost</strong> (String, default: <tt class="docutils literal"><span class="pre">http://localhost</span></tt>)<ul>
+<li>Protocol and host name that Selenium should use to access the application to be tested</li>
+</ul>
+</li>
+<li><strong>simulator.autPath</strong> (String, default: <tt class="docutils literal"><span class="pre">/&lt;applicationName&gt;/source/index.html</span></tt>)<ul>
+<li>Server path of the tested application.</li>
+</ul>
+</li>
+<li><strong>simulator.selServer</strong> (String, default: <tt class="docutils literal"><span class="pre">localhost</span></tt>)<ul>
+<li>Host name of the machine running the Selenium RC server instance to be used for the test.</li>
+</ul>
+</li>
+<li><strong>simulator.selPort</strong> (Integer, default: <tt class="docutils literal"><span class="pre">4444</span></tt>)<ul>
+<li>Number of the port the Selenium RC server is listening on</li>
+</ul>
+</li>
+<li><strong>simulator.globalErrorLogging</strong> (Boolean, default: <tt class="docutils literal"><span class="pre">false</span></tt>)<ul>
+<li>Log uncaught exceptions in the AUT.</li>
+</ul>
+</li>
+<li><strong>simulator.testEvents</strong> (Boolean, default: <tt class="docutils literal"><span class="pre">false</span></tt>)<ul>
+<li>Activate AUT event testing support.</li>
+</ul>
+</li>
+<li><strong>simulator.applicationLog</strong> (Boolean, default: <tt class="docutils literal"><span class="pre">false</span></tt>)<ul>
+<li>Capture the AUT's log output.</li>
+</ul>
+</li>
+</ul>
+<p id="pages-tool-generator-default-jobs-simulation-run">Additional runtime settings are configured using the
+&quot;<a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-simulate"><em>simulate</em></a>&quot; key.</p>
+</div>
+<div class="section" id="pretty">
+<span id="pages-tool-generator-default-jobs-pretty"></span><h3>pretty<a class="headerlink" href="#pretty" title="Permalink to this headline">¶</a></h3>
+<p>Pretty-formatting of the source code of the current library.</p>
+</div>
+<div class="section" id="source">
+<span id="pages-tool-generator-default-jobs-source"></span><h3>source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h3>
+<p>Create a source version of the application, using the original file path for each class.</p>
+<p>The source version of an application is tailored towards development activities. It
+makes it easy to write code, run the application, test, debug and
+inspect the application code, fix issues, add enhancements, and repeat.</p>
+<p>With the <em>source</em> job all the classes of the application are in their original source form, and their
+files are directly loaded from their original paths on the file system. If you inspect your
+application in a JavaScript debugger like Firebug or Chrome Developer Tools,
+you can identify each file individually, read its code and comments, set
+breakpoints, inspect variables and so forth.</p>
+<p>If you find yourself in a situation where you want to inspect more than your current application's class files in the debugger (e.g. because you are debugging another library along the way), this job is preferable.</p>
+<p>You have to re-run this job  when you introduce new dependencies, e.g.
+by instantiating a class you haven't used before.  This changes the set of
+necessary classes for your application, and the generator has to re-create the
+corresponding loader.</p>
+<p>There are two variants of the <em>source</em> job available which you might find interesting.
+One is called <a class="reference internal" href="#source-all">source-all</a> and will include all available classes of all involved libraries, the other is <a class="reference internal" href="#source-hybrid">source-hybrid</a> which improves loading speed by concatenating some of the class code. See their respective entries.</p>
+</div>
+<div class="section" id="source-all">
+<span id="pages-tool-generator-default-jobs-source-all"></span><h3>source-all<a class="headerlink" href="#source-all" title="Permalink to this headline">¶</a></h3>
+<p>Create a source version of the application, with all classes.</p>
+<p><em>source-all</em> will include all known classes, be they
+part of your application, the qooxdoo framework, or any other qooxdoo
+library or contribution you might be using. All those classes are
+included in the build, whether they are currently required or not. This
+allows you develop your code more freely as you don't have to
+re-generate the application when introducing new dependencies to existing classes. All
+classes are already there. You only have to re-run this job when you add an entirely new class that you want to use.</p>
+<p>The downside of this job is that due to the
+number of classes your application is larger and loads slower in the browser, so it is a
+trade-off between development speed and loading speed.</p>
+</div>
+<div class="section" id="source-hybrid">
+<span id="pages-tool-generator-default-jobs-source-hybrid"></span><h3>source-hybrid<a class="headerlink" href="#source-hybrid" title="Permalink to this headline">¶</a></h3>
+<p>Create a source version of the application, concatenating some of the class code.</p>
+<p>The <em>source-hybrid</em> job concatenates the contents of the classes that make up
+the application into a few files, only leaving your own application classes
+separate.  Having the other class files (framework, libraries, contribs)
+chunked together you get the loading speed of nearly the build
+version, while at the same time retaining the accessibility of your own application files for debugging. This makes this job ideal for fast and focussed development of the application-specific classes.</p>
+<p>Only the classes that are actually needed for the application are included, so you have to re-run this job when you introduce new dependencies.</p>
+<p>To review the three different source jobs, if you are just getting
+started with qooxdoo development, use the <a class="reference internal" href="#source-all">source-all</a> version, which is
+the most convenient if you are not too impatient. If you are concerned
+about loading speed during development, but don't mind hitting the up
+and return keys in your shell window once in a while, go with the default
+<a class="reference internal" href="#source-hybrid">source-hybrid</a> job. If your emphasis on the other hand is on
+inspection, and you want to see exactly which class files get loaded
+into your application and which code they provide, the <a class="reference internal" href="#source">source</a> version
+will be your choice.</p>
+</div>
+<div class="section" id="test">
+<span id="pages-tool-generator-default-jobs-test"></span><h3>test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h3>
+<p>Create a test runner app for unit tests of the current library.</p>
+<ul>
+<li><p class="first">Use the following macro to tailor the scope of classes in which unit test classes are searched for:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;TEST_INCLUDE&quot;</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&lt;class_patt1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;class_patt2&gt;&quot;</span><span class="p">,</span> <span class="p">...]</span>
+</pre></div>
+</div>
+<p>The syntax for the class pattern is like those for the <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-include"><em>include</em></a> config key.</p>
+</li>
+<li><p class="first">The libraries from the <a class="reference internal" href="#pages-tool-generator-default-jobs-libraries"><em>libraries</em></a> job will be included when building the test application (the application containing your unit tests is a separate application which is loaded into the runner application).</p>
+</li>
+<li><p class="first">If you want to break out from the reliance on the <em>libraries</em> job altogether, or have very specific settings that must be applied to the test application, you can provide a custom includer job <em>common-tests</em> which may contain a custom <em>library</em> key and other keys. But then you have to make sure it contains the Testrunner library as well.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;common-tests&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;extend&quot;</span>    <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;libraries&quot;</span> <span class="p">],</span>
+
+  <span class="s2">&quot;let&quot;</span> <span class="o">:</span>      <span class="p">{</span> <span class="s2">&quot;LOCALES&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;de&quot;</span><span class="p">,</span> <span class="s2">&quot;de_DE&quot;</span><span class="p">,</span> <span class="s2">&quot;fr&quot;</span><span class="p">,</span> <span class="s2">&quot;fr_FR&quot;</span> <span class="p">]</span> <span class="p">},</span>
+
+  <span class="s2">&quot;library&quot;</span> <span class="o">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span> <span class="s2">&quot;manifest&quot;</span> <span class="o">:</span> <span class="s2">&quot;${QOOXDOO_PATH}/framework/Manifest.json&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;manifest&quot;</span> <span class="o">:</span> <span class="s2">&quot;${TESTRUNNER_ROOT}/Manifest.json&quot;</span> <span class="p">}</span>
+  <span class="p">],</span>
+
+  <span class="s2">&quot;include&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;testrunner.TestLoader&quot;</span><span class="p">,</span> <span class="s2">&quot;${TEST_INCLUDE}&quot;</span><span class="p">,</span> <span class="s2">&quot;${QXTHEME}&quot;</span><span class="p">],</span>
+
+  <span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;qx.theme&quot;</span> <span class="o">:</span> <span class="s2">&quot;${QXTHEME}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;qx.globalErrorHandling&quot;</span> <span class="o">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+
+  <span class="s2">&quot;cache&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;compile&quot;</span> <span class="o">:</span> <span class="s2">&quot;${CACHE}&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This allows you to tailor most of the parameters that influence the creation of the test application.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="test-source">
+<span id="pages-tool-generator-default-jobs-test-source"></span><h3>test-source<a class="headerlink" href="#test-source" title="Permalink to this headline">¶</a></h3>
+<p>Create a test runner app for unit tests (source version) of the current library.</p>
+<p>The same customization interface applies as for the default <a class="reference internal" href="#pages-tool-generator-default-jobs-test"><em>test</em></a> job.</p>
+</div>
+<div class="section" id="test-inline">
+<span id="pages-tool-generator-default-jobs-test-inline"></span><h3>test-inline<a class="headerlink" href="#test-inline" title="Permalink to this headline">¶</a></h3>
+<p>Create an inline test runner app for unit tests of the current library.</p>
+<p>The same customization interface applies as for the default <a class="reference internal" href="#pages-tool-generator-default-jobs-test"><em>test</em></a> job.</p>
+</div>
+<div class="section" id="test-native">
+<span id="pages-tool-generator-default-jobs-test-native"></span><h3>test-native<a class="headerlink" href="#test-native" title="Permalink to this headline">¶</a></h3>
+<p>Create a native test runner app for unit tests of the current library.</p>
+<p>The same customization interface applies as for the default <a class="reference internal" href="#pages-tool-generator-default-jobs-test"><em>test</em></a> job.</p>
+</div>
+<div class="section" id="translation">
+<span id="pages-tool-generator-default-jobs-translation"></span><h3>translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h3>
+<p>Create .po files for current library.</p>
+</div>
+</div>
+<div class="section" id="includer-jobs">
+<span id="pages-tool-generator-default-jobs-includer-jobs"></span><h2>Includer Jobs<a class="headerlink" href="#includer-jobs" title="Permalink to this headline">¶</a></h2>
+<p>These jobs don't do anything sensible on their own, so it is no use to invoke them with the generator. But they can be used in the application's <tt class="docutils literal"><span class="pre">config.json</span></tt>, to modify the behaviour of other jobs, as they pick up their definitions.</p>
+<div class="section" id="common">
+<span id="pages-tool-generator-default-jobs-common"></span><h3>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
+<p>Common includer job for many default jobs, mostly used internally. You should usually not need to use it; if you do, use with care.</p>
+</div>
+<div class="section" id="libraries">
+<span id="pages-tool-generator-default-jobs-libraries"></span><h3>libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h3>
+<p>This job should take a single key, <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-library"><em>library</em></a>.  The <em>libraries</em> job is filled by default with your application and the qooxdoo framework library, plus any additional libraries you specify in a custom <em>libraries</em> job you added to your application's <em>config.json</em>. Here, you can add additional libraries and/or contributions you want to use in your application. See the linked reference for more information on the library key. Various other jobs will evaluate the <em>libraries</em> job (like <a class="reference internal" href="#pages-tool-generator-default-jobs-api"><em>api</em></a>, <a class="reference internal" href="#pages-tool-generator-default-jobs-test"><em>test</em></a>), to work on a common set of libraries.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;libraries&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;library&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s2">&quot;manifest&quot;</span> <span class="o">:</span> <span class="s2">&quot;some/other/lib/Manifest.json&quot;</span> <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="profiling">
+<span id="pages-tool-generator-default-jobs-profiling"></span><h3>profiling<a class="headerlink" href="#profiling" title="Permalink to this headline">¶</a></h3>
+<p>Includer job, to activate profiling.</p>
+</div>
+<div class="section" id="log-parts">
+<span id="pages-tool-generator-default-jobs-log-parts"></span><h3>log-parts<a class="headerlink" href="#log-parts" title="Permalink to this headline">¶</a></h3>
+<p>Includer job, to activate verbose logging of part generation; use with the <tt class="docutils literal"><span class="pre">-v</span></tt> command line switch.</p>
+</div>
+<div class="section" id="log-dependencies">
+<span id="pages-tool-generator-default-jobs-log-dependencies"></span><h3>log-dependencies<a class="headerlink" href="#log-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Includer job, to activate verbose logging of class dependencies; use with the <tt class="docutils literal"><span class="pre">-v</span></tt> command line switch.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../layout/grow.html"
+             title="previous chapter">« Grow</a>
+          <span class="separator">|</span>
+          <a class="next" href="generator_config_ref.html"
+             title="next chapter">Generator Config Keys »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Generator Default Jobs</a><ul>
+<li><a class="reference internal" href="#action-jobs">Action Jobs</a><ul>
+<li><a class="reference internal" href="#api">api</a></li>
+<li><a class="reference internal" href="#api-data">api-data</a></li>
+<li><a class="reference internal" href="#build">build</a></li>
+<li><a class="reference internal" href="#clean">clean</a></li>
+<li><a class="reference internal" href="#distclean">distclean</a></li>
+<li><a class="reference internal" href="#fix">fix</a></li>
+<li><a class="reference internal" href="#info">info</a></li>
+<li><a class="reference internal" href="#inspector">inspector</a></li>
+<li><a class="reference internal" href="#lint">lint</a></li>
+<li><a class="reference internal" href="#migration">migration</a><ul>
+<li><a class="reference internal" href="#running-the-migration-job">Running the migration job</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simulation-build">simulation-build</a></li>
+<li><a class="reference internal" href="#simulation-run">simulation-run</a></li>
+<li><a class="reference internal" href="#pretty">pretty</a></li>
+<li><a class="reference internal" href="#source">source</a></li>
+<li><a class="reference internal" href="#source-all">source-all</a></li>
+<li><a class="reference internal" href="#source-hybrid">source-hybrid</a></li>
+<li><a class="reference internal" href="#test">test</a></li>
+<li><a class="reference internal" href="#test-source">test-source</a></li>
+<li><a class="reference internal" href="#test-inline">test-inline</a></li>
+<li><a class="reference internal" href="#test-native">test-native</a></li>
+<li><a class="reference internal" href="#translation">translation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#includer-jobs">Includer Jobs</a><ul>
+<li><a class="reference internal" href="#common">common</a></li>
+<li><a class="reference internal" href="#libraries">libraries</a></li>
+<li><a class="reference internal" href="#profiling">profiling</a></li>
+<li><a class="reference internal" href="#log-parts">log-parts</a></li>
+<li><a class="reference internal" href="#log-dependencies">log-dependencies</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="generator_config_ref.html"
+                        title="next chapter">Generator Config Keys</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../layout/grow.html"
+                        title="previous chapter">Grow</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/generator_default_jobs.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

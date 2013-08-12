@@ -1,0 +1,378 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Resources &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Selection Handling" href="ui_selection.html" />
+    <link rel="prev" title="Interaction" href="ui_interaction.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Resources</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="resources">
+<span id="pages-ui-resources-resources"></span><h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h1>
+<p>Resources comprise images, icons, style sheets, Flash files, helper HTML files, and so forth. The framework itself provides many icons and some other useful resources you can use right away in your application without any customization. This article however explains how to specify and use custom resources for your application.</p>
+<div class="section" id="technical-overview">
+<span id="pages-ui-resources-technical-overview"></span><h2>Technical overview<a class="headerlink" href="#technical-overview" title="Permalink to this headline">¶</a></h2>
+<p>Resources live in the <tt class="docutils literal"><span class="pre">source/resource/&lt;namespace&gt;</span></tt> subtree of each library. You explicitly reference a resource in your application code by just naming the path of the corresponding file <strong>under</strong> this root (This is also referred to as the <strong>resource id</strong>).</p>
+<p>So if there is a resource in your &quot;myapp&quot; application under the path <tt class="docutils literal"><span class="pre">myapp/source/resource/myapp/icons/tray.png</span></tt> you would refer to it in your application code with <tt class="docutils literal"><span class="pre">myapp/icons/tray.png</span></tt>.</p>
+<p>To find the corresponding file during a build, qooxdoo searches all those paths of all the libraries your application is using. The first hit will be regarded as the resource you want to use. (During the generation of a <tt class="docutils literal"><span class="pre">build</span></tt> version of your app, these resource files will be copied to the <tt class="docutils literal"><span class="pre">build</span></tt> folder, so your build version will be self-contained).</p>
+<p>The libraries are searched in the order they are declared in your config.json file. This usually means that your own resource folder comes first, then the framework's resource folder, and then the resource folders of all further libraries you have included. This way, you can <em>shadow</em> resources of like names, e.g. by adding a file <tt class="docutils literal"><span class="pre">qx/static/blank.gif</span></tt> under your source/resource folder you will shadow the file of the same resource id in the framework.</p>
+</div>
+<div class="section" id="declaring-resources-in-the-code">
+<span id="pages-ui-resources-declaring-resources-in-the-code"></span><h2>Declaring resources in the code<a class="headerlink" href="#declaring-resources-in-the-code" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">You have to declare the resources you wish to use in your application code in an <tt class="docutils literal"><span class="pre">#asset</span></tt> compiler hint near the top of your source file.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* ***</span>
+
+<span class="cm">#asset(myapp/icons/16/folder-open.png)</span>
+
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<p>This is essential, since these hints are evaluated during the compile step, which searches for the corresponding files, generates appropriate URIs to them and copies them to the <tt class="docutils literal"><span class="pre">build</span></tt> folder.</p>
+<p>Instead of adding meta information for each individual resource, you may as well use simple (shell) wildcards to specify a whole set of resources:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* ***</span>
+
+<span class="cm">#asset(myapp/icons/16/*)</span>
+
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<p>This is all you need to configure if your application code uses any of the icons in the given folder.</p>
+</div>
+<div class="section" id="using-resources-with-widgets">
+<span id="pages-ui-resources-using-resources-with-widgets"></span><h2>Using resources with widgets<a class="headerlink" href="#using-resources-with-widgets" title="Permalink to this headline">¶</a></h2>
+<p>Once you've declared the resource in your code, you can equip any compatible widget with it.</p>
+<p>Here's an example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Button B&quot;</span><span class="p">,</span> <span class="s2">&quot;myapp/icons/16/folder-open.png&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-qooxdoo-icons-with-widgets">
+<span id="pages-ui-resources-using-qooxdoo-icons-with-widgets"></span><h2>Using qooxdoo icons with widgets<a class="headerlink" href="#using-qooxdoo-icons-with-widgets" title="Permalink to this headline">¶</a></h2>
+<p>If you want to use some of the icons as resources that are part of the icon themes that come with qooxdoo, there are the following three ways to do so:</p>
+<ol class="arabic simple">
+<li>Copy the icons you are interested in from the original location in the qooxdoo framework to the local resource folder of your application. You are now independent of the qooxdoo icon theme folders and can manage these icons as you would any other custom images.</li>
+<li>Use a fully-qualified path that points to the qooxdoo resource folder. This solution would contain the icon theme's name explicitly.</li>
+<li>Use a macro to get the icons from the current theme. This would allow for a later change of icon themes at the config file level, without the need to adjust any resource URIs in your application code. The <a class="reference internal" href="../tool/generator_config_articles.html#pages-tool-generator-config-articles-asset-let-key"><em>Generator documentation</em></a> explains how to declare these macros.</li>
+</ol>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm">#asset(myapp/icons/16/utilities-dictionary.png)</span>
+<span class="cm">#asset(qx/icon/Oxygen/16/apps/utilities-dictionary.png)</span>
+<span class="cm">#asset(qx/icon/${qx.icontheme}/16/apps/utilities-dictionary.png)</span>
+<span class="cm">*/</span>
+
+<span class="p">...</span>
+
+<span class="kd">var</span> <span class="nx">button1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;First Button&quot;</span><span class="p">,</span> <span class="s2">&quot;myapp/icons/16/utilities-dictionary.png&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">button2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Second Button&quot;</span><span class="p">,</span> <span class="s2">&quot;qx/icon/Oxygen/16/apps/utilities-dictionary.png&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">button3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Third Button&quot;</span><span class="p">,</span> <span class="s2">&quot;icon/16/apps/utilities-dictionary.png&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When you use the third method above and you do not use the <em>Modern</em> theme, you must edit <tt class="docutils literal"><span class="pre">config.json</span></tt> in order to have the meta theme's icons and the explicitly given icon theme in sync:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span>    <span class="o">:</span> <span class="s2">&quot;myapp&quot;</span><span class="p">,</span>
+
+  <span class="p">...</span>
+
+  <span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;APPLICATION&quot;</span>  <span class="o">:</span> <span class="s2">&quot;myapp&quot;</span><span class="p">,</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;QXTHEME&quot;</span>      <span class="o">:</span> <span class="s2">&quot;qx.theme.Classic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;QXICONTHEME&quot;</span>  <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Oxygen&quot;</span><span class="p">],</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;ROOT&quot;</span>         <span class="o">:</span> <span class="s2">&quot;.&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obtaining-the-url-for-a-resource">
+<span id="pages-ui-resources-obtaining-the-url-for-a-resource"></span><h2>Obtaining the URL for a resource<a class="headerlink" href="#obtaining-the-url-for-a-resource" title="Permalink to this headline">¶</a></h2>
+<p>To obtain a URL for a resource, use the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.util.ResourceManager">ResourceManager</a>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="k">new</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">embed</span><span class="p">.</span><span class="nx">Iframe</span><span class="p">(</span><span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">ResourceManager</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">toUri</span><span class="p">(</span><span class="s2">&quot;myapp/html/FAQ.htm&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifying-the-resource-or-script-uris-at-runtime">
+<h2>Modifying the resource or script URIs at runtime<a class="headerlink" href="#modifying-the-resource-or-script-uris-at-runtime" title="Permalink to this headline">¶</a></h2>
+<p>In some usage scenarios, it can be necessary to modify the URIs used to reference code and resources after the application was started. This can be achieved using the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.util.LibraryManager">Library Manager</a>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">LibraryManager</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;myapp&quot;</span><span class="p">,</span> <span class="s2">&quot;resourceUri&quot;</span><span class="p">,</span> <span class="s2">&quot;http://example.com/resources&quot;</span><span class="p">);</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">ResourceManager</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">toUri</span><span class="p">(</span><span class="s2">&quot;myapp/html/FAQ.htm&quot;</span><span class="p">);</span> <span class="c1">//returns &quot;http://example.com/resources/myapp/html/FAQ.htm&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_interaction.html"
+             title="previous chapter">« Interaction</a>
+          <span class="separator">|</span>
+          <a class="next" href="ui_selection.html"
+             title="next chapter">Selection Handling »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Resources</a><ul>
+<li><a class="reference internal" href="#technical-overview">Technical overview</a></li>
+<li><a class="reference internal" href="#declaring-resources-in-the-code">Declaring resources in the code</a></li>
+<li><a class="reference internal" href="#using-resources-with-widgets">Using resources with widgets</a></li>
+<li><a class="reference internal" href="#using-qooxdoo-icons-with-widgets">Using qooxdoo icons with widgets</a></li>
+<li><a class="reference internal" href="#obtaining-the-url-for-a-resource">Obtaining the URL for a resource</a></li>
+<li><a class="reference internal" href="#modifying-the-resource-or-script-uris-at-runtime">Modifying the resource or script URIs at runtime</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="ui_selection.html"
+                        title="next chapter">Selection Handling</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_interaction.html"
+                        title="previous chapter">Interaction</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_resources.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

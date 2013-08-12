@@ -1,0 +1,437 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial Part 4.4: Unit Testing &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../../desktop.html" />
+    <link rel="next" title="Tutorial Part 4.4.1: Automated UI Testing" href="tutorial-part-4-4-1.html" />
+    <link rel="prev" title="Tutorial Part 4.3: Translation" href="tutorial-part-4-3.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Tutorial Part 4.4: Unit Testing</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-part-4-4-unit-testing">
+<span id="pages-desktop-tutorials-tutorial-part-4-4-tutorial-part-4-4-unit-testing"></span><h1>Tutorial Part 4.4: Unit Testing<a class="headerlink" href="#tutorial-part-4-4-unit-testing" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we'll be taking a closer look at qooxdoo's integrated unit testing framework. Armed with this new knowledge, we'll then define a few unit tests for the twitter application created in previous tutorials, generate the test runner application, and watch the tests in action. As usual, the code can be found on <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step4.4">GitHub</a>.</p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo's unit testing framework is similar to <a class="reference external" href="http://www.jsunit.net/">JSUnit</a> but self-contained, so no external libraries are necessary. It consists of two main components:</p>
+<p>The classes in the <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.dev.unit">qx.dev.unit</a> namespace provide the interface against which tests are written and the infrastructure needed to run them.
+The <a class="reference internal" href="../../development/frame_apps_testrunner.html#pages-frame-apps-testrunner-the-qooxdoo-test-runner"><em>Testrunner component</em></a> (located in the qooxdoo SDK's component/testrunner directory) provides a GUI to select and run tests and visualize the results.</p>
+</div>
+<div class="section" id="test-class-structure">
+<h2>Test class structure<a class="headerlink" href="#test-class-structure" title="Permalink to this headline">¶</a></h2>
+<p>The actual test code is contained in classes living within the namespace of the tested application, located in the <tt class="docutils literal"><span class="pre">source/class/&lt;$APPLICATION&gt;/test</span></tt> directory by default. A fresh qooxdoo application skeleton (GUI, Inline or Native flavor) contains a simple test class named <strong>DemoTest</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;twitter.test.DemoTest&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">dev</span><span class="p">.</span><span class="nx">unit</span><span class="p">.</span><span class="nx">TestCase</span><span class="p">,</span>
+
+  <span class="nx">members</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="cm">/*</span>
+<span class="cm">    ---------------------------------------------------------------------------</span>
+<span class="cm">    TESTS</span>
+<span class="cm">    ---------------------------------------------------------------------------</span>
+<span class="cm">    */</span>
+
+    <span class="cm">/**</span>
+<span class="cm">    * Here are some simple tests</span>
+<span class="cm">    */</span>
+    <span class="nx">testSimple</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">assertEquals</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;This should never fail!&quot;</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">assertFalse</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="s2">&quot;Can false be true?!&quot;</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="cm">/**</span>
+<span class="cm">    * Here are some more advanced tests</span>
+<span class="cm">    */</span>
+    <span class="nx">testAdvanced</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">assertIdentical</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="s2">&quot;A rose by any other name is still a rose&quot;</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">assertInRange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;You must be kidding, 3 can never be outside [1,10]!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>All test classes share the same basic structure:</p>
+<ul class="simple">
+<li>They must inherit from <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.dev.unit.TestCase">qx.dev.unit.TestCase</a></li>
+<li>Individual tests must be defined as member functions with names beginning with <tt class="docutils literal"><span class="pre">test</span></tt>. Apart from that, they can contain other member functions, properties and so on. Usually, test functions instantiate classes of the tested application, invoke their methods and compare the results with expected values.</li>
+<li>Exceptions are used to communicate the test results back to the Testrunner. No exception means the test went fine, throwing any exception from the test method signals a failure. Return values from the test methods are not evaluated.</li>
+</ul>
+<p>qx.dev.unit.TestCase includes the assertion functions from <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.core.Assert">qx.core.Assert</a>. These can be used to check values, e.g. by comparing a tested method's return value to an expected value. If the assertion fails, a <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.core.AssertionError">qx.core.AssertionError</a> is thrown.</p>
+</div>
+<div class="section" id="building-and-running-the-test-application">
+<h2>Building and running the test application<a class="headerlink" href="#building-and-running-the-test-application" title="Permalink to this headline">¶</a></h2>
+<p>In the top-level directory of the twitter tutorial application, run <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">test</span></tt>. This command builds both a stand-alone application containing the test classes (the AUT, or &quot;application under test&quot;) and the Testrunner GUI which loads the AUT in an Iframe and visualizes the results. Load the Testrunner by opening the file <tt class="docutils literal"><span class="pre">test/index.html</span></tt> in your favorite browser and click the &quot;Run Tests&quot; button.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some browsers, such as Google Chrome, severely restrict scripts from loading resources from the file system. In this case, the Testrunner should be loaded from a web server.</p>
+</div>
+<p><img alt="Testrunner displaying the results of twitter.DemoTest" src="../../../_images/tutorial_4_4-1.png" /></p>
+</div>
+<div class="section" id="creating-a-new-test-class">
+<h2>Creating a new test class<a class="headerlink" href="#creating-a-new-test-class" title="Permalink to this headline">¶</a></h2>
+<p>Now that we've got the basics covered, let's create some more meaningful tests for our Twitter application, starting with the <strong>twitter.TweetView</strong> class. As you'll remember from the previous tutorials, it's responsible for displaying a single Tweet along with the user's icon. To this end, it has a property named <tt class="docutils literal"><span class="pre">icon</span></tt> with an apply method that sets the <tt class="docutils literal"><span class="pre">source</span></tt> property on the TweetView's <tt class="docutils literal"><span class="pre">icon</span></tt> child control. Our test will check if the <tt class="docutils literal"><span class="pre">icon</span></tt> property value is correctly applied to the icon widget.
+First of all, create a corresponding class <strong>twitter.test.TweetView</strong> in the <tt class="docutils literal"><span class="pre">source/class/twitter/test</span></tt> directory. (We won't be needing the DemoTest class any more, so feel free to delete it.)</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/* ************************************************************************</span>
+<span class="cm">#asset(twitter/test.png)</span>
+<span class="cm">************************************************************************ */</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;twitter.test.TweetView&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">dev</span><span class="p">.</span><span class="nx">unit</span><span class="p">.</span><span class="nx">TestCase</span><span class="p">,</span>
+
+  <span class="nx">members</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">setUp</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">__tweetView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">twitter</span><span class="p">.</span><span class="nx">TweetView</span><span class="p">();</span>
+    <span class="p">},</span>
+
+    <span class="nx">tearDown</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">__tweetView</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">__tweetView</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">},</span>
+
+    <span class="nx">testSetIcon</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">expectedSource</span> <span class="o">=</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">ResourceManager</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">toUri</span><span class="p">(</span><span class="s2">&quot;test.png&quot;</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">__tweetView</span><span class="p">.</span><span class="nx">setIcon</span><span class="p">(</span><span class="nx">expectedSource</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">foundSource</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__tweetView</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">getSource</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">expectedSource</span><span class="p">,</span> <span class="nx">foundSource</span><span class="p">,</span> <span class="s2">&quot;Icon source was not set correctly!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-up-and-tearing-down">
+<h2>Setting up and tearing down<a class="headerlink" href="#setting-up-and-tearing-down" title="Permalink to this headline">¶</a></h2>
+<p>Note the <tt class="docutils literal"><span class="pre">setUp</span></tt> and <tt class="docutils literal"><span class="pre">tearDown</span></tt> methods. Each test class can contain either or both (or none). setUp is called before each individual test function and is used to perform common initializations. Similarly, tearDown is called after each test method (even if the test failed), e.g. to dispose objects created by setUp or the test itself. Together, they can be used to make sure each test method runs in a &quot;clean&quot; environment: In this case, we create a new instance of the tested class for each test and dispose it afterwards, which is a very common pattern in unit testing.</p>
+<p>The <tt class="docutils literal"><span class="pre">tearDown</span></tt> logic is actually quite an important part of developing unit tests since tests that don't clean up after themselves can lead to nasty dependencies where test B will pass when run individually but fail when run after test A. Singletons are particularly vulnerable since their state carries over between tests. So if, for example, test A checks how a class reacts to a locale change by calling <tt class="docutils literal"><span class="pre">qx.locale.Manager.getInstance().setLocale</span></tt> while test B relies on the locale still being the application's default, B would fail whenever A ran first.</p>
+<p>For cases where the generic class-wide <tt class="docutils literal"><span class="pre">tearDown</span></tt> isn't enough, methods using the naming convention <tt class="docutils literal"><span class="pre">tearDown&lt;TestName&gt;</span></tt> can be defined. A method named e.g. <tt class="docutils literal"><span class="pre">tearDownTestFoo</span></tt> would be called after <tt class="docutils literal"><span class="pre">testFoo</span></tt> and the generic <tt class="docutils literal"><span class="pre">tearDown</span></tt> of the class were executed.</p>
+</div>
+<div class="section" id="the-test-function">
+<h2>The test function<a class="headerlink" href="#the-test-function" title="Permalink to this headline">¶</a></h2>
+<p>We need the URI of a valid image for this test, so we add an <tt class="docutils literal"><span class="pre">#asset</span></tt> hint to the class header that will cause the Generator to add the file <tt class="docutils literal"><span class="pre">source/class/twitter/resource/test.png</span></tt> to the AUT's resources. In the test function, we first ask qooxdoo's resource manager to resolve the resource ID into a valid URI. This is the expected value for the icon child control's <tt class="docutils literal"><span class="pre">source</span></tt> property. Next, we apply this value to the TweetView's <tt class="docutils literal"><span class="pre">icon</span></tt> property, then get the child control's <tt class="docutils literal"><span class="pre">source</span></tt> property and compare the two values using <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.core.Assert~assertEquals">assertEquals</a>.</p>
+<p>OK, time to build the AUT again. This time, run <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">test-source</span></tt> instead of <tt class="docutils literal"><span class="pre">test</span></tt>. As you might expect, this will generate a source version of the AUT, which, like the source version of the actual application, is far better suited for development. Open the file <tt class="docutils literal"><span class="pre">test/index-source.html</span></tt> to load the Testrunner with the source tests.</p>
+</div>
+<div class="section" id="asynchronous-tests">
+<h2>Asynchronous Tests<a class="headerlink" href="#asynchronous-tests" title="Permalink to this headline">¶</a></h2>
+<p>As with many GUI applications, the various components of the twitter app use events to communicate. The <tt class="docutils literal"><span class="pre">twitter.TweetService</span></tt> class, for example, has a method <tt class="docutils literal"><span class="pre">fetchTweets</span></tt> that causes a <tt class="docutils literal"><span class="pre">changeTweets</span></tt> event to fire once the data store has finished (re)loading. We can't know in advance just how long this takes, so we need some way to instruct the test to wait until the event fires. This is where asynchronous testing comes in.</p>
+<p>Once again, create a new test class named <strong>twitter.test.TwitterService</strong>. The <tt class="docutils literal"><span class="pre">setUp</span></tt> and <tt class="docutils literal"><span class="pre">tearDown</span></tt> methods are mostly identical to the ones from twitter.test.TweetView, except of course they initialize/destroy an instance of twitter.TwitterService instead. Here's the actual test function:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">testFetchTweets</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">__twitterService</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;changeTweets&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">resume</span><span class="p">();</span>
+  <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">__twitterService</span><span class="p">.</span><span class="nx">fetchTweets</span><span class="p">();</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>First, we register a listener for the <tt class="docutils literal"><span class="pre">changeTweets</span></tt> event. The callback function invokes the <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.dev.unit.TestCase~resume">resume</a> method, which informs the Testrunner that the asynchronous test has finished. We could pass a function parameter to resume if, for example, we wanted to check the data associated with the <tt class="docutils literal"><span class="pre">changeTweets</span></tt> event, but for now we just want to verify that it fires at all.</p>
+<p>Next, we invoke the <tt class="docutils literal"><span class="pre">fetchTweets</span></tt> method which should cause the event to fire.</p>
+<p>Finally, the <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.dev.unit.TestCase~wait">wait</a> method informs the Testrunner that it should wait for a <tt class="docutils literal"><span class="pre">resume</span></tt> call. The first argument is the amount of time to wait (in milliseconds) before the test is marked as failed. Note that wait <strong>must</strong> always be the last call in an asynchronous test function. Any code that follows it will never be executed.</p>
+<p>Now, if you run this test a couple times in quick succession, there's a good chance it will at some point fail with the error message &quot;Error in asynchronous test: resume() called before wait()&quot;. This is because due to the browser caching the result of the Twitter API request sent by TweetService, the <tt class="docutils literal"><span class="pre">changeTweets</span></tt> listener callback is executed immediately after calling fetchTweets. This is a common problem in asynchronous tests, encountered whenever the tested code's behavior can be synchronous or asynchronous depending on external factors. Luckily, there's a simple fix for it: We just wrap the problematic method call in a timeout to make sure it's executed after <tt class="docutils literal"><span class="pre">wait()</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">Timer</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">__twitterService</span><span class="p">.</span><span class="nx">fetchTweets</span><span class="p">();</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>While we could use a simple <tt class="docutils literal"><span class="pre">window.setTimeout</span></tt> for this, it's preferable to use <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.event.Timer~once">Timer.once</a> since it uses qooxdoo's global error handling to catch and log any exceptions that might be thrown in the callback code. Otherwise, these would just land on the browser console.</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Finally, let's take a quick look at <a class="reference internal" href="../../development/frame_apps_testrunner.html#pages-frame-apps-testrunner-requirements"><em>test requirements</em></a>. This is a way to define preconditions that must be satisfied before a test can be run. If a requirement isn't met, the test will be skipped (and marked as such in the Testrunner GUI). Common requirements are:</p>
+<ul class="simple">
+<li>The test checks browser-specific behavior, so it should only be run in selected browsers</li>
+<li>The tested class performs secure backend communication, so the test should only execute if the AUT was loaded over HTTPS</li>
+</ul>
+<p>In order to use requirements, you need to include the Mixin <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.dev.unit.MRequirements">qx.dev.unit.MRequirements</a> in your test class. Requirements are defined by calling the <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.dev.unit.MRequirements~require">require method</a> with an array of requirement ID strings as the only parameter. Usually, this will be the first call in either a test function or the <tt class="docutils literal"><span class="pre">setUp</span></tt> method.
+Requirement IDs are evaluated by looking for a method name beginning with &quot;has&quot; followed by the requirement ID (starting with a capital letter) on the current test class and its ancestors. The method is called and its return value is checked: <tt class="docutils literal"><span class="pre">true</span></tt> means the requirement is met and the test can proceed, <tt class="docutils literal"><span class="pre">false</span></tt> means the test won't be executed and the Testrunner GUI will list it as &quot;skipped&quot;.</p>
+<p>While qx.dev.unit.MRequirements contains a number of &quot;has&quot; methods for common scenarios, requirements are often application-specific and so test developers will implement their own checks in the test class itself, a common base class or a mixin.</p>
+<p><img alt="Testrunner displaying skipped tests" src="../../../_images/tutorial_4_4-2.png" /></p>
+<p>And that's it for a first look at unit testing for qooxdoo applications. Note that qooxdoo comes with a <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.dev.unit.MMock">wrapper</a> for the powerful <a class="reference external" href="http://sinonjs.org/">Sinon.js</a> testing framework, which offers spies, stubs and mock objects that allow testing the very internals of a class, such as if and how many times a specific method was invoked. But that's a topic for a separate tutorial.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="tutorial-part-4-3.html"
+             title="previous chapter">« Tutorial Part 4.3: Translation</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial-part-4-4-1.html"
+             title="next chapter">Tutorial Part 4.4.1: Automated UI Testing »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial Part 4.4: Unit Testing</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#test-class-structure">Test class structure</a></li>
+<li><a class="reference internal" href="#building-and-running-the-test-application">Building and running the test application</a></li>
+<li><a class="reference internal" href="#creating-a-new-test-class">Creating a new test class</a></li>
+<li><a class="reference internal" href="#setting-up-and-tearing-down">Setting up and tearing down</a></li>
+<li><a class="reference internal" href="#the-test-function">The test function</a></li>
+<li><a class="reference internal" href="#asynchronous-tests">Asynchronous Tests</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial-part-4-4-1.html"
+                        title="next chapter">Tutorial Part 4.4.1: Automated UI Testing</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="tutorial-part-4-3.html"
+                        title="previous chapter">Tutorial Part 4.3: Translation</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/tutorials/tutorial-part-4-4.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

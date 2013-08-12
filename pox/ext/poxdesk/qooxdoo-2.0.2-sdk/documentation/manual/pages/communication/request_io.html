@@ -1,0 +1,437 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Higher-level requests &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Communication" href="../communication.html" />
+    <link rel="next" title="AJAX" href="remote_io.html" />
+    <link rel="prev" title="Communication" href="../communication.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../communication.html" accesskey="U">Communication</a>
+     &raquo;
+  <a href="">Higher-level requests</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="higher-level-requests">
+<h1>Higher-level requests<a class="headerlink" href="#higher-level-requests" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="choosing-an-appropriate-transport">
+<h2>Choosing an appropriate transport<a class="headerlink" href="#choosing-an-appropriate-transport" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo ships with two transport methods, interfaced by <tt class="docutils literal"><span class="pre">qx.io.request.Xhr</span></tt> and <tt class="docutils literal"><span class="pre">qx.io.request.Jsonp</span></tt>.</p>
+<ul class="simple">
+<li>Choose <tt class="docutils literal"><span class="pre">Xhr</span></tt> whenever you can. <tt class="docutils literal"><span class="pre">Xhr</span></tt> offers true HTTP client functionality and exposes metadata associated with HTTP requests. It is agnostic of the data interchange format and does not make any specific demands on the backend.</li>
+<li>If you are making cross-origin requests and need to support all popular browsers and/or the target server is not configured to accept cross-origin request (<tt class="docutils literal"><span class="pre">Access-Control-Allow-Origin</span></tt> header), you will need to use <tt class="docutils literal"><span class="pre">Jsonp</span></tt>. Only JSON is supported as data interchange format and the server needs to to wrap responses in a JavaScript function call.</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">Xhr</span></tt> and <tt class="docutils literal"><span class="pre">Jsonp</span></tt> share a common interface. <tt class="docutils literal"><span class="pre">AbstractRequest</span></tt> defines the lowest common denominator of both transport methods.</p>
+</div>
+<div class="section" id="basic-setup">
+<h2>Basic Setup<a class="headerlink" href="#basic-setup" title="Permalink to this headline">¶</a></h2>
+<p>Before a request can be send, it must be configured. Configuration is accomplished by setting properties. The most commonly used properties include:</p>
+<ul class="simple">
+<li><strong>url</strong>: The HTTP resource to request</li>
+<li><strong>method</strong>: The HTTP method, sometimes also referred to as HTTP verb. <tt class="docutils literal"><span class="pre">Script</span></tt> only accepts the <tt class="docutils literal"><span class="pre">GET</span></tt> method.</li>
+<li><strong>requestData</strong>: Data to be send as part of the request.</li>
+<li><strong>requestHeaders</strong>: Headers to send with the request</li>
+</ul>
+<p>For a complete list of properties, please refer to the API Documentation of <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.io.request">qx.io.request</a>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Instantiate request</span>
+<span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">Xhr</span><span class="p">();</span>
+
+<span class="c1">// Set URL (mandatory)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">setUrl</span><span class="p">(</span><span class="s2">&quot;/books&quot;</span><span class="p">);</span>
+
+<span class="c1">// Set method (defaults to GET)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">setMethod</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">);</span>
+
+<span class="c1">// Alternative notation</span>
+<span class="c1">// var req = new qx.io.request.Xhr(&quot;/books&quot;, &quot;POST&quot;);</span>
+
+<span class="c1">// Set request data. Accepts String, Map</span>
+<span class="c1">// or qooxdoo Object.</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">setRequestData</span><span class="p">({</span><span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;The title&quot;</span><span class="p">});</span>
+
+<span class="c1">// Send request</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="events-and-states">
+<h2>Events and states<a class="headerlink" href="#events-and-states" title="Permalink to this headline">¶</a></h2>
+<p><img alt="iorequestphases.jpg" src="../../_images/iorequestphases.jpg" /></p>
+<p>Once a request is sent using the <tt class="docutils literal"><span class="pre">send()</span></tt> method, it traverses various states. There are two ways to query the current state of the request.</p>
+<ul class="simple">
+<li><strong>getReadyState()</strong>: An integer (0-4) representing UNSENT, OPENED, HEADERS_RECEIVED, LOADING and DONE.</li>
+<li><strong>getPhase()</strong>: Symbolic state mapping to deterministic events (success, abort, timeout, statusError) and intermediate readyStates.</li>
+</ul>
+<p>Events are fired when the request is progressing from one state to the other. The most important events in the lifecycle of a request include:</p>
+<ul class="simple">
+<li><strong>load</strong>: Request completed successfully.</li>
+<li><strong>success</strong>: Request completed successfully (like <tt class="docutils literal"><span class="pre">load</span></tt>) <em>and</em> the response can be expected to contain the kind of data requested. For <tt class="docutils literal"><span class="pre">Xhr</span></tt> this means the HTTP status of the response indicates success (e.g. <tt class="docutils literal"><span class="pre">200</span></tt>). For <tt class="docutils literal"><span class="pre">Jsonp</span></tt>, the script received executed the expected callback.</li>
+<li><strong>statusError</strong>: Request completed successfully (like <tt class="docutils literal"><span class="pre">load</span></tt>) <em>but</em> the additional requirements for <tt class="docutils literal"><span class="pre">success</span></tt> are not met. For <tt class="docutils literal"><span class="pre">Xhr</span></tt> this event is typically fired when the server reports that an erroneous or unknown resource was requested (e.g. <tt class="docutils literal"><span class="pre">500</span></tt> or <tt class="docutils literal"><span class="pre">404</span></tt>). For <tt class="docutils literal"><span class="pre">Jsonp</span></tt>, this event is associated with an invalid response for whatever reasons.</li>
+<li><strong>fail</strong>: Any kind of error occurred. Catches distinct events <tt class="docutils literal"><span class="pre">error</span></tt>, <tt class="docutils literal"><span class="pre">statusError</span></tt> and <tt class="docutils literal"><span class="pre">timeout</span></tt>.</li>
+</ul>
+<p>For a complete list of events, please refer to the API Documentation of <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.io.request">qx.io.request</a>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">req</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getTarget</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getResponse</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+
+<span class="c1">// Send request</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p>Once the request completed, a range of getters return details about the response.</p>
+<ul class="simple">
+<li><strong>getResponse()</strong>: Response processed according to parser settings or content type (<tt class="docutils literal"><span class="pre">Xhr</span></tt>). Always JSON for (<tt class="docutils literal"><span class="pre">Jsonp</span></tt>).</li>
+<li><strong>getStatus()</strong>: The numerical status of the response. For <tt class="docutils literal"><span class="pre">Xhr</span></tt> the status is the HTTP status. <tt class="docutils literal"><span class="pre">Jsonp</span></tt> only knows <tt class="docutils literal"><span class="pre">200</span></tt> (when callback was executed) and <tt class="docutils literal"><span class="pre">500</span></tt> (when it was not).</li>
+</ul>
+</div>
+<div class="section" id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to handle authentication. The lower-level approach is to manually set the adequate request headers. The high-level, recommended way is to assign the <tt class="docutils literal"><span class="pre">authentication</span></tt> property an instance of a class that implements the <tt class="docutils literal"><span class="pre">IAuthentication</span></tt> interface. This class defines the necessary request headers and can handle the authentication logic. <tt class="docutils literal"><span class="pre">Basic</span></tt> implements the most basic kind of authentication (HTTP Basic) and serves as an example for more advanced authentication methods.</p>
+</div>
+<div class="section" id="data-binding">
+<h2>Data binding<a class="headerlink" href="#data-binding" title="Permalink to this headline">¶</a></h2>
+<p>The request’s response can be bound to a widget, model or any other object using data binding. This feature is provided by the <tt class="docutils literal"><span class="pre">changeResponse</span></tt> event, fired on change of the (parsed) response.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Bind response to value of a label</span>
+<span class="c1">//</span>
+<span class="c1">// req is an instance of qx.io.request.*,</span>
+<span class="c1">// label an instance of qx.ui.basic.Label</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;response&quot;</span><span class="p">,</span> <span class="nx">label</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>If you encounter odd behavior, it might help to enable debugging of the IO classes. Debugging is controlled with the <tt class="docutils literal"><span class="pre">qx.debug.io</span></tt> setting. Provided you have allowed URL settings (<tt class="docutils literal"><span class="pre">allowUrlSetting</span></tt>), you can simply append <tt class="docutils literal"><span class="pre">?qxenv:qx.debug.io:true</span></tt> to the URL of your application.</p>
+</div>
+<div class="section" id="specific-to-xhr">
+<h2>Specific to XHR<a class="headerlink" href="#specific-to-xhr" title="Permalink to this headline">¶</a></h2>
+<p>Features specific to <tt class="docutils literal"><span class="pre">Xhr</span></tt>.</p>
+<div class="section" id="parsing">
+<h3>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h3>
+<p>By default, <tt class="docutils literal"><span class="pre">response</span></tt> is populated with the response parsed according to the response content type. For the built-in parsers, parsing always results in a JavaScript object.</p>
+<p>The content type is read from <tt class="docutils literal"><span class="pre">Content-Type</span></tt> response header. If the response content type is unrecognized, no parsing is done and <tt class="docutils literal"><span class="pre">response</span></tt> equals <tt class="docutils literal"><span class="pre">responseText</span></tt>. Parsers associated to a content type are:</p>
+<ul class="simple">
+<li><strong>JSON</strong>: application/json</li>
+<li><strong>XML</strong>: application/xml</li>
+</ul>
+<p>The parser can be explicitly set with <tt class="docutils literal"><span class="pre">setParser()</span></tt>. This can be useful if the content type returned from the server is wrong or the response needs special parsing. The setter accepts either a symbolic string (<tt class="docutils literal"><span class="pre">&quot;json&quot;</span></tt> or <tt class="docutils literal"><span class="pre">&quot;xml&quot;</span></tt>) or a function. If a function is given, this function is called once the request completes. It receives the raw response as first argument. The return value determines the <tt class="docutils literal"><span class="pre">response</span></tt>.</p>
+</div>
+<div class="section" id="id2">
+<h3>Response<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>getResponseText()</strong>: Raw, unprocessed response</li>
+<li><strong>getResponseHeader(header)</strong></li>
+<li><strong>getAllResponseHeaders()</strong></li>
+</ul>
+</div>
+<div class="section" id="accepting">
+<h3>Accepting<a class="headerlink" href="#accepting" title="Permalink to this headline">¶</a></h3>
+<p>Some servers send distinct <em>representations</em> of the same resource depending on the content type accepted. For instance, a server may respond with either a JSON, XML or a HTML representation while requesting the <em>same</em> URL. By default, requests accept every content type. In effect, the server will respond with it’s default representation. If the server has no default representation, it may respond with the status code <tt class="docutils literal"><span class="pre">406</span></tt> (Not Acceptable).</p>
+<p>In order to choose a representation, set the accepted response content type with <tt class="docutils literal"><span class="pre">setAccept()</span></tt>. It is a good practice to always set the preferred representation to guard against possible changes of the server’s default behavior.</p>
+<p>For more details, see <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1">Accept header</a> in the HTTP 1.1 specification.</p>
+</div>
+<div class="section" id="caching">
+<h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
+<p>Usually, one or more caches sit between the browser sending the request and the server answering the request. The most important cache is arguably the browser cache, which is enabled by default in all modern browsers. Other caches include various kinds of proxy servers. Understanding caches is vital to reduce latency and save bandwidth. However, a detailed introduction of HTTP caching is beyond the scope of this section. For more information, refer to the <a class="reference external" href="http://www.mnot.net/cache_docs/">Caching tutorial</a>.</p>
+<p>To control the behavior of caches on the client-side, a number of HTTP Cache-Control directives can be sent as part of the request by setting the <tt class="docutils literal"><span class="pre">cache</span></tt> property. To circumvent caching, a common trick is to add a random string to the URL's query part. This is accomplished by setting <tt class="docutils literal"><span class="pre">cache</span></tt> to <tt class="docutils literal"><span class="pre">false</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="specific-to-json">
+<h2>Specific to JSON<a class="headerlink" href="#specific-to-json" title="Permalink to this headline">¶</a></h2>
+<p>Features specific to <tt class="docutils literal"><span class="pre">Jsonp</span></tt>.</p>
+<div class="section" id="callback">
+<h3>Callback<a class="headerlink" href="#callback" title="Permalink to this headline">¶</a></h3>
+<p>Callback handling is done behind the scenes but can be customized. If the service only accepts a special callback parameter to read the desired callback function name from, this parameter can be set with <tt class="docutils literal"><span class="pre">setCallbackParam()</span></tt>. Some services do not allow custom callback names at all. In this case, <tt class="docutils literal"><span class="pre">setCallbackName()</span></tt> wires the request to the fixed callback name.</p>
+</div>
+<div class="section" id="id3">
+<h3>Caching<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>No Cache-Control directives can be set, but caching can be disabled by setting <tt class="docutils literal"><span class="pre">cache</span></tt> to <tt class="docutils literal"><span class="pre">false</span></tt>. Works by adding a random string to the URL's query part.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../communication.html"
+             title="previous chapter">« Communication</a>
+          <span class="separator">|</span>
+          <a class="next" href="remote_io.html"
+             title="next chapter">AJAX »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Higher-level requests</a><ul>
+<li><a class="reference internal" href="#choosing-an-appropriate-transport">Choosing an appropriate transport</a></li>
+<li><a class="reference internal" href="#basic-setup">Basic Setup</a></li>
+<li><a class="reference internal" href="#events-and-states">Events and states</a></li>
+<li><a class="reference internal" href="#response">Response</a></li>
+<li><a class="reference internal" href="#authentication">Authentication</a></li>
+<li><a class="reference internal" href="#data-binding">Data binding</a></li>
+<li><a class="reference internal" href="#debugging">Debugging</a></li>
+<li><a class="reference internal" href="#specific-to-xhr">Specific to XHR</a><ul>
+<li><a class="reference internal" href="#parsing">Parsing</a></li>
+<li><a class="reference internal" href="#id2">Response</a></li>
+<li><a class="reference internal" href="#accepting">Accepting</a></li>
+<li><a class="reference internal" href="#caching">Caching</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#specific-to-json">Specific to JSON</a><ul>
+<li><a class="reference internal" href="#callback">Callback</a></li>
+<li><a class="reference internal" href="#id3">Caching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="remote_io.html"
+                        title="next chapter">AJAX</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../communication.html"
+                        title="previous chapter">Communication</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/communication/request_io.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

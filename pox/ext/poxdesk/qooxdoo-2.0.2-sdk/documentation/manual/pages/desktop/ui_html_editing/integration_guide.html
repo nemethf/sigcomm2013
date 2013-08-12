@@ -1,0 +1,326 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Integrate the HtmlArea into your application &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="HTML Editing" href="../ui_html_editing.html" />
+    <link rel="next" title="Available Keyboard Shortcuts" href="available_shortcuts.html" />
+    <link rel="prev" title="Technical Feature List" href="technicalfeaturelist.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" >qx.Desktop</a>
+     &raquo;
+    <a href="../ui_html_editing.html" accesskey="U">HTML Editing</a>
+     &raquo;
+  <a href="">Integrate the HtmlArea into your application</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="integrate-the-htmlarea-into-your-application">
+<span id="pages-ui-html-editing-integration-guide-integrate-the-htmlarea-into-your-application"></span><h1>Integrate the HtmlArea into your application<a class="headerlink" href="#integrate-the-htmlarea-into-your-application" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This explanations mainly do address the <tt class="docutils literal"><span class="pre">0.8+</span> <span class="pre">based</span></tt> HtmlArea component.</p>
+</div>
+<p>This page does explain what you should consider when integrating the HtmlArea component in your application. However, it does <strong>not</strong> explain how to setup the component itself, it's rather an integration guide to avoid pitfalls.</p>
+<div class="section" id="use-public-api">
+<span id="pages-ui-html-editing-integration-guide-use-public-api"></span><h2>Use Public API<a class="headerlink" href="#use-public-api" title="Permalink to this headline">¶</a></h2>
+<p>This one should be self-explaining. Do not use any internal API to get things done even it's the easy way to go. If it's hidden from the application developer then by purpose, but if you need access to specific parts of the component which is not offered don't hesitate to file a bug report.</p>
+</div>
+<div class="section" id="use-events">
+<span id="pages-ui-html-editing-integration-guide-use-events"></span><h2>Use Events<a class="headerlink" href="#use-events" title="Permalink to this headline">¶</a></h2>
+<p>The component does offer various events to work with e.g. the <tt class="docutils literal"><span class="pre">ready</span></tt> event to get informed of the finished loading.</p>
+<p>The bottom line is the same as for the public API: use these events to interact with the component. If an event is missing feel free to file a bug report.</p>
+</div>
+<div class="section" id="lazy-initialization">
+<span id="pages-ui-html-editing-integration-guide-lazy-initialization"></span><h2>Lazy Initialization<a class="headerlink" href="#lazy-initialization" title="Permalink to this headline">¶</a></h2>
+<p>The HtmlArea widget is using a low-level editing component to offer a WYSIWYG editor solution. The widget does initialize this editing component after the first appear of the widget. So if you use e.g. a stack container which hides the HtmlArea keep in mind that the widget is only fully usable after it is shown.</p>
+</div>
+<div class="section" id="toolbar-details">
+<span id="pages-ui-html-editing-integration-guide-toolbar-details"></span><h2>Toolbar Details<a class="headerlink" href="#toolbar-details" title="Permalink to this headline">¶</a></h2>
+<p>The HtmlArea does only offer the plain editing widget so if you do not use the <a class="reference external" href="http://qooxdoo.org/contrib/project#htmleditor">HtmlEditor</a> contribution and instead create your own toolbar you have to consider some specialities concerning the focus management of qooxdoo.</p>
+<p>Since the HtmlArea relies on that the focus is not lost to another widget (e.g. a toolbar button) during the execution of a command you have to set two focus-specific properties on each widget which runs commands at the HtmlArea component.</p>
+<p>The two properties <tt class="docutils literal"><span class="pre">keepFocus</span></tt> and <tt class="docutils literal"><span class="pre">focusable</span></tt> have to be used together to get the correct behaviour. The more important property is <tt class="docutils literal"><span class="pre">keepFocus</span></tt> which certainly ensures that the given widget <tt class="docutils literal"><span class="pre">never</span></tt> get the focus - even if this widget is clicked. This will leave the focus at the HtmlArea component solving many focus-related issues successfully (especially for IE browsers).</p>
+<p>Example code snippet</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">iconURL</span><span class="p">);</span>
+<span class="nx">button</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span> <span class="nx">focusable</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">keepFocus</span> <span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="no-own-focus-management">
+<span id="pages-ui-html-editing-integration-guide-no-own-focus-management"></span><h2>No Own Focus Management<a class="headerlink" href="#no-own-focus-management" title="Permalink to this headline">¶</a></h2>
+<p>As already mentioned the focus management is important for HTML editing widgets and there are special solutions necessary for the component already. Implementing an own focus management on top in your application code <tt class="docutils literal"><span class="pre">can</span></tt> cause problems for your users. So if you encounter any issues that the component e.g. does not perform a certain command even a button is clicked it's probably a focus-related issue.
+As always: the component is far from perfect, don't hesitate to file a bug report for issues you encounter.</p>
+</div>
+<div class="section" id="keyboard-shortcuts">
+<span id="pages-ui-html-editing-integration-guide-keyboard-shortcuts"></span><h2>Keyboard Shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
+<p>Since you can use <a class="reference internal" href="available_shortcuts.html"><em>keyboard shortcuts</em></a> to manipulate the content you should not implement shortcuts with the same key bindings.
+A possibility to disable the shortcuts completely will soon be available. See <a class="reference external" href="http://bugzilla.qooxdoo.org/show_bug.cgi?id=1193">Bug #1193</a> for details.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="technicalfeaturelist.html"
+             title="previous chapter">« Technical Feature List</a>
+          <span class="separator">|</span>
+          <a class="next" href="available_shortcuts.html"
+             title="next chapter">Available Keyboard Shortcuts »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Integrate the HtmlArea into your application</a><ul>
+<li><a class="reference internal" href="#use-public-api">Use Public API</a></li>
+<li><a class="reference internal" href="#use-events">Use Events</a></li>
+<li><a class="reference internal" href="#lazy-initialization">Lazy Initialization</a></li>
+<li><a class="reference internal" href="#toolbar-details">Toolbar Details</a></li>
+<li><a class="reference internal" href="#no-own-focus-management">No Own Focus Management</a></li>
+<li><a class="reference internal" href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="available_shortcuts.html"
+                        title="next chapter">Available Keyboard Shortcuts</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="technicalfeaturelist.html"
+                        title="previous chapter">Technical Feature List</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/ui_html_editing/integration_guide.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

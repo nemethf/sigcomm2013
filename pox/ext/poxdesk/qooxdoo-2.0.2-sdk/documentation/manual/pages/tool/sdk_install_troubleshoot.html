@@ -1,0 +1,355 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SDK Installation Troubleshooting &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="SDK Requirements" href="sdk_requirements.html" />
+    <link rel="next" title="Hello World" href="getting_started.html" />
+    <link rel="prev" title="SDK Requirements" href="sdk_requirements.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../tool.html" >Tooling</a>
+     &raquo;
+    <a href="sdk_requirements.html" accesskey="U">SDK Requirements</a>
+     &raquo;
+  <a href="">SDK Installation Troubleshooting</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="sdk-installation-troubleshooting">
+<span id="pages-troubleshooting-troubleshooting"></span><h1>SDK Installation Troubleshooting<a class="headerlink" href="#sdk-installation-troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python-installation">
+<h2>Python Installation<a class="headerlink" href="#python-installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-3-0">
+<span id="pages-troubleshooting-python-3-0"></span><h3>Python 3.0<a class="headerlink" href="#python-3-0" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure that you use a regular <strong>Python 2.x</strong> release (v2.5 or above).
+<strong>Python 3.0 is currently not supported</strong>.</p>
+<p>Execute <tt class="docutils literal"><span class="pre">python</span> <span class="pre">-V</span></tt> in a console to get the installed Python version.</p>
+</div>
+<div class="section" id="windows">
+<span id="pages-troubleshooting-windows"></span><h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="making-the-interpreter-available">
+<span id="pages-troubleshooting-making-interpreter-available"></span><h4>Making the interpreter available<a class="headerlink" href="#making-the-interpreter-available" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following is only required when installing the Windows package from <a class="reference external" href="http://python.org">Python.org</a>. When installing the preferred <a class="reference external" href="http://www.activestate.com/activepython/downloads">ActivePython</a> this installation step is conveniently handled within its graphical installation wizard.</p>
+</div>
+<p>After your successful <a class="reference internal" href="sdk_requirements.html#pages-tool-requirements-python"><em>Python installation</em></a>, you need to add the installation folder to the so-called <tt class="docutils literal"><span class="pre">PATH</span></tt> environment variable, which contains a list of directories that are searched for executables.</p>
+<p>Suppose you installed Python to its default location <tt class="docutils literal"><span class="pre">C:\Python26</span></tt>, open a Windows command shell (choose menu <tt class="docutils literal"><span class="pre">Start</span> <span class="pre">-&gt;</span> <span class="pre">Run...</span></tt> and type <tt class="docutils literal"><span class="pre">cmd</span></tt>). The following command prepends the installation folder to the value of <tt class="docutils literal"><span class="pre">PATH</span></tt>, separated by a semicolon:</p>
+<div class="highlight-javascript"><pre>set PATH=C:\Python26;%PATH%</pre>
+</div>
+<p>When you now execute <tt class="docutils literal"><span class="pre">python</span> <span class="pre">-V</span></tt>, it should print out its version number.</p>
+<p>The modification of the <tt class="docutils literal"><span class="pre">PATH</span></tt> variable as described above is only <em>temporary</em>. In order not to repeat the command each time you open a new command shell, modify the <tt class="docutils literal"><span class="pre">PATH</span></tt> variable permanently: in <tt class="docutils literal"><span class="pre">Start</span> <span class="pre">-&gt;</span> <span class="pre">Preferences</span> <span class="pre">-&gt;</span> <span class="pre">System</span></tt> choose <tt class="docutils literal"><span class="pre">Environment</span> <span class="pre">variables</span></tt> under the <tt class="docutils literal"><span class="pre">Advanced</span></tt> tab. Edit the system variable <tt class="docutils literal"><span class="pre">Path</span></tt> by prepending <tt class="docutils literal"><span class="pre">C:\Python26;</span></tt>.</p>
+</div>
+<div class="section" id="file-association">
+<span id="pages-troubleshooting-file-association"></span><h4>File association<a class="headerlink" href="#file-association" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following is only required when installing the Windows package from <a class="reference external" href="http://python.org">Python.org</a>. When installing the preferred <a class="reference external" href="http://www.activestate.com/activepython/downloads">ActivePython</a> this installation step is conveniently handled within its graphical installation wizard.</p>
+</div>
+<p>In a standard Python installation on Windows, the <tt class="docutils literal"><span class="pre">.py</span></tt> file extension gets associated with the Python interpreter. This allows you to invoke .py files directly. You can check that in the following way at a command prompt:</p>
+<div class="highlight-javascript"><pre>C:\&gt;assoc .py
+.py=Python.File</pre>
+</div>
+<p>If this doesn't work, you can add a file association through <tt class="docutils literal"><span class="pre">Windows</span> <span class="pre">Explorer</span> <span class="pre">-&gt;</span> <span class="pre">Extras</span> <span class="pre">-&gt;</span> <span class="pre">Folder</span> <span class="pre">Options</span> <span class="pre">-&gt;</span> <span class="pre">File</span> <span class="pre">Types</span></tt>.</p>
+<p>If for any reason you cannot use a file association for .py files, you can still invoke the Python interpreter directly, passing the original command line as arguments. In this case, make sure to provide a path prefix for the script name, even for scripts in the same directory, like so (this will be fixed later):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">python</span> <span class="p">.</span><span class="o">/</span><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">source</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="windows-vista">
+<span id="pages-troubleshooting-windows-vista"></span><h3>Windows Vista<a class="headerlink" href="#windows-vista" title="Permalink to this headline">¶</a></h3>
+<p>To run qooxdoo's Python-based tools without problems, it is important to have Python installed as an administrator &quot;for all&quot; users.</p>
+<p>Administrators installing Python &quot;for all&quot; users on Windows Vista <em>either</em> need to be logged in as user <tt class="docutils literal"><span class="pre">Administrator</span></tt>, <em>or</em> use the runas command, as in:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">runas</span> <span class="o">/</span><span class="nx">user</span><span class="o">:</span><span class="nx">Administrator</span> <span class="s2">&quot;msiexec /i &lt;path&gt;\&lt;file&gt;.msi&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="windows-7">
+<span id="pages-troubleshooting-windows-7"></span><h3>Windows 7<a class="headerlink" href="#windows-7" title="Permalink to this headline">¶</a></h3>
+<p>It has been reported that you need to use the PowerShell that comes with Windows 7 for the tools to work properly. The simple command shell doesn't seem to be sufficient. To launch the PowerShell, hit the <em>WIN+R</em> keys and enter <tt class="docutils literal"><span class="pre">powershell</span></tt>.</p>
+</div>
+<div class="section" id="mac-os-x">
+<span id="pages-troubleshooting-mac-os-x"></span><h3>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h3>
+<p>Older Macs (e.g. 10.4) may need an update of the pre-installed Python. See the following comment from the <a class="reference external" href="http://www.python.org/download/mac/">Python on Mac page</a> :
+&quot;Python comes pre-installed on Mac OS X, but due to Apple's release cycle, it's often one or even two years old. The overwhelming recommendation of the &quot;MacPython&quot; community is to upgrade your Python by downloading and installing a newer version from <a class="reference external" href="http://www.python.org/download/releases/">the Python standard release page</a>.&quot;</p>
+<p>If the generator is very slow on your Mac, it may be due to Spotlight or more precisely it's indexing daemon <tt class="docutils literal"><span class="pre">mds</span></tt>. <tt class="docutils literal"><span class="pre">mds</span></tt> can end up in an infinite loop resulting in very high disk load. While this is a general Mac issue, the generator can trigger this behaviour. To end the infinite loop:</p>
+<div class="highlight-javascript"><pre># Delete Spotlight cache
+sudo rm -r /.Spotlight-V100</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="sdk_requirements.html"
+             title="previous chapter">« SDK Requirements</a>
+          <span class="separator">|</span>
+          <a class="next" href="getting_started.html"
+             title="next chapter">Hello World »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">SDK Installation Troubleshooting</a><ul>
+<li><a class="reference internal" href="#python-installation">Python Installation</a><ul>
+<li><a class="reference internal" href="#python-3-0">Python 3.0</a></li>
+<li><a class="reference internal" href="#windows">Windows</a><ul>
+<li><a class="reference internal" href="#making-the-interpreter-available">Making the interpreter available</a></li>
+<li><a class="reference internal" href="#file-association">File association</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#windows-vista">Windows Vista</a></li>
+<li><a class="reference internal" href="#windows-7">Windows 7</a></li>
+<li><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="next chapter">Hello World</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="sdk_requirements.html"
+                        title="previous chapter">SDK Requirements</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/sdk_install_troubleshoot.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

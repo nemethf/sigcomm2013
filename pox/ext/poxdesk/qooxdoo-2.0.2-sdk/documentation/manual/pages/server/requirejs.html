@@ -1,0 +1,371 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RequireJS Support &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Server" href="../server.html" />
+    <link rel="next" title="Communication" href="../communication.html" />
+    <link rel="prev" title="qx.Server Requirements" href="requirements.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../server.html" accesskey="U">qx.Server</a>
+     &raquo;
+  <a href="">RequireJS Support</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="requirejs-support">
+<h1>RequireJS Support<a class="headerlink" href="#requirejs-support" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">experimental</p>
+</div>
+<p>It is possible to use the generator to build a <a class="reference external" href="http://requirejs.org/">RequireJS</a> compatible library using qooxdoo. Here is the description of RequireJS taken from the project's website:</p>
+<blockquote>
+<div><p>&quot;RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments, like Rhino and Node. Using a modular script loader like RequireJS will improve the speed and quality of your code.&quot;</p>
+<p class="attribution">&mdash;<a class="reference external" href="http://requirejs.org/">http://requirejs.org/</a></p>
+</div></blockquote>
+<p>A couple of steps are necessary to accomplish this:</p>
+<blockquote>
+<div><ul class="simple">
+<li>You need a class which represents the common interface you want to offer as a require.js module</li>
+<li>and a customized generator config file to build your library.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="representable-interface">
+<h2>Representable interface<a class="headerlink" href="#representable-interface" title="Permalink to this headline">¶</a></h2>
+<p>Let's assume you've implemented a class like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Bootstrap</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;my.super.Dog&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">members</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="nx">bark</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;BARK!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>You want to export this class as a module usable with RequireJS. Usage could look something like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;dog.js&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dog</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">dog</span><span class="p">.</span><span class="nx">bark</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>That's all you need to take care of on the JavaScript side.</p>
+</div>
+<div class="section" id="config-file">
+<h2>Config file<a class="headerlink" href="#config-file" title="Permalink to this headline">¶</a></h2>
+<p>There is some more work to be done on the config side (this might change at some point). Here is a sample config:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;APPLICATION&quot;</span>  <span class="o">:</span> <span class="s2">&quot;library&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;QOOXDOO_PATH&quot;</span> <span class="o">:</span> <span class="s2">&quot;../..&quot;</span><span class="p">,</span>
+  <span class="p">},</span>
+
+    <span class="s2">&quot;build&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;library&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;manifest&quot;</span> <span class="o">:</span> <span class="s2">&quot;${QOOXDOO_PATH}/framework/Manifest.json&quot;</span>
+      <span class="p">}],</span>
+
+      <span class="s2">&quot;include&quot;</span> <span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;my.super.Dog&quot;</span>
+      <span class="p">],</span>
+
+      <span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;qx.export&quot;</span> <span class="o">:</span> <span class="p">{</span><span class="s2">&quot;dog&quot;</span> <span class="o">:</span> <span class="s2">&quot;my.super.Dog&quot;</span><span class="p">}</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;compile-options&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;paths&quot;</span> <span class="o">:</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;file&quot;</span> <span class="o">:</span> <span class="s2">&quot;dog.js&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;app-root&quot;</span> <span class="o">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;loader-template&quot;</span> <span class="o">:</span> <span class="s2">&quot;${QOOXDOO_PATH}/tool/data/generator/require.loader.tmpl.js&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;uris&quot;</span> <span class="o">:</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;script&quot;</span>   <span class="o">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;resource&quot;</span> <span class="o">:</span> <span class="s2">&quot;.&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;code&quot;</span> <span class="o">:</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;format&quot;</span>   <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;optimize&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;variants&quot;</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;privates&quot;</span><span class="p">,</span> <span class="s2">&quot;variables&quot;</span> <span class="p">],</span>
+          <span class="s2">&quot;except&quot;</span>   <span class="o">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;compile&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;build&quot;</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We won't go much into detail here because most of this is covered by the <a class="reference internal" href="../tool/generator_config_ref.html"><em>Generator Config Keys</em></a> page and others. But there are two things you should be aware of. First, a new loader template is set for the compile step. There's a special loader template for RequireJS which uses the other important thing: The <tt class="docutils literal"><span class="pre">qx.export</span></tt> environment key. It holds a map specifying which class should be exported as a module. Running the <tt class="docutils literal"><span class="pre">build</span></tt> job will then generate a RequireJS-compatible file named <tt class="docutils literal"><span class="pre">dog.js</span></tt> which exposes the <tt class="docutils literal"><span class="pre">dog</span></tt> class as a module.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="requirements.html"
+             title="previous chapter">« qx.Server Requirements</a>
+          <span class="separator">|</span>
+          <a class="next" href="../communication.html"
+             title="next chapter">Communication »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">RequireJS Support</a><ul>
+<li><a class="reference internal" href="#representable-interface">Representable interface</a></li>
+<li><a class="reference internal" href="#config-file">Config file</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../communication.html"
+                        title="next chapter">Communication</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="previous chapter">qx.Server Requirements</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/server/requirejs.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

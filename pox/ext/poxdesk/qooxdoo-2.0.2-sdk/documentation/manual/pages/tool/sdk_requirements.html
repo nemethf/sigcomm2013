@@ -1,0 +1,330 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SDK Requirements &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Tooling" href="../tool.html" />
+    <link rel="next" title="SDK Installation Troubleshooting" href="sdk_install_troubleshoot.html" />
+    <link rel="prev" title="Introduction to the SDK" href="sdk_introduction.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../tool.html" accesskey="U">Tooling</a>
+     &raquo;
+  <a href="">SDK Requirements</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="sdk-requirements">
+<span id="pages-tool-requirements-requirements"></span><h1>SDK Requirements<a class="headerlink" href="#sdk-requirements" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo offers a platform-independent and user-friendly tool chain, in form of an SDK. It comes with the <a class="reference internal" href="../desktop.html"><em>qx.Desktop</em></a> and <a class="reference internal" href="../mobile.html"><em>qx.Mobile</em></a> downloads. For those components you use it for <em>creating and developing</em> a qooxdoo application. It is not needed for <em>running</em> the application. For the <a class="reference internal" href="../website.html"><em>qx.Website</em></a> and <a class="reference internal" href="../server.html"><em>qx.Server</em></a> components there are pre-build libraries to download, so you don't need the SDK.</p>
+<div class="section" id="python">
+<span id="pages-tool-requirements-python"></span><h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p>The tool chain only requires a <a class="reference external" href="http://www.python.org">Python</a> installation. Use a standard <strong>Python 2.x</strong> release, version 2.5 or above. Python 3 is currently <a class="reference external" href="http://qooxdoo.org/docs/general/python_3_support">not supported</a>. (If in doubt you can query the version of your local Python installation by running the command <tt class="docutils literal"><span class="pre">python</span> <span class="pre">-V</span></tt>). As a qooxdoo user you do not need any Python knowledge, it is merely a technology used internally for the tools. Python comes either pre-installed on many systems or it can be installed very easily:</p>
+<div class="section" id="image0-windows">
+<h3><img alt="image0" src="../../_images/windows.png" /> Windows<a class="headerlink" href="#image0-windows" title="Permalink to this headline">¶</a></h3>
+<p>It is trivial! Just download and install the excellent <a class="reference external" href="http://www.activestate.com/activepython/downloads">ActivePython</a> package. Its default settings of the installation wizard are fine, there is nothing to configure. You can as well use the Windows package from <a class="reference external" href="http://www.python.org/download/releases/2.6.1/">Python.org</a>, but this might require additional manual <a class="reference internal" href="sdk_install_troubleshoot.html#pages-troubleshooting-windows"><em>configuration</em></a>.</p>
+</div>
+<div class="section" id="image1-cygwin">
+<h3><img alt="image1" src="../../_images/cygwin.png" /> Cygwin<a class="headerlink" href="#image1-cygwin" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://www.cygwin.com/">Cygwin</a> can be used as an optional free and powerful Unix-like environment for Windows. You won't need a native Python installation, just make sure to include Cygwin's <strong>built-in</strong> Python as an additional package when using Cygwin's <a class="reference external" href="http://cygwin.com/setup.exe">setup program</a>.</p>
+</div>
+<div class="section" id="image2-mac">
+<h3><img alt="image2" src="../../_images/macosx.png" /> Mac<a class="headerlink" href="#image2-mac" title="Permalink to this headline">¶</a></h3>
+<p>Python is <strong>pre-installed</strong> on Max OS X. No additional software needs to be installed, but on older systems it might need an update.</p>
+</div>
+<div class="section" id="image3-linux">
+<h3><img alt="image3" src="../../_images/linux.png" /> Linux<a class="headerlink" href="#image3-linux" title="Permalink to this headline">¶</a></h3>
+<p>Python often comes <strong>pre-installed</strong> with your favorite distribution, just make sure they're still using a Python 2.x version. If not, simply use your package manager to install a suitable package.</p>
+</div>
+</div>
+<div class="section" id="disk-space">
+<span id="pages-tool-requirements-disk-space"></span><h2>Disk Space<a class="headerlink" href="#disk-space" title="Permalink to this headline">¶</a></h2>
+<p>The unpacked SDK will require around <strong>110 MB</strong> disk space (a big part of this is due to media files like images).</p>
+<p>During runtime the tool chain also uses a subdirectory in your system's <tt class="docutils literal"><span class="pre">TMP</span></tt> path, to cache intermediate results and downloaded files. Depending on your activities this cache directory can become between <strong>0.5</strong> and <strong>1.5 GB</strong> in size. If the <a class="reference external" href="http://qooxdoo.org/docs/general/snippets#finding_your_system-wide_tmp_directory">default cache path</a> does not suite you, you can change it in your configuration.</p>
+</div>
+<div class="section" id="installation-and-setup">
+<span id="pages-tool-requirements-setup"></span><h2>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permalink to this headline">¶</a></h2>
+<p>Installation of the SDK is just going to the <a class="reference external" href="http://qooxdoo.org/downloads">download section</a> and grab the package suitable for your purpose. Choose either the <em>Desktop</em> or <em>Mobile</em> download, which both come as an SDK archive. Unzip it to a suitable path on your hard disk. The archive contains a single top-level folder, which in turn contains all the SDK's files and sub-folders.</p>
+<p>This is all as far as the SDK is concerned. As an additional convenience you might want to add the <tt class="docutils literal"><span class="pre">&lt;sdk-root-path&gt;/tool/bin</span></tt> directory to your system environment <tt class="docutils literal"><span class="pre">PATH</span></tt> variable. This is a prerequisite for invoking the executable programs of the tool chain without the need to address them with their path.</p>
+</div>
+<div class="section" id="installation-troubleshooting">
+<h2>Installation Troubleshooting<a class="headerlink" href="#installation-troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sdk_install_troubleshoot.html">SDK Installation Troubleshooting</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="sdk_introduction.html"
+             title="previous chapter">« Introduction to the SDK</a>
+          <span class="separator">|</span>
+          <a class="next" href="sdk_install_troubleshoot.html"
+             title="next chapter">SDK Installation Troubleshooting »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">SDK Requirements</a><ul>
+<li><a class="reference internal" href="#python">Python</a><ul>
+<li><a class="reference internal" href="#image0-windows"> Windows</a></li>
+<li><a class="reference internal" href="#image1-cygwin"> Cygwin</a></li>
+<li><a class="reference internal" href="#image2-mac"> Mac</a></li>
+<li><a class="reference internal" href="#image3-linux"> Linux</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#disk-space">Disk Space</a></li>
+<li><a class="reference internal" href="#installation-and-setup">Installation and Setup</a></li>
+<li><a class="reference internal" href="#installation-troubleshooting">Installation Troubleshooting</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="sdk_install_troubleshoot.html"
+                        title="next chapter">SDK Installation Troubleshooting</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="sdk_introduction.html"
+                        title="previous chapter">Introduction to the SDK</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/sdk_requirements.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,327 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Widget" href="../widget.html" />
+    <link rel="prev" title="qx.Desktop" href="../desktop.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Overview</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="overview">
+<span id="pages-ui-overview-overview"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="widgets">
+<span id="pages-ui-overview-widgets"></span><h2>Widgets<a class="headerlink" href="#widgets" title="Permalink to this headline">¶</a></h2>
+<p>Widgets are the basic building blocks of graphical user interfaces (GUIs) in qooxdoo. Each GUI component, such as a button, label or window, is a widget and can be placed within an existing user interface. Each particular type of widget is provided by a corresponding subclass of <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.Widget">Widget</a>, which is itself a subclass of <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.LayoutItem">LayoutItem</a>.</p>
+<p><tt class="docutils literal"><span class="pre">Widget</span></tt> can be subclassed with minimal effort to create custom widgets. The entire layout handling and children handling in this class is only available as &quot;protected&quot;. It is possible to add some public API as needed.</p>
+<p>Another framework class which extends <tt class="docutils literal"><span class="pre">LayoutItem</span></tt> is <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.core.Spacer">Spacer</a>. A spacer is an empty area, which may be used as a temporary placeholder that is to be replaced later, or explicitly as a flexible part in certain dynamic UI designs.</p>
+<p>To structure an interface it is common to insert widgets into each other. Each child is displayed within the screen area occupied by its parent. The hierarchical structure is also used to hide or show specific areas. This means for instance, that hiding a parent hides its children as well. Another example would be when a widget is being disposed, all the child widgets it contains are automatically being disposed as well.</p>
+</div>
+<div class="section" id="composites">
+<span id="pages-ui-overview-composites"></span><h2>Composites<a class="headerlink" href="#composites" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned a few sentences above the normal <tt class="docutils literal"><span class="pre">Widget</span></tt> does not have public methods to manage the children. This is to allow the normal Widget to be used for inheritance. To allow the creation of structures in applications, the <tt class="docutils literal"><span class="pre">Composite</span></tt> was created.</p>
+<p><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.container.Composite">Composite</a> extends <tt class="docutils literal"><span class="pre">Widget</span></tt> and publishes the whole children and layout management of the <tt class="docutils literal"><span class="pre">Widget</span></tt> to the public. Typically it is used as a container for other widgets. Children can be managed through the methods <tt class="docutils literal"><span class="pre">add()</span></tt>, <tt class="docutils literal"><span class="pre">remove()</span></tt>, etc. In application code Composites are used to structure the interface.</p>
+</div>
+<div class="section" id="roots">
+<span id="pages-ui-overview-roots"></span><h2>Roots<a class="headerlink" href="#roots" title="Permalink to this headline">¶</a></h2>
+<p>A special category of widgets are the root widgets. These basically do the connection between the classic DOM and the qooxdoo widget system. There are different types of roots, each individually tuned for the requirements in the covered use case.</p>
+<p>First of all every application developer needs to decide if an application should be standalone e.g. working with a minimal set of classic HTML or will be integrated into an maybe full-blown web page. Developers of an standalone application normally have no problem to give the control to the toolkit (maybe even enjoy it to give away this responsibility), but this would not work for integrating qooxdoo into an existing web page layout.</p>
+<p>A standalone application normally only uses a really slimmed down set of HTML (in fact the file only functions as a wrapper to load the application code). It normally does not include any CSS files and often comes with an empty body element. In fact even simpler elements like headers, footers etc. are created using widgets (so they may benefit from typical qooxdoo features like internationalisation, theming etc.).</p>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.root.Application">Application</a>: Build full-blown application from scratch. Target audience are developers of a completely qooxdoo based application.</li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.root.Page">Page</a>: Build applications as isles into existing content. Ideal for the more classic web developer. Needs to bring in know how of HTML &amp; CSS for non-qooxdoo content.</li>
+</ul>
+<p>Both roots are attached directly to the document. The <tt class="docutils literal"><span class="pre">Application</span></tt> is automatically stretched to the full size of the window and this way allows to position elements in relation to the right or bottom edge etc. This is not possible using the <tt class="docutils literal"><span class="pre">Page</span></tt> root.</p>
+<p>The instantiation of the required root widget is normally nothing the developer has to do. It is done by the application class the developer chooses to extend. The next chapter will explain the concept behind applications in detail.</p>
+<p>As even the <tt class="docutils literal"><span class="pre">Page</span></tt> root is attached to the document it would be still not possible to place children into a specific existing column or box into the existing layout. However the developer of the web page may use any number of optional isles to insert content into an existing layout (built with classic HTML markup). The isles are named <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.root.Inline">Inline</a>. They need an existing DOM element to do their work (maybe using some type of <tt class="docutils literal"><span class="pre">getElementById</span></tt>).  The reason for the overall need, even when working with these isles, for the <tt class="docutils literal"><span class="pre">Page</span></tt> root is that all dynamically floating elements like tooltips, menus, windows etc. are automatically placed into this root. This makes positioning of such elements a lot easier.</p>
+</div>
+<div class="section" id="applications">
+<span id="pages-ui-overview-applications"></span><h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+<p>The application is the starting point of every qooxdoo application. Every qooxdoo application should also come with a custom application class. The application is automatically initialized at the boot phase of qooxdoo (to be exact: when all required JavaScript packages are loaded).</p>
+<p>The first method each developer needs to get used to is the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.application.IApplication~main">main</a> method. It is automatically executed after the initialization of the class. Normally the method is used to initialize the GUI and to load the data the application needs.</p>
+<p>There are different applications which could be used as a starting point for a custom application:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.application.Standalone">Standalone</a>: Uses the <tt class="docutils literal"><span class="pre">Application</span></tt> root to build full blown standalone qooxdoo applications</li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.application.Inline">Inline</a>: Uses the <tt class="docutils literal"><span class="pre">Page</span></tt> root to build traditional web page based application which are embedded into isles in the classic HTML page.</li>
+<li><a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.application.Native">Native</a>: This class is for applications that do not involve qooxdoo's GUI toolkit. Typically they make only use of the IO (&quot;Ajax&quot;) and BOM functionality (e.g. to manipulate the existing DOM).</li>
+</ul>
+</div>
+<div class="section" id="communication">
+<span id="pages-ui-overview-communication"></span><h2>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h2>
+<p>Developing a qooxdoo application does not require a server. Its static application contents (initial html file, JavaScript files, images, etc.) may just be loaded from your local file system.</p>
+<p>Of course, for the actual deployment of your final app you would use a web server to deliver the (static) contents. For developing a qooxdoo app it is not a prerequisite to setup a web server, so you can start right away on your local computer.</p>
+<p>Any practical qooxdoo client application will communicate with a server, for instance to retrieve and store certain application data, to do credit card validation and so on. qooxdoo includes an advanced <a class="reference internal" href="../communication/rpc.html"><em>RPC mechanism</em></a> for direct calls to server-side methods. It allows you to write true client/server applications without having to worry about the communication details. qooxdoo offers such <em>optional</em> <a class="reference external" href="http://qooxdoo.org/contrib/project#backend">RPC backends</a> for Java, PHP, Perl and Python. If you are missing your favorite backend language, you can even create your own RPC server by following a generic <a class="reference internal" href="../communication/rpc_server_writer_guide.html"><em>server writer guide</em></a>.</p>
+<p>If you already have an existing backend that serves HTTP (or HTTPS) requests and you do not want to use those optional RPC implementations, that's fine. It should be easy to integrate your qooxdoo app with your existing backend using traditional AJAX calls.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../desktop.html"
+             title="previous chapter">« qx.Desktop</a>
+          <span class="separator">|</span>
+          <a class="next" href="../widget.html"
+             title="next chapter">Widget »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Overview</a><ul>
+<li><a class="reference internal" href="#widgets">Widgets</a></li>
+<li><a class="reference internal" href="#composites">Composites</a></li>
+<li><a class="reference internal" href="#roots">Roots</a></li>
+<li><a class="reference internal" href="#applications">Applications</a></li>
+<li><a class="reference internal" href="#communication">Communication</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../widget.html"
+                        title="next chapter">Widget</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../desktop.html"
+                        title="previous chapter">qx.Desktop</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_overview.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,426 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial Part 2: Finishing the UI &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../../desktop.html" />
+    <link rel="next" title="Tutorial Part 3: Time for Communication" href="tutorial-part-3.html" />
+    <link rel="prev" title="Tutorial Part 1: The Beginning of a twitter App" href="tutorial-part-1.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Tutorial Part 2: Finishing the UI</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-part-2-finishing-the-ui">
+<span id="pages-tutorial-part-2-tutorial-part-2-finishing-the-ui"></span><h1>Tutorial Part 2: Finishing the UI<a class="headerlink" href="#tutorial-part-2-finishing-the-ui" title="Permalink to this headline">¶</a></h1>
+<p>In the <a class="reference internal" href="tutorial-part-1.html"><em>first part</em></a> of the tutorial, we built a basic window for our target application, a twitter client. In the second part of the tutorial, we want to finish the UI of the application. So lets get started, we got a lot to do!</p>
+<p>I hope you remember the layout of the application we are trying to build. If not, here is a little reminder.</p>
+<p><img alt="twitter mockup1" src="../../../_images/twittermockup1.png" /></p>
+<p>The first thing we need to do is to set a layout for our window. You can see that the text area and the button are side by side while all the other elements are ordered vertically. But all elements are aligned in a grid so we should choose a grid layout for that. We can add the grid layout in our own window class. Just add these lines of code in <tt class="docutils literal"><span class="pre">MainWindow.js</span></tt>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// add the layout</span>
+<span class="kd">var</span> <span class="nx">layout</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">layout</span><span class="p">.</span><span class="nx">Grid</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setLayout</span><span class="p">(</span><span class="nx">layout</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>But a layout without any content is boring so we should add some content to see if it's working. Lets add the first two elements to the window, the <a class="reference internal" href="../../widget/toolbar.html"><em>toolbar</em></a> and the <a class="reference internal" href="../../widget/list.html"><em>list</em></a> view.</p>
+<div class="section" id="layout-and-toolbar">
+<span id="pages-tutorial-part-2-layout-and-toolbar"></span><h2>Layout and Toolbar<a class="headerlink" href="#layout-and-toolbar" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to create the toolbar before we can add it. Creating the toolbar and adding it is straight forward.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// toolbar</span>
+<span class="kd">var</span> <span class="nx">toolbar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">ToolBar</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">toolbar</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">0</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>This will add the toolbar to the grid layout of our main window. The only thing you should take care of is the second parameter of .add(). It contains a map with layout properties. You can see the available layout properties in the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.Grid">API of the layout</a>, in this case of the grid layout. Here, we use only the row and column property to tell the layout that this is the element in the first row and column (rows and columns start at index 0, you guessed it).</p>
+</div>
+<div class="section" id="list-and-layout-again">
+<span id="pages-tutorial-part-2-list-and-layout-again"></span><h2>List and Layout, again<a class="headerlink" href="#list-and-layout-again" title="Permalink to this headline">¶</a></h2>
+<p>Adding the list should look familiar now.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// list</span>
+<span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">List</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">0</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>Now its time to see our work in the browser. But again, we have added new class dependencies so we need to invoke the generator with <tt class="docutils literal"><span class="pre">./generate.py</span></tt>. After that, we can see the result in the browser. I guess it's not the way we like it to be. You cannot see any toolbar, the list has too much padding against the window border and doesn't fit the whole window. That's something we should take care of now.</p>
+<p>First, get rid of that padding we don't need. The window object has a default content padding which we just  to set to <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">setContentPadding</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Put that line in your windows constructor and the padding is gone.</p>
+<p>Next, we take care of the size of the list. The layout does not know which column(s) or row(s) it should stretch. So we need to tell the layout which one it should use:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">layout</span><span class="p">.</span><span class="nx">setRowFlex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nx">layout</span><span class="p">.</span><span class="nx">setColumnFlex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The first line tells the layout to keep the second row (the row for the list) flexible. The second row does the same for the first column.</p>
+<p>The last thing we need to fix was the invisible toolbar. If you know the reason why it's not visible, you sure know how to fix it. It contains not a single element so it won't be visible. Fixing it means adding an element, in our case we just add the reload button. We already know how to create and add widgets so just add the following lines of code.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// reload button</span>
+<span class="kd">var</span> <span class="nx">reloadButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Reload&quot;</span><span class="p">);</span>
+<span class="nx">toolbar</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">reloadButton</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now its time to see if all the fixes work. But be sure to run the generator before you reload the browser page because we added (again) another class (the button). Now everything should look the way we want it to be.</p>
+</div>
+<div class="section" id="text-area-and-button">
+<span id="pages-tutorial-part-2-text-area-and-button"></span><h2>Text Area and Button<a class="headerlink" href="#text-area-and-button" title="Permalink to this headline">¶</a></h2>
+<p>After that success, we can got to the next task, adding the text area and &quot;Post&quot; button. This is also straight forward like we have seen in all the other adding scenarios.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// textarea</span>
+<span class="kd">var</span> <span class="nx">textarea</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">TextArea</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">textarea</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">0</span><span class="p">});</span>
+
+<span class="c1">// post button</span>
+<span class="kd">var</span> <span class="nx">postButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="s2">&quot;Post&quot;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">postButton</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">1</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>This time, we have to add the button in the second column to get the button and the text area aligned horizontally. Its time to test this... again generate and reload.</p>
+<p>Like the last time, the result is not quite what we want it to be. The list and toolbar do not fill the whole window. But that's a home-made problem because we extended our grid to two columns by adding the post button. The list and the toolbar need to span both available columns to have the result we want. But that's easy too, add <tt class="docutils literal"><span class="pre">colSpan:</span> <span class="pre">2</span></tt> to the layout properties used by adding the list and the toolbar. Your code should look like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">toolbar</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">colSpan</span><span class="o">:</span> <span class="mi">2</span><span class="p">});</span>
+<span class="c1">// ...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">colSpan</span><span class="o">:</span> <span class="mi">2</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>This time, we did not add a new class dependency so we can just reload the index file and see the result.</p>
+</div>
+<div class="section" id="breathing-life-into-the-ui">
+<span id="pages-tutorial-part-2-breathing-life-into-the-ui"></span><h2>Breathing Life into the UI<a class="headerlink" href="#breathing-life-into-the-ui" title="Permalink to this headline">¶</a></h2>
+<p>The UI now looks like the one we have seen in the mockup. But how does the UI communicate with the application logic? It's a good idea to decouple the UI from the logic and use events for notifying the behaviour. If you take a look we only have two actions where the UI needs to notify the rest of the application: reloading the tweets and posting a tweet.</p>
+<p>These two events we add to our window. Adding events is a two step process. First, we need to declare what kind of event we want to fire. Therefore, we add an events section alongside to the constructor section of the window class definition:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">events</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;reload&quot;</span> <span class="o">:</span> <span class="s2">&quot;qx.event.type.Event&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;post&quot;</span>   <span class="o">:</span> <span class="s2">&quot;qx.event.type.Data&quot;</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>As you can see in the snippet here, it ends with a comma. It always depends on what position you copy the section if the comma is necessary. Just take care the the class definition is a valid JavaScript object. But now back to the events. The reload event is a plain event which only notifies the receiver to reload. The post event is a data event which contains the data to post to twitter. That's why there are two different types of events used.</p>
+<p>Declaring the events is the first step of the process. The second part is firing the events! Let's take a look at the reload event. It needs to be fired when the reload button was triggered (or &quot;was executed&quot; in qooxdoo parlance). The button itself fires an event on execution so we could use this event to fire our own reload event.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">reloadButton</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s2">&quot;reload&quot;</span><span class="p">);</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Here we see two things: First, how to add an event listener and second, that firing an event is as easy as a method call. The only parameter to .fireEvent() is the name of the event we have declared in the class definition. Another interesting thing here is the third parameter of the <tt class="docutils literal"><span class="pre">addListener</span></tt> call, <strong>this</strong>. It sets the context of the callback function to our window instance, so the this in this.fireEvent() is resolved correctly.</p>
+<p>The next case is a bit different but also easy.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">postButton</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">fireDataEvent</span><span class="p">(</span><span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="nx">textarea</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This time, we call the <tt class="docutils literal"><span class="pre">fireDataEvent</span></tt> method to get a data event fired. The second parameter is the data to embed in the event. We simply use the value of the text area. That's it for adding the events. To test both events we add a debug listener for each event in our application code, in the main() method of Application.js:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">main</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;reload&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;reload&quot;</span><span class="p">);</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+
+<span class="nx">main</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;post: &quot;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getData</span><span class="p">());</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can see in the event listener functions that we use the qooxdoo debugging function <tt class="docutils literal"><span class="pre">debug</span></tt>. Now it's time to test the whole UI. Open the index file in a browser you like and see the UI. If you want to see the debugging messages you have to open either a the debugging tool of your chosen browser or use the qooxdoo debugging console. Press F7 to get the qooxdoo console visible.</p>
+</div>
+<div class="section" id="finishing-touches">
+<span id="pages-tutorial-part-2-finishing-touches"></span><h2>Finishing Touches<a class="headerlink" href="#finishing-touches" title="Permalink to this headline">¶</a></h2>
+<p>As a last task, we can give the UI some finishing touches. Wouldn't it be nice if the text area had a placeholder text saying you should enter your message here and <tt class="docutils literal"><span class="pre">ToolTips</span></tt> showing some more info to the user? Easy task!</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">reloadButton</span><span class="p">.</span><span class="nx">setToolTipText</span><span class="p">(</span><span class="s2">&quot;Reload the tweets.&quot;</span><span class="p">);</span>
+<span class="c1">//..</span>
+<span class="nx">textarea</span><span class="p">.</span><span class="nx">setPlaceholder</span><span class="p">(</span><span class="s2">&quot;Enter your message here...&quot;</span><span class="p">);</span>
+<span class="c1">//..</span>
+<span class="nx">postButton</span><span class="p">.</span><span class="nx">setToolTipText</span><span class="p">(</span><span class="s2">&quot;Post this message on twitter.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Another nice tweak could be a twitter logo in the windows caption bar. Just download this <a class="reference external" href="http://twitter-badges.s3.amazonaws.com/t_small-c.png">logo from twitter</a> and save it in the <tt class="docutils literal"><span class="pre">source/resource/twitter</span></tt> folder of your application. Adding the logo is easy because the window has also a property for an icon, which can be set in the constructor. Adding the reference to the icon in the base call should do the job.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="s2">&quot;twitter&quot;</span><span class="p">,</span> <span class="s2">&quot;twitter/t_small-c.png&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This time, we added a new reference to an image. Like with class dependencies, we need to run the generator once more. After that, the image should be in the windows caption bar.</p>
+<p>Two more minor things are left to finish. First, the button does not look very good. Why don't we just give it a fixed width to fit its height.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">postButton</span><span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">60</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The last task is a bit more complicated than the other tweaks before. As you probably know, twitter messages have a maximum length of 140 characters. So disabling the post button if the entered message has more the 140 characters could help us out in the communication layer. A twitter message with no text at all is also useless and we can disable the post button in that case. To get that we need to know when the text was changed in the text area. Fortunately, the text area has a data event for text changes we can listen to:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">textarea</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getData</span><span class="p">();</span>
+  <span class="nx">postButton</span><span class="p">.</span><span class="nx">setEnabled</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">140</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The event handler has only two rows. The first gets the changed text of the text area from the data event. The second row sets the enabled property of the post button if the length of the message is lower than 140 characters and not 0. Some of you might have a bad feeling about this code because the listener is called every time the user adds a character. But that's not a problem because the qooxdoo property system takes care of that. If the value passed into the setter is the same as the existing value, it is ignored and no event is fired.</p>
+<p>The last thing we should consider is the startup of the application. The text area is empty but the button is enabled. Disabling the button on startup is the way to go here.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">postButton</span><span class="p">.</span><span class="nx">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now go back to the browser and test your new tweaks. It should look like this.</p>
+<p><img alt="step 2" src="../../../_images/step21.png" /></p>
+<p>That's it for building the UI. Again, if you want to take a <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step2">look at the code</a>, fork the project on github.
+Next time we take care of getting the data. If you have feedback on this post, just let us know!</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="tutorial-part-1.html"
+             title="previous chapter">« Tutorial Part 1: The Beginning of a twitter App</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial-part-3.html"
+             title="next chapter">Tutorial Part 3: Time for Communication »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial Part 2: Finishing the UI</a><ul>
+<li><a class="reference internal" href="#layout-and-toolbar">Layout and Toolbar</a></li>
+<li><a class="reference internal" href="#list-and-layout-again">List and Layout, again</a></li>
+<li><a class="reference internal" href="#text-area-and-button">Text Area and Button</a></li>
+<li><a class="reference internal" href="#breathing-life-into-the-ui">Breathing Life into the UI</a></li>
+<li><a class="reference internal" href="#finishing-touches">Finishing Touches</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial-part-3.html"
+                        title="next chapter">Tutorial Part 3: Time for Communication</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="tutorial-part-1.html"
+                        title="previous chapter">Tutorial Part 1: The Beginning of a twitter App</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/tutorials/tutorial-part-2.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

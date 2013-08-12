@@ -1,0 +1,519 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Environment &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Core" href="../core.html" />
+    <link rel="next" title="Data Binding" href="../data_binding.html" />
+    <link rel="prev" title="Property features summarized" href="property_features.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" accesskey="U">Core</a>
+     &raquo;
+  <a href="">Environment</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="environment">
+<span id="pages-core-environment-environment"></span><h1>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The environment of an application is a set of values that can be queried through a well-defined interface. Values are referenced through unique keys. You can think of this set as a global key:value store for the application. Values are write-once, read-many, but there are also read-only values. If a value for a certain key can be set, it can be set in various ways, e.g. by code, through build configuration, etc., usually during startup of the application, and not changed later. Other environment values are automatically discovered when they are queried at run time, such as the name of the current browser, or the number of allowed server connections. This way, the environment API also implements browser feature detection, and these values cannot be arbitrarily set.</p>
+<p>Environment settings are also used in the framework, among other things to add debug code in the form of additional tests and logging, to provide browser-specific implementations of certain methods, asf. Certain settable environment keys are pre-defined by qooxdoo, the values of which can be overridden by the application. Applications are also free to define their own environment keys and query their values at run time.</p>
+<p>So for the application developer, the environment represents a set of global values that mirrors the general parameters under which the application runs. It can be used to both <em>detect</em> (e.g. browser features) as well as <em>inject</em> such parameters (e.g. through build configuration). For global values that are <em>not</em> derived from the outside world in some way, just use e.g. a static application class.</p>
+</div>
+<div class="section" id="motivation">
+<span id="pages-core-environment-motivation"></span><h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Environment settings address various needs around JavaScript applications:</p>
+<ul class="simple">
+<li>Control initial settings of the framework, before the custom classes are loaded.</li>
+<li>Pass values from outside to the application.</li>
+<li>Trigger the creation of multiple build files.</li>
+<li>Query features of the platform at run time (browser engine, HTML5 support, etc.)</li>
+<li>Create builds optimized for a specific target environment, i.e. feature-based builds.</li>
+</ul>
+<p>As there are a number of pre-defined settings in the framework, you can make use of them right away by querying their values in your application code. The next section deals with that. Afterwards, you learn how to override default values or define your own environment settings.</p>
+</div>
+<div class="section" id="querying-environment-settings">
+<span id="pages-core-environment-querying"></span><h2>Querying Environment Settings<a class="headerlink" href="#querying-environment-settings" title="Permalink to this headline">¶</a></h2>
+<p>In general, there are two different kinds of settings, <strong>synchronous</strong> and <strong>asynchronous</strong>. The asynchronous settings are especially for feature checks where the check itself is asynchronous, like checking for data: URL support. Both kinds have two query methods at the qx.core.Environment class, <em>.get()</em> and <em>select()</em> for synchronous, and <em>.getAsync()</em> and <em>.selectAsync()</em> for asynchronous settings.</p>
+<div class="section" id="synchronous">
+<h3>Synchronous<a class="headerlink" href="#synchronous" title="Permalink to this headline">¶</a></h3>
+<p>Let's first take a look at the synchronous API and the two possibilities of accessing the data:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;myapp.key&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">get</span></tt> method is likely the most important one. It returns the value for the given key, <tt class="docutils literal"><span class="pre">myapp.key</span></tt> in this example.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;myapp.key&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="s2">&quot;value1&quot;</span> <span class="o">:</span> <span class="nx">resvalue1</span><span class="p">,</span>
+  <span class="s2">&quot;value2&quot;</span> <span class="o">:</span> <span class="nx">resvalue2</span><span class="p">,</span>
+  <span class="s2">&quot;default&quot;</span> <span class="o">:</span> <span class="nx">catchAllValue</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">select</span></tt> method is a way to select a value from a given map. This offers a convenient way to select an expression for a given key value. It also allows you to specify the special map key <strong>&quot;default&quot;</strong>, that will be used if the current value of the environment key does not match any of the other map keys. This is very handy when only one of the expected values needs a special case treatment. In the example above, the <tt class="docutils literal"><span class="pre">resvalue(s)</span></tt> could be a function or any other valid JavaScript expression.</p>
+</div>
+<div class="section" id="asynchronous">
+<h3>Asynchronous<a class="headerlink" href="#asynchronous" title="Permalink to this headline">¶</a></h3>
+<p>The asynchronous methods are a direct mapping of their synchronous counterparts.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">getAsync</span><span class="p">(</span><span class="s2">&quot;myapp.key&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// callback</span>
+<span class="p">},</span> <span class="nx">context</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As the <em>.getAsync</em> does not return a result immediately, you have to specify a callback method which will be executed as soon as the value for the environment key is available. Your callback will be passed this value as the single argument, and the callback is responsible to integrate the result with your application.</p>
+<p>This principle carries over to the corresponding select call:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">selectAsync</span><span class="p">(</span><span class="s2">&quot;myapp.key&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="s2">&quot;value&quot;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// callback value 1</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;default&quot;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// catch all callback</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="nx">context</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In case of an asynchronous select the type of the values has to be a function, which will be called as soon as the key value is available. Again, you can provide a <em>&quot;default&quot;</em> case. As with the callbacks used for <em>.getAsync</em>, the callbacks used with <em>.selectAsync</em> will also get the key value as parameter, which might come handy especially in the <em>&quot;default&quot;</em> case.</p>
+</div>
+<div class="section" id="caching">
+<span id="pages-core-environment-caching"></span><h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
+<p>It sure happens in the live cycle of an application that some key get queried quite often, like the engine name. The environment system caches every value to ensure the best possible performance on expensive feature tests. But in some edge cases, it might happen that you want to redo the test. For such use cases you can invalidate the cache for a given key, to force a re-calculation on the next query:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">invalidateCacheKey</span><span class="p">(</span><span class="s2">&quot;myapp.key&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This example would clear a previously calculated value for <tt class="docutils literal"><span class="pre">myapp.key</span></tt>.</p>
+</div>
+<div class="section" id="removal-of-code">
+<h3>Removal of Code<a class="headerlink" href="#removal-of-code" title="Permalink to this headline">¶</a></h3>
+<p>Usually, function calls like <em>qx.core.Environment.get()</em> are executed at run time and return the given value of the environment key. This is useful if such value is determined only at run time, or can change between runs. But if you want to pre-determine the value, you can set it in the generator config. The generator can then anticipate the outcome of a query and remove code that wouldn't be used at run time.</p>
+<p>For example,</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;qx.debug&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="p">(</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">a</span> <span class="o">!=</span> <span class="s2">&quot;string&quot;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&quot;Bad arguments!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>will be reduced in the case <em>qx.debug</em> is <em>false</em> to</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the case of a <em>select</em> call,</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;myapp.key&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="s2">&quot;value1&quot;</span> <span class="o">:</span> <span class="nx">resvalue1</span><span class="p">,</span>
+  <span class="s2">&quot;value2&quot;</span> <span class="o">:</span> <span class="nx">resvalue2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>will reduce if <em>myapp.key</em> has the value <em>value2</em> to just</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">resvalue2</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../tool/generator_config_articles.html#pages-tool-generator-config-articles-environment-key"><em>generator documentation</em></a> has more details on optimization of <em>qx.core.Environment</em> calls.</p>
+</div>
+<div class="section" id="pre-defined-environment-keys">
+<span id="pages-core-environment-pre-defined"></span><h3>Pre-defined Environment Keys<a class="headerlink" href="#pre-defined-environment-keys" title="Permalink to this headline">¶</a></h3>
+<p>qooxdoo comes with a set of pre-defined environment settings. You can divide those into two big groups. One is a set of feature tests which cover browser features like support for certain CSS or HTML features. The second group are simple settings for the qooxdoo framework which drive the inner workings of the framework.</p>
+<p>For a complete list of predefined environment keys, take a look at the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer#qx.core.Environment">API documentation of the qx.core.Environment class</a>.</p>
+</div>
+</div>
+<div class="section" id="defining-new-environment-settings">
+<span id="pages-core-environment-defining"></span><h2>Defining New Environment Settings<a class="headerlink" href="#defining-new-environment-settings" title="Permalink to this headline">¶</a></h2>
+<p>Now to actually setting new or overriding existing environment settings. The value of an environment key can take one of two forms, as a concrete literal value, or as a function that returns a value at run time. The former can be achieve in various ways (see further), the latter only through application code. (An environment key with its current value is also referred to as an <em>environment setting</em>). We go through both ways now.</p>
+<div class="section" id="as-literal-values">
+<span id="pages-core-environment-defining-as-value"></span><h3>As Literal Values<a class="headerlink" href="#as-literal-values" title="Permalink to this headline">¶</a></h3>
+<p>As already mentioned, there are various possibilities to assign a literal value, like <tt class="docutils literal"><span class="pre">&quot;foo&quot;</span></tt>, <tt class="docutils literal"><span class="pre">3</span></tt> or <tt class="docutils literal"><span class="pre">true</span></tt>, to an environment key. You can define the setting</p>
+<ul class="simple">
+<li>in the class map</li>
+<li>in method code</li>
+<li>through inline <tt class="docutils literal"><span class="pre">&lt;script&gt;</span></tt> code in the index.html</li>
+<li>in the generator configuration</li>
+<li>via URL parameter</li>
+</ul>
+<p>The list is sorted in ascending precedence, i.e. if a key is defined multiple times, mechanisms further down the list take higher precedence. Those possibilities are explained in the following sections.</p>
+<div class="section" id="in-the-class-map">
+<span id="pages-core-environment-in-class-map"></span><h4>In the Class Map<a class="headerlink" href="#in-the-class-map" title="Permalink to this headline">¶</a></h4>
+<p>You can define a key and its value through the <a class="reference internal" href="class_quickref.html"><em>environment</em></a> key of the map defining a qooxdoo class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;myapp.ClassA&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="p">[...]</span>
+
+  <span class="nx">environment</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;myapp.key&quot;</span> <span class="o">:</span> <span class="nx">value</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-application-code">
+<span id="pages-core-environment-in-application-code"></span><h4>In Application Code<a class="headerlink" href="#in-application-code" title="Permalink to this headline">¶</a></h4>
+<p>You can define a key and its value in a class method using the <em>qx.core.Environment.add</em> method:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-the-loading-index-html">
+<span id="pages-core-environment-in-index-html"></span><h4>In the Loading index.html<a class="headerlink" href="#in-the-loading-index-html" title="Permalink to this headline">¶</a></h4>
+<p>In the web page loading your qooxdoo application, and before the <tt class="docutils literal"><span class="pre">&lt;script&gt;</span></tt> tag loading the initial qooxdoo file, add another <tt class="docutils literal"><span class="pre">&lt;script&gt;</span></tt> tag with code that assigns a map to <tt class="docutils literal"><span class="pre">window.qx.$$environment</span></tt>, containing your environment settings.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">qx</span> <span class="o">=</span>
+  <span class="p">{</span>
+    <span class="nx">$$environment</span> <span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;myapp.key&quot;</span> <span class="o">:</span> <span class="nx">value</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-the-generator-config">
+<span id="pages-core-environment-in-configuration"></span><h4>In the Generator Config<a class="headerlink" href="#in-the-generator-config" title="Permalink to this headline">¶</a></h4>
+<p>You can define a key and its value in the <a class="reference internal" href="../tool/generator_config_ref.html#pages-tool-generator-config-ref-environment"><em>environment</em></a> key of the job with which you build the script files of your application (e.g. <em>source-script</em>, <em>build-script</em>):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;myjob&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="p">[...]</span>
+
+  <span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;myapp.key&quot;</span> <span class="o">:</span> <span class="nx">value</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Using the generator config adds a special meaning to the provided environment settings. Specifying a <strong>list</strong> of values for a key triggers the creation of multiple output files by the generator. E.g. replacing <strong>value</strong> with <strong>[value1, value2]</strong> in the above example, the generator will create two output files. See the <a class="reference internal" href="../tool/generator_config_ref.html#pages-tool-generator-config-ref-environment"><em>environment</em></a> key for more information on multiple output generation.</p>
+</div>
+<div class="section" id="via-url-parameter">
+<span id="pages-core-environment-in-url"></span><h4>Via URL parameter<a class="headerlink" href="#via-url-parameter" title="Permalink to this headline">¶</a></h4>
+<p>Before using URL parameter to define environment settings, you have to specify another environment setting in the generator configuration which is named <tt class="docutils literal"><span class="pre">qx.allowUrlSettings</span></tt>. If the application is generated with this config setting in place, you can then use URL parameter to add further key:value pairs.</p>
+<div class="highlight-html"><div class="highlight"><pre>http://my.server.com/path/to/app/index.html?qxenv:myapp.key:value
+</pre></div>
+</div>
+<p>The pattern in the URL parameter is easy. It has three parts separated by colons. The first part is the constant <tt class="docutils literal"><span class="pre">qxenv</span></tt>, the second part is the key of the environment setting and the last part is the value of the setting.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>qx.allowUrlSettings and &quot;variants&quot; Optimization</strong></p>
+<p>Setting <tt class="docutils literal"><span class="pre">qx.allowUrlSettings</span></tt> to true in the configuration somewhat contradicts using the <a class="reference internal" href="../tool/generator_optimizations.html#pages-tool-generator-optimizations-variants"><em>variants</em></a> optimization in builds. The variants optimization takes advantage of the values of environment settings given in the configuration, to remove code like calls to <tt class="docutils literal"><span class="pre">qx.core.Environment.get()</span></tt> for such a setting and replace it with the corresponding value. That means that changing the value of such a key via URL parameter later has no effect, as the call to retrieve its value is no longer in the code. You can then only set environment values via URL parameter for those keys which have <strong>not</strong> been given a value in the configuration.</p>
+<p>Alternatively, you could disable <tt class="docutils literal"><span class="pre">variants</span></tt> optimization in the build, or remove the setting you want to change via URL parameter from the config. In the latter case, you have other possibilities to set a default for this setting, by either providing an <tt class="docutils literal"><span class="pre">environment</span></tt> key in the JavaScript class map, or a <tt class="docutils literal"><span class="pre">qx.core.Environment.add()</span></tt> call in the class' <tt class="docutils literal"><span class="pre">defer</span></tt> function.</p>
+<p class="last">If you set <tt class="docutils literal"><span class="pre">qx.allowUrlSettings</span></tt> to true and have the <tt class="docutils literal"><span class="pre">variants</span></tt> optimization enabled for a particular build, the generator will issue a warning.</p>
+</div>
+<p>So much for setting simple key:value pairs. Now for providing a check function as the value of an environment key.</p>
+</div>
+</div>
+<div class="section" id="as-a-check-function">
+<span id="pages-core-environment-defining-as-function"></span><h3>As a Check Function<a class="headerlink" href="#as-a-check-function" title="Permalink to this headline">¶</a></h3>
+<p>As mentioned before, providing a function in place of a value can only be done in application code, so these environment settings are done at run time. The framework settings defined at run time are usually feature checks like checking for dedicated CSS or HTML features. The check function is executed and is responsible for returning a proper value when the environment key is queried later. These checks can be synchronous or asynchronous, and this corresponds to how they are queried. Synchronous checks are queried with the <em>.get()</em> and <em>.select()</em> methods, asynchronous checks with <em>.getAsync()</em> and <em>.selectAsync()</em> (see <a class="reference internal" href="#pages-core-environment-querying"><em>Querying Environment Settings</em></a>).</p>
+<div class="section" id="id1">
+<h4>Synchronous<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>To add a synchronous check function, the standard <em>.add()</em> call is used:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;group.feature&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">!!</span><span class="nb">window</span><span class="p">.</span><span class="nx">feature</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>This example shows the same API used for adding a key:value setting. The only difference is that you add a function as second parameter and not a simple value. This function is responsible for determining and returning the value for the given environment key. In this example, if <tt class="docutils literal"><span class="pre">window.feature</span></tt> is defined, the check will return <tt class="docutils literal"><span class="pre">true</span></tt>.</p>
+</div>
+<div class="section" id="id2">
+<h4>Asynchronous<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>To add an asynchronous check, use <em>.addAsync()</em>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">addAsync</span><span class="p">(</span><span class="s2">&quot;group.feature&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">callback</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>This example shows how to add a asynchronous feature check. A timeout is used to get the asynchronous behavior in this simple example. That can be more complicated of course but the timeout is good enough to showcase the API. As you can see in the check function we are adding, it has one parameter called <tt class="docutils literal"><span class="pre">callback</span></tt> which is the callback passed by <em>.getAsync()</em> or <em>.selectAsync()</em> asynchronous queries. As before, the check function is responsible for computing the value of the environment key. But rather than just returning the value (as in the synchronous case), it calls the callback function and passes the value. The callback function is then responsible to integrate the result value with the querying layer. In this simple example, the check waits a second and calls the callback with the result <tt class="docutils literal"><span class="pre">true</span></tt>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="property_features.html"
+             title="previous chapter">« Property features summarized</a>
+          <span class="separator">|</span>
+          <a class="next" href="../data_binding.html"
+             title="next chapter">Data Binding »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Environment</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#querying-environment-settings">Querying Environment Settings</a><ul>
+<li><a class="reference internal" href="#synchronous">Synchronous</a></li>
+<li><a class="reference internal" href="#asynchronous">Asynchronous</a></li>
+<li><a class="reference internal" href="#caching">Caching</a></li>
+<li><a class="reference internal" href="#removal-of-code">Removal of Code</a></li>
+<li><a class="reference internal" href="#pre-defined-environment-keys">Pre-defined Environment Keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defining-new-environment-settings">Defining New Environment Settings</a><ul>
+<li><a class="reference internal" href="#as-literal-values">As Literal Values</a><ul>
+<li><a class="reference internal" href="#in-the-class-map">In the Class Map</a></li>
+<li><a class="reference internal" href="#in-application-code">In Application Code</a></li>
+<li><a class="reference internal" href="#in-the-loading-index-html">In the Loading index.html</a></li>
+<li><a class="reference internal" href="#in-the-generator-config">In the Generator Config</a></li>
+<li><a class="reference internal" href="#via-url-parameter">Via URL parameter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#as-a-check-function">As a Check Function</a><ul>
+<li><a class="reference internal" href="#id1">Synchronous</a></li>
+<li><a class="reference internal" href="#id2">Asynchronous</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../data_binding.html"
+                        title="next chapter">Data Binding</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="property_features.html"
+                        title="previous chapter">Property features summarized</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/core/environment.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

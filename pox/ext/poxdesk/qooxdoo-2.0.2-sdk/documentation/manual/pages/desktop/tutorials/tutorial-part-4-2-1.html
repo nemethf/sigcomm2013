@@ -1,0 +1,383 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial Part 4.2.1: Basic Theming &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../../desktop.html" />
+    <link rel="next" title="Tutorial Part 4.3: Translation" href="tutorial-part-4-3.html" />
+    <link rel="prev" title="Tutorial Part 4.2: Custom Widgets" href="tutorial-part-4-2.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Tutorial Part 4.2.1: Basic Theming</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-part-4-2-1-basic-theming">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-1-tutorial-part-4-2-1-basic-theming"></span><h1>Tutorial Part 4.2.1: Basic Theming<a class="headerlink" href="#tutorial-part-4-2-1-basic-theming" title="Permalink to this headline">¶</a></h1>
+<p>This time, we continue with a very exciting topic for the tutorials: Theming. As you might already know, the theming system in qooxdoo is not based on CSS which means you, as an application developer, don't have to bother with cross browser CSS. The qooxdoo framework takes care of all that for you.
+As a base for theming an app, we use the already known twitter client we built in the <a class="reference internal" href="tutorial-part-4-2.html"><em>former tutorials</em></a>. On the left is a picture how it should look to get you started. The the code of the tutorial <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step4.2.1">on GitHub</a>.</p>
+<img alt="../../../_images/tutorial_4_2_1-1.png" src="../../../_images/tutorial_4_2_1-1.png" />
+<div class="section" id="the-plan">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-1-the-plan"></span><h2>The plan<a class="headerlink" href="#the-plan" title="Permalink to this headline">¶</a></h2>
+<p>Giving the whole application a new look is too much detail and work for such a short tutorial. We concentrate on some basic key aspects which are important to get you an idea how to use the theming system and get you started. So I picked three basic tasks we could do to make the app look different.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Style the widget we created for showing tweets.</li>
+<li>Change the default theme.</li>
+<li>Change the look of a built-in widget</li>
+</ul>
+</div></blockquote>
+<p>Lets get started with the first one:</p>
+</div>
+<div class="section" id="style-the-widget-we-created-for-showing-tweets">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-1-style-the-widget-we-created-for-showing-tweets"></span><h2>Style the widget we created for showing tweets<a class="headerlink" href="#style-the-widget-we-created-for-showing-tweets" title="Permalink to this headline">¶</a></h2>
+<p>In
+<a class="reference internal" href="tutorial-part-4-2.html"><em>Tutorial 4.2</em></a>, we created a custom widget for showing the tweets icons, content and date. As you can see on the screenshot above, the time and the content have the same text color which might be irritating. That's why we want to change the time's color to a lighter gray. So how should we do that?</p>
+<p>First, we need to get some knowledge about the theming system itself. Every widget has a so called <a class="reference internal" href="../ui_appearance.html"><em>appearance</em></a>, which is used to identify the styling of a widget. In our case, we used the <tt class="docutils literal"><span class="pre">listitem</span></tt> appearance in the former tutorial, which is defined in qooxdoo's default theme, the <a class="reference internal" href="../ui_theming.html"><em>Modern theme</em></a>. But now we want to change that so we need to edit the <tt class="docutils literal"><span class="pre">TweetView</span></tt> class and change the appearance property's init value from <tt class="docutils literal"><span class="pre">listitem</span></tt> to a custom name we choose, lets say <tt class="docutils literal"><span class="pre">tweet-view</span></tt>. The new code should look like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">appearance</span> <span class="o">:</span>
+ <span class="p">{</span>
+   <span class="nx">refine</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">init</span> <span class="o">:</span> <span class="s2">&quot;tweet-view&quot;</span>
+ <span class="p">},</span>
+</pre></div>
+</div>
+<p>Now, we have defined a custom appearance key for our own widget but the appearance definition is still missing. But where should we put that definition?</p>
+<p>The twitter application is based on a default GUI skeleton which has already a predefined custom theme. This can be found in the <tt class="docutils literal"><span class="pre">theme</span></tt> namespace of the applications source code (<tt class="docutils literal"><span class="pre">source/class/twitter/theme/</span></tt>). Taking a look at the namespace shows you five files in total:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Appearance.js</span></tt> holds all appearance definitions</li>
+<li><tt class="docutils literal"><span class="pre">Color.js</span></tt> holds all color definitions</li>
+<li><tt class="docutils literal"><span class="pre">Decoration.js</span></tt> holds all decorator definitions</li>
+<li><tt class="docutils literal"><span class="pre">Font.js</span></tt> holds all font definitions</li>
+<li><tt class="docutils literal"><span class="pre">Theme.js</span></tt> meta theme which combines all others</li>
+</ul>
+</div></blockquote>
+<p>Except the meta file, all other files are only a skeleton for adding custom theme definitions. So I guess you have already seen the file we should modify now: <tt class="docutils literal"><span class="pre">Appearance.js</span></tt>.
+The basic outline of such an appearance definition can be compared to a class definition. You can find a name, an extend key and something where the content should go called <tt class="docutils literal"><span class="pre">appearances</span></tt>. Thats where we put our new appearance definition. First, we define a appearance definition for  the <tt class="docutils literal"><span class="pre">tweet-view</span></tt> key we defined. That definition can be empty because we only want to style the label showing the date and time for the tweet. The code looks like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;twitter.theme.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Appearance</span><span class="p">,</span>
+
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;tweet-view&quot;</span> <span class="o">:</span> <span class="p">{}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The last missing piece of our first task is to style the label. But how do we access it in the appearance theme if we haven't assigned a separate appearance key for it?</p>
+<p>Luckily, we defined the label as <a class="reference internal" href="../ui_develop.html"><em>child control</em></a> named <tt class="docutils literal"><span class="pre">time</span></tt> (take a look at the <a class="reference internal" href="tutorial-part-4-2.html"><em>custom widget tutorial</em></a> for more details). That way, we can assign a separate appearance key using that hierarchy:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;tweet-view/time&quot;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">textColor</span><span class="o">:</span> <span class="s2">&quot;#E0E0E0&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can see a complete definition for the time label in the code above. The important part is the map, which is returned by the style function. It contains a set of themeable properties for the widget which will be assigned. In our case, we are styling a simple label, which has the property <tt class="docutils literal"><span class="pre">textColor</span></tt>. You can find all themeable properties in the <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.core.Widget~textColor">API viewer</a> (Hint: themeable properties are marked with a little icon). Now we are done and can give the application a try, which should result into something like this:</p>
+<p>Now we have everything the way we want it to be but one little thing is still missing. We defined the color's value inline which is considered bad style because in case you want to use the same color somewhere else, you have to write the value again which results in hard-to-maintain code.
+That's where the color theme could help. We have already seen a file called <tt class="docutils literal"><span class="pre">Color.js</span></tt> which is responsible for holding color definitions. As in the appearance file, we have one main section but this time its called <tt class="docutils literal"><span class="pre">colors</span></tt>. Here we add a color definition for the color we want to use:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">colors</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;tweet-time&quot;</span> <span class="o">:</span> <span class="s2">&quot;#E0E0E0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, we have defined a color alias for our color which can be used in the whole application, no matter if it's in a theme or in some application class. As a final step, we change the explicit color definition from <tt class="docutils literal"><span class="pre">&quot;#E0E0E0&quot;</span></tt> to <tt class="docutils literal"><span class="pre">&quot;tweet-time&quot;</span></tt> in the custom appearance file.</p>
+<img alt="../../../_images/tutorial_4_2_1-2.png" src="../../../_images/tutorial_4_2_1-2.png" />
+</div>
+<div class="section" id="change-the-default-theme">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-1-change-the-default-theme"></span><h2>Change the default theme<a class="headerlink" href="#change-the-default-theme" title="Permalink to this headline">¶</a></h2>
+<p>As a next step, we want to change the default theme, which is the <a class="reference internal" href="../ui_theming.html"><em>Modern theme</em></a>, to the new <a class="reference internal" href="../ui_theming.html"><em>Simple theme</em></a> we recently shipped with the <a class="reference external" href="http://news.qooxdoo.org/qooxdoo-1-4-and-1-3-1-released">1.4 release</a>. For that, we have to take another look at the files in the <tt class="docutils literal"><span class="pre">theme</span></tt> folder. You might have already realized that all these files do have an &quot;extend&quot; key which extends from the Modern theme's files. Thats what we are going to change now. Just open all the files in the theme folder and change the extend key from <tt class="docutils literal"><span class="pre">qx.theme.modern.xyz</span></tt> to <tt class="docutils literal"><span class="pre">qx.theme.simple.xyz</span></tt> with <em>xyz</em> as a placeholder for the name of the file you are editing. There is only one file you don't have to change which is the meta theme named <tt class="docutils literal"><span class="pre">Theme.js</span></tt>. It does not refer to the framework theme so there is nothing to change. With that change, we included new dependencies to classes and resources which means, we have to rebuild our application. Run <tt class="docutils literal"><span class="pre">./generate.py</span></tt> in the root folder of your application to rebuild the development version of the twitter application. After the process is done, we can reload the application and see a dramatically changed application using the Simple theme.</p>
+<img alt="../../../_images/tutorial_4_2_1-3.png" src="../../../_images/tutorial_4_2_1-3.png" />
+</div>
+<div class="section" id="change-the-look-of-a-built-in-widget">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-1-change-the-look-of-a-built-in-widget"></span><h2>Change the look of a built in widget<a class="headerlink" href="#change-the-look-of-a-built-in-widget" title="Permalink to this headline">¶</a></h2>
+<p>As a last and final step, I like to show you how to change the styling of a built in qooxdoo widget. As you can see on the screenshot of the last step, the toolbar has the same background color as the windows caption bar. It might be nice if the toolbar had the same color as the window's inner border. So what we need to do is to override the appearance of the toolbar. For that, we need to find out how the appearance key for the toolbar is named. You can find that in the <a class="reference external" href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.toolbar.ToolBar~appearance">API viewer</a> in the <tt class="docutils literal"><span class="pre">appearance</span></tt> property of toolbar. The init value is used for the styling, in this case, its <tt class="docutils literal"><span class="pre">toolbar</span></tt>. If we now use that key in our custom appearance file, we can set our own keys for styling the toolbar.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;toolbar&quot;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="nx">style</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">backgroundColor</span> <span class="o">:</span> <span class="s2">&quot;window-border-inner&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Like in the former appearance we added, we define one property. In this case, we use the <tt class="docutils literal"><span class="pre">backgroundColor</span></tt> property to set the background color of the toolbar. But what color is <tt class="docutils literal"><span class="pre">&quot;window-border-inner&quot;</span></tt>?
+This is a named color which comes from the frameworks Simple theme. You can find all the colors of the theme in the framework in the namespace <tt class="docutils literal"><span class="pre">qx.theme</span></tt> or <tt class="docutils literal"><span class="pre">qx.theme.simple</span></tt> for the Simple theme. A little hint: Before overriding an appearance, check out the original appearance definition in the theme you are using. There might be some edge cases considered you want to consider writing your own appearance. The final result should look like this:</p>
+<img alt="../../../_images/tutorial_4_2_1-4.png" src="../../../_images/tutorial_4_2_1-4.png" />
+</div>
+<div class="section" id="job-done">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-1-job-done"></span><h2>Job done<a class="headerlink" href="#job-done" title="Permalink to this headline">¶</a></h2>
+<p>With the last step, we have finally managed to change the three basic things we wanted to change. If you are interessted in more details about the theming possibilities in qooxdoo, <a class="reference internal" href="../../desktop.html"><em>check out the manual</em></a> for more information. As always, the code of the tutorial is <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step4.2.1">on GitHub</a>.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="tutorial-part-4-2.html"
+             title="previous chapter">« Tutorial Part 4.2: Custom Widgets</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial-part-4-3.html"
+             title="next chapter">Tutorial Part 4.3: Translation »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial Part 4.2.1: Basic Theming</a><ul>
+<li><a class="reference internal" href="#the-plan">The plan</a></li>
+<li><a class="reference internal" href="#style-the-widget-we-created-for-showing-tweets">Style the widget we created for showing tweets</a></li>
+<li><a class="reference internal" href="#change-the-default-theme">Change the default theme</a></li>
+<li><a class="reference internal" href="#change-the-look-of-a-built-in-widget">Change the look of a built in widget</a></li>
+<li><a class="reference internal" href="#job-done">Job done</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial-part-4-3.html"
+                        title="next chapter">Tutorial Part 4.3: Translation</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="tutorial-part-4-2.html"
+                        title="previous chapter">Tutorial Part 4.2: Custom Widgets</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/tutorials/tutorial-part-4-2-1.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

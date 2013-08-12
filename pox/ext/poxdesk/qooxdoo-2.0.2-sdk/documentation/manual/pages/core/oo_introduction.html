@@ -1,0 +1,320 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction to Object Orientation &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Core" href="../core.html" />
+    <link rel="next" title="Features of Object Orientation" href="oo_feature_summary.html" />
+    <link rel="prev" title="Core" href="../core.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" accesskey="U">Core</a>
+     &raquo;
+  <a href="">Introduction to Object Orientation</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="introduction-to-object-orientation">
+<span id="pages-oo-introduction-introduction-to-object-orientation"></span><h1>Introduction to Object Orientation<a class="headerlink" href="#introduction-to-object-orientation" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo allows you to easily leverage many key concepts of object-oriented programming without bothering about limited native support in JavaScript.</p>
+<p>The main actors of qooxdoo OO are:</p>
+<ul class="simple">
+<li><strong>Classes</strong></li>
+<li><strong>Interfaces</strong></li>
+<li><strong>Mixins</strong></li>
+</ul>
+<p>When trying to get a grip of the framework code, you should probably understand all those three concepts. As a regular application developer you often get by with ignoring interfaces and mixins when starting and just getting familiar with <em>classes</em>.</p>
+<div class="section" id="classes">
+<span id="pages-oo-introduction-classes"></span><h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<p>A &quot;class&quot; is a central concept in most object-oriented languages, and as a programmer you are certainly familiar with it. qooxdoo supports a &quot;closed form&quot; of class declaration, i.e. the entire declaration is provided within a <tt class="docutils literal"><span class="pre">qx.Class.define(name,</span> <span class="pre">config)</span></tt> statement, where <tt class="docutils literal"><span class="pre">name</span></tt> is the fully-qualified class name, and <tt class="docutils literal"><span class="pre">config</span></tt> is a configuration map with various keys (or &quot;sections&quot;).</p>
+<p>There are several types of classes available, which are specified by the <tt class="docutils literal"><span class="pre">type</span></tt> key within the <tt class="docutils literal"><span class="pre">config</span></tt> map:</p>
+<ul class="simple">
+<li><strong>regular class</strong>: May contain <em>class</em> variables/methods (in a <tt class="docutils literal"><span class="pre">statics</span></tt> section) and <em>instance</em> variables/methods (in a <tt class="docutils literal"><span class="pre">members</span></tt> section). An instance of the class can be created using the <tt class="docutils literal"><span class="pre">new</span></tt> keyword, so a constructor needs to be given in <tt class="docutils literal"><span class="pre">construct</span></tt>.</li>
+<li><strong>static class</strong>: Only contains class variables and class methods. Often a helper or utility class. Use <tt class="docutils literal"><span class="pre">type</span> <span class="pre">:</span> <span class="pre">&quot;static&quot;</span></tt>.</li>
+<li><strong>abstract class</strong>: Does not allow an instance to be created. Typically classes derive from it and provide concrete implementations. <tt class="docutils literal"><span class="pre">type</span></tt> is <tt class="docutils literal"><span class="pre">abstract</span></tt>.</li>
+<li><strong>singleton</strong>: Not more than a single instance of the class may exists at any time. A static method <tt class="docutils literal"><span class="pre">getInstance()</span></tt> returns the instance. Use <tt class="docutils literal"><span class="pre">type</span> <span class="pre">:</span> <span class="pre">&quot;singleton&quot;</span></tt>.</li>
+</ul>
+</div>
+<div class="section" id="interfaces">
+<span id="pages-oo-introduction-interfaces"></span><h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo's interfaces are similar to the ones in Java. Similar to the declaration of class they are created by <tt class="docutils literal"><span class="pre">qx.Interface.define(name,</span> <span class="pre">config)</span></tt>. They specify an &quot;interface&quot; (typically a set of empty methods), that classes must implement.</p>
+</div>
+<div class="section" id="mixins">
+<span id="pages-oo-introduction-mixins"></span><h2>Mixins<a class="headerlink" href="#mixins" title="Permalink to this headline">¶</a></h2>
+<p>Mixins are a very practical concept that not all programming languages provide. Unlike interfaces, which require a class to provide concrete implementations to fulfill the interface contract, mixins do include code. This code needs to be generic, if it is &quot;mixed into&quot; different existing classes. Mixins usually cover only a single aspect of functionality and therefore tend to be small. They are declared by <tt class="docutils literal"><span class="pre">qx.Mixin.define(name,</span> <span class="pre">config)</span></tt>.</p>
+</div>
+<div class="section" id="inheritance">
+<span id="pages-oo-introduction-inheritance"></span><h2>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h2>
+<p>Like most programming languages qooxdoo only supports single-inheritance for classes, not multiple-inheritance, i.e. a class can only derive directly from a single super class. This is easily modeled by the <tt class="docutils literal"><span class="pre">extend</span></tt> key in the class declaration map.</p>
+<p>Since a class may implement/include one or many interfaces/mixins, which themselves can extend others, some advanced forms of multiple-inheritance can still be realized.</p>
+</div>
+<div class="section" id="qooxdoo-oo-standalone">
+<h2>qooxdoo OO standalone<a class="headerlink" href="#qooxdoo-oo-standalone" title="Permalink to this headline">¶</a></h2>
+<p>If you want to use qooxdoo OO layer standalone, take a look at the <a class="reference internal" href="framework_jobs.html#pages-tool-framework-jobs-qxoo-build"><em>qxoo-build</em></a> generator job of the framework.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../core.html"
+             title="previous chapter">« Core</a>
+          <span class="separator">|</span>
+          <a class="next" href="oo_feature_summary.html"
+             title="next chapter">Features of Object Orientation »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Introduction to Object Orientation</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#interfaces">Interfaces</a></li>
+<li><a class="reference internal" href="#mixins">Mixins</a></li>
+<li><a class="reference internal" href="#inheritance">Inheritance</a></li>
+<li><a class="reference internal" href="#qooxdoo-oo-standalone">qooxdoo OO standalone</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="oo_feature_summary.html"
+                        title="next chapter">Features of Object Orientation</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../core.html"
+                        title="previous chapter">Core</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/core/oo_introduction.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,542 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial Part 4.2: Custom Widgets &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../../desktop.html" />
+    <link rel="next" title="Tutorial Part 4.2.1: Basic Theming" href="tutorial-part-4-2-1.html" />
+    <link rel="prev" title="Tutorial Part 4.1: Form Handling" href="tutorial-part-4-1.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Tutorial Part 4.2: Custom Widgets</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-part-4-2-custom-widgets">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-tutorial-part-4-2-custom-widgets"></span><h1>Tutorial Part 4.2: Custom Widgets<a class="headerlink" href="#tutorial-part-4-2-custom-widgets" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we will deal with how to create a custom widget for our Twitter application. It is necessary that you finished the tutorials part 1 through part 3 to work with this tutorial, but previous knowledge from tutorial 4.1 is not needed.</p>
+<p>Do you remember the mockup from tutorial part 1?</p>
+<p><img alt="Mockup" src="../../../_images/twittermockup1.png" /></p>
+<p>You can see that one tweet consists of a photo, a text and a creation date, but at the moment the Twitter application doesn't show the creation date of a tweet.  This is because we use the default <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.form.ListItem">ListItem</a> to show a tweet and a ListItem can only show an image and/or label. To achieve our goal, we have to create a custom widget which we can use instead of the ListItem.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The code in this tutorial should also work when you haven't completed the 4.1 tutorial because it doesn't depend on the code changes from tutorial 4.1. But if you have any problems to run the tutorial, you can also checkout the code from tutorial 4.1 on <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step4.1">github</a>.</p>
+</div>
+<div class="section" id="the-plan">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-the-plan"></span><h2>The plan<a class="headerlink" href="#the-plan" title="Permalink to this headline">¶</a></h2>
+<p>First of all we have to create a custom widget which fulfills our requirements from the mockup. We will achieve this by combining a widget with two labels and one image. Afterwards we have to configure the controller so that it uses our custom widget for the tweets.</p>
+</div>
+<div class="section" id="create-the-custom-widget-class">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-create-the-custom-widget-class"></span><h2>Create the custom widget class<a class="headerlink" href="#create-the-custom-widget-class" title="Permalink to this headline">¶</a></h2>
+<p>You should know how to create a class from the previous tutorials. So please create a class for <tt class="docutils literal"><span class="pre">twitter.TweetView</span></tt>, but in our case we need to extend from <tt class="docutils literal"><span class="pre">qx.ui.core.</span> <span class="pre">Widget</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;twitter.TweetView&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Widget</span><span class="p">,</span>
+  <span class="nx">include</span> <span class="o">:</span> <span class="p">[</span><span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">MModelProperty</span><span class="p">],</span>
+
+  <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The attentive reader noticed that we use the <tt class="docutils literal"><span class="pre">include</span></tt> key for the first time. <tt class="docutils literal"><span class="pre">include</span></tt> is used to include a <a class="reference internal" href="../../core/mixins.html"><em>mixin</em></a> in a class. This is necessary in our case to support Data Binding. Our Twitter application uses it and therefore it is expected that the new widget implements the <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.form.IModel">qx.ui.form.IModel</a> interface. Otherwise the widget can't be used with Data Binding. But fortunately the mixin <tt class="docutils literal"><span class="pre">qx.ui.form.MModelProperty</span></tt> already implements it, so we can reuse the implementation.</p>
+</div>
+<div class="section" id="define-the-needed-properties">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-define-the-needed-properties"></span><h2>Define the needed properties<a class="headerlink" href="#define-the-needed-properties" title="Permalink to this headline">¶</a></h2>
+<p>Our widget should show a Tweet as shown in the mockup. To achieve this, we need properties to save the data for a Tweet. Add this definition to the <tt class="docutils literal"><span class="pre">TweetView</span></tt> class:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">properties</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="nx">appearance</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">refine</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">init</span> <span class="o">:</span> <span class="s2">&quot;listitem&quot;</span>
+  <span class="p">},</span>
+
+  <span class="nx">icon</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+    <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyIcon&quot;</span><span class="p">,</span>
+    <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+
+  <span class="nx">time</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+    <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyTime&quot;</span><span class="p">,</span>
+    <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+
+  <span class="nx">post</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="nx">check</span> <span class="o">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+    <span class="nx">apply</span> <span class="o">:</span> <span class="s2">&quot;_applyPost&quot;</span><span class="p">,</span>
+    <span class="nx">nullable</span> <span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>The properties <tt class="docutils literal"><span class="pre">icon</span></tt>, <tt class="docutils literal"><span class="pre">time</span></tt> and <tt class="docutils literal"><span class="pre">post</span></tt> contain the data from a tweet. In this definition you'll also find a property <tt class="docutils literal"><span class="pre">appearance</span></tt>. This property is needed for the theming, it tells the appearance system that the <tt class="docutils literal"><span class="pre">TweetView</span></tt> should be styled like the <tt class="docutils literal"><span class="pre">ListItem</span></tt>. We could also use a new appearance id, but than we'd have to define an appearance for it and that's not part of this tutorial.</p>
+<p>How to define properties was explained in <a class="reference internal" href="tutorial-part-3.html"><em>tutorial part 3</em></a>, so we don't repeat it. But we use some unfamiliar keys for definition and I will explain them:</p>
+<ul class="simple">
+<li><strong>check</strong>: check ensures that the incoming value is of this type. But be careful, the check is only done in the source version.</li>
+<li><strong>apply</strong>: here you can define which method should be called when the value changes.</li>
+<li><strong>refine</strong>: this is needed when an already defined property should be overridden.</li>
+<li><strong>init</strong>: defines the initialized value of a property.</li>
+</ul>
+</div>
+<div class="section" id="using-child-control">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-using-child-control"></span><h2>Using Child Control<a class="headerlink" href="#using-child-control" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo has a special system to realize combined widgets like in our case. This system is called child controls and you can find a detailed documentation in our <a class="reference internal" href="../ui_develop.html"><em>manual</em></a>.</p>
+<p>Okay, back to our problem. To achieve the requirements we need an <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.basic.Image">Image</a> for the photo, a Label for the post and another <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.basic.Label">Label</a> for the creation time. So three widgets, also called sub widgets, are needed for our custom widget. And last but not least the familiar <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.ui.layout.Grid">Grid</a> layout for layouting, but that's not created in the child control implementation. We just need to keep it in mind when adding the child control with <tt class="docutils literal"><span class="pre">_add</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">members</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="c1">// overridden</span>
+  <span class="nx">_createChildControlImpl</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">control</span><span class="p">;</span>
+
+    <span class="k">switch</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">case</span> <span class="s2">&quot;icon&quot;</span><span class="o">:</span>
+        <span class="nx">control</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getIcon</span><span class="p">());</span>
+        <span class="nx">control</span><span class="p">.</span><span class="nx">setAnonymous</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_add</span><span class="p">(</span><span class="nx">control</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">rowSpan</span><span class="o">:</span> <span class="mi">2</span><span class="p">});</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="s2">&quot;time&quot;</span><span class="o">:</span>
+        <span class="nx">control</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getTime</span><span class="p">());</span>
+        <span class="nx">control</span><span class="p">.</span><span class="nx">setAnonymous</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_add</span><span class="p">(</span><span class="nx">control</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">1</span><span class="p">});</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="s2">&quot;post&quot;</span><span class="o">:</span>
+        <span class="nx">control</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getPost</span><span class="p">());</span>
+        <span class="nx">control</span><span class="p">.</span><span class="nx">setAnonymous</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+        <span class="nx">control</span><span class="p">.</span><span class="nx">setRich</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_add</span><span class="p">(</span><span class="nx">control</span><span class="p">,</span> <span class="p">{</span><span class="nx">row</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">column</span><span class="o">:</span> <span class="mi">1</span><span class="p">});</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">control</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">base</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>The child control system has a special method to create sub widgets. The method is called <tt class="docutils literal"><span class="pre">_createChildControlImpl</span></tt> and we override it to create our sub widgets. This method is called from the child control system when it notices that a sub widget is needed but not already created.</p>
+<p>In our case:</p>
+<ul class="simple">
+<li><strong>icon</strong>: for the photo</li>
+<li><strong>time</strong>: for the creation time</li>
+<li><strong>post</strong>: for the text from the tweet</li>
+</ul>
+<p>Dependent on the passed id we create the correct sub widget, configure it and add it to the Grid layout at the right position. If an unknown id is passed, we delegate it to the superclass.</p>
+</div>
+<div class="section" id="finishing-the-constructor">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-finishing-the-constructor"></span><h2>Finishing the constructor<a class="headerlink" href="#finishing-the-constructor" title="Permalink to this headline">¶</a></h2>
+<p>Now i'ts time to finish the constructor.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// create a date format like &quot;June 18, 2010 9:31 AM&quot;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_dateFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">DateFormat</span><span class="p">(</span>
+  <span class="nx">qx</span><span class="p">.</span><span class="nx">locale</span><span class="p">.</span><span class="nb">Date</span><span class="p">.</span><span class="nx">getDateFormat</span><span class="p">(</span><span class="s2">&quot;long&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span>
+  <span class="nx">qx</span><span class="p">.</span><span class="nx">locale</span><span class="p">.</span><span class="nb">Date</span><span class="p">.</span><span class="nx">getTimeFormat</span><span class="p">(</span><span class="s2">&quot;short&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The property for the date saves only a date object and our requirement from the mockup describes a spacial format and a simple <tt class="docutils literal"><span class="pre">toString</span></tt> usage is not enough. Therefore we need a special transformation which we can achieve by using <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.util.format.DateFormat">DateFormat</a>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// initialize the layout and allow wrap for &quot;post&quot;</span>
+<span class="kd">var</span> <span class="nx">layout</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">layout</span><span class="p">.</span><span class="nx">Grid</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">layout</span><span class="p">.</span><span class="nx">setColumnFlex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_setLayout</span><span class="p">(</span><span class="nx">layout</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now we create a layout for our custom widget. This should be known from <a class="reference internal" href="tutorial-part-2.html"><em>tutorial part 2</em></a>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// create the widgets</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_createChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_createChildControl</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_createChildControl</span><span class="p">(</span><span class="s2">&quot;post&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Time for our child control implementation. With these lines we trigger the subwidget creation which we implemented before.</p>
+</div>
+<div class="section" id="adding-the-apply-methods">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-adding-the-apply-methods"></span><h2>Adding the apply methods<a class="headerlink" href="#adding-the-apply-methods" title="Permalink to this headline">¶</a></h2>
+<p>We have already defined the properties, but we haven't implemented the needed apply methods for them. So, time to add the missing apply method for the properties to the <tt class="docutils literal"><span class="pre">members</span></tt> section.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// property apply</span>
+<span class="nx">_applyIcon</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">icon</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">);</span>
+  <span class="nx">icon</span><span class="p">.</span><span class="nx">setSource</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">},</span>
+
+<span class="nx">_applyPost</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">post</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;post&quot;</span><span class="p">);</span>
+  <span class="nx">post</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">},</span>
+
+<span class="c1">// property apply</span>
+<span class="nx">_applyTime</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">time</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span>
+  <span class="nx">time</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_dateFormat</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The apply methods for <tt class="docutils literal"><span class="pre">icon</span></tt> and <tt class="docutils literal"><span class="pre">post</span></tt> are trivial, we have to ensure that we delegate the value change to the correct widget. To get the correct widget instance we can use the <tt class="docutils literal"><span class="pre">getChildControl</span></tt> method and afterwards we can set the value on the widget.</p>
+<p>The date, however, needs some extra love. We have to use the DateFormat instance to format the date before we set the value.</p>
+</div>
+<div class="section" id="finishing-the-custom-widget">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-finishing-the-custom-widget"></span><h2>Finishing the custom widget<a class="headerlink" href="#finishing-the-custom-widget" title="Permalink to this headline">¶</a></h2>
+<p>At the end we have to add the attribute <tt class="docutils literal"><span class="pre">_dateFormat</span></tt> to the <tt class="docutils literal"><span class="pre">members</span></tt> section and a destructor to clean up the created DateFormat instance.</p>
+<p>Just add this line at the beginning of the members section:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">_dateFormat</span> <span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>And the destructor after the members section:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">destruct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_dateFormat</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_dateFormat</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Great, now we have finished the custom widget.</p>
+</div>
+<div class="section" id="configure-the-list-controller">
+<span id="pages-desktop-tutorials-tutorial-part-4-2-configure-the-list-controller"></span><h2>Configure the List Controller<a class="headerlink" href="#configure-the-list-controller" title="Permalink to this headline">¶</a></h2>
+<p>At the moment the controller doesn't know that it should use our <tt class="docutils literal"><span class="pre">TweetView</span></tt> class. Therefore we have to change the old controller configuration. Search for these lines of code in the <tt class="docutils literal"><span class="pre">Application.js</span></tt> file:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// create the controller</span>
+<span class="kd">var</span> <span class="nx">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">List</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">main</span><span class="p">.</span><span class="nx">getList</span><span class="p">());</span>
+<span class="nx">controller</span><span class="p">.</span><span class="nx">setLabelPath</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">);</span>
+<span class="nx">controller</span><span class="p">.</span><span class="nx">setIconPath</span><span class="p">(</span><span class="s2">&quot;user.profile_image_url&quot;</span><span class="p">);</span>
+<span class="nx">controller</span><span class="p">.</span><span class="nx">setDelegate</span><span class="p">({</span>
+  <span class="nx">configureItem</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setScale</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">setRich</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>First  of  all, remove these two lines:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">controller</span><span class="p">.</span><span class="nx">setLabelPath</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">);</span>
+<span class="nx">controller</span><span class="p">.</span><span class="nx">setIconPath</span><span class="p">(</span><span class="s2">&quot;user.profile_image_url&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now to the delegate, just replace the current delegate with this one:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">controller</span><span class="p">.</span><span class="nx">setDelegate</span><span class="p">({</span>
+  <span class="nx">createItem</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">twitter</span><span class="p">.</span><span class="nx">TweetView</span><span class="p">();</span>
+  <span class="p">},</span>
+
+  <span class="nx">bindItem</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">controller</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">controller</span><span class="p">.</span><span class="nx">bindProperty</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+    <span class="nx">controller</span><span class="p">.</span><span class="nx">bindProperty</span><span class="p">(</span><span class="s2">&quot;user.profile_image_url&quot;</span><span class="p">,</span> <span class="s2">&quot;icon&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+    <span class="nx">controller</span><span class="p">.</span><span class="nx">bindProperty</span><span class="p">(</span><span class="s2">&quot;created_at&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">converter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;browser.name&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;ie&quot;</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nx">data</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/( \+)/</span><span class="p">,</span> <span class="s2">&quot; UTC$1&quot;</span><span class="p">));</span>
+       <span class="p">}</span>
+       <span class="k">return</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+     <span class="p">}</span>
+    <span class="p">},</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">configureItem</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">getChildControl</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">).</span><span class="nx">setScale</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">setMinHeight</span><span class="p">(</span><span class="mi">52</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The concept of a delegate should be known from <a class="reference internal" href="tutorial-part-3.html"><em>tutorial part 3</em></a>, I will only explain the modifications.</p>
+<p>You can see that we added a <tt class="docutils literal"><span class="pre">createItem</span></tt> method: With this method we can configure the controller to use our <tt class="docutils literal"><span class="pre">TweetView</span></tt> for item creation. The method <tt class="docutils literal"><span class="pre">bindItem</span></tt> is used to configure the controller to keep the properties of the model and the widget synchronized. In our case it is important to keep the photo, post and creation date synchronous.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">controller</span><span class="p">.</span><span class="nx">bindProperty</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Let us have a look at the above example. The <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.data.controller.List~bindProperty">bindProperty</a> method is responsible for the binding between model and widget. The first parameter is the path from the model, the second is the name of the property in the widget, the third parameter is an <a class="reference external" href="http://demo.qooxdoo.org/2.0.2/apiviewer/#qx.data.SingleValueBinding~bind">options map</a> to do e. g. a conversion, the fourth parameter is the widget and the last is the index.</p>
+<p>In our case the photo and the post need no conversion because the source data and target data are of the same type. But the creation time needs a conversion because the model contains a String with the UTC time while the widget expects a date object. So we have to convert the data:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">converter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;engine.name&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">data</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/( \+)/</span><span class="p">,</span> <span class="s2">&quot; UTC$1&quot;</span><span class="p">));</span>
+  <span class="p">}</span>
+ <span class="k">return</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The converter method creates a date object from the given String. Don't be confused by the if statement. The Twitter model has a format which is not standard UTC format in JavaScript and Internet Explorer has problems parsing the String, therefore a short conversion is needed before the date object can be created.</p>
+<p>The <tt class="docutils literal"><span class="pre">configureItem</span></tt> method should be known from <a class="reference internal" href="tutorial-part-3.html"><em>tutorial part 3</em></a>, there are only some improvements to keep the same behavior as before.</p>
+<p>Great, now we've got it! Run <tt class="docutils literal"><span class="pre">generate.py</span></tt> to create the application.</p>
+<p><img alt="Step 4-2" src="../../../_images/step42.png" /></p>
+<p>Again, if you want to take a <a class="reference external" href="https://github.com/qooxdoo/qooxdoo/tree/release_2_0_2/component/tutorials/twitter/step4.2">look at the code</a>, fork the project on github.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="tutorial-part-4-1.html"
+             title="previous chapter">« Tutorial Part 4.1: Form Handling</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial-part-4-2-1.html"
+             title="next chapter">Tutorial Part 4.2.1: Basic Theming »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial Part 4.2: Custom Widgets</a><ul>
+<li><a class="reference internal" href="#the-plan">The plan</a></li>
+<li><a class="reference internal" href="#create-the-custom-widget-class">Create the custom widget class</a></li>
+<li><a class="reference internal" href="#define-the-needed-properties">Define the needed properties</a></li>
+<li><a class="reference internal" href="#using-child-control">Using Child Control</a></li>
+<li><a class="reference internal" href="#finishing-the-constructor">Finishing the constructor</a></li>
+<li><a class="reference internal" href="#adding-the-apply-methods">Adding the apply methods</a></li>
+<li><a class="reference internal" href="#finishing-the-custom-widget">Finishing the custom widget</a></li>
+<li><a class="reference internal" href="#configure-the-list-controller">Configure the List Controller</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial-part-4-2-1.html"
+                        title="next chapter">Tutorial Part 4.2.1: Basic Theming</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="tutorial-part-4-1.html"
+                        title="previous chapter">Tutorial Part 4.1: Form Handling</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/tutorials/tutorial-part-4-2.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

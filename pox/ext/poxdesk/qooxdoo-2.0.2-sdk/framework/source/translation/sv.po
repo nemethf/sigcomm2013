@@ -1,0 +1,283 @@
+# Swedish
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: qooxdoo framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-15 10:00+0100\n"
+"PO-Revision-Date: 2011-03-15 14:57+0100\n"
+"Last-Translator: Henric Johansson <henric DOT johansson AT mindset DOT se>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "%1 does not fit %2."
+msgstr "%1 passar inte %2."
+
+msgid "%1 is not a color! %2"
+msgstr "%1 är inte en färg! %2"
+
+msgid "%1 is not a number."
+msgstr "%1 är inget nummer."
+
+msgid "%1 is not a string."
+msgstr "%1 är inte en sträng."
+
+msgid "%1 is not an url."
+msgstr "%1 är inte en webbplatsadress (URL)"
+
+msgid "%1 is not in %2"
+msgstr "%1 finns inte i %2"
+
+msgid "%1 is not in the range from [%2, %3]."
+msgstr "%1 är inte i intervallet mellan [%2, %3]."
+
+msgid "'%1' is not an email address."
+msgstr "'%1' är inte en e-postadress."
+
+msgid "Automatic"
+msgstr "Automatiskt"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Color Selector"
+msgstr "Färgväljare"
+
+msgid "Details"
+msgstr "Detaljer"
+
+msgid "HSB"
+msgstr "HSB"
+
+msgid "Hex"
+msgstr "Hex"
+
+msgid "Last month"
+msgstr "Föregående månad"
+
+msgid "Last year"
+msgstr "Föregående år"
+
+msgid "Next month"
+msgstr "Nästa månad"
+
+msgid "Next year"
+msgstr "Nästa år"
+
+msgid "OK"
+msgstr "Ok"
+
+msgid "Open ColorSelector"
+msgstr "Öppna färgväljare"
+
+msgid "Presets"
+msgstr "Förinställningar"
+
+msgid "Preview (Old/New)"
+msgstr "Förhandsgranska (Gammal/Ny)"
+
+msgid "RGB"
+msgstr "RGB"
+
+msgid "Reset column widths"
+msgstr "Återställ kolumnbredder"
+
+msgid "This field is required"
+msgstr "Det här fältet måste fyllas i"
+
+msgid "Visual"
+msgstr "Visuell"
+
+msgid "key_full_Alt"
+msgstr "Alt"
+
+msgid "key_full_Apps"
+msgstr "Apps"
+
+msgid "key_full_Backspace"
+msgstr "Backspace"
+
+msgid "key_full_CapsLock"
+msgstr "CapsLock"
+
+msgid "key_full_Control"
+msgstr "Control"
+
+msgid "key_full_Control_Mac"
+msgstr ""
+
+msgid "key_full_Delete"
+msgstr "Delete"
+
+msgid "key_full_Down"
+msgstr "Ner"
+
+msgid "key_full_End"
+msgstr "End"
+
+msgid "key_full_Enter"
+msgstr "Enter"
+
+msgid "key_full_Escape"
+msgstr "Escape"
+
+msgid "key_full_Home"
+msgstr "Home"
+
+msgid "key_full_Insert"
+msgstr "Insert"
+
+msgid "key_full_Left"
+msgstr "Vänster"
+
+msgid "key_full_Meta"
+msgstr "Meta"
+
+msgid "key_full_NumLock"
+msgstr "NumLock"
+
+msgid "key_full_PageDown"
+msgstr "PageDown"
+
+msgid "key_full_PageUp"
+msgstr "PageUp"
+
+msgid "key_full_Pause"
+msgstr "Pause"
+
+msgid "key_full_PrintScreen"
+msgstr "PrintScreen"
+
+msgid "key_full_Right"
+msgstr "Höger"
+
+msgid "key_full_Scroll"
+msgstr "Scroll"
+
+msgid "key_full_Shift"
+msgstr "Shift"
+
+msgid "key_full_Space"
+msgstr "Blanksteg"
+
+msgid "key_full_Tab"
+msgstr "Tab"
+
+msgid "key_full_Up"
+msgstr "Upp"
+
+msgid "key_full_Win"
+msgstr "Win"
+
+msgid "key_short_Alt"
+msgstr "Alt"
+
+msgid "key_short_Apps"
+msgstr "Apps"
+
+msgid "key_short_Backspace"
+msgstr "BS"
+
+msgid "key_short_CapsLock"
+msgstr "Caps"
+
+msgid "key_short_Control"
+msgstr "Ctrl"
+
+msgid "key_short_Control_Mac"
+msgstr ""
+
+msgid "key_short_Delete"
+msgstr "Del"
+
+msgid "key_short_Down"
+msgstr "Ner"
+
+msgid "key_short_End"
+msgstr "End"
+
+msgid "key_short_Enter"
+msgstr "Enter"
+
+msgid "key_short_Escape"
+msgstr "Esc"
+
+msgid "key_short_Home"
+msgstr "Home"
+
+msgid "key_short_Insert"
+msgstr "Ins"
+
+msgid "key_short_Left"
+msgstr "Vänster"
+
+msgid "key_short_Meta"
+msgstr "Meta"
+
+msgid "key_short_NumLock"
+msgstr "Num"
+
+msgid "key_short_PageDown"
+msgstr "PgDn"
+
+msgid "key_short_PageUp"
+msgstr "PgUp"
+
+msgid "key_short_Pause"
+msgstr "Pause"
+
+msgid "key_short_PrintScreen"
+msgstr "PrnScn"
+
+msgid "key_short_Right"
+msgstr "Höger"
+
+msgid "key_short_Scroll"
+msgstr "Scroll"
+
+msgid "key_short_Shift"
+msgstr "Shift"
+
+msgid "key_short_Space"
+msgstr "Space"
+
+msgid "key_short_Tab"
+msgstr "Tab"
+
+msgid "key_short_Up"
+msgstr "Upp"
+
+msgid "key_short_Win"
+msgstr "Win"
+
+msgid "one of one row"
+msgid_plural "%1 of %2 rows"
+msgstr[0] "en av en rad"
+msgstr[1] "%1 av %2 rader"
+
+msgid "one row"
+msgid_plural "%1 rows"
+msgstr[0] "En rad"
+msgstr[1] "%1 rader"
+
+msgid "test Hello %1!"
+msgstr ""
+
+msgid "test Jonny"
+msgstr ""
+
+msgid "test One car"
+msgid_plural "test %1 cars"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "test affe"
+msgstr ""
+
+msgid "test one"
+msgstr ""
+
+msgid "test two"
+msgstr ""

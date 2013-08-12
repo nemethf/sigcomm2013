@@ -1,0 +1,323 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Viewer &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Standard Applications" href="../application.html" />
+    <link rel="next" title="Testrunner" href="testrunner.html" />
+    <link rel="prev" title="Widgetbrowser" href="widgetbrowser.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../application.html" accesskey="U">Standard Applications</a>
+     &raquo;
+  <a href="">API Viewer</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="api-viewer">
+<h1>API Viewer<a class="headerlink" href="#api-viewer" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="http://demo.qooxdoo.org/2.0.2/apiviewer"><img alt="../../_images/apiviewer.png" src="../../_images/apiviewer.png" /></a>
+<p>The API Viewer displays class API reference for one or more libraries. The tree view pane offers the typical class hierarchy, organized by name spaces. Each package (intermediate name space) has an overview description and links to the sub-packages or classes it contains. Descriptions usually contain cross links to relevant packages or classes. The entire reference is searchable through the search tab.</p>
+<p>The actual API descriptions are generated from <a class="reference internal" href="../development/write_api_documentation.html"><em>JSDoc-style comments</em></a> in the class code, and can be generated for custom applications as well, so you can browse the API of your own classes.</p>
+<div class="section" id="advanced-search">
+<h2>Advanced Search<a class="headerlink" href="#advanced-search" title="Permalink to this headline">¶</a></h2>
+<p>Search results can be filtered by type (Methods, Properties, etc.) and restricted to given namespaces. <strong>Regular Expressions</strong> are supported for both the item name and the namespace. Note that if a search term contains one or more capital letters, the search will be <strong>case-sensitive</strong>.</p>
+</div>
+<div class="section" id="class-item-toggles">
+<h2>Class Item Toggles<a class="headerlink" href="#class-item-toggles" title="Permalink to this headline">¶</a></h2>
+<p>The visibility of various class items can be toggled using the buttons on the right hand side of the tool bar:</p>
+<ul class="simple">
+<li><strong>Properties</strong>: Toggles <a class="reference internal" href="../core/understanding_properties.html#pages-understanding-properties-available-methods"><em>generated property methods</em></a></li>
+<li><strong>Includes</strong>: Members inherited from super classes and included from <a class="reference internal" href="../core/mixins.html"><em>Mixins</em></a> can be toggled separately</li>
+<li><strong>Protected/Private/Internal</strong>: Separate toggles for each type of <a class="reference internal" href="../core/classes.html#pages-classes-access"><em>non-public member</em></a></li>
+</ul>
+</div>
+<div class="section" id="linking-source-files">
+<h2>Linking Source Files<a class="headerlink" href="#linking-source-files" title="Permalink to this headline">¶</a></h2>
+<p>The API Viewer can show links to the source code, typically provided by the web interface of a source code management system, for classes, methods and static functions.
+To add these links for your own libraries, define the key <tt class="docutils literal"><span class="pre">info/sourceViewUri</span></tt> in <tt class="docutils literal"><span class="pre">Manifest.json</span></tt>, e.g.:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;info&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Custom Application&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;version&quot;</span> <span class="o">:</span> <span class="s2">&quot;trunk&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;qooxdoo-versions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;trunk&quot;</span><span class="p">],</span>
+  <span class="c1">//[...]</span>
+  <span class="s2">&quot;sourceViewUri&quot;</span> <span class="o">:</span> <span class="s2">&quot;https://github.com/someuser/custom/blob/master/source/class/%{classFilePath}#L%{lineNumber}&quot;</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>The following placeholders are supported:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">%{classFilePath}</span></tt> will be replaced with the fully qualified name of the class converted to a file path, e.g. <tt class="docutils literal"><span class="pre">custom.model.OrderData</span></tt> would become <tt class="docutils literal"><span class="pre">custom/model/OrderData.js</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">%{lineNumber}</span></tt> will be replaced by the line number where an item (member or static method) is defined in the original source file.</li>
+</ul>
+</div>
+<div class="section" id="api-doc-verification">
+<h2>API Doc Verification<a class="headerlink" href="#api-doc-verification" title="Permalink to this headline">¶</a></h2>
+<p>The Generator checks API documentation for completeness while building the API Viewer. Errors, such as members with missing doc comments or undocumented parameters will be displayed in the GUI: Affected name spaces and classes will have an exclamation mark on their icon in the tree view, while the detail view will display an error message for the affected class item.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="widgetbrowser.html"
+             title="previous chapter">« Widgetbrowser</a>
+          <span class="separator">|</span>
+          <a class="next" href="testrunner.html"
+             title="next chapter">Testrunner »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">API Viewer</a><ul>
+<li><a class="reference internal" href="#advanced-search">Advanced Search</a></li>
+<li><a class="reference internal" href="#class-item-toggles">Class Item Toggles</a></li>
+<li><a class="reference internal" href="#linking-source-files">Linking Source Files</a></li>
+<li><a class="reference internal" href="#api-doc-verification">API Doc Verification</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="testrunner.html"
+                        title="next chapter">Testrunner</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="widgetbrowser.html"
+                        title="previous chapter">Widgetbrowser</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/application/apiviewer.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

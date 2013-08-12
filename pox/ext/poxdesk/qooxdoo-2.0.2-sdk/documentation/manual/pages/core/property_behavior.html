@@ -1,0 +1,345 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Initialization Behavior &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Core" href="../core.html" />
+    <link rel="next" title="Property features summarized" href="property_features.html" />
+    <link rel="prev" title="Properties in more detail" href="defining_properties.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" accesskey="U">Core</a>
+     &raquo;
+  <a href="">Initialization Behavior</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="initialization-behavior">
+<span id="pages-property-features-behavior-initialization-behavior"></span><h1>Initialization Behavior<a class="headerlink" href="#initialization-behavior" title="Permalink to this headline">¶</a></h1>
+<p>This document summarizes some thoughts about the behavior of the initialization of properties.</p>
+<div class="section" id="the-problem">
+<span id="pages-property-features-behavior-the-problem"></span><h2>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">¶</a></h2>
+<p>Imagine a class containing a property named <tt class="docutils literal"><span class="pre">a</span></tt> with an init value, like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nb">Object</span><span class="p">,</span>
+        <span class="nx">properties</span> <span class="o">:</span> <span class="p">{</span>
+          <span class="nx">a</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="nx">init</span> <span class="o">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+            <span class="nx">event</span> <span class="o">:</span> <span class="s2">&quot;changeA&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+</pre></div>
+</div>
+<p>As you can see, the property <tt class="docutils literal"><span class="pre">a</span></tt> has an init value, <tt class="docutils literal"><span class="pre">b</span></tt>. Now, if you access <tt class="docutils literal"><span class="pre">a</span></tt> with its getter, you get the init value in return:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">getA</span><span class="p">();</span>  <span class="c1">// returns &quot;b&quot;</span>
+</pre></div>
+</div>
+<p>If you now set something different than the initial value, you get a change event, because the content of the property changed.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">a</span><span class="p">.</span><span class="nx">setA</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span>  <span class="c1">// changeA fired</span>
+</pre></div>
+</div>
+<p>As far, everything behaves as desired. But if set the init value instead of a new value, the change event will be also fired. The following code shows the problem:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">setA</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">getA</span><span class="p">());</span> <span class="c1">// changeA fired (first set)</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">setA</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">getA</span><span class="p">());</span> <span class="c1">// changeA NOT fired (every other set)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="why-not-just-change-this-behaviour">
+<span id="pages-property-features-behavior-why-not-just-change-this-behaviour"></span><h2>Why not just change this behaviour?<a class="headerlink" href="#why-not-just-change-this-behaviour" title="Permalink to this headline">¶</a></h2>
+<p>It's always hard to change a behavior like that because there is no deprecation strategy for it. If we change it, it is changed and every line of code relying on that behavior will fail.
+Even worse, the only thing we could use as a check for the wrong used behavior is to search for all properties having an init value and either an apply function or an event. Now you have to check if one of these properties could be set with the init value, before any other value has been set. If it is possible that the init value is set as first value, check if the attached apply is required to run or any listener registered to the change event of that property.
+A good example in the framework where we rely on the behavior is the Spinner:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// ...</span>
+  <span class="nx">construct</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">initValue</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="c1">// ...</span>
+    <span class="nx">_applyValue</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">old</span><span class="p">)</span>
+<span class="c1">// ...</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_updateButtons</span><span class="p">();</span>
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>The example shows the constructor and the apply of the value property. The problem begins in this case with the constructor parameter named <tt class="docutils literal"><span class="pre">value</span></tt>, which is optional. So we have three cases to consider.</p>
+<ol class="arabic simple">
+<li>The value argument is undefined: The initValue method is called, which invokes the apply function for the property with the init value as value.</li>
+<li>A value is given different as the init value: So the value is not undefined and the setter for the value property will be called, which invokes the apply function.</li>
+<li>A value is given and its exactly the init value: In this case, the setter will be called with the init value. The apply method is called and invokes the <tt class="docutils literal"><span class="pre">_updateButtons</span></tt> method. This method checks the given value and enables / disabled the buttons for increasing / decreasing the spinner. So it is necessary that the apply method is at least called once that the buttons have the proper states.</li>
+</ol>
+<p>The problem with a possible change of this behavior is obvious. In the third case, the apply method is not called and the buttons enabled states could be wrong without throwing an error. And they are only wrong, if the value is exactly the init value and one of the minimum or maxiumum values is the same. Because only in that scenario, one of the buttons need to be disabled.</p>
+</div>
+<div class="section" id="when-can-it-be-changed">
+<h2>When can it be changed?<a class="headerlink" href="#when-can-it-be-changed" title="Permalink to this headline">¶</a></h2>
+<p>Currently we don't plan to change it because it can have some hard to track side effects as seen in the example above and we don't have any deprecation strategy. Maybe it can be change on a major version like 2.0 but currently there are no plans to do so.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="defining_properties.html"
+             title="previous chapter">« Properties in more detail</a>
+          <span class="separator">|</span>
+          <a class="next" href="property_features.html"
+             title="next chapter">Property features summarized »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Initialization Behavior</a><ul>
+<li><a class="reference internal" href="#the-problem">The Problem</a></li>
+<li><a class="reference internal" href="#why-not-just-change-this-behaviour">Why not just change this behaviour?</a></li>
+<li><a class="reference internal" href="#when-can-it-be-changed">When can it be changed?</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="property_features.html"
+                        title="next chapter">Property features summarized</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="defining_properties.html"
+                        title="previous chapter">Properties in more detail</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/core/property_behavior.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

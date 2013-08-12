@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Node.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: Node.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * This class represents a node
+ * @param {string} sw_name - Name of the node
+ * @param {float|int} lat_orig - original latitude
+ * @param {float|int} lng_orig - original lng
+ * @param {float|int} lat - Latitude coordinate of the node
+ * @param {float|int} lng - Longitude coordinate of the node
+ * @param {int} type - Type of the node (0 = switch, 1 = host)
+ * @param {int} standalone - 0 = non-standalone, 1 = standalone
+ * @param {boolean} virtual - is it virtual host or not?
+ */
+var MapNode = Class.create({
+  initialize: function(sw_name,lat_orig,lng_orig,
+		       lat,lng,type, standalone, virtual)
+  {
+    //setting up the parameters
+    this.sw_name = sw_name;
+    this.position = new L.LatLng(lat,lng);
+    this.orig_position = new L.LatLng(lat_orig, lng_orig);
+    this.type = type;
+    this.res = "resource/leaflet/";
+    this.res = "";
+//    this is useful when adding  and removing links, and it is set from different
+    //methods to indicate that when a host is added, is it a standalone host or not.
+    //Since if it was not standalone, we need to delete as well, when the
+    //corresponding switch node is going to be deleted;
+    this.standalone = standalone;
+    this.virtual = virtual;
+
+    //defining different icons
+    this._switch_icon = L.icon
+    (
+      {
+        iconUrl: this.res+'router.png',
+        shadowUrl: this.res+'shadow.png',
+
+
+        iconSize: [64,64],    // size of the icon
+        shadowSize: [64,64],  // size of the shadow
+        iconAnchor: [31,62],  // point of the icon which will correspond to marker's location
+//        iconAnchor: [0,0],  // point of the icon which will correspond to marker's location
+        shadowAnchor: [31,62],// the same for the shadow
+        popupAnchor: [0,-60]  // point from which the popup should open relative to the iconAnchor
+      }
+    );
+
+
+    this._host_icon =  L.icon
+    (
+      {
+        iconUrl: this.res+'host.png',
+        shadowUrl: this.res+'shadow.png',
+
+        iconSize: [64,64],    // size of the icon
+        shadowSize: [64,64],  // size of the shadow
+        iconAnchor: [31,62],  // point of the icon which will correspond to marker's location
+        shadowAnchor: [31,62],// the same for the shadow
+        popupAnchor: [0,-60]  // point from which the popup should open relative to the iconAnchor
+      }
+    );
+
+
+    this._virtual_host_icon =  L.icon
+    (
+      {
+        iconUrl: this.res+'virtual_host.png',
+        shadowUrl: this.res+'shadow.png',
+
+        iconSize: [64,64],    // size of the icon
+        shadowSize: [64,64],  // size of the shadow
+        iconAnchor: [31,62],  // point of the icon which will correspond to marker's location
+        shadowAnchor: [31,62],// the same for the shadow
+        popupAnchor: [0,-60]  // point from which the popup should open relative to the iconAnchor
+      }
+    );
+    //------------------------
+
+    //setting icons
+    switch(this.type)
+    {
+      case 0:
+        this.icon = this._switch_icon;
+        this.ple_image = "&lt;img src=\'"+ this.res + "planetlabeurope_icon.png\' " +
+                         "alt=\'PLE icon\' style=\'height:20px;margin-right:1px;\'>";
+        break;
+
+      case 1:
+        if(!this.virtual)
+        {
+          this.icon = this._host_icon;
+        }
+        else
+        {
+          this.icon = this._virtual_host_icon;
+        }
+
+
+        if(this.standalone == 1)
+        {
+          if(this.virtual)
+          {
+            this.ple_image = "&lt;img src=\'" + this.res + "qemu.png\' " +
+              "alt=\'PLE icon\' style=\'width:20px; margin-right:1px;\'>";
+          }
+          else
+          {
+            if(Math.random() &lt; 0.5)
+            {
+              this.ple_image = "&lt;img src=\'" + this.res + "user_boy.png\' " +
+                "alt=\'PLE icon\' style=\'height:20px;margin-right:1px;\'>";
+            }
+            else
+            {
+              this.ple_image = "&lt;img src=\'" + this.res + "user_girl.png\' " +
+                "alt=\'PLE icon\' style=\'width:20px;margin-right:1px;\'>";
+            }
+          }
+        }
+        else
+        {
+          this.ple_image = "&lt;img src=\'" + this.res + "qemu.png\' " +
+            "alt=\'PLE icon\' style=\'width:20px; margin-right:1px;\'>";
+        }
+        break;
+      default :
+        console.error("Type error during creating a node");
+        break;
+
+    }
+
+    //setting up the marker object
+    this.marker = new L.marker([this.position.lat, this.position.lng],
+      {icon: this.icon});
+    this.marker.setZIndexOffset(-2);
+
+
+    this.info =  "" +
+      "&lt;b style=\'font-size:12px;\'>" + this.sw_name + "&lt;/b>" +
+      this.ple_image;
+
+  },
+
+  /**
+   * Prints out the node data
+   * @returns {string} Node data
+   */
+  myToString: function()
+  {
+    return this.sw_name + " (" + this.position.lat + ", " + this.position.lng + ") is a " + this.type;
+  },
+
+  /**
+   * Gets the node's coordinates
+   * @returns {L.LatLng} L.LatLng object (position)
+   */
+  getLatLng: function()
+  {
+    return this.position;
+  },
+
+  /**
+   * Gets original (non-corrected) coordinates
+   * @returns {L.LatLng} - L.LatLng object of the coordinates
+   */
+  getOrigLatLng: function()
+  {
+    return this.orig_position;
+  },
+
+  /**
+   * Sets/updates the original coordinates
+   * @param {L.LatLng} lat_lng - the new coordinates to set as original coords
+   */
+  setOrigLatLng: function(lat_lng)
+  {
+    this.orig_position = lat_lng;
+  },
+
+  /**
+   * Sets the node's LatLng
+   * @param {L.LatLng} lat_lng - the desired coordinates
+   */
+  setLatLng: function(lat_lng)
+  {
+    this.position = lat_lng;
+    this.marker.setLatLng(this.position);
+  },
+
+  /**
+   * Gets the node's name
+   * @returns {string}  name of the node
+   */
+  getName: function()
+  {
+    return this.sw_name;
+  },
+
+  /**
+   * Sets the node's name
+   * @param {string} sw_name - the desired name
+   */
+  setName : function(sw_name)
+  {
+    this.sw_name = sw_name;
+  },
+
+  /**
+   * Gets the node's type
+   * @returns {number}  type of the node (0 = Switch, or 1 = Host)
+   */
+  getType: function()
+  {
+    return this.type;
+  },
+
+  /**
+   * Sets the node's type
+   * @param {int} type - desired type of the node (0 - switch, 1 - host)
+   */
+  setType: function(type)
+  {
+    switch(type)
+    {
+      case 0:
+        this.type = "Switch";
+        this.icon = this._switch_icon;
+        this.marker.setIcon(this.icon);
+        break;
+      case 1:
+        this.type = "Host";
+        this.icon = this._host_icon;
+        this.marker.setIcon(this.icon);
+        break;
+      default:
+        console.error("Node type can only be 0 or 1 indicating switch or host ");
+        break;
+    }
+
+  },
+
+  /**
+   * Gets the marker object if needed
+   * @returns {L.Marker}  the marker object
+   */
+  getMarker : function()
+  {
+    return this.marker;
+  },
+
+  /**
+   * Returns the node's id
+   * @returns {int} the node's id
+   */
+  getStandalone : function()
+  {
+    return this.standalone;
+  },
+
+  /**
+   * Sets standalone value
+   * @param {int} standalone - 0 - not standalone, 1 - standalone
+   */
+  setStandalone : function(standalone)
+  {
+    this.standalone = standalone;
+  }
+
+
+});
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add_links">add_links</a></li><li><a href="global.html#add_non_standalone_host">add_non_standalone_host</a></li><li><a href="global.html#add_standalone_host">add_standalone_host</a></li><li><a href="global.html#add_switch">add_switch</a></li><li><a href="global.html#check_color_code">check_color_code</a></li><li><a href="global.html#check_link_presence">check_link_presence</a></li><li><a href="global.html#check_node_name_collision">check_node_name_collision</a></li><li><a href="global.html#check_node_presence">check_node_presence</a></li><li><a href="global.html#create_link">create_link</a></li><li><a href="global.html#create_node">create_node</a></li><li><a href="global.html#draw_circle">draw_circle</a></li><li><a href="global.html#get_corrected_coords">get_corrected_coords</a></li><li><a href="global.html#get_label_position">get_label_position</a></li><li><a href="global.html#get_links">get_links</a></li><li><a href="global.html#get_node">get_node</a></li><li><a href="global.html#get_nodes">get_nodes</a></li><li><a href="global.html#getColor">getColor</a></li><li><a href="global.html#getConnectedNodesAsArray">getConnectedNodesAsArray</a></li><li><a href="global.html#getConnectedNodesAsString">getConnectedNodesAsString</a></li><li><a href="global.html#getCost">getCost</a></li><li><a href="global.html#getLatLng">getLatLng</a></li><li><a href="global.html#getLatLngs">getLatLngs</a></li><li><a href="global.html#getMarker">getMarker</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getNodeName">getNodeName</a></li><li><a href="global.html#getOrigLatLng">getOrigLatLng</a></li><li><a href="global.html#getPolyline">getPolyline</a></li><li><a href="global.html#getStandalone">getStandalone</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#list_hosts">list_hosts</a></li><li><a href="global.html#list_links">list_links</a></li><li><a href="global.html#list_nodes">list_nodes</a></li><li><a href="global.html#list_switches">list_switches</a></li><li><a href="global.html#list_switches_with_hosts">list_switches_with_hosts</a></li><li><a href="global.html#MapLink">MapLink</a></li><li><a href="global.html#MapNode">MapNode</a></li><li><a href="global.html#MapTopo">MapTopo</a></li><li><a href="global.html#myToString">myToString</a></li><li><a href="global.html#remove_host_circle">remove_host_circle</a></li><li><a href="global.html#remove_link">remove_link</a></li><li><a href="global.html#remove_links">remove_links</a></li><li><a href="global.html#remove_node">remove_node</a></li><li><a href="global.html#remove_particular_link">remove_particular_link</a></li><li><a href="global.html#setColor">setColor</a></li><li><a href="global.html#setCost">setCost</a></li><li><a href="global.html#setLatLng">setLatLng</a></li><li><a href="global.html#setLatLngs">setLatLngs</a></li><li><a href="global.html#setName">setName</a></li><li><a href="global.html#setOrigLatLng">setOrigLatLng</a></li><li><a href="global.html#setStandalone">setStandalone</a></li><li><a href="global.html#setType">setType</a></li><li><a href="global.html#update_link_cost">update_link_cost</a></li><li><a href="global.html#update_node">update_node</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Thu Jul 25 2013 12:07:51 GMT+0200 (CEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

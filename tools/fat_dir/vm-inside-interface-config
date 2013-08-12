@@ -1,0 +1,59 @@
+#!/bin/bash
+# /etc/init.d/vm-inside-interface-config
+
+### BEGIN INIT INFO
+# Provides:          vm-inside-interface-config
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Bring up socket interfaces at boot time
+# Description:       Socket onterfaces.
+### END INIT INFO
+
+case "$1" in
+    start)
+        # Mounting fat_dir
+        mount /dev/sdb1 /mnt
+
+        # Getting ssh_key for password-free login
+        mkdir -p /root/.ssh 
+        cat /mnt/ssh_key.pub > /root/.ssh/authorized_keys
+
+	# Set hostname
+	if [ -e /mnt/node_name ]; then
+	    cp /mnt/node_name /etc/hostname
+	    hostname $(cat /mnt/node_name)
+	fi
+
+        # Bringing up interfaces according to fat_dir
+        i=1
+        for neighbor in $(cat /mnt/neighbors)
+        do
+            for var in addr_eth addr_ip local_port remote_ip remote_port prefix_len; do 
+                file=/mnt/${neighbor}/${var}  
+                eval ${var}=$(cat $file) 
+            done
+            ifconfig eth$i $addr_ip/$prefix_len
+            ifconfig eth$i hw ether $addr_eth
+            i=$(($i+1))
+        done
+        ;;
+    stop)
+        # Stopping all socket intercafes
+        i=1
+        for neighbor in $(cat /mnt/neighbors)
+        do
+            ifconfig eth$i down
+            i=$(($i+1))
+        done
+        ;;
+    *)
+        echo "Usage: /etc/init.d/vm-inside-interface-config {start|stop}"
+        exit 1
+        ;;
+esac
+
+exit 0
+
+

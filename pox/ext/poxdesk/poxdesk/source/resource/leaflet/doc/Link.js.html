@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Link.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: Link.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>
+/**
+ * This creates a link object
+ * @param {string} node_name1 - the name of one of the endpoint of the link
+ * @param {string} node_name2 - the name of the other endpoint of the link
+ * @param {L.LatLng} latLngs  - the L.LatLng object array consisting the
+ * LatLng coordinates of the endpoints
+ * @param {string} color      - color of the link
+ * @param {string} cost - the cost of the link
+ */
+var MapLink = Class.create({
+
+  initialize : function(node_name1, node_name2, latLngs, color, cost)
+  {
+    this.node_name1 = node_name1;
+    this.node_name2 = node_name2;
+    this.latLngs = latLngs;
+    this.color = color;
+    this.cost = cost;
+
+    var name1 = this.node_name1;
+    var name2 = this.node_name2;
+    if (name1 > name2) {
+      var x = name1;
+      name1 = name2;
+      name2 = x;
+    }
+    this.connected_nodes = name1 + " " + name2;
+
+    //creating polyline
+    this.polyline = new L.polyline(this.latLngs, {color: this.color});
+    this.polyline.bindLabel(this.cost);
+
+  },
+
+  myToString : function()
+  {
+    return this.connected_nodes + " (" + this.cost + ") -- color: " + this.color;
+  },
+
+  /**
+   * Get the latLng array of the link
+   * @returns {Array} L.Latlng array
+   */
+  getLatLngs: function()
+  {
+    return this.latLngs;
+  },
+
+  /**
+   * Setting the new latitude and longitude coordinates of the link
+   * @param {Array} - the array of the L.LatLngs
+   */
+  setLatLngs: function(latLngs)
+  {
+    this.latLngs = latLngs;
+    this.polyline.setLatLngs(this.latLngs);
+  },
+
+  /**
+   * Gets the link's color
+   * @returns {string} the color of the link
+   */
+  getColor : function()
+  {
+    return this.color;
+  },
+
+  /**
+   * Sets the link's color
+   * @param {string} color - the desired color
+   */
+  setColor : function(color)
+  {
+    this.color = color;
+    this.polyline.setStyle({color: this.color});
+  },
+
+  /**
+   * Gets the link's cost (label)
+   * @returns {string}  the cost (label) of the link
+   */
+  getCost : function()
+  {
+    return this.cost;
+  },
+
+  /**
+   * Sets the cost of the link
+   * @param {string} cost - desired cost
+   */
+  setCost : function(cost)
+  {
+    this.cost = cost;
+    this.polyline.updateLabelContent(this.cost);
+  },
+
+  /**
+   * Gets an endpoint name of the link
+   * @param {int} index - the index of the link (1 or 2)
+   * @returns {string} the name of the selected node
+   */
+  getNodeName : function(index)
+  {
+    switch (index)
+    {
+      case 1:
+        return this.node_name1;
+        break;
+      case 2:
+        return this.node_name2;
+        break;
+      default:
+        console.error("A link only connects two nodes -> possible index can be 1 or 2");
+        break;
+
+    }
+  },
+
+  /**
+   * Gets the connected nodes' names as a string with a space between them
+   * @returns {string}
+   */
+  getConnectedNodesAsString : function()
+  {
+    return this.connected_nodes;
+  },
+
+  /**
+   * Gets the connected nodes' names as an array
+   * @returns {Array}
+   */
+  getConnectedNodesAsArray : function()
+  {
+    var array = new Array();
+    array.push(this.node_name1);
+    array.push(this.node_name2);
+
+    return array;
+  },
+
+  /**
+   * Gets the polyline object of the link
+   * @returns {L.polyline} the polyline object of the link
+   */
+  getPolyline : function()
+  {
+    return this.polyline;
+  }
+
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add_links">add_links</a></li><li><a href="global.html#add_non_standalone_host">add_non_standalone_host</a></li><li><a href="global.html#add_standalone_host">add_standalone_host</a></li><li><a href="global.html#add_switch">add_switch</a></li><li><a href="global.html#check_color_code">check_color_code</a></li><li><a href="global.html#check_link_presence">check_link_presence</a></li><li><a href="global.html#check_node_name_collision">check_node_name_collision</a></li><li><a href="global.html#check_node_presence">check_node_presence</a></li><li><a href="global.html#create_link">create_link</a></li><li><a href="global.html#create_node">create_node</a></li><li><a href="global.html#draw_circle">draw_circle</a></li><li><a href="global.html#get_corrected_coords">get_corrected_coords</a></li><li><a href="global.html#get_label_position">get_label_position</a></li><li><a href="global.html#get_links">get_links</a></li><li><a href="global.html#get_node">get_node</a></li><li><a href="global.html#get_nodes">get_nodes</a></li><li><a href="global.html#getColor">getColor</a></li><li><a href="global.html#getConnectedNodesAsArray">getConnectedNodesAsArray</a></li><li><a href="global.html#getConnectedNodesAsString">getConnectedNodesAsString</a></li><li><a href="global.html#getCost">getCost</a></li><li><a href="global.html#getLatLng">getLatLng</a></li><li><a href="global.html#getLatLngs">getLatLngs</a></li><li><a href="global.html#getMarker">getMarker</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getNodeName">getNodeName</a></li><li><a href="global.html#getOrigLatLng">getOrigLatLng</a></li><li><a href="global.html#getPolyline">getPolyline</a></li><li><a href="global.html#getStandalone">getStandalone</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#list_hosts">list_hosts</a></li><li><a href="global.html#list_links">list_links</a></li><li><a href="global.html#list_nodes">list_nodes</a></li><li><a href="global.html#list_switches">list_switches</a></li><li><a href="global.html#list_switches_with_hosts">list_switches_with_hosts</a></li><li><a href="global.html#MapLink">MapLink</a></li><li><a href="global.html#MapNode">MapNode</a></li><li><a href="global.html#MapTopo">MapTopo</a></li><li><a href="global.html#myToString">myToString</a></li><li><a href="global.html#remove_host_circle">remove_host_circle</a></li><li><a href="global.html#remove_link">remove_link</a></li><li><a href="global.html#remove_links">remove_links</a></li><li><a href="global.html#remove_node">remove_node</a></li><li><a href="global.html#remove_particular_link">remove_particular_link</a></li><li><a href="global.html#setColor">setColor</a></li><li><a href="global.html#setCost">setCost</a></li><li><a href="global.html#setLatLng">setLatLng</a></li><li><a href="global.html#setLatLngs">setLatLngs</a></li><li><a href="global.html#setName">setName</a></li><li><a href="global.html#setOrigLatLng">setOrigLatLng</a></li><li><a href="global.html#setStandalone">setStandalone</a></li><li><a href="global.html#setType">setType</a></li><li><a href="global.html#update_link_cost">update_link_cost</a></li><li><a href="global.html#update_node">update_node</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Thu Jul 25 2013 12:07:51 GMT+0200 (CEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

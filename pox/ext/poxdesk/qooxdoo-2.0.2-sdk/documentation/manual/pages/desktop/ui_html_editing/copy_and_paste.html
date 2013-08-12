@@ -1,0 +1,306 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Copy and Paste &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="HTML Editing" href="../ui_html_editing.html" />
+    <link rel="next" title="Text align" href="textalign.html" />
+    <link rel="prev" title="HTML Editing In General" href="html_editing_in_general.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" >qx.Desktop</a>
+     &raquo;
+    <a href="../ui_html_editing.html" accesskey="U">HTML Editing</a>
+     &raquo;
+  <a href="">Copy and Paste</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="copy-and-paste">
+<span id="pages-ui-html-editing-copy-and-paste-copy-and-paste"></span><h1>Copy and Paste<a class="headerlink" href="#copy-and-paste" title="Permalink to this headline">¶</a></h1>
+<p>For a HTML editor component it is important to get along with external content which is inserted with a <tt class="docutils literal"><span class="pre">Copy</span> <span class="pre">and</span> <span class="pre">Paste</span></tt> operation. This is especially important if any filter for the external content should be applied before the content is actually inserted in the editor.</p>
+<p>However it is quite difficult to implement this across all major browsers. This short article should give a short overview about the existing events in the different browsers.</p>
+<p>To get the detailed overview on this topic check out the section at <a class="reference external" href="http://www.quirksmode.org/dom/events/cutcopypaste.html">quirksmode.org</a></p>
+<div class="section" id="ie">
+<span id="pages-ui-html-editing-copy-and-paste-ie"></span><h2>IE<a class="headerlink" href="#ie" title="Permalink to this headline">¶</a></h2>
+<p>This browser offers the most events. Besides <tt class="docutils literal"><span class="pre">onpaste</span></tt> and <tt class="docutils literal"><span class="pre">oncopy</span></tt> there are also events  like <tt class="docutils literal"><span class="pre">beforepaste</span></tt>, <tt class="docutils literal"><span class="pre">beforecopy</span></tt> and <tt class="docutils literal"><span class="pre">beforecut</span></tt>.
+Additionally all events are stoppable and are bubbling up the DOM hierarchy.</p>
+</div>
+<div class="section" id="safari">
+<span id="pages-ui-html-editing-copy-and-paste-safari"></span><h2>Safari<a class="headerlink" href="#safari" title="Permalink to this headline">¶</a></h2>
+<p>Follows almost the implementation of IE and goes partly beyond it. Safari offers a wide range of events to detect a <tt class="docutils literal"><span class="pre">Copy</span> <span class="pre">and</span> <span class="pre">Paste</span></tt> operation, but has currently no implementation at image elements.</p>
+</div>
+<div class="section" id="gecko">
+<span id="pages-ui-html-editing-copy-and-paste-gecko"></span><h2>Gecko<a class="headerlink" href="#gecko" title="Permalink to this headline">¶</a></h2>
+<p>In Firefox 2 there is no support for any event to detect a <tt class="docutils literal"><span class="pre">Copy</span> <span class="pre">and</span> <span class="pre">Paste</span></tt> operation directly. One can detect the pressed shortcuts, but if the user paste some text via the menu/contextmenu there is possibility to catch that.
+With the upcoming release of Firefox 3 this situation will improve. This version will have some support for such events like <a class="reference external" href="http://developer.mozilla.org/en/docs/DOM:element.onpaste">onpaste</a> or <a class="reference external" href="http://developer.mozilla.org/en/docs/DOM:element.oncopy">oncopy</a></p>
+</div>
+<div class="section" id="opera">
+<span id="pages-ui-html-editing-copy-and-paste-opera"></span><h2>Opera<a class="headerlink" href="#opera" title="Permalink to this headline">¶</a></h2>
+<p>Same situation as Firefox 2: no working implementation for <tt class="docutils literal"><span class="pre">copy</span></tt> or <tt class="docutils literal"><span class="pre">paste</span></tt> events.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="html_editing_in_general.html"
+             title="previous chapter">« HTML Editing In General</a>
+          <span class="separator">|</span>
+          <a class="next" href="textalign.html"
+             title="next chapter">Text align »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Copy and Paste</a><ul>
+<li><a class="reference internal" href="#ie">IE</a></li>
+<li><a class="reference internal" href="#safari">Safari</a></li>
+<li><a class="reference internal" href="#gecko">Gecko</a></li>
+<li><a class="reference internal" href="#opera">Opera</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="textalign.html"
+                        title="next chapter">Text align</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="html_editing_in_general.html"
+                        title="previous chapter">HTML Editing In General</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/ui_html_editing/copy_and_paste.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

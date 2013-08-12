@@ -1,0 +1,323 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SDK Structure &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Tooling" href="../tool.html" />
+    <link rel="next" title="Application Structure" href="application_structure.html" />
+    <link rel="prev" title="Hello World" href="getting_started.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../tool.html" accesskey="U">Tooling</a>
+     &raquo;
+  <a href="">SDK Structure</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="sdk-structure">
+<span id="pages-framework-structure-framework-structure"></span><h1>SDK Structure<a class="headerlink" href="#sdk-structure" title="Permalink to this headline">¶</a></h1>
+<p>When exploring the SDK tree, the following overview will give you an idea about the file structure of qooxdoo:</p>
+<p><strong>readme.txt</strong> - a quick information</p>
+<p><strong>license.txt</strong> - qooxdoo's license information</p>
+<p><strong>index.html</strong> - an overview over and access to most of the SDK's applications. Mind that in order to use them, you might need to run a <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">build</span></tt> in their respective directories first.</p>
+<p><strong>application/</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../application.html#pages-application-demo-applications"><em>sample and demo applications</em></a> and interactive tools (for end users) in their respective subfolders, like <tt class="docutils literal"><span class="pre">demobrowser</span></tt>, <tt class="docutils literal"><span class="pre">feedreader</span></tt> or <tt class="docutils literal"><span class="pre">playground</span></tt></li>
+</ul>
+</div></blockquote>
+<p><strong>component/</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../application.html#pages-application-developer-tools"><em>helper applications and libraries</em></a> (used internally), like <tt class="docutils literal"><span class="pre">apiviewer</span></tt>, <tt class="docutils literal"><span class="pre">testrunner</span></tt> or <tt class="docutils literal"><span class="pre">simulator</span></tt>.</li>
+</ul>
+</div></blockquote>
+<p><strong>documentation/</strong> - documentation files</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">manual</span></tt> - the user manual</li>
+</ul>
+</div></blockquote>
+<p><strong>framework/</strong> - qooxdoo's class library</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">source</span></tt><ul>
+<li><tt class="docutils literal"><span class="pre">class</span></tt> - JavaScript classes</li>
+<li><tt class="docutils literal"><span class="pre">resource</span></tt><ul>
+<li><tt class="docutils literal"><span class="pre">qx</span></tt> - resources need to be namespaced, here it is <tt class="docutils literal"><span class="pre">qx</span></tt><ul>
+<li><tt class="docutils literal"><span class="pre">decoration</span></tt> - images for the decorations, <tt class="docutils literal"><span class="pre">Modern</span></tt> and <tt class="docutils literal"><span class="pre">Classic</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">icon</span></tt> - icon themes that come with qooxdoo, <tt class="docutils literal"><span class="pre">Oxygen</span></tt> and <tt class="docutils literal"><span class="pre">Tango</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">static</span></tt> - other common resources like <tt class="docutils literal"><span class="pre">blank.gif</span></tt></li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">source</span></tt> - contains original resources</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">translation</span></tt> - language-specific data as <tt class="docutils literal"><span class="pre">po</span></tt> files</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>tool/</strong> - tool chain of the framework</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">bin</span></tt> - executable scripts are located here, most importantly <tt class="docutils literal"><span class="pre">generator.py</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">data</span></tt> - lots of data to be used by different tools, e.g. for localization, migration, etc.</li>
+<li><tt class="docutils literal"><span class="pre">pylib</span></tt> - Python modules used by the tool chain</li>
+</ul>
+</div></blockquote>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="getting_started.html"
+             title="previous chapter">« Hello World</a>
+          <span class="separator">|</span>
+          <a class="next" href="application_structure.html"
+             title="next chapter">Application Structure »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="application_structure.html"
+                        title="next chapter">Application Structure</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="previous chapter">Hello World</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/sdk_structure.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

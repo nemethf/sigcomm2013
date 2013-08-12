@@ -1,0 +1,305 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Migration Guide &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Migration" href="../migration.html" />
+    <link rel="next" title="References" href="../references.html" />
+    <link rel="prev" title="Migration" href="../migration.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../migration.html" accesskey="U">Migration</a>
+     &raquo;
+  <a href="">Migration Guide</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="migration-guide">
+<span id="pages-migration-guide-migration-guide"></span><h1>Migration Guide<a class="headerlink" href="#migration-guide" title="Permalink to this headline">¶</a></h1>
+<p>Migrating from a previous qooxdoo version to a current release often requires nothing more than just running the <tt class="docutils literal"><span class="pre">migration</span></tt> job in your application. Yet, some changes between releases may involve manual modifications as detailed in the migration guide of each <a class="reference external" href="http://qooxdoo.org/project/release_notes">individual release</a>. The following guide cover both cases.</p>
+<p>If you are migrating from a legacy verison of qooxdoo to 2.0.2, namely from a <strong>0.8.2</strong> or prior release, please do a <em>two-step</em> migration to 2.0.2. Firstly, migrate to <a class="reference external" href="http://qooxdoo.org/project/release_notes/0.8.3">qooxdoo 0.8.3</a>, following the instructions in the <a class="reference external" href="http://attic.qooxdoo.org/documentation/0.8#migration">corresponding manual</a>. You will need a qooxdoo 0.8.3 SDK to go through the process, so fetch one from the <a class="reference external" href="https://sourceforge.net/projects/qooxdoo/files/">download location</a>. This is necessary as there have been major changes in qooxdoo which require the infrastructure of the intermediate version to bridge. Then, follow the remaining steps in this document.</p>
+<ul>
+<li><p class="first"><strong>Backup</strong></p>
+<p>You might want to create a backup of your application files first. The migration process changes source files in place, modifying your code base.</p>
+</li>
+<li><p class="first"><strong>Configuration</strong></p>
+<ul class="simple">
+<li>Then, after you have unpacked the new qooxdoo SDK on your system, change references to it in your <tt class="docutils literal"><span class="pre">config.json</span></tt> and possibly in <tt class="docutils literal"><span class="pre">generate.py</span></tt> to point to the new version (look for &quot;QOOXDOO_PATH&quot;). Make sure that the path ends in the root directory of the SDK (like <em>.../qooxdoo-2.0.2-sdk</em>).</li>
+<li>Check the current <a class="reference external" href="http://qooxdoo.org/project/release_notes/2.0.2#tooling">release notes</a> and those of <a class="reference external" href="http://qooxdoo.org/project/release_notes">previous releases</a> between your current version and 2.0.2 for changes to the generator configuration, as they have to be done by hand. Make sure you  apply them to your config.json as far as they affect you. For example, with 0.8.1 the config.json macro <tt class="docutils literal"><span class="pre">QOOXDOO_PATH</span></tt> does not include the trailing &quot;framework&quot; part anymore, so make sure to add that in references to the qooxdoo class library. E.g. if you list the qooxdoo framework Manifest.json explicitly in your config using QOOXDOO_PATH, it should read <em>${QOOXDOO_PATH}/framework/Manifest.json</em>.</li>
+<li>Alternatively, particularly if you config.json is rather small, create a <a class="reference internal" href="../tool/getting_started.html#pages-getting-started-helloworld-create-your-application"><em>separate gui skeleton</em></a> elsewhere and copy its config.json over to your application, and port the config settings from your old configuration to this file. This might be the simpler approach.</li>
+</ul>
+</li>
+<li><p class="first"><strong>Run Migration</strong></p>
+<p>Then change to your application's top-level directory and invoke the command</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">migration</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Follow the instructions of the migration script, particularly allow the cache to be deleted. For more information about this script, see the <a class="reference internal" href="../tool/generator_default_jobs.html#pages-tool-generator-default-jobs-migration"><em>corresponding job description</em></a>.</p>
+</li>
+<li><p class="first"><strong>Migration Log</strong></p>
+<p>Check the <tt class="docutils literal"><span class="pre">migration.log</span></tt> which is created during the run of the migration script. Check all hints and deprecation warnings in the log and apply them to your code.</p>
+</li>
+<li><p class="first"><strong>Test</strong></p>
+<p>You now have an up-to-date source tree in your application. Run</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">source</span>
+</pre></div>
+</div>
+<p>to check that the generation process goes through and test your application in the browser.</p>
+</li>
+</ul>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="../migration.html"
+             title="previous chapter">« Migration</a>
+          <span class="separator">|</span>
+          <a class="next" href="../references.html"
+             title="next chapter">References »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="../references.html"
+                        title="next chapter">References</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="../migration.html"
+                        title="previous chapter">Migration</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/migration/migration_guide.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

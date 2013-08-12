@@ -1,0 +1,378 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tooling &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../index.html" />
+    <link rel="up" title="Table of Contents" href="../toc.html" />
+    <link rel="next" title="Introduction to the SDK" href="tool/sdk_introduction.html" />
+    <link rel="prev" title="Feature Configuration Editor" href="application/featureconfigeditor.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../index.html">Manual (v2.0.2)</a> &raquo;
+  <a href="">Tooling</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tooling">
+<span id="pages-tool-tooling"></span><h1>Tooling<a class="headerlink" href="#tooling" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo's tool chain comes with the SDK and comprises tools that help you create and maintain your JavaScript applications. They fall into two broad categories:</p>
+<ul class="simple">
+<li>command-line tools</li>
+<li>browser-based tools</li>
+</ul>
+<p>Command-line tools are tools that run on your operating system's command shell, like <em>bash</em> for MacOSX and Linux, or <em>cmd</em> or <em>PowerShell</em> for Microsoft Windows. They generally require a Python installation on your system. Two important examples of this category are <em>create-application.py</em>, sort of an application wizard which you use to create a new application, and <em>generate.py</em> which you use during your development activities (and referred to as the &quot;generator&quot;), e.g. to build a running application from your source code.</p>
+<p>Browser-based tools run in a web browser. Among them are the Apiviewer, which provides an interactive API reference, the Testrunner, which allows running your unit test in a GUI, or the Inspector, which allows to inspect the visual elements of your application and manipulate their properties.</p>
+<p>As the browser-based applications are mostly described elsewhere, this section deals mainly with the command-line tools. It also provides a general introduction into the qooxdoo SDK and its structure.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tool/sdk_introduction.html">Introduction to the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/sdk_requirements.html">SDK Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/getting_started.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/sdk_structure.html">SDK Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/application_structure.html">Application Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/manifest.html">Manifest.json</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/code_structure.html">Code Structure</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="generator">
+<h2>Generator<a class="headerlink" href="#generator" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tool/generator.html">Generator Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/generator_usage.html">Generator Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/generator_config.html">Generator Configuration File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/generator_optimizations.html">Generator Script Optimizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/generator_config_articles.html">Generator Configuration Articles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/generator_config_background.html">Generator Configuration Background Information</a></li>
+</ul>
+</div>
+<div class="section" id="tutorials">
+<h3>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tool/tutorial_basics.html">Tutorial: Basic Tool Chain Usage</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="tool/generator_default_jobs.html"><em>Generator Default Jobs</em></a></li>
+<li><a class="reference internal" href="tool/generator_config_ref.html"><em>Generator Config Keys</em></a></li>
+<li><a class="reference internal" href="tool/generator_config_macros.html"><em>Generator Config Macros</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="lint">
+<h2>Lint<a class="headerlink" href="#lint" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Tutorials<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tool/source_code_validation.html">Source code validation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="application-wizard">
+<h2>Application Wizard<a class="headerlink" href="#application-wizard" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tool/create_application.html">Create Application</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="other-tools">
+<h2>Other Tools<a class="headerlink" href="#other-tools" title="Permalink to this headline">¶</a></h2>
+<p>Some of the tools that come with the SDK are described elsewhere in this manual. Here are some pointers:</p>
+<ul class="simple">
+<li><a class="reference internal" href="application/apiviewer.html"><em>API Viewer</em></a></li>
+<li><a class="reference internal" href="development/frame_apps_testrunner.html"><em>Test Runner</em></a></li>
+<li><a class="reference internal" href="application/inspector.html"><em>Inspector</em></a></li>
+<li><a class="reference internal" href="application/featureconfigeditor.html"><em>Feature Configuration Editor</em></a></li>
+<li><a class="reference internal" href="development/simulator.html"><em>Simulator</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="application/featureconfigeditor.html"
+             title="previous chapter">« Feature Configuration Editor</a>
+          <span class="separator">|</span>
+          <a class="next" href="tool/sdk_introduction.html"
+             title="next chapter">Introduction to the SDK »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tooling</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#generator">Generator</a><ul>
+<li><a class="reference internal" href="#tutorials">Tutorials</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lint">Lint</a><ul>
+<li><a class="reference internal" href="#id1">Tutorials</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#application-wizard">Application Wizard</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-tools">Other Tools</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tool/sdk_introduction.html"
+                        title="next chapter">Introduction to the SDK</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="application/featureconfigeditor.html"
+                        title="previous chapter">Feature Configuration Editor</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../_sources/pages/tool.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

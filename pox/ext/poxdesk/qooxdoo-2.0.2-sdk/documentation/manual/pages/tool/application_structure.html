@@ -1,0 +1,331 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Application Structure &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Tooling" href="../tool.html" />
+    <link rel="next" title="Manifest.json" href="manifest.html" />
+    <link rel="prev" title="SDK Structure" href="sdk_structure.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../tool.html" accesskey="U">Tooling</a>
+     &raquo;
+  <a href="">Application Structure</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="application-structure">
+<span id="pages-application-structure-application-structure"></span><h1>Application Structure<a class="headerlink" href="#application-structure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="structural-overview">
+<span id="pages-application-structure-structural-overview"></span><h2>Structural Overview<a class="headerlink" href="#structural-overview" title="Permalink to this headline">¶</a></h2>
+<p>A qooxdoo application has a well-organized file structure. For an application named <tt class="docutils literal"><span class="pre">custom</span></tt>, everything is located within the application folder <tt class="docutils literal"><span class="pre">custom</span></tt>. Indentation denotes file system nesting:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">source</span></tt> - this folder always exists, as it contains the <a class="reference internal" href="getting_started.html#pages-getting-started-helloworld-run-your-application"><em>development version</em></a> of your app<ul>
+<li><tt class="docutils literal"><span class="pre">index.html</span></tt> - usually the only HTML file a qooxdoo application needs. Typically it hardly includes any markup, as the entire qooxdoo application is available as an external JavaScript file</li>
+<li><tt class="docutils literal"><span class="pre">class</span></tt> - all JavaScript classes<ul>
+<li><tt class="docutils literal"><span class="pre">custom</span></tt> - this is the top-level namespace of your classes, often identical to the application name</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">resource</span></tt> - any static resources like images, etc. belong into this folder<ul>
+<li><tt class="docutils literal"><span class="pre">custom</span></tt> - resource handling requires all files to be organized in folders that correspond to namespaces. Typically, the resources of your app are stored in a folder of the same name as the top-level namespace of your application classes<ul>
+<li><tt class="docutils literal"><span class="pre">test.png</span></tt> - sample resource</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">script</span></tt> - this folder is created and/or updated for each development version of your app when executing <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">source</span></tt> (or one of the other <em>source-*</em> jobs)<ul>
+<li><tt class="docutils literal"><span class="pre">custom.js</span></tt> - this JavaScript file is included from <tt class="docutils literal"><span class="pre">index.html</span></tt>. It is a loader script that includes all required files one-by-one.</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">translation</span></tt> - if you choose to develop your app for multiple languages, translation files will be put into this directory<ul>
+<li><tt class="docutils literal"><span class="pre">en.po</span></tt> - and the other <tt class="docutils literal"><span class="pre">.po</span></tt> files for the languages your app supports. The respective locale is used as a file name, e.g. <tt class="docutils literal"><span class="pre">it.po</span></tt>, <tt class="docutils literal"><span class="pre">pt_BR.po</span></tt>, etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">build</span></tt> - this folder is created and/or updated for each <a class="reference internal" href="getting_started.html#pages-getting-started-helloworld-deployment"><em>deployment version</em></a> of your app using <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">build</span></tt><ul>
+<li><tt class="docutils literal"><span class="pre">index.html</span></tt> - identical to the one of the <tt class="docutils literal"><span class="pre">source</span></tt> version</li>
+<li><tt class="docutils literal"><span class="pre">script</span></tt> - contains the generated JavaScript code of your application<ul>
+<li><tt class="docutils literal"><span class="pre">custom.js</span></tt> - this JavaScript file is included from <tt class="docutils literal"><span class="pre">index.html</span></tt>. In the <em>build</em> version this file contains the loader plus JavaScript code your application requires, in a compressed and optimized form. If you are developing a large-scale application, you can split it into so-called parts that can be loaded on demand.</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">resource</span></tt> - if your application classes contain appropriate <a class="reference internal" href="code_structure.html#pages-code-structure-details"><em>compiler hints</em></a>, those resources are automatically copied to this target folder. Your application is then self-contained and may be transferred to an external hosting environment.</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">api</span></tt> - contains a searchable <a class="reference internal" href="getting_started.html#pages-getting-started-helloworld-api-reference"><em>API viewer</em></a> specific to your application, created by running the command <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">api</span></tt>. As it is self-consistent, it may be copied anywhere and run offline.</li>
+<li><tt class="docutils literal"><span class="pre">test</span></tt> - a standalone <a class="reference internal" href="getting_started.html#pages-getting-started-helloworld-unit-testing"><em>Test runner</em></a> for unit tests you may create for your app, created by running <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">test</span></tt>.</li>
+<li><a class="reference internal" href="manifest.html"><em>Manifest.json</em></a> - every qooxdoo app has such a Manifest file for some meta information</li>
+<li><a class="reference internal" href="generator_config.html"><em>config.json</em></a> - configuration file for the build process and all other integrated developer tools</li>
+<li><a class="reference internal" href="generator_usage.html#pages-tool-generator-usage-generate-py"><em>generate.py</em></a> - use this script for all kinds of tasks and tools, most importantly to generate the development and the deployment versions of your app.</li>
+</ul>
+</div>
+<div class="section" id="description">
+<span id="pages-application-structure-in-other-words"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Here is a bit more prose regarding this structure. Of the basic structure, every application/library must contain a <em>config.json</em> and a <em>Manifest.json</em> file in its top-level directory (In theory, you can deviate from this rule, but it's much easier to stick with it). From this directory, a <em>source/class</em> subdirectory is expected, which contains a name space subdirectory and some class files therein. All other subdirectories in the top directory are then created during generator runs ('build', 'api', 'test', ...).</p>
+<p>The most important of these sudirectories is of course <em>source</em> since it contains your source code. Aside from the <em>class/&lt;name space&gt;</em> subdirectory it has to have a <em>resource</em> subdir (for icons, style files, flash files, etc.) and a <em>translation</em> subdir (for string translation files). All these are mandatory, but might be empty. During a <em>'generate.py source'</em> a <em>source/script</em> directory is created which contains the generator output (basically a Javascript file that references all necessary class files, icons, etc.). This one has to be referenced from the application's index.html (usually <em>source/index.html</em>).</p>
+<p>The <em>build</em> dir (created with <em>'generate.py build'</em>) has a very similar structure as the <em>source</em> dir, with <em>script</em>, and <em>resource</em> subdirs. The main difference is that everything that is necessary for your application to run is copied under this common root, and that the generator output script(s) in <em>build/script</em> contains the actual class definitions, not just references to their source files. The <em>build</em> dir is therefore self-contained, and doesn't have references that point outside of it.</p>
+<p>Create some vanilla skeleton apps with <a class="reference internal" href="getting_started.html#pages-getting-started-helloworld-create-your-application"><em>create-application.py</em></a> located in <cite>tool/bin</cite> and look at their initial file structure, to get a feel for it. Tailor the <em>source/class/&lt;namespace&gt;/Application.js</em> as the main application class, add further classes to your needs, and let the tool chain take care of the rest. You will have to run <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">source</span></tt> initially  and whenever you use further classes in your code. You can try out your app by opening <em>source/index.html</em> directly in your browser. You simply reload to see changes in the code. If you are comfortable with that, run a <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">build</span></tt> and open <em>build/index.html</em> in your browser. If that is fine, copy the whole <tt class="docutils literal"><span class="pre">build</span></tt> tree to your web server.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="sdk_structure.html"
+             title="previous chapter">« SDK Structure</a>
+          <span class="separator">|</span>
+          <a class="next" href="manifest.html"
+             title="next chapter">Manifest.json »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Application Structure</a><ul>
+<li><a class="reference internal" href="#structural-overview">Structural Overview</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="manifest.html"
+                        title="next chapter">Manifest.json</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="sdk_structure.html"
+                        title="previous chapter">SDK Structure</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/application_structure.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

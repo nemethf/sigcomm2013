@@ -1,0 +1,373 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>An Aspect Template Class &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Development" href="../development.html" />
+    <link rel="next" title="Internet Explorer specific settings" href="internet_explorer_specific_settings.html" />
+    <link rel="prev" title="Reporting Bugs" href="reporting_bugs.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../development.html" accesskey="U">Development</a>
+     &raquo;
+  <a href="">An Aspect Template Class</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="an-aspect-template-class">
+<span id="pages-aspects-template-an-aspect-template-class"></span><h1>An Aspect Template Class<a class="headerlink" href="#an-aspect-template-class" title="Permalink to this headline">¶</a></h1>
+<p>Here is a code template which you may copy to your application namespace and adapt it to implement aspects in your qooxdoo application. For a far more advanced sample look at qx.dev.Profile.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * AspectTemplate.js -- template class to use qooxdoo aspects</span>
+<span class="cm"> *</span>
+<span class="cm"> * This is a minimal class template to show how to deploy aspects in qooxdoo</span>
+<span class="cm"> * applications. For more information on the aspect infrastructure see the API</span>
+<span class="cm"> * documentation for qx.core.Aspect.</span>
+<span class="cm"> *</span>
+<span class="cm"> * You should copy this template to your application namespace and adapt it to</span>
+<span class="cm"> * your needs. See the comments in the code for further hints.</span>
+<span class="cm"> *</span>
+<span class="cm"> * To enable the use of your aspect class, some extra settings need to be done</span>
+<span class="cm"> * in your configuration file.</span>
+<span class="cm"> *  * Add a require of your aspects class to qx.Class</span>
+<span class="cm"> *  * Set the environment setting qx.aspects to true</span>
+<span class="cm"> *  * Set the environment setting qx.enableAspect to true</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cm">/* ************************************************************************</span>
+
+<span class="cm">#require(qx.core.Aspect)</span>
+<span class="cm">#ignore(auto-require)</span>
+
+<span class="cm">************************************************************************ */</span>
+
+<span class="cm">/** Adapt the name of the class */</span>
+<span class="nx">qx</span><span class="p">.</span><span class="nx">Bootstrap</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;your.namespace.YourAspectClass&quot;</span><span class="p">,</span> <span class="p">{</span>
+
+  <span class="cm">/** The class definition may only contain a &#39;statics&#39; and a &#39;defer&#39; member */</span>
+  <span class="nx">statics</span> <span class="o">:</span>
+  <span class="p">{</span>
+
+    <span class="nx">__counter</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1">// Static vars are possible</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * This function will be called before each function call.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param fullname {String} Full name of the function including the class name.</span>
+<span class="cm">     * @param fcn {Function} Wrapped function.</span>
+<span class="cm">     * @param type {String} The type of the wrapped function (static, member, ...)</span>
+<span class="cm">     * @param args {Arguments} The arguments passed to the wrapped function.</span>
+<span class="cm">     */</span>
+    <span class="nx">atEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fullName</span><span class="p">,</span> <span class="nx">fcn</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Entering &quot;</span><span class="o">+</span><span class="nx">fullName</span><span class="p">);</span>  <span class="c1">// Adapt this to your needs</span>
+    <span class="p">},</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * This function will be called after each function call.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param fullname {String} Full name of the function including the class name.</span>
+<span class="cm">     * @param fcn {Function} Wrapped function.</span>
+<span class="cm">     * @param type {String} The type of the wrapped function (static, member, ...)</span>
+<span class="cm">     * @param args {Arguments} The arguments passed to the wrapped function.</span>
+<span class="cm">     * @param returnValue {var} return value of the wrapped function.</span>
+<span class="cm">     */</span>
+    <span class="nx">atExit</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fullName</span><span class="p">,</span> <span class="nx">fcn</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">returnValue</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Leaving &quot;</span><span class="o">+</span><span class="nx">fullName</span><span class="p">);</span>  <span class="c1">// Adapt this to your needs</span>
+    <span class="p">}</span>
+
+  <span class="p">},</span>
+
+  <span class="nx">defer</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">statics</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="cm">/**</span>
+<span class="cm">     * Registering your static functions with the aspect registry. For more</span>
+<span class="cm">     * information see the API documentation for qx.core.Aspect.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param fcn {Function} Function from this class to be called.</span>
+<span class="cm">     * @param position {String} Where to inject the aspect (&quot;before&quot; or &quot;after&quot;).</span>
+<span class="cm">     * @param type {String} Which types to wrap (“member”, “static”, “constructor”,</span>
+<span class="cm">     *                       “destructor”, “property” or ”*”).</span>
+<span class="cm">     * @param name {RegExp} Name(pattern) of the functions to wrap.</span>
+<span class="cm">     */</span>
+    <span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Aspect</span><span class="p">.</span><span class="nx">addAdvice</span><span class="p">(</span><span class="nx">statics</span><span class="p">.</span><span class="nx">atEnter</span><span class="p">,</span> <span class="s2">&quot;before&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;your.namespace.*&quot;</span><span class="p">);</span>
+    <span class="nx">qx</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Aspect</span><span class="p">.</span><span class="nx">addAdvice</span><span class="p">(</span><span class="nx">statics</span><span class="p">.</span><span class="nx">atExit</span><span class="p">,</span> <span class="s2">&quot;after&quot;</span><span class="p">,</span>  <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;your.namespace.*&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>A job in your configuration could look something like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;source&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;require&quot;</span> <span class="o">:</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;qx.Class&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;aspects.Aop&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+
+        <span class="s2">&quot;environment&quot;</span> <span class="o">:</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;qx.aspects&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;qx.enableAspect&quot;</span> <span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+<p>If you need some more information on configuring the generator, take a look at the <a class="reference internal" href="../tool/generator_config_ref.html"><em>Generator Config Keys</em></a>.</p>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="reporting_bugs.html"
+             title="previous chapter">« Reporting Bugs</a>
+          <span class="separator">|</span>
+          <a class="next" href="internet_explorer_specific_settings.html"
+             title="next chapter">Internet Explorer specific settings »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="internet_explorer_specific_settings.html"
+                        title="next chapter">Internet Explorer specific settings</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="reporting_bugs.html"
+                        title="previous chapter">Reporting Bugs</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/development/aspects_template.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,325 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Focus Layer &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="Tutorial Part 1: The Beginning of a twitter App" href="tutorials/tutorial-part-1.html" />
+    <link rel="prev" title="HTML Element Handling" href="html_element_handling.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">The Focus Layer</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="the-focus-layer">
+<span id="pages-focus-layer-impl-the-focus-layer"></span><h1>The Focus Layer<a class="headerlink" href="#the-focus-layer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="history">
+<span id="pages-focus-layer-impl-history"></span><h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<p>This document is meant to talk about some internals of the focus system in qooxdoo since 1.2. This is a technology documentation targeted to interested developers. There is no need to understand these details as a user of the framework.</p>
+<p>In previous versions of the focus handling we forced the application to our own implementation instead of working together with the browser. This was quite straightforward because the topic itself is quite complex and the differences between the browsers are huge. So just ignoring all these differences and  implementing an own layer is highly attractive.</p>
+<p>However this came with quite some costs. For example it's quite hard to catch all the edge cases when a input field loses the focus nor is it possible to recover the focus correctly when the browser does something after switching the window (send back/bring to front etc.). To listen on the browser might improve some types of out-of-sync problems in the previous versions. We caught most things correctly though, but it is quite hard to get 100% accuracy.</p>
+</div>
+<div class="section" id="focus-support">
+<span id="pages-focus-layer-impl-focus-support"></span><h2>Focus Support<a class="headerlink" href="#focus-support" title="Permalink to this headline">¶</a></h2>
+<p>With 1.2 the focus system was reimplemented using the new low level event stack. Compared to the old focus system this basically means that the whole focus support is implemented low-level without any dependencies on the widget system. It directly uses the new event infrastructure and integrates fine with the other event handlers.</p>
+<p>The new system tries to connect with all available native events which could help with detecting were the browser's focus is moving to. The implementation makes use of native events like <tt class="docutils literal"><span class="pre">activate</span></tt> or <tt class="docutils literal"><span class="pre">focusin</span></tt> where available. It uses a lot of browser behavior which is not explicitly documented or valid when reading the specifications, just to solve the issue of detecting where the focus currently is or is moved to.</p>
+<p>It supports the events <tt class="docutils literal"><span class="pre">focusin</span></tt>, <tt class="docutils literal"><span class="pre">focus</span></tt>, <tt class="docutils literal"><span class="pre">focusout</span></tt> and <tt class="docutils literal"><span class="pre">blur</span></tt> on DOM nodes. It also supports <tt class="docutils literal"><span class="pre">focus</span></tt> and <tt class="docutils literal"><span class="pre">blur</span></tt> events on the <tt class="docutils literal"><span class="pre">window</span></tt>. There is support for <tt class="docutils literal"><span class="pre">activate</span></tt> and <tt class="docutils literal"><span class="pre">deactivate</span></tt> events on DOM nodes to track keyboard activation. It has the properties <tt class="docutils literal"><span class="pre">focus</span></tt> and <tt class="docutils literal"><span class="pre">active</span></tt> to ask for the currently focused or activated DOM node.</p>
+</div>
+<div class="section" id="activation-support">
+<span id="pages-focus-layer-impl-activation-support"></span><h2>Activation Support<a class="headerlink" href="#activation-support" title="Permalink to this headline">¶</a></h2>
+<p>The activation, as part of the focus system, is also done by this manager. The keyboard handler for example asks the focus system which DOM element is the active one to start the bubble sequences for all keyboard events on this element. As the keyboard layer sits on top of the DOM and implements the event phases on its own there is no need to inform the browser about the active DOM node as it is simply not relevant when using this layer. It is also quite important as in every browser tested the methods to activate a DOM node (if available at all) might also influence the focus which creates some problems.</p>
+</div>
+<div class="section" id="window-focus-blur">
+<span id="pages-focus-layer-impl-window-focus-blur"></span><h2>Window Focus/Blur<a class="headerlink" href="#window-focus-blur" title="Permalink to this headline">¶</a></h2>
+<p>The handler also manages the focus state of the top-level window. It fires the <tt class="docutils literal"><span class="pre">blur</span></tt> and <tt class="docutils literal"><span class="pre">focus</span></tt> events on the <tt class="docutils literal"><span class="pre">window</span></tt> object one can listen to. Natively, these events are fired all over just by clicking somewhere in the document. The issue is to detect the <em>real</em> <tt class="docutils literal"><span class="pre">focus</span></tt>/<tt class="docutils literal"><span class="pre">blur</span></tt> events. This is implemented through some type of internal state representation.</p>
+</div>
+<div class="section" id="text-selection">
+<span id="pages-focus-layer-impl-text-selection"></span><h2>Text Selection<a class="headerlink" href="#text-selection" title="Permalink to this headline">¶</a></h2>
+<p>Focus handling in qooxdoo also solves a lot of related issues. For example the whole support for unelectable text is done with the focus handler as well. Normally all text content on a page is selectable (with some exceptions like native form buttons etc.). In a typical GUI or during drag&amp;drop sessions it is highly needed to stop the user from being able to select any text.</p>
+<p>The only thing needed for the focus handler here is to add an attribute <tt class="docutils literal"><span class="pre">qxSelectable</span></tt> with the value <tt class="docutils literal"><span class="pre">off</span></tt> to the node which should not be selectable. I don't know about a way which is easier to solve this need.</p>
+<p>Behind the scenes qooxdoo dynamically applies styles like <tt class="docutils literal"><span class="pre">user-select</span></tt> or attributes like <tt class="docutils literal"><span class="pre">unselectable</span></tt>. There are a lot of bugs in the browser when keeping these attributes or styles statically applied to the nodes so they are applied as needed dynamically which works surprisingly well. In Internet Explorer the handler stops the event <tt class="docutils literal"><span class="pre">selectstart</span></tt> for the affected elements.</p>
+</div>
+<div class="section" id="prevent-defaults">
+<span id="pages-focus-layer-impl-prevent-defaults"></span><h2>Prevent Defaults<a class="headerlink" href="#prevent-defaults" title="Permalink to this headline">¶</a></h2>
+<p>One thing we needed especially for the widget system, which is built on top, was support for preventing a widget or in this case a DOM node from being able to get the focus. This sounds simpler at first than it is. The major issue is to also keep the focus where it is while clicking somewhere else.</p>
+<p>This is especially interesting when working with a text selection. Unfortunately in a browser the selection could only be where the focus is. This is a major issue when trying to apply any change to the currently selected text like needed for most kinds of editors (like a rich text editor used by a mail application for example). The type of fix we apply in qooxdoo is not to allow the browser to focus a specific DOM node e.g. the &quot;Bold&quot; button of the text editor. This makes it easy to add listeners to the button which work with the still existing selection of the editor field. The feature could be applied easily to a DOM node like such a button just through an attribute <tt class="docutils literal"><span class="pre">qxKeepFocus</span></tt> with the value <tt class="docutils literal"><span class="pre">on</span></tt>. It affects all children of the element as well, as long as these do not define anything else.</p>
+<p>A similar goal is to keep the activation where it is when the user clicks at a specific section of the document. This is mainly used to keep the keyboard processing where it is e.g. when clicking the opened list of a <tt class="docutils literal"><span class="pre">SelectBox</span></tt> widget. This feature could be used for other scenarios like this as well. Like in the previous block it can be enabled simply by setting the attribute <tt class="docutils literal"><span class="pre">qxKeepActive</span></tt> to <tt class="docutils literal"><span class="pre">on</span></tt> for the relevant DOM node. Internally, to stop the activation also means to stop the focus. It was not solvable in another way because the browser otherwise sends activation events to the focused DOM node which is contra productive in this case.</p>
+<p>Another unwanted side effect of some browsers is the possibility to drag around specific types of content. There is some type of native drag&amp;drop support in most of today's browsers, but this is quite useless with the current quality of implementation. Still, the major issue remains: It is possible to drag around images for example which is often not wanted in a GUI toolkit. These native <em>features</em> compromise the behavior implemented by the application developer on top of them. To stop this, qooxdoo applies styles like <tt class="docutils literal"><span class="pre">user-drag</span></tt> on browsers that support it, or prevents the native <tt class="docutils literal"><span class="pre">draggesture</span></tt> event where available.</p>
+<p>Other then this, most of these prevention is implemented internally through a <tt class="docutils literal"><span class="pre">preventDefault</span></tt> call on the global <tt class="docutils literal"><span class="pre">mousedown</span></tt> event when a specific target is detected. This has some side effects though. When preventing such a core event it means that most browsers also stop any type of selection happening through the mouse. This also stops them from focusing the DOM node natively. The qooxdoo code uses some explicit <tt class="docutils literal"><span class="pre">focus</span></tt> calls on the DOM nodes to fix this.</p>
+<p>Please note that some settings may have side effects on other things. For example, to make a text region selectable but not activate able is not possible with the current implementation. This has not really a relevance in real-world applications, but may be still interesting to know about.</p>
+</div>
+<div class="section" id="finally">
+<span id="pages-focus-layer-impl-finally"></span><h2>Finally<a class="headerlink" href="#finally" title="Permalink to this headline">¶</a></h2>
+<p>Finally, the whole implementation differs nearly completely for the supported browsers. Hopefully you get an impression of the complexity of the topic. May the browser with you.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="html_element_handling.html"
+             title="previous chapter">« HTML Element Handling</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorials/tutorial-part-1.html"
+             title="next chapter">Tutorial Part 1: The Beginning of a twitter App »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">The Focus Layer</a><ul>
+<li><a class="reference internal" href="#history">History</a></li>
+<li><a class="reference internal" href="#focus-support">Focus Support</a></li>
+<li><a class="reference internal" href="#activation-support">Activation Support</a></li>
+<li><a class="reference internal" href="#window-focus-blur">Window Focus/Blur</a></li>
+<li><a class="reference internal" href="#text-selection">Text Selection</a></li>
+<li><a class="reference internal" href="#prevent-defaults">Prevent Defaults</a></li>
+<li><a class="reference internal" href="#finally">Finally</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorials/tutorial-part-1.html"
+                        title="next chapter">Tutorial Part 1: The Beginning of a twitter App</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="html_element_handling.html"
+                        title="previous chapter">HTML Element Handling</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/focus_layer_impl.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

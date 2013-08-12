@@ -1,0 +1,350 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using themes of contributions in your application &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Desktop" href="../desktop.html" />
+    <link rel="next" title="The Event Layer" href="event_layer_impl.html" />
+    <link rel="prev" title="Web Fonts" href="ui_webfonts.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../desktop.html" accesskey="U">qx.Desktop</a>
+     &raquo;
+  <a href="">Using themes of contributions in your application</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="using-themes-of-contributions-in-your-application">
+<span id="pages-ui-using-themes-of-contribs-using-themes-of-contributions-in-your-application"></span><h1>Using themes of contributions in your application<a class="headerlink" href="#using-themes-of-contributions-in-your-application" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tutorial assumes you are using the latest GUI skeleton template which contains pre-defined theme classes.</p>
+</div>
+<p>Contributions are a powerful and easy way to enhance your application with e.g. widgets that had not (yet) found the way into the qooxdoo core framework. Nevertheless it is a no-brainer to use them in your application.</p>
+<p>But if a contribution is providing its own theme (in most cases its own appearance theme) you have to manage this manually.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A bug report to make this step superfluous is already filed ( see <a class="reference external" href="http://bugzilla.qooxdoo.org/show_bug.cgi?id=1591">#1591</a> ), but in the meantime you can stick with this little tutorial to get things done.</p>
+</div>
+<p>For an easiser understanding this tutorial explains the necessary setup at the example of the <a class="reference external" href="http://qooxdoo.org/contrib/project#tileview">TileView</a> widget.</p>
+<div class="section" id="adjust-your-configuration">
+<span id="pages-ui-using-themes-of-contribs-adjust-your-configuration"></span><h2>Adjust your configuration<a class="headerlink" href="#adjust-your-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The interesting part of the <tt class="docutils literal"><span class="pre">config.json</span></tt> looks like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">...</span>
+<span class="s2">&quot;jobs&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;libraries&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;library&quot;</span> <span class="o">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;manifest&quot;</span> <span class="o">:</span> <span class="s2">&quot;contrib://TileView/trunk/Manifest.json&quot;</span>
+        <span class="p">},</span>
+       <span class="c1">// as the tileView uses internally the FlowLayout you have</span>
+       <span class="c1">// to add this to set it up correctly</span>
+       <span class="p">{</span>
+          <span class="s2">&quot;manifest&quot;</span> <span class="o">:</span> <span class="s2">&quot;contrib://FlowLayout/trunk/Manifest.json&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="include-appearance-theme">
+<span id="pages-ui-using-themes-of-contribs-include-appearance-theme"></span><h2>Include appearance theme<a class="headerlink" href="#include-appearance-theme" title="Permalink to this headline">¶</a></h2>
+<p>If you use the latest GUI skeleton template you will get an own appearance theme class (among all other theme classes) already setup for you. All you need to do is to include the appearance class provided by the <tt class="docutils literal"><span class="pre">TileView</span></tt> widget into your own appearance class.</p>
+<p>Include the <tt class="docutils literal"><span class="pre">TileView</span></tt> appearance:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;yourApp.theme.Appearance&quot;</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="nx">extend</span> <span class="o">:</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Appearance</span><span class="p">,</span>
+
+  <span class="c1">// this include key does the magic</span>
+  <span class="nx">include</span> <span class="o">:</span> <span class="nx">tileview</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">Appearance</span><span class="p">,</span>
+
+  <span class="c1">// overwrite the appearances to customize the look of the modern theme</span>
+  <span class="c1">// usually not needed</span>
+  <span class="nx">appearances</span> <span class="o">:</span>
+  <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>So all you need to add is this little <tt class="docutils literal"><span class="pre">include</span></tt> key with the corresponding appearance class to include it into your application.</p>
+<div class="section" id="known-issues">
+<span id="pages-ui-using-themes-of-contribs-known-issues"></span><h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<p>The following code which could reside in your <tt class="docutils literal"><span class="pre">Application</span></tt> class <strong>won't</strong> work:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">qx</span><span class="p">.</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">qx</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">modern</span><span class="p">.</span><span class="nx">Appearance</span><span class="p">,</span> <span class="nx">tileview</span><span class="p">.</span><span class="nx">theme</span><span class="p">.</span><span class="nx">Appearance</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The reason is that this include above will be resolved at <strong>runtime</strong> which does not work anymore. The first solution is resolved at <strong>loading time</strong>, so the include is already performed at startup.
+This issue is already filed under <a class="reference external" href="http://bugzilla.qooxdoo.org/show_bug.cgi?id=1604">#1604</a>.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="ui_webfonts.html"
+             title="previous chapter">« Web Fonts</a>
+          <span class="separator">|</span>
+          <a class="next" href="event_layer_impl.html"
+             title="next chapter">The Event Layer »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Using themes of contributions in your application</a><ul>
+<li><a class="reference internal" href="#adjust-your-configuration">Adjust your configuration</a></li>
+<li><a class="reference internal" href="#include-appearance-theme">Include appearance theme</a><ul>
+<li><a class="reference internal" href="#known-issues">Known issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="event_layer_impl.html"
+                        title="next chapter">The Event Layer</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="ui_webfonts.html"
+                        title="previous chapter">Web Fonts</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/desktop/ui_using_themes_of_contribs.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

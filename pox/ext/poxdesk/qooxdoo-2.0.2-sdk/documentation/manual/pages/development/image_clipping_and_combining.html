@@ -1,0 +1,435 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Image clipping and combining &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Development" href="../development.html" />
+    <link rel="next" title="Writing API Documentation" href="write_api_documentation.html" />
+    <link rel="prev" title="Internationalization" href="internationalization.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../development.html" accesskey="U">Development</a>
+     &raquo;
+  <a href="">Image clipping and combining</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="image-clipping-and-combining">
+<span id="pages-image-clipping-and-combining-image-clipping-and-combining"></span><h1>Image clipping and combining<a class="headerlink" href="#image-clipping-and-combining" title="Permalink to this headline">¶</a></h1>
+<p>qooxdoo integrates the support for clipping and combining images in the framework and both features are heavily used within the framework mainly in the different themes like <a class="reference internal" href="../desktop/ui_theming.html"><em>appearance or decoration theme</em></a>.</p>
+<div class="section" id="setup">
+<span id="pages-image-clipping-and-combining-setup"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To be able to use image clipping and combining you need an installed <a class="reference internal" href="../introduction/third_party_components.html"><em>ImageMagick</em></a> package. The latest version known to work is 6.6.1.</p>
+</div>
+<p>To use the two features you have to create a config file which can be used by the generator to clip or combine images. Altough it is possible to integrate the jobs for clipping and combining in your <tt class="docutils literal"><span class="pre">config.json</span></tt> file of your application, <strong>the better way</strong> is to create an own config file for the image manipuations to separate it from the application configuration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is recommended to use the same file name for the config file as in the core framework to better reflect its purpose: <tt class="docutils literal"><span class="pre">image.json</span></tt></p>
+</div>
+<p>At the first look the configuration file for the image jobs is basically the same as a normal application configuration file.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;jobs&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;common&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;let&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;RESPATH&quot;</span> <span class="o">:</span> <span class="s2">&quot;./source/resource/APPLICATION_NAME&quot;</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;cache&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;compile&quot;</span> <span class="o">:</span> <span class="s2">&quot;../../cache&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The described <tt class="docutils literal"><span class="pre">common</span></tt> is used to setup the basic settings which are used by the specific jobs <tt class="docutils literal"><span class="pre">image-clipping</span></tt> and <tt class="docutils literal"><span class="pre">image-combine</span></tt> which are described at the following sections.</p>
+<div class="section" id="image-clipping">
+<span id="pages-image-clipping-and-combining-image-clipping"></span><h3>Image clipping<a class="headerlink" href="#image-clipping" title="Permalink to this headline">¶</a></h3>
+<p>Clipping images is needed whenever you have a base image, e.g. a complete image for your button with rounded borders, to strip them into several parts.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Mainly, the clipping is needed to prepare the source image for the use as a <tt class="docutils literal"><span class="pre">baseImage</span></tt> for the <tt class="docutils literal"><span class="pre">grid</span></tt> decorator. All clipped images of the core framework are used as baseImages for grid decorators.</p>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;image-clipping&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+   <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;common&quot;</span><span class="p">],</span>
+
+   <span class="s2">&quot;slice-images&quot;</span> <span class="o">:</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;images&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;${RESPATH}/image/source/groupBox.png&quot;</span> <span class="o">:</span>
+         <span class="p">{</span>
+            <span class="s2">&quot;prefix&quot;</span> <span class="o">:</span> <span class="s2">&quot;../../clipped/groupBox&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;border-width&quot;</span> <span class="o">:</span> <span class="mi">4</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each entry in the <tt class="docutils literal"><span class="pre">images</span></tt> block represents one source image to clip.</p>
+<blockquote>
+<div><ul class="simple">
+<li>value of the key has to be the path to this image</li>
+<li>the <tt class="docutils literal"><span class="pre">prefix</span></tt> entry will set the filename for all of your splitted images. The resulting images will follow the rule <tt class="docutils literal"><span class="pre">prefix+imagepart</span></tt> where <tt class="docutils literal"><span class="pre">imagepart</span></tt> will be e.g. <tt class="docutils literal"><span class="pre">tl</span></tt> or <tt class="docutils literal"><span class="pre">br</span></tt> (for top-left and bottom-right)</li>
+<li>the entry <tt class="docutils literal"><span class="pre">border-width</span></tt> is to define the part of the image which the rounded border occupies. If you look at your baseImage you can determine the &quot;border-width&quot; by select a rectangle (which your graphic tool) which occupies the rounded border completely</li>
+</ul>
+</div></blockquote>
+<p>For the case <tt class="docutils literal"><span class="pre">border-width</span></tt>: One image says more than thousand words :)</p>
+<p><img alt="groupbox_clipping.png" src="../../_images/groupbox_clipping.png" /></p>
+<p>The selection rectangle has the size of 4 x 4 pixels, thus the <tt class="docutils literal"><span class="pre">border-width</span></tt> value of 4. Differing border width values for each of the four sides are also supported. In that case, the value for border-width must be an array containing the four values in this order: top, right, bottom, left.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more information see the <a class="reference internal" href="../tool/generator_config_ref.html#pages-tool-generator-config-ref-slice-images"><em>slice-image</em></a> section.</p>
+</div>
+</div>
+<div class="section" id="image-combining">
+<span id="pages-image-clipping-and-combining-image-combining"></span><h3>Image combining<a class="headerlink" href="#image-combining" title="Permalink to this headline">¶</a></h3>
+<p>Opposite to image clipping the image combining takes multiple images as source and generates one <tt class="docutils literal"><span class="pre">combined</span></tt> image out of them.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;image-combine&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+   <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;common&quot;</span><span class="p">],</span>
+
+   <span class="s2">&quot;combine-images&quot;</span> <span class="o">:</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;images&quot;</span> <span class="o">:</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;${RESPATH}/image-combined/combined.png&quot;</span><span class="o">:</span>
+         <span class="p">{</span>
+            <span class="s2">&quot;prefix&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;${RESPATH}&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;layout&quot;</span> <span class="o">:</span> <span class="s2">&quot;vertical&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;input&quot;</span>  <span class="o">:</span>
+            <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;${RESPATH}&quot;</span> <span class="p">],</span>
+                <span class="s2">&quot;files&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;${RESPATH}/image/clipped/groupBox*.png&quot;</span> <span class="p">]</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Basically the structure is the same as for the <tt class="docutils literal"><span class="pre">image-clipping</span></tt> jobs. Let's take a look at the details.</p>
+<ul class="simple">
+<li>value of the key has to the path of the combined image to create</li>
+<li><tt class="docutils literal"><span class="pre">files</span></tt> is an array which takes the several images to combine as arguments - the use of wildcards like <tt class="docutils literal"><span class="pre">*</span></tt> or <tt class="docutils literal"><span class="pre">[tb]</span></tt> are allowed</li>
+<li>the <tt class="docutils literal"><span class="pre">layout</span></tt> key takes the two possible values <tt class="docutils literal"><span class="pre">horizontal</span></tt> or <tt class="docutils literal"><span class="pre">vertical</span></tt> and determines the alignment of the source images inside the combined images</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The layout depends on the sizes of the source images. Best suited for combining are always images with the same sizes. For most cases the <tt class="docutils literal"><span class="pre">horizontal</span></tt> layout is the better choice</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more information take a look at the <a class="reference internal" href="../tool/generator_config_ref.html#pages-tool-generator-config-ref-combine-images"><em>combine-images</em></a> section.</p>
+</div>
+</div>
+</div>
+<div class="section" id="run-image-jobs">
+<span id="pages-image-clipping-and-combining-run-image-jobs"></span><h2>Run image jobs<a class="headerlink" href="#run-image-jobs" title="Permalink to this headline">¶</a></h2>
+<p>If you are finished with the definition of your images to clip and/or to combine you can use the <tt class="docutils literal"><span class="pre">generator</span></tt> to actually let them created for you.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="o">-</span><span class="nx">c</span> <span class="nx">image</span><span class="p">.</span><span class="nx">json</span> <span class="nx">image</span><span class="o">-</span><span class="nx">clipping</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="o">-</span><span class="nx">c</span> <span class="nx">image</span><span class="p">.</span><span class="nx">json</span> <span class="nx">image</span><span class="o">-</span><span class="nx">combine</span>
+</pre></div>
+</div>
+<p>If you include the following job in your <tt class="docutils literal"><span class="pre">image.json</span></tt> jobs list</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;images&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+   <span class="s2">&quot;run&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;image-clipping&quot;</span><span class="p">,</span> <span class="s2">&quot;image-combine&quot;</span> <span class="p">]</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>the execution of</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="o">-</span><span class="nx">c</span> <span class="nx">image</span><span class="p">.</span><span class="nx">json</span> <span class="nx">images</span>
+</pre></div>
+</div>
+<p>will run both jobs at once.</p>
+</div>
+<div class="section" id="benefits">
+<span id="pages-image-clipping-and-combining-benefits"></span><h2>Benefits<a class="headerlink" href="#benefits" title="Permalink to this headline">¶</a></h2>
+<p>There are several benefits for setting the image clipping and combining up</p>
+<ul class="simple">
+<li>less HTTP requests meaning better performance when using combined images</li>
+<li>widgets using the <tt class="docutils literal"><span class="pre">grid</span></tt> decorator are easier to use. If you do not use clipping you have to slice the baseImage and name the parts manually</li>
+<li>state changes are faster with combined images as the browser does not have to change the source if the displayed image. Instead he only changes the value of the CSS property <tt class="docutils literal"><span class="pre">background-position</span></tt> to display the desired part of the combined image</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="internationalization.html"
+             title="previous chapter">« Internationalization</a>
+          <span class="separator">|</span>
+          <a class="next" href="write_api_documentation.html"
+             title="next chapter">Writing API Documentation »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Image clipping and combining</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
+<li><a class="reference internal" href="#image-clipping">Image clipping</a></li>
+<li><a class="reference internal" href="#image-combining">Image combining</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#run-image-jobs">Run image jobs</a></li>
+<li><a class="reference internal" href="#benefits">Benefits</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="write_api_documentation.html"
+                        title="next chapter">Writing API Documentation</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="internationalization.html"
+                        title="previous chapter">Internationalization</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/development/image_clipping_and_combining.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

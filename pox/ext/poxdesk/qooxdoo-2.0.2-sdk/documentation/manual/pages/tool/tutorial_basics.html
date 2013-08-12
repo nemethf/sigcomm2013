@@ -1,0 +1,580 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial: Basic Tool Chain Usage &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Tooling" href="../tool.html" />
+    <link rel="next" title="Source Code Validation" href="source_code_validation.html" />
+    <link rel="prev" title="Generator Configuration Background Information" href="generator_config_background.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../tool.html" accesskey="U">Tooling</a>
+     &raquo;
+  <a href="">Tutorial: Basic Tool Chain Usage</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="tutorial-basic-tool-chain-usage">
+<h1>Tutorial: Basic Tool Chain Usage<a class="headerlink" href="#tutorial-basic-tool-chain-usage" title="Permalink to this headline">¶</a></h1>
+<p>In various introductions and tutorials you were using the qooxdoo tool chain
+casually along the way. Now it's about time to take a more systematical
+look. The main interface to invoke the tool chain is the <em>generate.py</em>
+script that is part of every skeleton, often colloquially referred to as
+&quot;the generator&quot;. In each qooxdoo library or application, it sits next to
+the library's <em>Manifest.json</em> and the default configuration file,
+<em>config.json</em>. The <em>Manifest.json</em> file is the main declaration file for
+any qooxdoo app, it's constitutional document if you will. <em>config.json</em>
+is the configuration file that steers the generator and its actions.
+When invoked, the generator looks for a file of this name in the current
+directory for default instructions, but you can supply an alternative
+configuration file with a command line option. Invoking</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="o">-</span><span class="nx">h</span> <span class="o">|--</span><span class="nx">help</span>
+</pre></div>
+</div>
+<p>gives you a complete list of those options.</p>
+<p><img alt="image0" src="../../_images/generate_h12.png" /></p>
+<p>In the simplest case the generator takes the name of a <em>job</em> to perform
+as its sole argument. Supplying a non-existing job name will result in
+the generator providing a list of known jobs which it can perform. You
+can try this by using a made-up job name like &quot;<em>x</em>&quot;:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">x</span>
+</pre></div>
+</div>
+<p>The ensuing list can be daunting at first, but we will pick out the most
+important jobs here.</p>
+<p><img alt="image1" src="../../_images/generate_x1.png" /></p>
+<div class="section" id="generating-a-runnable-app">
+<h2>Generating a Runnable App<a class="headerlink" href="#generating-a-runnable-app" title="Permalink to this headline">¶</a></h2>
+<p>The most important job of the generator is to create a version of your
+application that you can run in the browser. This is surprising for many
+people at first. Why do I need to &quot;generate&quot; a working application, when
+I have written my JavaScript and have an index.html handy? Why not just
+load the app right away? The answer is that qooxdoo is not a
+prefabricated JS library that you just <em>&lt;script&gt;</em>-include in your HTML
+page. For each application exactly those classes are selected that are
+necessary to run it. This avoids any overhead of carrying unnecessary
+code with your app. To achieve this, an individual piece of JavaScript
+code is generated, the so-called <em>loader</em>. For any qooxdoo application,
+this loader is the first file to be loaded and evaluated in the browser,
+and it makes sure all necessary component of the application get loaded
+after it as well. Besides many other benefits that can be achieved, this
+is the central reason to have a generation step before a qooxdoo app can
+be run.</p>
+</div>
+<div class="section" id="use-the-source-luke">
+<h2>Use the Source, Luke<a class="headerlink" href="#use-the-source-luke" title="Permalink to this headline">¶</a></h2>
+<p>The tool chain is able to generate your application in various flavors.
+This is reflected by the available generation jobs, &quot;source&quot;, &quot;hybrid&quot;, &quot;source-all&quot; and &quot;build&quot;. The most important for starting and
+building up your app, are the source jobs. Running</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span>
+</pre></div>
+</div>
+<p>will generate the so-called &quot;source version&quot; of your application in the default variant.</p>
+<p>In general, the source version of an app is tailored towards development activities. It
+makes it easy to write code, run the application, test, debug and
+inspect the application code, fix issues, add enhancements, and repeat.</p>
+<p>In the <a class="reference internal" href="generator_default_jobs.html#pages-tool-generator-default-jobs-source"><em>source</em></a> job, all the classes of the app are in their original source form, and loaded from their original file paths on the file system.
+If you inspect your application in a JavaScript debugger like Firebug or
+Chrome Developer Tools, you can identify each of your custom files individually, read
+its code and comments, set breakpoints, inspect variables and so forth.
+This job is particular interesting when you want to debug classes outside your custom application, e.g. if you are debugging another library along the way.</p>
+<p>You only have to re-run this generator job when you introduce new
+dependencies, e.g. by instantiating a class you haven't used before.
+This changes the set of necessary classes for your application, and the
+generator has to re-create the corresponding loader.</p>
+<p>In the <a class="reference internal" href="generator_default_jobs.html#pages-tool-generator-default-jobs-source-hybrid"><em>source-hybrid</em></a> version, the generator will concatenate class files into a bunch of script files, except for your application classes, which are loaded directly from their original path on the file system. This allows for a reasonable loading speed of your application in the browser, while still providing convenient debug access to your own class files.</p>
+<p>With <a class="reference internal" href="generator_default_jobs.html#pages-tool-generator-default-jobs-source-all"><em>source-all</em></a> all existing classes will be included, be they
+part of your application, the qooxdoo framework, or any other qooxdoo
+library or contribution you might be using. All those classes are
+included in the build, whether they are currently required or not. This
+allows you develop your code even more freely as you don't have to
+re-generate the application when introducing new dependencies. All
+classes are already there, after all. The down-side is that due to the
+number of classes your app loads slower in the browser, so it's a
+trade-off between development speed and loading speed.</p>
+<p>So if you are just getting
+started with qooxdoo development, use the <em>source-all</em> version, which is
+the most convenient if you are not too impatient. If you are concerned
+about loading speed during development, but don't mind hitting the up
+and return keys in your shell window once in a while, go with the
+default <em>source-hybrid</em> job. If your emphasis on the other hand is on
+inspection, and you want to see exactly which class files get loaded
+into your app and which code they provide, the <em>source</em> version
+might be your preference.</p>
+</div>
+<div class="section" id="a-deployment-build">
+<h2>A Deployment Build<a class="headerlink" href="#a-deployment-build" title="Permalink to this headline">¶</a></h2>
+<p>On the other end of the spectrum there is the <tt class="docutils literal"><span class="pre">build</span></tt> version of you
+app. The &quot;build&quot; version is what you want to create at the end of a
+development cycle, when your app is stable and you want to deploy it
+into production. Running</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">generate</span><span class="p">.</span><span class="nx">py</span> <span class="nx">build</span>
+</pre></div>
+</div>
+<p>will create a highly optimized version of your app. All necessary code
+is stripped, squeezed and compressed, and put into as few JS files as
+possible. Everything is geared towards small size, fast transport, fast
+loading and minimal memory footprint. Along with the code, all other
+required resources, such as icons and images, are collected together
+under a common root directory, usually named <tt class="docutils literal"><span class="pre">build</span></tt>. The good thing
+here is that this makes the contents of this directory self-contained so
+you can copy it to the document tree of a web server, zip it up and send
+it by mail, and so forth. All necessary content will come along, and the
+app will just run when the contained <em>index.hmtl</em> is loaded. For an
+example let's suppose you have an application <tt class="docutils literal"><span class="pre">myapp</span></tt> and a web server
+instance running on a machine called <tt class="docutils literal"><span class="pre">fooserv</span></tt>. Then, given suitable
+network connection and setup, the following command will copy your build
+version to the web server:</p>
+<div class="highlight-javascript"><pre>scp -r build bar@fooserv:~/public_html/myapp</pre>
+</div>
+<p>and you can load it in the browser with</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">http</span><span class="o">:</span><span class="c1">//fooserv/~bar/myapp/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="non-app-generating-jobs">
+<h2>Non-App-Generating Jobs<a class="headerlink" href="#non-app-generating-jobs" title="Permalink to this headline">¶</a></h2>
+<p>So now you know about the basic jobs to create a runnable application
+using the generator. There is a whole bunch of jobs that is not
+concerned with creating a runnable version of your app, but do other
+things. One of those is addressed in the <a class="reference internal" href="../desktop/tutorials/tutorial-part-4-3.html"><em>Twitter tutorial</em></a> which is
+concerned with internationalization of an application. The generator job
+in this context is <tt class="docutils literal"><span class="pre">translation</span></tt>, and extracts translatable strings
+from your JavaScript source files into <em>.po</em> files. Here is a quick
+topical overview of those kinds of jobs:</p>
+<p>Internationalization:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">translation</span></tt> -- extract translatable strings into .po files</li>
+</ul>
+<p>Source Code:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">lint</span></tt> -- check source code for potential issues</li>
+<li><tt class="docutils literal"><span class="pre">fix</span></tt> -- fix white space in source code</li>
+<li><tt class="docutils literal"><span class="pre">pretty</span></tt> -- re-format source code</li>
+</ul>
+<p>Development:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">api</span></tt> -- create an application-specific instance of the Apiviewer</li>
+<li><tt class="docutils literal"><span class="pre">test</span></tt> -- create an application-specific instance of the Testrunner</li>
+<li><tt class="docutils literal"><span class="pre">inspector</span></tt> -- create an application-specific instance of the
+Inspector</li>
+<li><tt class="docutils literal"><span class="pre">simulation-build</span></tt> -- create a GUI testing application (to be used
+with Selenium)</li>
+</ul>
+<p>Files:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">clean</span></tt> -- clean up generated files for this app</li>
+<li><tt class="docutils literal"><span class="pre">distclean</span></tt> -- clean up generated files for this app, and delete
+the generator cache</li>
+</ul>
+<p>As mentioned before, for a full list of available jobs with short
+descriptions run <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">x</span></tt>, or see the
+the list of <a class="reference external" href="generator_default_jobs">default jobs</a>.</p>
+</div>
+<div class="section" id="tweaking-jobs">
+<h2>Tweaking Jobs<a class="headerlink" href="#tweaking-jobs" title="Permalink to this headline">¶</a></h2>
+<p>For most people the jobs that come with qooxdoo are good enough to get
+all necessary work done. But not for all. Sometimes you want the output
+file be named differently; or the index.html that loads your qooxdoo app
+lives in some other part of your web space; or you want to get rid of a
+specific optimization in your build version. Fortunately, the tool chain
+of qooxdoo is very flexible and highly configurable. There is a set of
+built-in functionality that can be drawn upon by job definitions, and
+jobs can be freely defined or altered. The system is in fact so
+configurable that we have thought of means of limiting its flexibility,
+for the sake of an easier user interface. If you feel you want to change
+the way in which the generator works, try the following three levels
+which go from simple (but less powerful) to advanced (but more
+challenging):</p>
+<ol class="arabic simple">
+<li><strong>Macros</strong> The first and simplest level to tweak the generator are
+configuration macros. These are simple strings that can have a value,
+and that are used in job definitions where they are eventually
+replaced by their value.</li>
+<li><strong>Overriding Existing Jobs</strong> The next level would be to take an
+existing job (one that comes predefined with qooxdoo), and change
+some of its settings so it better suits your needs. This is achieved
+by overriding or &quot;shadowing&quot; an existing job in your own config.json.</li>
+<li><strong>Custom Jobs</strong> You can of course define entirely new jobs from
+scratch. This is the most challenging approach, and requires you to
+understand a bit about how the generator works internally, and what
+settings you have to specify in your job definition to make
+everything work out.</li>
+</ol>
+<p>We will look at each of these levels in turn.</p>
+</div>
+<div class="section" id="macros">
+<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<p>Macros are simple named placeholders that are used in generator
+configuration files. They make it easy to define values that are used in
+multiple jobs in a single place (e.g. the application name), or expose a
+value in a specific job so this value can be customized (e.g. a list of
+packages to ignore when building an application-specific Apiviewer). One
+way to change a macro is to edit the <em>config.json</em> file of your
+application. Start your favourite text editor and load the configuration
+file.</p>
+<p><img alt="image2" src="../../_images/generate_config2.png" /></p>
+<p>Let's suppose you want to add support for additional locales to your
+application. Then locate the <tt class="docutils literal"><span class="pre">&quot;let&quot;</span></tt> entry in the configuration map.
+The let key lets you define macros. Locate the macro named <em>&quot;LOCALES&quot;</em>,
+and add two more locales so the value looks something like this: <em>[
+&quot;en&quot;, &quot;fr&quot;, &quot;de&quot; ]</em>. With the next run of generate.py translation files
+<em>fr.po</em> and <em>de.po</em> will be added to your <em>source/translation</em> directory.</p>
+<p>There is also the possibility to pass a macro definition on the command
+line when you invoke the generator:</p>
+<div class="highlight-javascript"><pre>generate.py source --macro  CACHE:/tmp/cache</pre>
+</div>
+<p>This tells the generator to use the path <em>/tmp/cache</em> for its caching.
+Passing macros in this manner allows you to change a macro on a
+per-invocation basis. The command-line value will take precedence over a
+potential existing definition in config.json.</p>
+</div>
+<div class="section" id="overriding-existing-jobs">
+<h2>Overriding Existing Jobs<a class="headerlink" href="#overriding-existing-jobs" title="Permalink to this headline">¶</a></h2>
+<p>The second approach that goes beyond just modifying a macro is to
+override an existing job. The default <em>config.json</em> comes with a
+commented-out sample for this. Let's suppose you want to get rid of the
+extra newlines that are sprinkled throughout the build version of your
+app. In the <em>&quot;jobs&quot;</em> section of the config you find a job entry named
+<em>&quot;build-script&quot;</em>. It has a sub-key <em>compile-options/code/format</em> (the &quot;/&quot;
+indicates nesting in the Json maps) which is
+set to false (the default is true). Just uncomment this job and run
+generate.py build again, and you'll find all newlines gone from the
+generated code. This illustrates the general principle:</p>
+<ol class="arabic simple">
+<li><strong>Identify the job you are not contempt with.</strong> This might require
+that you look at the generator output, or consult the basic
+configuration file, <em>tool/data/config/base.json</em>, as some jobs which
+you can invoke with the generator are broken down in sub-jobs.</li>
+<li><strong>Add an entry of the same name in your config.json.</strong> The generator,
+once you run it the next time, will indicate this by issuing a hint
+in the console output that the respective job has been shadowed.</li>
+<li><strong>Add those keys to the job entry that you want to change, with
+suitable values.</strong> Use the default job's definition to find out which
+config key you need to tweak. To achieve this you can look at the
+job's definition, e.g. in <tt class="docutils literal"><span class="pre">base.json</span></tt>, or run the generator with
+the <tt class="docutils literal"><span class="pre">-w</span></tt> command line flag; this will print the full job definition
+before the job is run.</li>
+</ol>
+<p>As mentioned above, on the next time you run the generator it will
+indicate that you have successfully overridden a predefined job. The
+message will be something like this:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">- Warning: ! Shadowing job &quot;build-script&quot; with local one</span>
+</pre></div>
+</div>
+<p>(This is also helpful to prevent you from accidentially overriding an
+existing job with a custom job that is supposed to be new).</p>
+</div>
+<div class="section" id="custom-jobs">
+<h2>Custom Jobs<a class="headerlink" href="#custom-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Custom jobs are jobs that you freely define in your config.json. You add
+them to the &quot;jobs&quot; section just as in the previous step, but making sure
+you are <strong>not</strong> using an existing name for them (check the generator
+console output when you run the job to make sure). The challenge with a
+custom job is that you have to build it up from scratch, and it might
+take you through some trial-and-error until you come up with a job
+definition that is fully functional. To help you with that, many basic
+configuration entries that almost any job would need are available in
+dedicated job definitions of their own (like <tt class="docutils literal"><span class="pre">&quot;cache&quot;</span></tt> or
+<tt class="docutils literal"><span class="pre">&quot;libraries&quot;</span></tt>), and we recommend using them. (This gives you another
+hint at the configuration system of the tool chain: Jobs need not do
+anything useful; they can also just be containers for configuration
+snippets that can be included in other jobs to make their definition
+more modular or compliant). Here is a simple custom job that just copies
+two files to the build path of the application:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;myjob&quot;</span> <span class="o">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;cache&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;copy-files&quot;</span> <span class="o">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;files&quot;</span>  <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;foo1.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;foo2.txt&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;source&quot;</span> <span class="o">:</span> <span class="s2">&quot;/home/myhome/tmp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target&quot;</span> <span class="o">:</span> <span class="s2">&quot;./build&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Don't forget to add the entry <em>&quot;myjob&quot;</em> in your config's <tt class="docutils literal"><span class="pre">&quot;export&quot;</span></tt> list,
+so it is available on the command line.</p>
+</div>
+<div class="section" id="further-resources">
+<h2>Further Resources<a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>If you want to embark on the effort of creating custom jobs you're well-advised to make yourself familiar with the <a class="reference internal" href="generator_config.html"><em>general generator configuration overview</em></a>, and</li>
+<li>the <a class="reference internal" href="generator_config_ref.html"><em>reference of configuration keys</em></a> that can be used.</li>
+<li>Also, there is an example configuration file in <em>tool/data/config/example.json</em> to look at.</li>
+<li>The basic configuration file, <em>tool/data/config/base.json</em>,</li>
+<li>and the configuration files for the Testrunner (<em>component/testrunner/testrunner.json</em>)</li>
+<li>and Apiviewer (<em>component/apiviewer/api.json</em>) also provide good examples to learn from.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="generator_config_background.html"
+             title="previous chapter">« Generator Configuration Background Information</a>
+          <span class="separator">|</span>
+          <a class="next" href="source_code_validation.html"
+             title="next chapter">Source Code Validation »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Tutorial: Basic Tool Chain Usage</a><ul>
+<li><a class="reference internal" href="#generating-a-runnable-app">Generating a Runnable App</a></li>
+<li><a class="reference internal" href="#use-the-source-luke">Use the Source, Luke</a></li>
+<li><a class="reference internal" href="#a-deployment-build">A Deployment Build</a></li>
+<li><a class="reference internal" href="#non-app-generating-jobs">Non-App-Generating Jobs</a></li>
+<li><a class="reference internal" href="#tweaking-jobs">Tweaking Jobs</a></li>
+<li><a class="reference internal" href="#macros">Macros</a></li>
+<li><a class="reference internal" href="#overriding-existing-jobs">Overriding Existing Jobs</a></li>
+<li><a class="reference internal" href="#custom-jobs">Custom Jobs</a></li>
+<li><a class="reference internal" href="#further-resources">Further Resources</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="source_code_validation.html"
+                        title="next chapter">Source Code Validation</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="generator_config_background.html"
+                        title="previous chapter">Generator Configuration Background Information</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/tutorial_basics.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

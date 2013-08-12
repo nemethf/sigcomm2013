@@ -1,0 +1,398 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Single Value Binding &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Data Binding" href="../data_binding.html" />
+    <link rel="next" title="Controller" href="controller.html" />
+    <link rel="prev" title="Data Binding Introduction" href="data_binding.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../core.html" >Core</a>
+     &raquo;
+    <a href="../data_binding.html" accesskey="U">Data Binding</a>
+     &raquo;
+  <a href="">Single Value Binding</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="single-value-binding">
+<span id="pages-data-binding-single-value-binding-single-value-binding"></span><h1>Single Value Binding<a class="headerlink" href="#single-value-binding" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of single value binding is to connect one property to another by tying them together. The connection is always in one direction only. If the reverse direction is needed, another binding needs to be created. The binding will be achieved by an event handler which assigns the data given by the event to the target property. Therefore it is necessary for the source event to fire a change event or some other kind of data event.
+The single value binding is mostly a basis for the higher concepts of the data binding.</p>
+<div class="section" id="binding-a-single-property-to-another-property">
+<span id="pages-data-binding-single-value-binding-binding-a-single-property-to-another-property"></span><h2>Binding a single property to another property<a class="headerlink" href="#binding-a-single-property-to-another-property" title="Permalink to this headline">¶</a></h2>
+<p>The simplest form of single value binding is to bind one property to another. Technically the source property needs to fire a change event. Without that no binding is possible. But if this requirement is met, the binding itself is quite simple. You can see this in the following code snippet, which binds two properties of the label value together:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">label1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">label2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">();</span>
+
+<span class="nx">label1</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="nx">label2</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">label1</span></tt> is the source object to bind, with the following three arguments to that call:</p>
+<ol class="arabic simple">
+<li>The name of the property which should be the source of the binding.</li>
+<li>The target object which has the target property.</li>
+<li>The name of the property as the endpoint of the binding.</li>
+</ol>
+<p>With that code every change of the value property of <tt class="docutils literal"><span class="pre">label1</span></tt> will automatically synchronize the value property of <tt class="docutils literal"><span class="pre">label2</span></tt>.</p>
+</div>
+<div class="section" id="binding-a-data-event-to-property">
+<span id="pages-data-binding-single-value-binding-binding-a-data-event-to-property"></span><h2>Binding a data event to property<a class="headerlink" href="#binding-a-data-event-to-property" title="Permalink to this headline">¶</a></h2>
+<p>In some cases in the framework, there is only a change event and no property. For that case, you can bind a data event to a property. One common case is the <tt class="docutils literal"><span class="pre">TextField</span></tt> widget, which does not have a property containing the value of the <tt class="docutils literal"><span class="pre">TextField</span></tt>. It only has getter / setter and a change event for that, so it has the stuff needed for the binding but its not implemented as a property. Therefor you can use the <tt class="docutils literal"><span class="pre">changeValue</span></tt> event and bind that to a target property as you can see in the example snippet.
+The API is almost the same as in the property binding case.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">textField</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">TextField</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basic</span><span class="p">.</span><span class="nx">Label</span><span class="p">();</span>
+
+<span class="nx">textField</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;changeValue&quot;</span><span class="p">,</span> <span class="nx">label</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As you can see, the same method has been used. The difference is, that the first argument is a data event name and not a property name.</p>
+</div>
+<div class="section" id="bind-a-property-chain-to-another-property">
+<span id="pages-data-binding-single-value-binding-bind-a-property-chain-to-another-property"></span><h2>Bind a property chain to another property<a class="headerlink" href="#bind-a-property-chain-to-another-property" title="Permalink to this headline">¶</a></h2>
+<p>A more advanced feature of the single value binding is to bind a hierarchy of properties to a target property. To understand what that means take a look at the following code. For using that code a qooxdoo class is needed which is named <tt class="docutils literal"><span class="pre">Node</span></tt> and does have a <tt class="docutils literal"><span class="pre">child</span></tt> and a <tt class="docutils literal"><span class="pre">name</span></tt> property, both firing change events.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// create the object hierarchy</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>      <span class="c1">// set the name to „a“</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">);</span>      <span class="c1">// set the name to „b“</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">setChild</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+
+<span class="c1">// bind the property to a labels value</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;child.name&quot;</span><span class="p">,</span> <span class="nx">label</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now every change of the <tt class="docutils literal"><span class="pre">name</span></tt> of <tt class="docutils literal"><span class="pre">b</span></tt> will change the labels value. But also a change of the <tt class="docutils literal"><span class="pre">child</span></tt> property of <tt class="docutils literal"><span class="pre">a</span></tt> to another Node with another name will change the value of the label to the new name.
+With that mechanism a even deeper binding in a hierarchy is possible. Just separate every property with a dot. But always keep in mind that every property needs to fire a change event to work with the property binding.</p>
+</div>
+<div class="section" id="bind-an-array-to-a-property">
+<span id="pages-data-binding-single-value-binding-bind-an-array-to-a-property"></span><h2>Bind an array to a property<a class="headerlink" href="#bind-an-array-to-a-property" title="Permalink to this headline">¶</a></h2>
+<p>The next step in binding would be the ability to bind a value of an array. That's possible but the array needs to be a special data array because the binding component needs to know when the array changes one of its values. Such an array is the <tt class="docutils literal"><span class="pre">qx.data.Array</span></tt> class. It wraps the native array and adds the change event to every change in the array. The following code example shows what a binding of an array could look like. As a precondition there is an object <tt class="docutils literal"><span class="pre">a</span></tt> having a property of the <tt class="docutils literal"><span class="pre">qx.data.Array</span></tt> type and that array containing strings.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// bind the first array element to a label&#39;s value</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;array[0]&quot;</span><span class="p">,</span> <span class="nx">labelFirst</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+
+<span class="c1">// bind the last array element to a label&#39;s value</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;array[last]&quot;</span><span class="p">,</span> <span class="nx">labelFirst</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can use any numeric value in the brackets or the string value <tt class="docutils literal"><span class="pre">last</span></tt> which maps to <tt class="docutils literal"><span class="pre">length</span> <span class="pre">-</span> <span class="pre">1</span></tt>. That way you can easily map the top of a stack to something else.
+For binding of an array the same method will be used as for the binding of chains. So there is also the possibility to combine these two things and use arrays in such property chains.</p>
+</div>
+<div class="section" id="options-conversion-and-validation">
+<span id="pages-data-binding-single-value-binding-options-conversion-and-validation"></span><h2>Options: Conversion and Validation<a class="headerlink" href="#options-conversion-and-validation" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The method for binding introduced so far has the same set of arguments. The first three arguments are mostly the same. There is a forth argument called options. This should be a map containing the options itself. In that you can specify three things currently:</dt>
+<dd><ul class="first last simple">
+<li><strong>converter</strong>: A own converter which is a function with four arguments returning the converted value. (See the API for more details)</li>
+<li><strong>onUpdate</strong>: A key in the options map under which you can add a method. This method will be called on a validation case if the validation was successful.</li>
+<li><strong>onSetFail</strong>: The counterpart to onUpdate which will be called if the validation fails.</li>
+</ul>
+</dd>
+</dl>
+<p>In addition there is a built in default conversion which takes care of the default conversion cases automatically. Default cases are, for example, string to number conversion. To get that working it is necessary to know the desired target type. This information is taken from the check key in the property definition of the target property.</p>
+</div>
+<div class="section" id="managing-bindings">
+<span id="pages-data-binding-single-value-binding-managing-bindings"></span><h2>Managing bindings<a class="headerlink" href="#managing-bindings" title="Permalink to this headline">¶</a></h2>
+<p>If you want to manage the bindings, there are some ways to get that. First aspect of managing is showing the existing bindings. You can find all these function on the static <tt class="docutils literal"><span class="pre">qx.data.SingleValueBinding</span></tt> class or parts of it on every object.</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>getAllBindingsForObject</strong> is a function which is in the data binding class and returns all bindings for the given object. The object needs to be the source object.</li>
+<li><strong>getAllBindings</strong> returns all bindings in a special map for all objects.</li>
+</ul>
+</div></blockquote>
+<p>Another way of managing is removing. There are three ways to remove bindings.</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>removeBindingFromObject</strong> removes the given binding from the given source object. As an id you should use exactly the id returned during the creation of the binding.</li>
+<li><strong>removeAllBindingsForObject</strong> removes all binding from the source object. After that, the object is not synchronized anymore.</li>
+<li><strong>removeAllBindings</strong> removes all single value bindings in the whole application. Be careful to use that function. Perhaps other parts of the application use the bindings and also that will be removed!</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="debugging">
+<span id="pages-data-binding-single-value-binding-debugging"></span><h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>Working with bindings is in most cases some magic and it just works. But the worse part of that magic is, if it does not work. For that the data binding component offers two methods for debugging on the static <tt class="docutils literal"><span class="pre">qx.data.SingleValueBinding</span></tt> class.</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>showBindingInLog</strong> shows the given binding in the qooxdoo logger as a string. The result could look something like this: <em>Binding from 'qx.ui.form.TextField[1t]' (name) to the object 'qx.ui.form.TextField[1y]' (name).</em> That shows the source object and property and the target object and property.</li>
+<li><strong>showAllBindingsInLog</strong> shows all bindings in the way the first method shows the bindings.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="tech-notes">
+<span id="pages-data-binding-single-value-binding-tech-notes"></span><h2>Tech notes<a class="headerlink" href="#tech-notes" title="Permalink to this headline">¶</a></h2>
+<p>For everyone who is interested on how that whole thing works, here are some small notes on the inside of the data binding.
+Every binding function maps to the event binding function. This is where the heart of the data binding lies. In that function a listener will be added to the source object listening to the change event. The key part of the listener is the following code part.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">targetObject</span><span class="p">[</span><span class="s2">&quot;set&quot;</span> <span class="o">+</span> <span class="nx">qx</span><span class="p">.</span><span class="nx">lang</span><span class="p">.</span><span class="nb">String</span><span class="p">.</span><span class="nx">firstUp</span><span class="p">(</span><span class="nx">targetProperty</span><span class="p">)](</span><span class="nx">data</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In that line the listener sets the data given by the data event to the target property.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="data_binding.html"
+             title="previous chapter">« Data Binding Introduction</a>
+          <span class="separator">|</span>
+          <a class="next" href="controller.html"
+             title="next chapter">Controller »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Single Value Binding</a><ul>
+<li><a class="reference internal" href="#binding-a-single-property-to-another-property">Binding a single property to another property</a></li>
+<li><a class="reference internal" href="#binding-a-data-event-to-property">Binding a data event to property</a></li>
+<li><a class="reference internal" href="#bind-a-property-chain-to-another-property">Bind a property chain to another property</a></li>
+<li><a class="reference internal" href="#bind-an-array-to-a-property">Bind an array to a property</a></li>
+<li><a class="reference internal" href="#options-conversion-and-validation">Options: Conversion and Validation</a></li>
+<li><a class="reference internal" href="#managing-bindings">Managing bindings</a></li>
+<li><a class="reference internal" href="#debugging">Debugging</a></li>
+<li><a class="reference internal" href="#tech-notes">Tech notes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="controller.html"
+                        title="next chapter">Controller</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="data_binding.html"
+                        title="previous chapter">Data Binding Introduction</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/data_binding/single_value_binding.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

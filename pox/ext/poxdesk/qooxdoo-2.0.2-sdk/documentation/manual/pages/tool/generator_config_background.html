@@ -1,0 +1,511 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Generator Configuration Background Information &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Tooling" href="../tool.html" />
+    <link rel="next" title="Tutorial: Basic Tool Chain Usage" href="tutorial_basics.html" />
+    <link rel="prev" title="Generator Configuration Articles" href="generator_config_articles.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../tool.html" accesskey="U">Tooling</a>
+     &raquo;
+  <a href="">Generator Configuration Background Information</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="generator-configuration-background-information">
+<span id="pages-generator-config-background-generator-configuration-background-information"></span><h1>Generator Configuration Background Information<a class="headerlink" href="#generator-configuration-background-information" title="Permalink to this headline">¶</a></h1>
+<p>This page gives some background information about how the configuration system is deployed in the SDK. It is interesting if you want to understand some of the inner workings and how things play together. <em>It is not necessary to know these details if you just want to use the configuration system.</em></p>
+<div class="section" id="cascading-configurations">
+<span id="pages-generator-config-background-cascading-configurations"></span><h2>Cascading Configurations<a class="headerlink" href="#cascading-configurations" title="Permalink to this headline">¶</a></h2>
+<p>The configuration system of qooxdoo is fairly generic and versatile, and it allows you to write stand-alone configuration files from scratch, with just the configuration documentation at hand. But since a lot of configuration options are boilerplate, have to be re-used in various parts of a config, and are applicable to a broad range of applications and libraries, a significant effort has been put into making configuration settings re-usable, and shipping common configuration settings with the SDK. The two major tools in this regard are including one config file from another (through the top-level <em>include</em> key), and re-using jobs (through <em>run</em> and <em>extend</em> keys).</p>
+<p>If you create a new application with <em>create-application.py</em> you'll find a pre-configured <em>config.json</em> in the application directory that is ready to run. When you look into it, you'll find that it provides - besides a handful of macro definitions - only an <em>include</em> key to the SDK's central application configuration file, <em>application.json</em>.</p>
+<div class="section" id="application-json-and-base-json">
+<span id="pages-generator-config-background-application-json-and-base-json"></span><h3>application.json and base.json<a class="headerlink" href="#application-json-and-base-json" title="Permalink to this headline">¶</a></h3>
+<p>The configuration infrastructure of qooxdoo 2.0.2 is based on two main configuration files, both in the <em>tool/data/config</em> folder, <em>application.json</em> and <em>base.json</em>.</p>
+<p><em>base.json</em> defines all the basic jobs that a normal application would want to deploy. Most significant are the <em>source</em> and <em>build</em> jobs that create the source and build version of an application, respectively. Other jobs contained here are concerned with cleaning up (<em>clean</em> and <em>distclean</em>), creating translation files (<em>translate</em>) or formatting the Javascript code (<em>pretty</em>). It is also basic in the sense that it doesn't rely on any other config file.</p>
+<p>But there is a distinct class of jobs missing from <em>base.json</em>, those that create helper applications for the current project and rely on additional libraries. Currently, this class is represented by the <em>api</em> and <em>test</em> jobs.</p>
+<p>This is where <em>application.json</em> comes into play. <em>application.json</em> creates a superset of the jobs from <em>base.json</em> by including it, so all of its jobs are available also through <em>application.json</em>. The added value of <em>application.json</em> is that it also integrates the core configuration files of the <em>Apiviewer</em> and the <em>Testrunner</em>. These applications export jobs that can be run in the context of other applications, in order to build customized Apiviewer and Testrunner applications, within the respective project.</p>
+<p>In order to achieve this, <em>application.json</em> tailors those component jobs to e.g. include the classes from the deploying application. All applications including <em>application.json</em> in their config get access to all of these jobs.</p>
+<p>Why splitting all those jobs into two configuration files? The answer is to disentangle the base jobs from the component jobs. This way the components that provide jobs to <em>application.json</em>, and are therefore included with it, can still use <em>base.json</em> for their own configuration, without worrying too much about cyclic inclusions. That's it.</p>
+<p>Naturally, all these standard jobs are tailored with some sensible defaults. These defaults should be fine for all but a few custom applications. But of course the configuration system has to provide ways to deviate from the standard settings, and without too much repetition. (These different needs of applications are even mirrored in the SDK itself, where some applications are contempt with the default settings like the <em>Feedreader</em>, while others need more specific settings, as is the case e.g. with the <em>Demobrowser</em>. See their configuration files for more details).</p>
+</div>
+</div>
+<div class="section" id="the-use-of-macros">
+<span id="pages-generator-config-background-the-use-of-macros"></span><h2>The Use of Macros<a class="headerlink" href="#the-use-of-macros" title="Permalink to this headline">¶</a></h2>
+<p>Within the configuration system, macros (defined with <em>let</em> keys) serve a  couple of purposes:</p>
+<ul class="simple">
+<li>to keep the use of a specific value consistent within a configuration file (this is how macros are used in many languages)</li>
+<li>to customize settings of imported jobs so they can be controlled by the importing configuration</li>
+<li>to pass parameters into jobs</li>
+</ul>
+<p>The last usage is probably the most delicate. Jobs provided by external components or libraries to the deploying application need to learn certain facts about this application, in order to do their job well. As a consequence some components require dedicated macros to be set by the application, e.g the <em>API_INCLUDE</em> and <em>API_EXCLUDE</em> macros that are required for the <em>api</em> job. This is a way of parameterizing jobs. Unfortunately, since every job winds up with a flat set of macros that are available to it (you can think of it as a job having a &quot;global name space&quot; for macros), macros have to be globally unique within the set of configuration files that is used for the particular application.</p>
+</div>
+<div class="section" id="application-startup">
+<span id="pages-generator-config-background-application-startup"></span><h2>Application Startup<a class="headerlink" href="#application-startup" title="Permalink to this headline">¶</a></h2>
+<p>While this is not particularly a generator config topic, it has some implications on configuration issues just as well.</p>
+<p>An &quot;application&quot; as seen from the qooxdoo point of view is just a set of classes that are run on top of what could be called the qooxdoo runtime system. (In that respect qooxdoo is similar to other object-hosting frameworks, e.g. the <a class="reference external" href="http://en.wikipedia.org/wiki/Perl_Object_Environment">Perl Object Environment (POE)</a> with the main difference being that POE can host multiple applications and switch between them).</p>
+<p>When the application is loaded, qooxdoo first establishes and starts a runtime environment. This comprises of things as divers as defining a handful of global variables and data structures, to setting up its object system, to creating instances of system classes e.g. for logging or event handling.</p>
+<p>Once this is established, the qooxdoo runtime starts the <em>main()</em> method of the main application class (made known to it through the <em>qx.application</em> setting). From there, the application classes  take over and create the application, through instantiating further classes (like IO classes or GUI widgets), setting properties and invoking methods on them.</p>
+</div>
+<div class="section" id="config-processing">
+<span id="pages-generator-config-background-config-processing"></span><h2>Config Processing<a class="headerlink" href="#config-processing" title="Permalink to this headline">¶</a></h2>
+<p>This is an account of the principles that rule the processing of config files.</p>
+<div class="section" id="when-the-config-file-is-read">
+<span id="pages-generator-config-background-when-the-config-file-is-read"></span><h3>When the Config File is Read<a class="headerlink" href="#when-the-config-file-is-read" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The Json data structure is parsed into an internal data structure; this is standard Json processing.</li>
+<li>If the config file contains a global <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-let"><em>let</em></a> section these macros are expanded among themselves (for macros referencing other macros) temporarily. This intermediate <em>let</em> map is then used for other top-level keys, to expand potential macros and finalize their values. E.g. a global <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-include-top-level"><em>include</em></a> key might use macros to encode paths to other config files. Then these macros are resolved with the local knowledge to derive real paths. The <a class="reference internal" href="generator_config_ref.html#pages-tool-generator-config-ref-jobs"><em>jobs</em></a> key and the <em>let</em> key itself are explicitly not expanded, to allow for later (re-) evaluation in another config file.</li>
+<li>If there is a global <em>include</em> key, the listed config files are included (next section).</li>
+</ul>
+</div>
+<div class="section" id="when-another-config-file-is-included">
+<span id="pages-generator-config-background-when-another-config-file-is-included"></span><h3>When another Config File is Included<a class="headerlink" href="#when-another-config-file-is-included" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The external config file is processes like the original file (previous section); i.e. the initial parsing and including process is applied recursively. The process is checked for cyclic references.</li>
+<li>Then, every job in the <em>jobs</em> key of the external config file is processed in the following manner.</li>
+<li>For each external job, a new job for the current config file is created. This is to apply a local <em>let</em> section, so it can take preference over the external's job <em>let</em> settings. This is done next.</li>
+<li>A potential global <em>let</em> section is included into the new job, as if this was a normal <em>let</em> key of the job.</li>
+<li>Then, the external job is merged into the new job (see next section).</li>
+<li>A reference to the external config is added to the new job; this way, the original context is retained. This can be important to resolve references to other jobs in the right context.</li>
+<li>For the new job a job name is constructed:
+* If the external config is included without <em>&quot;as&quot;</em> parameter, the original name is used. If it is included with <em>&quot;as&quot;</em> parameter, its value is prependend to the original name.
+* If no job of the same name already exists in the config, nothing further is done.
+* If, on the other hand, a job of such name already exists, a new, conflict-free name is generated for the new job, and this name is added to the conflicting job's <em>extend</em> key, so the existing job will inherit the new job's features.</li>
+<li>Finally, the new job is added to the current config's list of jobs.</li>
+</ul>
+</div>
+<div class="section" id="when-jobs-are-merged">
+<span id="pages-generator-config-background-when-jobs-are-merged"></span><h3>When Jobs are Merged<a class="headerlink" href="#when-jobs-are-merged" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>When two jobs are merged, which happens during <em>extend</em> and <em>run</em> expansion, and config file inclusion, there is a <em>source</em> job, which is merged into the <em>target</em> job, so there are distinct roles and a direction of the merging.</li>
+<li>The basic principle is that the target job takes preference over the settings in the source job, like with OO inheritance where child classes can override parent features.</li>
+<li>If a key of the source job is missing in the target job, it is added to the target job.</li>
+<li>If a key of the source job is present in the target job, and has a &quot;=&quot; leading the key name, then the source key is discarded, and is not taken into account for the merging.</li>
+<li>If a key of the source job is present in the target job, and is not protected by the &quot;=&quot; sigil, the following happens:<ul>
+<li>If the key value is a scalar value (string, number, boolean), the target value takes precedence and the source value is discarded.</li>
+<li>If the key value is a reference value (list or map) then<ul>
+<li>in the case of a list, the elements of the source list are uniquely appended to the target list, i.e. duplicates are omitted in the process.</li>
+<li>in the case of a map, the merge process is applied recursively.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="the-job-expansion-process">
+<span id="pages-generator-config-background-the-job-expansion-process"></span><h3>The Job Expansion Process<a class="headerlink" href="#the-job-expansion-process" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>After all include files have been processes, the list of jobs in this config is final. At this stage it can be decided whether the requested jobs (the jobs that are passed as arguments to the generator) are among them and can be run.</li>
+<li>Each job in the list of requested jobs (the &quot;agenda&quot; if you will) is expanded in the following way.</li>
+<li>Then, a potential <em>run</em> key has to be processed:
+* For each job in the <em>run</em> a new job is created (&quot;synthetic jobs&quot;). This is so they can inherit stuff. The definition of the original job is used - with the <em>run</em> key stripped - as the template for all of these jobs, so they have all the original job features.
+* Each job from the original <em>run</em> key is then added to the <em>extend</em> key of its corresponding synthetic job, so they inherit from their run jobs.
+* The list of synthetic jobs is now added to the agenda in place of the original job that had the <em>run</em> key.</li>
+<li>A potential <em>extend</em> key has to be processed:
+* For each element in the <em>extend</em> key, the corresponding job is searched (see special section below).
+* Each of those jobs are merged into the current one, in the order they appear in the list. This also means that features of each job in the list take precedence over those of jobs that come right to it.</li>
+<li>The last two steps are repeated until no more jobs are on the agenda that have unresolved <em>extend</em> or <em>run</em> keys.</li>
+<li>Now each job has found its final job definition, and is run by the Generator.</li>
+</ul>
+</div>
+<div class="section" id="how-job-references-are-resolved">
+<span id="pages-generator-config-background-how-job-references-are-resolved"></span><h3>How Job References are Resolved<a class="headerlink" href="#how-job-references-are-resolved" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><em>extend</em> and <em>run</em> keys in a job reference other jobs by name. These names have to be resolved to their actual job definitions, in order to complete the expansion of the referencing job.</li>
+<li>When name resolution has to be done, there are two contexts in which the referenced name is looked for:<ul>
+<li>the current config</li>
+<li>the config in which the job was originally defined; this may be different from the current config, since the job might have been obtained by inclusion of an external configuration file.</li>
+</ul>
+</li>
+<li>The last point is interesting since a job in the current config might be referencing a job &quot;foo&quot; which might not be present in the current config, e.g. due to filtering this job during import (there are various ways to do this). So the job has to be looked for in one of the external config files. The original config file is chosen since there might be more the one imported config file, and each of those might be defining a &quot;foo&quot; job.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="how-to-add-a-new-component">
+<span id="pages-generator-config-background-how-to-add-a-new-component"></span><h2>How to add a new Component<a class="headerlink" href="#how-to-add-a-new-component" title="Permalink to this headline">¶</a></h2>
+<p>qooxdoo comes with a set of helper applications, so called &quot;components&quot;, that can be custom-build for any standard application. Examples are the Apiviewer, Testrunner and Inspector. Suppose we had a new such component, how would this be made available as a standard job to skeleton-based applications? This section provides an implementation view to the more end-user oriented introduction <a class="reference internal" href="generator_config_articles.html#pages-tool-generator-config-articles-include-key-top-level-adding-features"><em>here</em></a>.</p>
+<div class="section" id="basics">
+<span id="pages-generator-config-background-basics"></span><h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
+<p>Usually, you simply want to run a job already defined for the component, such as the <em>build</em> job that creates an optimized version of it. But in virtually all cases such a component needs to be passed information about the application that tries to build it. This ranges from simple things like the output path, where a script is stored, over the information which class libraries the application uses (think of the application's test classes for the <em>Testrunner</em>),  up to arbitrary modification of job settings (variants, compile options, ...). So, generally speaking, you need to pass some information to, or <em>parameterize</em>, the component job. These kinds of modifications are discussed in this section.</p>
+<p>The answer to the question how to pass information into a job is generally two-fold:</p>
+<ul class="simple">
+<li><strong>Macros in global let sections</strong></li>
+<li><strong>Other Jobs</strong></li>
+</ul>
+<p>Macros in global <em>let</em> sections are included automatically into jobs within the current configuration file; they are directly integrated into a job's own <em>let</em> key. Jobs themselves can be related to each other, but for this you have to be aware of a general property of jobs in the configuration system:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Within the generator's configuration system, there is only a <strong>single mechanism</strong> how two jobs can pass information between - and thus influence - each other:  <strong>Through Job Extending.</strong></p>
+</div>
+<p>That means one job has to extend the other, either directly or indirectly (via intermediate &quot;extend&quot; jobs), in order to share information between the jobs.</p>
+<p>This also means that the question which job extends which (the <em>extension order</em>, if you will) is curcial, as the settings in the extending job always take precedence over those of any extended job. The extending job also has some possibilties to control which keys are being modified by the extended jobs. Within the &quot;extend&quot; list of jobs, those to the left take precedence over those on the right.</p>
+</div>
+<div class="section" id="preparing-the-component">
+<span id="pages-generator-config-background-preparing-the-component"></span><h3>Preparing the component<a class="headerlink" href="#preparing-the-component" title="Permalink to this headline">¶</a></h3>
+<p>On that basis we will look at concrete ways to apply this when invoking a component job. The job of the component that is to be run is often referred to as the <em>&quot;remote job&quot;</em>, as it is defined remotely to the invoking application, which will be referred to as the <em>&quot;invoking context&quot;</em>.</p>
+<p>Using the basic principles outlined above, there are <strong>two practical ways</strong> how component jobs can receive information from the invoking context:</p>
+<ul class="simple">
+<li><strong>Macros</strong></li>
+<li><strong>Includer Jobs</strong></li>
+</ul>
+<p>In both cases, it is essential that both the invoking environment (custom application) and the providing component agree on the way how information is passed. In clear terms this means, it has to be part of the documentation of the component how it allows its job to be tailored. (This documentation for the existing component jobs of qooxdoo is available from the <a class="reference internal" href="generator_default_jobs.html"><em>list of default jobs</em></a>).</p>
+<div class="section" id="parameterizing-a-remote-job-through-macros">
+<span id="pages-generator-config-background-parameterizing-a-remote-job-through-macros"></span><h4>Parameterizing a remote job through Macros<a class="headerlink" href="#parameterizing-a-remote-job-through-macros" title="Permalink to this headline">¶</a></h4>
+<p>Macros are a simple way to pass information around. The component job uses a macro in a place that should be parameterized, e.g. a part in a path.</p>
+<p>A typical example is the BUILD_PATH macro. The component job stores its output in a file like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;outfile&quot;</span> <span class="o">:</span> <span class="s2">&quot;${BUILD_PATH}/job_output.js&quot;</span>
+</pre></div>
+</div>
+<p>The component will usually provide a sensible default for the macro, e.g.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;BUILD_PATH&quot;</span> <span class="o">:</span> <span class="s2">&quot;./script&quot;</span>
+</pre></div>
+</div>
+<p>The invoking context can now tailor the output path by overriding the BUILD_PATH macro:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;BUILD_PATH&quot;</span> <span class="o">:</span> <span class="s2">&quot;my/other/path&quot;</span>
+</pre></div>
+</div>
+<p>and running the component job with this macro binding will cause the output be written in the alternate directory. Of course you have to make sure the new macro binding is in effect when the component job is being run (see also further down for this). In the simplest case you just put the macro definition in the <em>global let section</em> of the application <em>config.json</em>. As these let bindings are included in every job of the config, also to the jobs that are imported from other configs, these bindings apply to effectively every job that is accessible through this config. As it is applied very early, the binding in this let section take precedence over bindings of the same macros defined in imported jobs. Thus it is possible to pass the new binding into a job defined in another configuration file.</p>
+<p>If you want a more fine-grained control over the scope of a specific macro, you can add a new job definition into your config of the <em>same name</em> as the job you want to tweak (but mind any name spacing of names introduced through the <em>as</em> key in <em>include</em> keys, see further). Through automatic inheritance the remote job will become a parent of the local job. If you give the local job a <em>let</em> section with the required macro, this binding will only take effect for the named job (and those extending it), but not for others.</p>
+</div>
+<div class="section" id="parameterizing-a-remote-job-through-includer-jobs">
+<span id="pages-generator-config-background-parameterizing-a-remote-job-through-includer-jobs"></span><h4>Parameterizing a remote job through Includer Jobs<a class="headerlink" href="#parameterizing-a-remote-job-through-includer-jobs" title="Permalink to this headline">¶</a></h4>
+<p>A more powerful but also more complex way to taylor a remote job is through an <em>includer job</em>, a job that is included by others to add additional configuration to them. Used to parameterize another job includer jobs are akin to dependency injection in programming languages.</p>
+<p>The component job would <em>extend</em> the includer job in its own definition:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;includer-job&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>Again, the component would usually provide an <em>includer-job</em> of its own, with sensible defaults.</p>
+<p>The invoking context can then tailor the remote job by tailoring the includer job:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;includer-job&quot;</span> <span class="o">:</span>
+    <span class="p">{</span>
+       <span class="s2">&quot;library&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+       <span class="s2">&quot;environment&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+       <span class="s2">&quot;compile-options&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+       <span class="p">...</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Supplying a job with the name of the includer job will make the component's worker job use this definition for its own extend list (through <em>job shadowing</em>). As with macros, the invoking application and the component have to agree about the name of the includer job. After that, you can essentially pass all kinds of job keys into the remote job. There is virtually no limit, but usually you will only want to set a few significant keys (Again, this is part of the protocol between application and component and should be stated clearly in the component's documentation). You should also bear in mind the general rules fo job extending, particularly that the main job's settings (the component job in our case) will take precedence over the settings of the includer job, and that the main job can choose to block certain keys from being modified by included jobs.</p>
+</div>
+</div>
+<div class="section" id="adding-a-new-job">
+<span id="pages-generator-config-background-adding-a-new-job"></span><h3>Adding a new job<a class="headerlink" href="#adding-a-new-job" title="Permalink to this headline">¶</a></h3>
+<p>So how would you typically use these mechanisms to a new default job for qooxdoo that will build the new component in a custom application? Here is a list of the steps:</p>
+<ul>
+<li><p class="first">Split the component's <em>config.json</em> into two.This is usually helpful to keep config settings for the component that are just necessary to develop the component itself, from the definitions that are interesing to other applications that want to run the &quot;exported&quot; job(s) of that component. See e.g. the <em>Testrunner</em> application, where the configuration is split between the local <em>config.json</em> and the includeable <em>testrunner.json</em>.</p>
+</li>
+<li><p class="first">Include the export config of the component in <em>application.json</em>. This will usually be done with a dedicated name space prefix, like</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;path&quot;</span> <span class="o">:</span> <span class="s2">&quot;path/to/component/component.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;as&quot;</span>   <span class="o">:</span> <span class="s2">&quot;comp&quot;</span>   <span class="c1">// something meaningful</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a new job in <em>application.json</em>.Choose a name as you would want it to appear to the end user when he invokes <tt class="docutils literal"><span class="pre">generate.py</span> <span class="pre">x</span></tt>. Optionally, add a descriptive <em>&quot;desc&quot;</em> key that will appear next to the job's name in the listing.</p>
+</li>
+<li><p class="first">Make this job extend the component's job you want to make available, e.g. like</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;extend&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;comp::build&quot;</span> <span class="p">]</span> <span class="c1">// &quot;build&quot; is the job you want in most cases</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add further keys, like a <em>let</em> section with macros you want to override, or other job keys.</p>
+</li>
+<li><p class="first">If the component's job honors an includer job, define such a job in <em>application.json</em>. You will usually also need to prefix it with the component's &quot;as&quot; prefix you used above:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;comp::&lt;includer job name&gt;&quot;</span> <span class="o">:</span> <span class="p">{</span> <span class="o">&lt;</span><span class="nx">includer</span> <span class="nx">job</span> <span class="nx">keys</span><span class="o">&gt;</span><span class="p">...</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>The component's worker job will automatically include your includer job.</p>
+</li>
+<li><p class="first">Add the job to the <em>export</em> list in the skeletons that should support it.The skeletons' <em>config.json</em> usually contain an <em>export</em> key, to filter the list of jobs a user will see with <em>generate.py x</em> down to the interesting jobs. Adding the new job name will make sure the users sees it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="generator_config_articles.html"
+             title="previous chapter">« Generator Configuration Articles</a>
+          <span class="separator">|</span>
+          <a class="next" href="tutorial_basics.html"
+             title="next chapter">Tutorial: Basic Tool Chain Usage »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Generator Configuration Background Information</a><ul>
+<li><a class="reference internal" href="#cascading-configurations">Cascading Configurations</a><ul>
+<li><a class="reference internal" href="#application-json-and-base-json">application.json and base.json</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-use-of-macros">The Use of Macros</a></li>
+<li><a class="reference internal" href="#application-startup">Application Startup</a></li>
+<li><a class="reference internal" href="#config-processing">Config Processing</a><ul>
+<li><a class="reference internal" href="#when-the-config-file-is-read">When the Config File is Read</a></li>
+<li><a class="reference internal" href="#when-another-config-file-is-included">When another Config File is Included</a></li>
+<li><a class="reference internal" href="#when-jobs-are-merged">When Jobs are Merged</a></li>
+<li><a class="reference internal" href="#the-job-expansion-process">The Job Expansion Process</a></li>
+<li><a class="reference internal" href="#how-job-references-are-resolved">How Job References are Resolved</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-to-add-a-new-component">How to add a new Component</a><ul>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#preparing-the-component">Preparing the component</a><ul>
+<li><a class="reference internal" href="#parameterizing-a-remote-job-through-macros">Parameterizing a remote job through Macros</a></li>
+<li><a class="reference internal" href="#parameterizing-a-remote-job-through-includer-jobs">Parameterizing a remote job through Includer Jobs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-a-new-job">Adding a new job</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="tutorial_basics.html"
+                        title="next chapter">Tutorial: Basic Tool Chain Usage</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="generator_config_articles.html"
+                        title="previous chapter">Generator Configuration Articles</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/tool/generator_config_background.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

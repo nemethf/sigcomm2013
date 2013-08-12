@@ -1,0 +1,337 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Technical Feature List &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="HTML Editing" href="../ui_html_editing.html" />
+    <link rel="next" title="Integrate the HtmlArea into your application" href="integration_guide.html" />
+    <link rel="prev" title="Feature List" href="featurelist.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../../desktop.html" >qx.Desktop</a>
+     &raquo;
+    <a href="../ui_html_editing.html" accesskey="U">HTML Editing</a>
+     &raquo;
+  <a href="">Technical Feature List</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="technical-feature-list">
+<span id="pages-ui-html-editing-technicalfeaturelist-technical-feature-list"></span><h1>Technical Feature List<a class="headerlink" href="#technical-feature-list" title="Permalink to this headline">¶</a></h1>
+<p>In comparison to the <a class="reference internal" href="featurelist.html"><em>Feature List</em></a> of the HtmlArea this page describes some technical insights of the component. If you plan to get to know some details of how to develop a WYSIWYG component and want to learn the pitfalls of the different browser implementations this is good place to start.</p>
+<div class="section" id="startup">
+<span id="pages-ui-html-editing-technicalfeaturelist-startup"></span><h2>Startup<a class="headerlink" href="#startup" title="Permalink to this headline">¶</a></h2>
+<p>The HtmlArea relies on a editable iframe. To take control over this iframe the component has to ensure that the iframe's document is fully loaded and accessible. For every browser the <tt class="docutils literal"><span class="pre">load</span></tt> event of the iframe object is used. Only for IE it is necessary to poll the document if it's not immediately available after the <tt class="docutils literal"><span class="pre">load</span></tt> event. The result of the startup phase is the <tt class="docutils literal"><span class="pre">ready</span></tt> event which informs the application developer that the startup was successful.</p>
+</div>
+<div class="section" id="content-wrapping">
+<span id="pages-ui-html-editing-technicalfeaturelist-content-wrapping"></span><h2>Content Wrapping<a class="headerlink" href="#content-wrapping" title="Permalink to this headline">¶</a></h2>
+<p>Since the application developer only sets the content of the HtmlArea and not the whole document the component needs to setup the rest of the content (<tt class="docutils literal"><span class="pre">DOCTYPE</span></tt>, <tt class="docutils literal"><span class="pre">HTML</span></tt> and <tt class="docutils literal"><span class="pre">BODY</span></tt> elements).
+The difficult exercise here is to set the right style attribute at the right element for each browser.</p>
+<p>The toughest thing is to get the right behaviour for native scrollbars. In IE for example the overflow handling with <tt class="docutils literal"><span class="pre">overflow-x</span></tt> and <tt class="docutils literal"><span class="pre">overflow-y</span></tt> does not work correctly. When both style attributes are set IE does mix them up by overwriting one with the others value.</p>
+<p>Anyway, the correct content wrap is important for</p>
+<ul class="simple">
+<li>document is taking the whole space of the iframe</li>
+<li>no margins and paddings are set</li>
+<li>scrollbars are only shown if the user enters more content than space is available</li>
+</ul>
+</div>
+<div class="section" id="editable-document">
+<span id="pages-ui-html-editing-technicalfeaturelist-editable-document"></span><h2>Editable Document<a class="headerlink" href="#editable-document" title="Permalink to this headline">¶</a></h2>
+<p>Another pitfall is how to set the document of the iframe object editable. There are two properties which can be be applied for an editable document: <strong>designMode</strong> and <strong>editable</strong>.</p>
+<p>The <tt class="docutils literal"><span class="pre">designMode</span></tt> property is applied for all browsers and works at the <tt class="docutils literal"><span class="pre">document</span></tt> node of the iframe.</p>
+<p>Setting the <tt class="docutils literal"><span class="pre">editable</span></tt> property is only needed for gecko browsers. And only if the HtmlArea was hidden and shown again. The <tt class="docutils literal"><span class="pre">editable</span></tt> property is applied to the <tt class="docutils literal"><span class="pre">body</span></tt> element.</p>
+<div class="section" id="internet-explorer">
+<span id="pages-ui-html-editing-technicalfeaturelist-internet-explorer"></span><h3>Internet Explorer<a class="headerlink" href="#internet-explorer" title="Permalink to this headline">¶</a></h3>
+<p>For IE it is important to set the document design mode <strong>before</strong> the content is rendered. Once the document is editable it does not loose this status even if the whole component is hidden and shown again.</p>
+</div>
+<div class="section" id="gecko-webkit-and-opera">
+<span id="pages-ui-html-editing-technicalfeaturelist-gecko-webkit-and-opera"></span><h3>Gecko, Webkit and Opera<a class="headerlink" href="#gecko-webkit-and-opera" title="Permalink to this headline">¶</a></h3>
+<p>All three need to have rendered content to set the document design mode correctly.</p>
+</div>
+</div>
+<div class="section" id="focus-management">
+<span id="pages-ui-html-editing-technicalfeaturelist-focus-management"></span><h2>Focus Management<a class="headerlink" href="#focus-management" title="Permalink to this headline">¶</a></h2>
+<p>At least IE has problems whenever a native command (<em>execCommand</em> method) does manipulate the content of the editable iframe and the iframe document does <strong>not</strong> have the focus. If an application developer want to use a toolbar to offer the user an interface to manipulate the content he has to make sure that each of these buttons need a special setup. Otherwise the button would <em>steal</em> the focus from the editing component whenever clicked.</p>
+<p>Luckily qooxdoo does offer this customization out-of-the-box. The application developer only has to set the properties <em>keepFocus</em> to <em>true</em> and <em>focusable</em> to <em>false</em>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">button</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+  <span class="nx">focusable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">keepFocus</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="advanced-key-events">
+<span id="pages-ui-html-editing-technicalfeaturelist-advanced-key-events"></span><h2>Advanced Key Events<a class="headerlink" href="#advanced-key-events" title="Permalink to this headline">¶</a></h2>
+<p>One major feature is to track the user input. To use the powerful key event handler in qooxdoo the HtmlArea does listen to all key events at the <tt class="docutils literal"><span class="pre">body</span></tt> element and handles various actions depending on the user's input.
+This way it is possible to work with a <tt class="docutils literal"><span class="pre">keyIdentifier</span></tt> instead of the <tt class="docutils literal"><span class="pre">keyCode</span></tt> or <tt class="docutils literal"><span class="pre">charCode</span></tt>.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="featurelist.html"
+             title="previous chapter">« Feature List</a>
+          <span class="separator">|</span>
+          <a class="next" href="integration_guide.html"
+             title="next chapter">Integrate the HtmlArea into your application »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Technical Feature List</a><ul>
+<li><a class="reference internal" href="#startup">Startup</a></li>
+<li><a class="reference internal" href="#content-wrapping">Content Wrapping</a></li>
+<li><a class="reference internal" href="#editable-document">Editable Document</a><ul>
+<li><a class="reference internal" href="#internet-explorer">Internet Explorer</a></li>
+<li><a class="reference internal" href="#gecko-webkit-and-opera">Gecko, Webkit and Opera</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#focus-management">Focus Management</a></li>
+<li><a class="reference internal" href="#advanced-key-events">Advanced Key Events</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="integration_guide.html"
+                        title="next chapter">Integrate the HtmlArea into your application</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="featurelist.html"
+                        title="previous chapter">Feature List</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../../_sources/pages/desktop/ui_html_editing/technicalfeaturelist.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>

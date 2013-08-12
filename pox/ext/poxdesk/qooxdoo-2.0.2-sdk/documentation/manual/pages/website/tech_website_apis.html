@@ -1,0 +1,370 @@
+
+
+<!doctype html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Technical view on the low-level APIs &mdash; qooxdoo 2.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/reset.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://resources.qooxdoo.org/stylesheets/layout.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/html5shiv.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.placeholder.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/q.sticky.js"></script>
+    <script type="text/javascript" src="http://resources.qooxdoo.org/javascripts/application.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qooxdoo 2.0.2 documentation" href="../../index.html" />
+    <link rel="up" title="qx.Website" href="../website.html" />
+    <link rel="next" title="Client-side Storage" href="storage.html" />
+    <link rel="prev" title="Plugins" href="plugins.html" />
+<link rel="shortcut icon" href="http://resources.qooxdoo.org/images/qx-favicon.png" />
+
+  </head>
+  <body>
+<div id="main-wrapper" class="sphinx">
+<div id="header-wrapper">
+  <section id="header">
+    <h1><a href="http://qooxdoo.org/">qooxdoo</a></h1>
+    <nav>
+      <ul>
+        <!--
+        <li>
+          <a class="" href="http://qooxdoo.org/">home</a>
+        </li>
+        -->
+        <li>
+          <a href="http://news.qooxdoo.org">blog</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/demos">demos</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/downloads">downloads</a>
+        </li>
+        <li>
+          <a class="active" href="http://qooxdoo.org/docs">docs</a>
+        </li>
+        <li>
+          <a class="" href="http://qooxdoo.org/community">community</a>
+        </li>
+      </ul>
+    </nav>
+    <script type="template" id="search-options-template">
+      <select>
+        <option value="site">Site</option>
+        <option value="manual">Manual</option>
+        <option value="blog">Blog</option>
+        <option value="bugs">Bugs</option>
+      </select>
+    </script>
+    <script type="template" id="search-site-template">
+      <form action="http://qooxdoo.org/" id="search-form">
+        <input type="hidden" name="do" value="search">
+        <input type="search" name="id" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-blog-template">
+      <form method="get" id="searchform" action="http://news.qooxdoo.org/" id="search-form">
+        <input type="search" class="field" name="s" id="s" placeholder="Search">
+      </form>
+    </script>
+    <script type="template" id="search-manual-template">
+      <form action="../../search.html" id="search-form">
+        <input type="search" name="q" placeholder="Search"></input>
+      </form>
+    </script>
+    <script type="template" id="search-bugs-template">
+      <form action="http://bugs.qooxdoo.org/buglist.cgi" id="search-form">
+        <input type="search" name="quicksearch" placeholder="Search"></input>
+      </form>
+    </script>
+    <div id="search">
+    </div>
+  </section>
+<div class="decoration"></div>
+</div>
+ 
+<section id="main">
+  <section id="breadcrumb">
+      
+  <a href="http://qooxdoo.org">Home</a> &raquo;
+    <a href="../../index.html">Manual (v2.0.2)</a> &raquo;
+    <a href="../website.html" accesskey="U">qx.Website</a>
+     &raquo;
+  <a href="">Technical view on the low-level APIs</a>
+    </section>
+    <section id="content">
+      <div class="body">
+        
+  <div class="section" id="technical-view-on-the-low-level-apis">
+<span id="pages-tech-website-apis-low-level-apis"></span><h1>Technical view on the low-level APIs<a class="headerlink" href="#technical-view-on-the-low-level-apis" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document describes implementation details. The user API is covered in qx.Website and the <a class="reference internal" href="overview.html"><em>corresponding overview documentation</em></a>.</p>
+</div>
+<div class="section" id="qx-bom-browser-object-model">
+<span id="pages-tech-website-apis-qx-bom-browser-object-model"></span><h2>qx.bom - Browser Object Model<a class="headerlink" href="#qx-bom-browser-object-model" title="Permalink to this headline">¶</a></h2>
+<p>The classes contained in the <tt class="docutils literal"><span class="pre">qx.bom</span></tt> namespace provide a cross-browser abstraction layer for object classes of the browser JavaScript runtime.</p>
+<p>The BOM classes mainly consists of the following three parts:</p>
+<ul class="simple">
+<li>DOM element manipulation</li>
+<li>wrappers for native layers/objects</li>
+<li>powerful low-level helper classes</li>
+</ul>
+<p>See the API reference of <a class="reference external" href="http://api.qooxdoo.org/#qx.bom">qx.bom</a> for more details.</p>
+<div class="section" id="dom-element-manipulation">
+<span id="pages-tech-website-apis-dom-element-manipulation"></span><h3>DOM element manipulation<a class="headerlink" href="#dom-element-manipulation" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">qx.bom.element</span></tt> package allows you to manipulate DOM elements in almost any way you can think of. Each class is offering several <tt class="docutils literal"><span class="pre">static</span></tt> methods that take a DOM element as their first argument. Since those BOM classes are static, no instances need to be created in order to manipulate a DOM element in the document.</p>
+<p>The following manipulations are offered by the <tt class="docutils literal"><span class="pre">qx.bom.element</span></tt> package:</p>
+<ul class="simple" id="index-0">
+<li>Dimension and location</li>
+<li>Box-sizing - supports the modes <tt class="docutils literal"><span class="pre">content-box</span></tt> (W3C model) and <tt class="docutils literal"><span class="pre">border-box</span></tt> (Microsoft model)</li>
+<li>Scroll and overflow</li>
+<li>Style querying and modification</li>
+<li>CSS class name support - supports multiple class names for each element</li>
+<li>Scroll elements into view</li>
+<li>powerful low-level decoration support</li>
+<li>cross-browser support for opacity - optimized for animations</li>
+<li>CSS3 transforms and animations</li>
+<li>Attribute/Property handling</li>
+<li>Background images and support for the clip property</li>
+<li>Cursor property</li>
+</ul>
+</div>
+<div class="section" id="wrapper-for-native-layers-objects">
+<span id="pages-tech-website-apis-wrapper-for-native-layers-objects"></span><h3>Wrapper for native layers/objects<a class="headerlink" href="#wrapper-for-native-layers-objects" title="Permalink to this headline">¶</a></h3>
+<p>These classes offer an unique and powerful way to deal with native layers and objects. Wrappers exist for:</p>
+<ul class="simple">
+<li>the current document</li>
+<li>DOM elements to be connected to qooxdoo's event system</li>
+<li>native event management</li>
+<li>flash embedding</li>
+<li>CSS font styles</li>
+<li>several native controls like <tt class="docutils literal"><span class="pre">iframe</span></tt>, <tt class="docutils literal"><span class="pre">form</span> <span class="pre">elements</span></tt>, <tt class="docutils literal"><span class="pre">label</span></tt> and <tt class="docutils literal"><span class="pre">image</span></tt> elements</li>
+</ul>
+<p>As every object or layer is abstracted by a corresponding qooxdoo class you can use these BOM classes to interact without worrying about the underlying browser used.</p>
+</div>
+<div class="section" id="additional-classes">
+<span id="pages-tech-website-apis-additional-classes"></span><h3>Additional classes<a class="headerlink" href="#additional-classes" title="Permalink to this headline">¶</a></h3>
+<p>These additional classes help in developing low-level, cross-browser applications.</p>
+<p>Features include:</p>
+<ul class="simple">
+<li>unified XMLHttp transport implementation</li>
+<li>powerful client detection classes</li>
+<li>low-level <tt class="docutils literal"><span class="pre">Range</span></tt> and <tt class="docutils literal"><span class="pre">Selection</span></tt> API</li>
+<li>helper class for browser history</li>
+<li>wrapper for working with CSS stylesheets</li>
+<li>string utility class</li>
+<li>helper class for the client's viewport</li>
+<li>helper class for VML</li>
+</ul>
+</div>
+</div>
+<div class="section" id="qx-dom-cross-browser-dom-manipulation">
+<span id="pages-tech-website-apis-qx-dom-cross-browser-dom-manipulation"></span><h2>qx.dom - Cross-browser DOM manipulation<a class="headerlink" href="#qx-dom-cross-browser-dom-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>The Document Object Model (DOM) is a tree model that represents the document in a browser. The classes provided by this packages allow you to query, to manipulate (i.e. add, remove, change order or replace) and to check the nodes contained in the DOM.</p>
+<p>Currently the <tt class="docutils literal"><span class="pre">qx.dom</span></tt> package consists of three classes:</p>
+<ul class="simple">
+<li><strong>Element</strong>: manages children structures, inserts, removes and replaces nodes</li>
+<li><strong>Hierarchy</strong>: for querying nodes</li>
+<li><strong>Node</strong>: basic node creation and type detection</li>
+</ul>
+<p>See the API reference of <a class="reference external" href="http://api.qooxdoo.org/#qx.dom">qx.dom</a> for more details.</p>
+</div>
+<div class="section" id="qx-xml-xml-handling">
+<span id="pages-tech-website-apis-qx-xml-xml-handling"></span><h2>qx.xml - XML handling<a class="headerlink" href="#qx-xml-xml-handling" title="Permalink to this headline">¶</a></h2>
+<p>This package is all about working with XML documents in a cross-browser way. Its three  classes are:</p>
+<ul class="simple">
+<li><strong>Document</strong>: creating an XML document</li>
+<li><strong>Element</strong>: API to select, query and serialize XML elements</li>
+<li><strong>String</strong>: escaping and unescaping of XML strings</li>
+</ul>
+<p>See the API reference of <a class="reference external" href="http://api.qooxdoo.org/#qx.xml">qx.xml</a> for more details.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottom-nav">
+          <a class="prev" href="plugins.html"
+             title="previous chapter">« Plugins</a>
+          <span class="separator">|</span>
+          <a class="next" href="storage.html"
+             title="next chapter">Client-side Storage »</a>
+      </div>
+    </section>
+    <section id="sidebar">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li><a class="reference internal" href="#">Technical view on the low-level APIs</a><ul>
+<li><a class="reference internal" href="#qx-bom-browser-object-model">qx.bom - Browser Object Model</a><ul>
+<li><a class="reference internal" href="#dom-element-manipulation">DOM element manipulation</a></li>
+<li><a class="reference internal" href="#wrapper-for-native-layers-objects">Wrapper for native layers/objects</a></li>
+<li><a class="reference internal" href="#additional-classes">Additional classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qx-dom-cross-browser-dom-manipulation">qx.dom - Cross-browser DOM manipulation</a></li>
+<li><a class="reference internal" href="#qx-xml-xml-handling">qx.xml - XML handling</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>» Next topic</h4>
+  <p class="topless"><a href="storage.html"
+                        title="next chapter">Client-side Storage</a></p>
+  <h4>« Previous topic</h4>
+  <p class="topless"><a href="plugins.html"
+                        title="previous chapter">Plugins</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">
+  // $('#searchbox').show(0);
+</script>
+        </div>
+      </div>
+  </section>
+</section>
+</div> 
+<div id="footer-wrapper">
+  <footer id="footer">
+    <div id="supported-by">
+      <a href="http://1and1.com">
+        <img src="http://resources.qooxdoo.org/images/1and1.png">
+      </a>
+      <p class="claim">
+        Brought to you by <a href="http://1and1.com">1&amp;1</a>, one of the world's leading web hosts
+      </p>
+      <p class="legal">
+        © 1&amp;1 Internet AG<br>
+        <a href="http://qooxdoo.org/legal">Legal notice</a>
+      </a>
+    </div>
+    <div id="sitemap">
+      <div>
+        <h3><a href="http://qooxdoo.org/">Home</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/demos">Demos</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/download">Download</a>
+          </li>
+          <li>
+            <a href="http://news.qooxdoo.org">Blog</a>
+          </li>
+          <li>
+            <a href="http://bugs.qooxdoo.org">Bugs</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/license">License</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/docs">Docs</a></h3>
+        <ul>
+          <li>
+            
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/introduction/about.html">About</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/getting_started.html">Getting Started</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/website.html">Website</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/mobile.html">Mobile</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/desktop.html">Desktop</a>
+          </li>
+          <li>
+            <a href="http://manual.qooxdoo.org/2.0.2/pages/server.html">Server</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="http://qooxdoo.org/community">Community</a></h3>
+        <ul>
+          <li>
+            <a href="http://qooxdoo.org/community/contribution">Get Involved</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/mailing_lists">Mailing List</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/real_life_examples">Real Life Examples</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/events">Events</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/community/jobs_services">Jobs &amp; Services</a>
+          </li>
+          <li>
+            <a href="http://qooxdoo.org/contrib">Contributions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="meta">
+      <div class="social">
+        <a href="http://twitter.com/qooxdoo">
+          <img src="http://resources.qooxdoo.org/images/twitter.png">
+        </a>
+        <a href="https://www.facebook.com/pages/qooxdoo/187101324711780">
+          <img src="http://resources.qooxdoo.org/images/facebook.png">
+        </a>
+        <a href="http://feeds.feedburner.com/qooxdoo/news/content">
+          <img src="http://resources.qooxdoo.org/images/feed.png">
+        </a>
+      </div>
+      <div class="notice">
+        <p class="source">
+          <strong>
+            <a href="../../_sources/pages/website/tech_website_apis.txt" rel="nofollow">Show Source</a>
+          </strong>
+        </p>
+        <p class="page">
+              &copy; Copyright 2011-2012, qooxdoo developers.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  </body>
+</html>
