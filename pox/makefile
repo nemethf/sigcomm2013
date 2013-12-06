@@ -482,7 +482,7 @@ cache/geocode.%: cache/loc.% $(CONF)
 
 cache/loc.%: $(CONF)
 	@wget -O - 'http://freegeoip.net/csv/$(HOST_$*)' | \
-	    awk -F, '{ printf "%s, %s\n", $$8, $$9 }' > $@
+	    awk -F\",\" '{ printf "\"%s\", \"%s\"\n", $$8, $$9 }' > $@
 
 ####################
 # 'virtual' targets in that there's no real file attached

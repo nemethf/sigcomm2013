@@ -58,7 +58,7 @@ class ProactiveRouting (object):
   # def __str__ (self):
   #   return self.file_prefix
 
-  def _install_flow (self, p, c, n, port_src = None, port_dst = None,
+  def _install_flow (self, p, c, n, port_src, port_dst = None,
                      **kw):
     """Install a flow entry at c to forward packet coming form p to n"""
 
@@ -124,7 +124,11 @@ class ProactiveRouting (object):
       match.dl_dst = ETH_LABEL
       eth_in = '*'
 
-    match.dl_src = port_src.mac
+    if port_src and port_src.mac:
+      match.dl_src = port_src.mac
+    else:
+      #log.error('unknown port_src.mac')
+      return
 
     priority = of.OFP_DEFAULT_PRIORITY
     if 'add_eth_label' in kw:

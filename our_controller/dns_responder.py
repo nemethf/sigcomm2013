@@ -149,8 +149,8 @@ class DnsResponder (object):
         # Internet only
         continue 
       log.debug('q: (%s,%s)' % (q.name, q.qtype))
-      attr = getattr(self, "_answer_" + rrtype_to_str[q.qtype],
-                     self._answer_unknown)
+      qtype = rrtype_to_str.get(q.qtype, 'unknown')
+      attr = getattr(self, "_answer_" + qtype, self._answer_unknown)
       port, rr = attr(q)
       if port:
         r_dns.answers.append(rr)

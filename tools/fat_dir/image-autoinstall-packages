@@ -11,6 +11,7 @@ echo deb http://multipath-tcp.org/repos/apt/debian squeeze main > /etc/apt/sourc
 
 apt-get update
 apt-get install -y linux-mptcp
+apt-get install -y iproute
 apt-get install -y openssh-server
 apt-get install -y tcpdump      
 apt-get install -y iperf

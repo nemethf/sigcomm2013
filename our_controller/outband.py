@@ -394,7 +394,7 @@ class Node (object):
       p['num'] = port_num
     return p
 
-  def generate_host_port (self, port_num):
+  def generate_host_port (self, port_num, old_port=None):
     if port_num in self._dict['ports'] and self.ports[port_num].ip:
       log.warn('host(%s) has already got port_num(%s)' % (self.name, port_num))
       port = self._dict['ports'][port_num]
@@ -406,6 +406,8 @@ class Node (object):
                                                              self.dpid),
                  'num': port_num,
                  })
+    if old_port:
+      port.dpid = old_port.dpid
     self._dict['ports'][port_num] = port
     return port
 
@@ -479,14 +481,29 @@ class Topo (object):
   def add_node (self, node):
     if self.dpid(node.dpid):
       log.warn('node already exists, dpid=%i' % node.dpid)
-
-    self._nodes_dpid[node.dpid] = node
-    self._nodes_name[node.name] = node
-    self._max_dpid = max(self._max_dpid, node.dpid)
+    if not re.match(r"^[a-zA-Z0-9]+$", node.name):
+      log.error('add_node: invalid node_name: %s' % node.name)
+      node.name = 'E%d' % node.dpid
+      log.warn('add_node: new name is: %s' % node.name)
 
     if node.external is None:
       node.external = node.hostname not in self._ple_nodes
     node.qemu = node.external and node.hostname in self._ple_nodes
+
+    if type(node.hostname) == list:
+      for hostname in node.hostname:
+        if hostname in self._working_ple_nodes:
+          node.hostname = hostname
+          log.info('Choosing %s as %s' % (node.hostname, node.node))
+          break
+    if not node.external and node.hostname not in self._working_ple_nodes:
+      log.error('No working host for %s (candidates: %s)' %
+                (node.name, node.hostname))
+      exit()
+
+    self._nodes_dpid[node.dpid] = node
+    self._nodes_name[node.name] = node
+    self._max_dpid = max(self._max_dpid, node.dpid)
 
   def add_link (self, node_a, node_b = None, l = {}):
     if node_b is None:
@@ -868,6 +885,11 @@ class Outband (EventMixin):
       log.info('planetlab: we are authorized!')
     else:
       log.error('planetlab: not authorized')
+      self.t.vnet = config.get('vsys_vnet')
+      nodes = config.get('ple_nodes')
+      self.t._ple_nodes = nodes
+      self.t._working_ple_nodes = self.filter_available_nodes(nodes)
+      
       return
 
     # get 'vnet' of the slice
@@ -1023,7 +1045,7 @@ class Outband (EventMixin):
         return []
       host_port = node_host.get_port(port_num)
       if not host_port or not host_port.ip:
-        host_port = node_host.generate_host_port(port_num)
+        host_port = node_host.generate_host_port(port_num, host_port)
       if (host_port.dpid and host_port.dpid != node_ple.dpid):
         new_node_ple = self.t.dpid(host_port.dpid)
         log.warn(('buliding connection: %s:%s-%s' +
@@ -1042,7 +1064,7 @@ class Outband (EventMixin):
       self.t.add_link(node_ple, node_host, link_param)
       self.write_makefile_config('auto_conf.mk')
       call_make('L/%s' % link, conf_mk='auto_conf.mk')
-      for node in [node_ple, node_host]:
+      for node in [node_host]:
         self.init_node(node)
       self.query_links(node_ple)
       params.append(self.t.get_link_params(node_host, node_ple))
@@ -1061,6 +1083,8 @@ def set_config (config_filename, **kw):
     global config
 
     config = {'check_node_availability': True,
+              'vsys_net': None,
+              'ple_nodes': [],
               'controller_ip_addr': None,
               'topo_filename': 'topo.json',
               'IdentityFile': '~/.ssh/id_rsa',

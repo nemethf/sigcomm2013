@@ -64,8 +64,8 @@ class HostRPCHandler (JSONRPCHandler):
   def _exec_connect_ple(self, ple_hostnames,
                         host_hostname, host_shortname=None):
     err = None
-    log.info("CONNECT PLE called...")
     args = [ple_hostnames, host_hostname, host_shortname]
+    log.info("connect_ple called (%s, %s)" % (host_hostname, host_shortname))
     self._ple_connection = core.Outband.connect_to_ple_node(*args)
     log.info("%s", self._ple_connection)
     return {'result':self._ple_connection, 'error':err}
